@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Solr debugQuery</title>
+      <slug>solr-debugquery</slug>
+      <summary>Using Solr&#39;s debugQuery parameter to troubleshoot query results</summary>
+      <createdOn>2021-11-11 16:13:23</createdOn>
+      <updatedOn>2021-11-16 14:31:21 +0000 UTC</updatedOn>
+      <postedOn>2021-11-16 00:43:49 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>87</value>
+      </fields>
+  </TextEntry>

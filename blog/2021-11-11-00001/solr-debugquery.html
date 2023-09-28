@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <p><code>debugQuery</code> is a parameter that we can pass to Solr when submitting a query, with this parameter Solr will include extra information in the response that is useful to troubleshoot a variety of issues in Solr queries. The information returned is helpful to diagnose:</p>
+
+<ul>
+<li><i>how</i> is Solr interpreting a search query
+<li>why a particular document was <i>included</i> (or not) in the result set
+<li>why some documents are <i>ranked higher</i> than others
+</ul>
+
+<p>The <code>debugQuery</code> parameter is available in the Solr Admin screen</p>
+
+<p><img src="https://hectorcorrea.com/images/solr_debug_query.jpg" alt="Solr Admin" title="Solr Admin" /></p>
+
+<p>or we can pass <code>debugQuery=on</code> in the URL like we would any other parameter:</p>
+
+<pre>
+curl 'http://localhost:8983/solr/your-core/select?debugQuery=on&q=*'
+</pre>
+
+<p>When we pass <code>debugQuery=on</code> in the request, the Solr response will include an extra <code>debug</code> attribute with information about the raw query that Solr received, how Solr parsed the query, an explanation about how each of the documents in the result were scored, and a few other pieces of information. The <code>debug</code> node in the response looks more or less like this:</p>
+
+<pre>
+"debug":{
+  "rawquerystring":"*",
+  "querystring":"*",
+  "parsedquery":"...",
+  "parsedquery_toString":"...",
+  "explain":{
+    ...
+  }
+}
+</pre>
+
+<h1>parsedquery - what Solr does with our query</h1>
+<p>Let's say that we do a very simple query in Solr: <code>q=blue</code>. On a brand new Solr core with no customizations, the debug output will show something like this:</p>
+
+<pre>
+"debug":{
+    "rawquerystring":"blue",
+    "querystring":"blue",
+    "parsedquery":"_text_:blue",
+    "parsedquery_toString":"_text_:blue",
+    "explain":{},
+    "QParser":"LuceneQParser",
+</pre>
+
+<p>notice that the <code>rawquerystring</code> is the search term "blue" that we passed but the <code>parsedquery</code> indicates that Solr is searching on the <code>_text_</code> field. Notice also that Solr is using the default <code>LuceneQParser</code> parser.</p>
+
+<p>Now let's say that instead of the brand new core with no customizations we are searching against a Solr core that has been configured in <code>solrconfig.xml</code> to use a few default query fields (<code>qf</code>) and the eDisMax parser, in that case the output of the same query might look like this:</p>
+
+<pre>
+"debug":{
+    "rawquerystring":"blue",
+    "querystring":"blue",
+    "parsedquery":"+DisjunctionMaxQuery(((title_txt:blue)^10.0 | author_txt:blue))",
+    "parsedquery_toString":"+((title_txt:blue)^10.0 | author_txt:blue)",
+    "explain":{},
+    "QParser":"ExtendedDismaxQParser",
+</pre>
+
+<p>notice that although the <code>rawquerystring</code> is still "blue", in this case the <code>parsedquery</code> value clearly tells us that Solr is searching in the <code>title_txt</code> field (with a boost factor of 10) and the <code>author_txt</code> field. We can also see that it's using the <code>ExtendedDismaxQParser</code> (aka <code>eDisMax</code>) parser rather than the standard Lucene parser.</p>
+
+<p>The <code>debugQuery</code> parameter also helps when working with <b>multi-words searches</b>. Let's say that I run a search for <code>q=title_txt:blue sky</code>, the output of the <code>debugQuery</code> would indicate the following:</p>
+
+<pre>
+"debug":{
+    "rawquerystring":"title_txt:blue sky",
+    "querystring":"title_txt:blue sky",
+    "parsedquery":"title_txt:blue _text_:sky",
+    "parsedquery_toString":"title_txt:blue _text_:sky",
+    "explain":{},
+    "QParser":"LuceneQParser",
+</pre>
+
+<p>notice that the <code>parsedquery</code> shows that Solr searched for "blue" in the <code>title_txt</code> field but it searched for "sky" in the <code>_text_</code> field, certainly not what we wanted, but this is what Solr parsed because we did not wrap the search terms in quotes.</p>
+
+<p>If we wrap our search terms in quotes: <code>q=title_txt:"blue sky"</code> Solr will produce a <code>parsedquery</code> like the one shown below, which is what we wanted:</p>
+
+<pre>
+"debug":{
+    "rawquerystring":"title_txt:\"blue sky\"",
+    "querystring":"title_txt:\"blue sky\"",
+    "parsedquery":"PhraseQuery(title_txt:\"blue sky\")",
+    "parsedquery_toString":"title_txt:\"blue sky\"",
+    "explain":{},
+    "QParser":"LuceneQParser",
+</pre>
+
+
+<p>The <code>parsedquery</code> value is also useful to see how Solr is <b>treating our search terms</b>. Let's say that instead of searching on a <code>title_txt</code> field we search on a field named <code>title_txt_en</code> (on a standard Solr configuration fields ending with <code>txt_en</code> are run through transformations specific for the English language). In this case the result of a search for <code>q=title_txt_en:running</code> will provide the following debug output:</p>
+
+<pre>
+"debug":{
+    "rawquerystring":"title_txt_en:running",
+    "querystring":"title_txt_en:running",
+    "parsedquery":"+title_txt_en:run",
+    "parsedquery_toString":"+title_txt_en:run",
+    "explain":{},
+    "QParser":"ExtendedDismaxQParser",
+</pre>
+
+<p>notice how the <code>parsedquery</code> show us that Solr is searching for the stem of the search term (i.e. "run" rather than "running") in this case because the field <code>title_txt_en</code> has specific English language transformations applied.</p>
+
+<h2>explain - how each document is scored</h2>
+
+<p>Another value that Solr includes in the response is the <code>explain</code> property. This property has one node (for each of the documents that were returned in the result set) with information explaining how the score for these documents was calculated. For example the result might look like this:</p>
+
+<pre>
+"debug":{
+    "rawquerystring":"title_txt_en:blue",
+    "querystring":"title_txt_en:blue",
+    "parsedquery":"+title_txt_en:blue",
+    "parsedquery_toString":"+title_txt_en:blue",
+    "explain":{
+      "00012393":"a ton of text goes here",
+      "00002135":"a ton of text goes here",
+      "00011405":"a ton of text goes here",
+      "00008465":"a ton of text goes here",
+      "00011495":"a ton of text goes here",
+      "00022192":"a ton of text goes here",
+      "00009343":"a ton of text goes here",
+      "00010956":"a ton of text goes here",
+      "00011520":"a ton of text goes here",
+      "00009331":"a ton of text goes here"
+    }
+</pre>
+
+<p>For brevity I've omitted the actual data that is returned for each document (and just indicated "a ton of text goes here") but the actual data looks more or less like this <i>for each</i> of the document ids:</p>
+
+<pre>
+3.8011298 = weight(title_txt_en:blue in 5842) [SchemaSimilarity], result of:
+  3.8011298 = score(freq=1.0), computed as boost &ast; idf &ast; tf from:
+      6.1900153 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+            20 = n, number of documents containing term
+                  10000 = N, total number of documents with field
+                      0.61407435 = tf, computed as freq / (freq + k1 &ast; (1 - b + b &ast; dl / avgdl)) from:
+                            1.0 = freq, occurrences of term within document
+                                  1.2 = k1, term saturation parameter
+                                        0.75 = b, length normalization parameter
+                                              2.0 = dl, length of field
+                                                    5.48 = avgdl, average length of field
+</pre>
+
+<p>As you can see, the information in this section is pretty hard to decipher, but it is important to highlight that it is has a wealth of information if you are trying to understand why a given document was scored the way it was. I blogged about the details of the <code>explain</code> information in <a href="https://library.brown.edu/create/digitaltechnologies/understanding-scoring-of-documents-in-solr/">Understanding scoring of documents in Solr</a> if you want more details about it.</p>
+
+<p>The default format for this information is a very long line-delimited string. Newer versions of Solr have an additional parameter <code>debug.explain.structured=true</code> that allows us to request the information in JSON (rather than line-delimited) that is more suitable for parsing.</p>
+
+<h2>debugQuery or debug</h2>
+<p>According to <a href="https://solr.apache.org/guide/8_9/common-query-parameters.html#debug-parameter">Solr's documentation</a> the <code>debugQuery</code> parameter is now just <code>debug</code> and we can pass several options to indicate what kind of debug output we are interested: query, timing, results, or all. The original <code>debugQuery=on</code> is preserved for backwards compatibility and it's equivalent to <code>debug=all</code></p>
+
+<h2>explainOther - score a document that we are interested in</h2>
+<p>Newer versions of Solr also provide an additional <a href="https://solr.apache.org/guide/8_9/common-query-parameters.html#explainother-parameter">explainOther</a> parameter that we can include in our request to force Solr to include additional documents and score them <i>even if they were not returned in the original query</i>.</p>
+
+<p>For example, let's say that we a run a query that gives us almost all the results that we are interested in, but one document in particular (the one with id "00000747") was not included in the first 10 documents even though it meets the criteria <code>title_txt_en:blue</code>. In this case we can pass Solr <code>explainOther=id:00000747</code> in our query to force this document to be included and scored in the debug output. The output will be something like this:</p>
+
+<pre>
+"debug":{
+    "rawquerystring":"title_txt_en:blue",
+    "querystring":"title_txt_en:blue",
+    "parsedquery":"+title_txt_en:blue",
+    "parsedquery_toString":"+title_txt_en:blue",
+    "explain":{
+      "00012393":"a ton of text goes here",
+      "00002135":"a ton of text goes here",
+      "00011405":"a ton of text goes here",
+      "00008465":"a ton of text goes here",
+      "00011495":"a ton of text goes here",
+      "00022192":"a ton of text goes here",
+      "00009343":"a ton of text goes here",
+      "00010956":"a ton of text goes here",
+      "00011520":"a ton of text goes here",
+      "00009331":"a ton of text goes here"
+    },
+    "otherQuery":"id:00000747",
+    "explainOther":{ "ton of infomation here about document 00000747" },
+    "QParser":"ExtendedDismaxQParser",
+
+</pre>
+
+<p>Notice that the document with id "00000747" was not in the first set of ids in the <code>explain</code> section and therefore was not scored, but because we included <code>explainOther=id:00000747</code> in our <i>request</i> the document will be scored and included in the <code>explainOther</code> node in the response.</p>
+
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>
