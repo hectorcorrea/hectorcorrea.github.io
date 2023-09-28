@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Drawing a Binary Tree in Ruby</title>
+      <slug>drawing-a-binary-tree-in-ruby</slug>
+      <summary>A small Ruby program to draw binary search trees on a web page. This program uses Sinatra to host the web page and HTML 5 Canvas element to do the drawing.</summary>
+      <createdOn>2012-09-02 02:51:09</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2011-04-11 03:59:00 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>13</value>
+      </fields>
+  </TextEntry>

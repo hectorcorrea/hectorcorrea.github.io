@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Returning HTTP 404 in ASP.NET MVC</title>
+      <slug>returning-http-404-in-asp-net-mvc</slug>
+      <summary>How to properly handle page not found errors in ASP.NET MVC project by returning the proper HTTP status code.</summary>
+      <createdOn>2012-09-02 03:00:55</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2010-11-29 05:13:00 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>16</value>
+      </fields>
+  </TextEntry>

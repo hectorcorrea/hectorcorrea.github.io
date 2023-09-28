@@ -112,35 +112,95 @@
     </div>
 
     <div class="container">
-      <p><a href="/blog/2012-09-02-00029/book-review-lean-software-development">Book review: Lean Software Development</a></p>
-<p><a href="/blog/2012-09-02-00003/drawing-a-binary-tree-in-coffeescript">Drawing a Binary Tree in CoffeeScript</a></p>
-<p><a href="/blog/2012-09-02-00006/functional-asynchronicity-explained">Functional Asynchronicity Explained</a></p>
-<p><a href="/blog/2012-09-02-00008/future-directions-for-c-sharp-and-visual-basic">Future Directions for C# and Visual Basic</a></p>
-<p><a href="/blog/2012-09-02-00004/javascript-async-programming-for-sync-heads">JavaScript Async Programming for Sync Heads</a></p>
-<p><a href="/blog/2012-09-02-00007/sliding-in-a-full-page-panel-with-css-and-jquery">Sliding-in a Full Page Panel with CSS and jQuery</a></p>
-<p><a href="/blog/2012-09-02-00005/web-development-on-the-mac-os-x-part-ii">Web Development on the Mac OS X (part II)</a></p>
-<p><a href="/blog/2012-09-02-00009/content">content</a></p>
-<p><a href="/blog/2012-09-02-00010/content">content</a></p>
-<p><a href="/blog/2012-09-02-00011/content">content</a></p>
-<p><a href="/blog/2012-09-02-00012/content">content</a></p>
-<p><a href="/blog/2012-09-02-00013/content">content</a></p>
-<p><a href="/blog/2012-09-02-00014/content">content</a></p>
-<p><a href="/blog/2012-09-02-00015/content">content</a></p>
-<p><a href="/blog/2012-09-02-00016/content">content</a></p>
-<p><a href="/blog/2012-09-02-00017/content">content</a></p>
-<p><a href="/blog/2012-09-02-00018/content">content</a></p>
-<p><a href="/blog/2012-09-02-00019/content">content</a></p>
-<p><a href="/blog/2012-09-02-00020/content">content</a></p>
-<p><a href="/blog/2012-09-02-00021/content">content</a></p>
-<p><a href="/blog/2012-09-02-00022/content">content</a></p>
-<p><a href="/blog/2012-09-02-00023/content">content</a></p>
-<p><a href="/blog/2012-09-02-00024/content">content</a></p>
-<p><a href="/blog/2012-09-02-00025/content">content</a></p>
-<p><a href="/blog/2012-09-02-00026/content">content</a></p>
-<p><a href="/blog/2012-09-02-00027/content">content</a></p>
-<p><a href="/blog/2012-09-02-00028/content">content</a></p>
-<p><a href="/blog/2008-10-04-00001/introduction-to-scrum">introduction-to-scrum</a></p>
-<p><a href="/blog/2021-11-11-00001/solr-debugquery">solr-debugquery</a></p>
+      <h1>Future Directions for C# and Visual Basic</h1>
+<p>These are my notes from Anders Hejlsberg session on Future Directions for C# and Visual Basic.</p>
+
+<p>It's been more than 10 years since managed code was introduced back in PDC 2000.  Every new release of C# has had one or two major themes:</p>
+
+<ul>
+<li>Version 1: Managed Code was introduced
+<li>Version 2 2: Generics
+<li>Version 3: LINQ
+<li>Version 4: Dynamic features and language parity
+</ul>
+
+<p>The two major themes in the next release (version 5) are support for <b>WinRT</b>in Windows 8 and <b>asynchronous programming</b>.</p>
+
+<p>Asynchronous Programming is becoming the norm in modern, connected applications.</p>
+
+<p>About 10-15% of the WinRT API supports asynchronous operations. Sounds like a small percent but this percent is probably the most used stuff.</p>
+
+<p>There are different asynchronous programming models in Windows 8 and .NET</p>
+
+<ul>
+<li>WinRT uses AsyncOperation&lt;T&gt;
+<li>.NET uses Task&lt;T&gt;
+<li>JavaScript uses Promises
+</ul>
+
+<p>All of these models are objects representing "ongoing operations".</p>
+
+<p>Callbacks turn your code inside out and are a big challenge but they have figured out how to automatically handle this so that asynchronous</p>
+<p>code "feel just like good old synchronous code". The general pattern is:</p>
+
+<pre>
+public async SomeMethodAsync()
+{
+  // code before firing async operation
+  await code to execute async
+  // code to execute after async operation has completed
+}
+</pre>
+
+<p>Use <code>await</code> operator to cooperatively yield control.</p>
+
+<p>You can use <code>Task.WhenAll()</code> to run multiple tasks asynchronous in parallel!</p>
+
+<p>It turns out that asynchronous method don't start new threads! I need to do more reading on this. Threading is only need when you run CPU intensive operations like a loop to perform math calculations.</p>
+
+<p>Anders showed some JavaScript in which he consumed some C# code from within C# but he couldn't just use Task as-is and he had to bridge</p>
+<p>the two through <code>IAsynchOperation</code> (didn't quite get why)</p>
+
+<p>Anders is obviously a big proponent of static languages and took several jabs at the dynamic nature of JavaScript. The funniest line was when he said:</p>
+
+<blockquote>
+“Sometimes you get lucky in JavaScript, you always get lucky in C#”<br/>
+</blockquote>
+
+<p>Another feature that is coming in C# is what is called Caller Info Attributes. These are built-in attributes that you can add to parameters to a method to</p>
+<p>receive the name of the caller file path, the caller line number and member name.</p>
+
+<ul>
+<li>[CallerFilePath]
+<li>[CallerLineNumber]
+<li>[Caller/MemberName]
+</ul>
+
+<p>This is very nice for logging code.</p>
+
+<h2>Roslyn Project</h2>
+
+<p>Towards the end of the session Anders talked about what’s coming in C# 6.0 and a project named “The Roslyn project.” The basics of this project are:</p>
+
+<ul>
+<li>Reimagine what compilers do
+<li>Compiler as a service
+<li>Open the compiler, make its information available to others (formatters, highlighters, refactoring, DSL)
+</ul>
+
+<p>With feature the syntax tree produced by the C# compiler becomes available to other tools so that they can peek inside the code with a true semantic knowledge of what the code does.</p>
+
+<p>Anders shows a C# interactive prompt in which he was able to create a C# program on the fly, line by line, and execute each line as it went. This is nothing new to people that use JavaScript or Ruby but for a static language like C# this is huge! I was really impress on how clean the syntax to do this was.</p>
+
+<p>The following picture (blurry) shows an example of what he did. In this code he declares a square function in a string and executes is in the program via a delegate. Wicked stuff.</p>
+
+<p><img src="https://hectorcorrea.com/images/buildwin2.jpg"" alt="Roslyn code" title="Roslyn code" /></p>
+
+<p>Another example of using Roslyn that we showed was a feature to paste C# code as VB.NET code and vice-versa. This showed how the semantic of the original code was preserved.</p>
+
+<p>There is a CTP available of Roslyn already.</p>
+
+<p>The C# and VB.NET compilers are being rewritten in managed code.</p>
 
     </div>
 

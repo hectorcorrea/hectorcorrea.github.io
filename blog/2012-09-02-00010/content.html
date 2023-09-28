@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <p>In this blog post I describe some branching strategies that I've found useful when using traditional source control systems like Team Foundation Server (TFS).</p>
+
+<p>Team Foundation Server has very good branching and merging capabilities that can help teams manage source code in a team environment. However, despite the fact that TFS provides excellent branching and merging capabilities, I usually recommend a simple approach to branching since <i>the process</i> of branching and merging can easily get convoluted and out of control even with the best of tools.</p>
+
+
+<h2>The basic idea</h2>
+
+<p>The way I approach branching in TFS is to have one <b>main branch</b> for all on-going development on the project. This is the branch where developers do their work on a daily basis. Once the team reaches the point where the code will be released to production then a second branch (a release branch) is created. This <b>release branch</b> is a copy of the code that will be pushed to production. The main branch stays active and most of the team will continue working of the main branch as they add new features to be released in a future version of the system. A few of the developers will make changes to the release branch to fix bugs that must be ironed out before the release goes out or even after it has been promoted to production.</p>
+
+<p>The following picture shows an example of these concepts and how the branches are used over time.</p>
+
+<p><img src="https://hectorcorrea.com/images/branching.png" alt="Branching" title="Branching" /></p>
+
+<p>In the previous picture we can see how the team worked on the main branch from week 1 through week 4 (the green bars.) At the end of week 4 the team decided this code had all the features needed for a version 1.0 release and created a release branch with these features.</p>
+
+<p>During the next two weeks the team made a few changes to the code in the release branch, perhaps fixed a few show-stopper bugs before promoting to production. Meanwhile, the rest of the team continued working on the main branch on long term features to be released in version 2.0 (the blue bars.)</p>
+
+<p>The team worked from week 5 through week 12 on the main branch (the blue bars.) During this time there were two hot fixes pushed to production from the release branch (green bars on week 9 and week 11.) The nice thing about the release branch concept is that it gives us total isolation from the on-going long term development on the main branch. Since the release branch is an exact copy of what's in production updating this branch when a hot-fix is needed is very safe and easy.</p>
+
+<p>On week 12, the team decided that they were ready to promote the next major version of the system to production. A that time the main branch was branched out again to the release branch. From this point the cycle is repeated: hot fixes for version 2 are made on the release branch while all new development for version 3.0 is done on the main development branch (now the purple bars.)</p>
+
+
+<h2>Variations to this approach</h2>
+
+<p>In some teams we have made a small variation to this pattern in which a totally new branch is created every time a new major version of the system is deployed to production. For example, we could create a totally new branch on week 12 for release 2 rather than sticking the version 2.0 code on the existing release branch. The advantage of this variation is that, if at the end of week 12 we need to do a hot fix to version 1 (while version 2 is still in QA) we can easily make the fix on the original release 1 branch since that branch is still an exact copy of what's in production. This could be a life saver and worth consideration.</p>
+
+<p>I first read about the concepts of the main branch and a release branch in the book <a href="http://www.amazon.com/Software-Configuration-Management-Patterns-Integration/dp/0201741172">Software Configuration Management Patterns: Effective Teamwork, Practical Integration</a> by Stephen P. Berczuk and Brad Appleton. This book is a good read if you want more details on the approach that I describe in this post. Chapter 4 and 5 describe the Mainline and Active Development Line patterns while chapter 17 talks about the Release Line.</p>
+
+
+<h2>Merging - the dark side of branching</h2>
+
+<p>Regardless of how neat your branching strategy might be the real issues are found in the merging process. For example, in the previous picture I didn't indicate how changes made on weeks 5 and 6 on the release branch will be merged back to the main branch. The same is true on weeks 9 and 11 when hot fixes were applied to the release branch. If these changes are also needed in the main branch somebody will need to go perform this process.</p>
+
+<p>There is nothing inherent to the branching strategy that I describe in this blog post that makes the merge process easier. Depending on the nature of the changes merging can be a messy process. The best that you can do with merging is to implement a workflow in which merging conflicting changes is minimized. However, since inevitably you will have conflicting changes to merge I find <a href="http://www.yuiblog.com/blog/2011/06/09/video-f2esummit2011-donnelly/">Jennifer Donnelly's</a> advise on the subject rather valuable: merging should happen frequently and within context, in other words, by the person who made the change and as soon as possible. On small teams this is usually easy to do and prevents the merging process from becoming a disaster.</p>
+
+
+<h2>In closing...</h2>
+
+<p>The ideas that I've described in this blog are neither new nor the only options for branching. However, I've found them very useful for small teams working with centralized source control systems like Team Foundation Server. The fact that these ideas are simple to implement allow development teams to gain the most of branching (i.e. code isolation) without having to have a dedicated staff in charge of source control and merging.</p>
+
+<p>Although I suspect these ideas apply to most traditional client-server source control systems I have only apply them with TFS. I am not sure however how well they fit with a distributed source control system like Git.</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

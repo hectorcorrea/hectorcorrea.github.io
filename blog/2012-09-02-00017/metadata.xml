@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Log4net Thread-Safe but not Process-Safe</title>
+      <slug>log4net-thread-safe-but-not-process-safe</slug>
+      <summary>How I troubleshooted an issue where log4net was logging some entries but not others in a ASP.NET MVC application.</summary>
+      <createdOn>2012-09-02 03:03:48</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2010-11-08 02:10:00 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>17</value>
+      </fields>
+  </TextEntry>

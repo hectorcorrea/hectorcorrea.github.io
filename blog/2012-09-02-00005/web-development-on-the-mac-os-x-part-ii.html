@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>Web Development on the Mac OS X (part II)</h1>
+<p>Last year I blogged about <a href="https://hectorcorrea.com/blog/ruby-development-on-the-mac-os-x/15">my first impressions using a Mac for web development</a> from the point of view of somebody with a strong Windows/C# background. This blog post is a long overdue continuation to that post.</p>
+
+<p>I bought a Mac Air a year and a half ago with the intention of experiencing what is like to develop web applications in a non-Windows environment and it has been a great learning experience. I am amazed how much I've learned in those 18 months and the breadth of technologies and tools that I've played with in that time.</p>
+
+
+<h2>Hardware and built-in software</h2>
+
+<p>The Mac Air is undoubtedly a fantastic piece of hardware, it's slim, lightweight, powerful, and overall a beautiful piece of hardware. It's not cheap, but it's worth every penny.</p>
+
+<p>Learning OS X for somebody that has always lived in a Microsoft Windows world was not hard. I really thought I was going to struggle more with OS X but I didn't. The transition to OS X was pretty easy for me. Having said that, I don't find OS X incredibly better than Windows 7. There are a few differences here and there but nothing earth shattering.</p>
+
+<p>Some of the software that comes bundled with OS X is certainly better than its Windows counterpart. For example iPhoto is a much better photo management tool than the standard photo software that has always come with Windows. iTunes (not surprisingly) seems to work better on the Mac than on Windows. The operating system updates also &lt;i&gt;seem&lt;/i&gt; to work smoother than Windows updates and be less frequent and pesky. Support for viewing and creating PDFs is native (it even supports annotating PDFs.) Other tools like Finder are no better (or worse) than Windows Explorer to browse the file system. I did find surprising the lack a a built-in Paintbrush application, though.</p>
+
+
+<h2>Software Development</h2>
+
+<p>As far as software development for web applications is concerned I have enjoyed learning what's available on the Mac much more than I had anticipated. Since I got my Mac I've gotten my hands on Ruby, Sinatra, Ruby on Rails, CoffeeScript, Node.js, Apache, MySQL, Heroku, git, github, xCode, TextMate, Sublime, and a bunch of other tools that I had never used before.</p>
+
+<p><img src="https://hectorcorrea.com/images/ruby_logo.jpg" style="float:left;" alt="Ruby Logo "/>As I blogged a year ago, the language that I decided to learn first was Ruby and the popular web development framework Ruby on Rails. That was certainly a great and fun experience.</p>
+
+<p>I found the <b>Ruby language easy to learn</b> (although I don't call myself an expert on it by any means) and there are a lot good books and web sites with information on how to get started.</p>
+
+<p><img src="https://hectorcorrea.com/images/rails.png" style="float:left;" alt="Ruby on Rails logo" />I also enjoyed learning <b>Ruby on Rails</b> and gained appreciation for an "MVC framework" that truly provides support for models (the M in MVC.) In my web development experience with ASP.NET MVC I knew that there were other frameworks that did a more complete job but I didn't quite get it until I understood how things like ActiveRecord and database migrations work in Rails.</p>
+
+<p>Rails was not as easy to understand as I had heard before. Rails is actually quite complex to get started since it does so much and there are so many pieces that work together. In addition, people seem to use many different options and configurations when working on Rails that baffled me for a while. For example, it is possible (and common) for people to use different web servers to host Rails applications and having to learn the pros and cons for Apache, Passenger, Mongrel, WEBrick, and when they are a good fit was a bit overwhelming for somebody new to the OS X environment. This is in contrast to ASP.NET MVC web development in which the web server is almost always IIS. The same goes for view rendering engines, in Rails people use Embedded Ruby (erb), HAML, Mustache, and a bunch of other tools that can make the process of learning Rails confusing once you get pass the "hello world" web page. I don't mean to indicate that these options are a knock against Rails, but they can make it hard for the beginner to understand what's the best way for him/her to take.</p>
+
+<p><img src="https://hectorcorrea.com/images/sinatralogo.png" style="float:left;" alt="Sinatra logo" />I also enjoyed a lot learning <b>Sinatra</b>. <a href="http://www.sinatrarb.com/">Sinatra</a> is more similar to ASP.NET MVC than Rails because it only provides support for views and controllers (the V and C in MVC.) I found Sinatra's learning curve much sorter than Rails but be aware that you get much less out of the box with Sinatra than you do with Rails. The <a href="https://hectorcorrea.com/blog/drawing-a-binary-tree-in-ruby/13">binary tree drawer</a> that I put together in a previous blog post uses Sinatra.</p>
+
+<p>I would recommend learning Sinatra before learning Rails because the learning curve is much shorter and less complicated. However, if you are planning on doing a traditional web applications with a relational database Rails is definitively a great fit. All the "extra stuff" that Rails provides are things that you will need once your application grows and it's deployed to production. For those kinds of applications (which are very common) Rails is definitively a more mature and complete product.</p>
+
+<p>During the process of learning Ruby and Rails I started hearing about CoffeeScript and got interested on it.</p>
+
+<p><img src="https://hectorcorrea.com/images/coffeescriptlogo.png" style="float:left" alt="CoffeeScript logo" /> <b>CoffeeScript</b> is a language that compiles to JavaScript and provides a very pleasant way of writing good JavaScript applications. I rewrote in CoffeeScript the program that I had written in Ruby a few months prior to draw binary trees and I was amazed how closely the CoffeeScript code is to the Ruby code. You can learn more about my experience, the source code, and see a demo version <a href="https://hectorcorrea.com/blog/drawing-a-binary-tree-in-coffeescript/3">here</a>.</p>
+
+<p><img src="https://hectorcorrea.com/images/nodejs.png" style="float:left;" alt="NodeJS logo" />Learning CoffeeScript itself lead me to read and become more aware of <b>Node.js</b> and decided to take the plunge and start learning that too. There is a lot of stuff going on with Node.js in the community and new libraries and utilities are coming out at a fast pace.</p>
+
+<p>I am not sure if CoffeeScript and Node.js are going to become the next Ruby on Rails as <a href="http://mashable.com/2011/03/10/node-js">some people are suggesting</a>, but I do agree with Giles Bowkett when he <a href="http://gilesbowkett.blogspot.com/2012/02/rails-went-off-rails-why-im-rebuilding.html">says</a> "you should learn Node.js, CoffeeScript, and Backbone because the work going on in those communities changes paradigms."</p>
+
+<p>In my blog post last year I mentioned that the lack of integrated development environments (IDE) for Ruby dumbfounded me. As I asked around it turns out that there are several good IDEs but most people are comfortable using text editors with some advanced features.</p>
+
+<p>The same is true for CoffeeScript and Node.js. There is no "standard IDE" that everybody uses. Quite the opposite, people use a variety of text editors with some development features like auto-completion, color syntax, and ways to kick of the application but nothing remotely compared to the features provided by Visual Studio. This seems to be the norm in the Mac (and Linux) world. This diversity of tools is very different from the Windows world where pretty much all the web development happens in .NET languages and using Visual Studio.</p>
+
+<p>For my part I ended settling on <a href="http://www.sublimetext.com/2">Sublime Text</a> as my editor of choice and bought a license for it.</p>
+
+
+<h2>Conclusions</h2>
+
+<p>As I said at the beginning of this post, I am really happy with the large amount of technologies and tools for web development that I've got to experiment and learn on the Mac in the last 18 months.  Although I am pretty sure that I could have learned and played with most of these technologies on a Windows machine, I am glad I decided to do it on a non-Windows machine to be able to compare and contrast first hand.</p>
+
+<p>Macs are very popular among web developers that are not using the Microsoft stack and I enjoyed being able to experience how things are done in this environment.</p>
+
+<p>In the end I think that both Macs and Windows environments are very powerful and fun to work with, each of them with their own strengths and weaknesses.</p>
+
+<p>A few days ago I noticed that I had not turned on my Windows machine at home in over 4 months, that's probably a telling sign of how much I am enjoying the Mac as a whole.</p>
+
+<p><b>Update</b>:  A few years later I ended up taking my first  job as a Ruby developer and blogged about my experience 5 years into it in <a href="https://hectorcorrea.com/blog/my-strange-journey-to-becoming-a-ruby-developer/82">My (strange) journey to becoming a Ruby developer</a>.</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

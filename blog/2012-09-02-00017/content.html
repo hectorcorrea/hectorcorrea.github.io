@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <p>A few days ago I was struggling with a problem with <a href="http://logging.apache.org/log4net/index.html">log4net</a> in a web application. I have used log4net in many applications before with little or no problem but in this case even with a single user hitting the web site I was seeing strange logging behaviors. In my case <b>some of the log entries were being logged but others were not</b>.</p>
+
+<p>The application in question is a C# ASP.NET MVC web application running under IIS. I am using the true and tried <code>RollingFileAppender</code>. It couldn't have been a more typical use of log4net and yet I was seeing a weird things. Here are the symptoms that I was seeing:</p>
+
+<ul>
+<li>Log4net was logging some entries but not others.
+<li>The issue was happening even when I was the only user on the site.
+<li>The issue was only happening in one of our development servers but not on my local box.
+</ul>
+
+<p>Since some entries were being logged but not others I was able to rule out the possibility that IIS might not have enough rights to write to the folder configured for the <code>RollingFileAppender</code>. This is a typical issue but not applicable in my case since if IIS wouldn't have enough rights nothing would be logged at all. In addition since the issue was happening even when I was the only user on the site I was sure it was not due to heavy utilization or some sort of race condition (which log4net typically handles nicely anyway.)</p>
+
+<p>The fact that the issue was happening only on the development server with IIS 6 and not on my local machine with IIS 7 made me suspect that the different versions of IIS might the culprit but wasn't sure about that.</p>
+
+
+<h2>Turning log4net internal diagnostic</h2>
+
+<p>To begin troubleshooting I turned on log4net's diagnostic option to see if log4net was itself reporting problems that would give me a hint. If you are not familiar with this log4net feature check out the "How do I enable log4net internal debugging?" section in the <a href="http://logging.apache.org/log4net/release/faq.html">log4net FAQ</a>.</p>
+
+<p>In my case I configured log4net to dump all of its diagnostic information to a file called <code>LogDiag.txt</code>. After running my application and hitting the site a few times I went to see what was being logged in the <code>LogDiag.txt</code> file and lo and behold I noticed that there were <i>three LogDiag.txt files</i> being generated. The following picture shows how this looked on my machine:</p>
+
+<p><img src="https://hectorcorrea.com/images/log4netdiag.jpg" alt="Log4net diagnostic" title="Log4net diagnostic" /></p>
+
+<p>I opened the <code>LogDiag.txt</code> file and there were no errors indicated logged in there. However, the other two files (the ones prefixed with a GUID) had the following error:</p>
+
+<pre class="terminal">
+log4net:ERROR [RollingFileAppender] 
+   Unable to acquire lock on file c:\dev\SandboxMvc\SandboxMvc\App_Data\LogFile. 
+   The process cannot access the file 'c:\dev\SandboxMvc\SandboxMvc\App_Data\LogFile' 
+   because it is being used by another process.
+log4net:ERROR [RollingFileAppender] 
+   OpenFile(c:\dev\SandboxMvc\SandboxMvc\App_Data\LogFile,True) call failed.
+</pre>
+
+<h2>Houston, we have a problem...</h2>
+
+<p>OK so we indeed have a problem. Log4net is clearly telling me that it is having problems writing to the log file. That's good. At least I am not going crazy. But how come? How come am I having this problem now but not in other applications? How come it happens only on the web server but not in my local box?</p>
+
+<p>The answer turned out to be the way IIS was configured on the server where the problem was happening. It turns out that IIS on that particular box is configured to use what is known as a <b>web garden</b> which means that IIS will launch <i>multiple worker processes</i> to handle requests. That was different from the configuration on my local box where IIS was setup to have a single worker process running.</p>
+
+<p>The following picture shows how to configure IIS to use one or many worker processes. In this picture you can see that the "ASP.NET 4.0 Application Pool" is configured to use a maximum of three worker processes.</p>
+
+<p><img src="https://hectorcorrea.com/images/IisWorkerProcesses.JPG" alt="IIS Maximum Worker Processes Configuration" title="IIS Maximum Worker Processes Configuration" /></p>
+
+<p>When the IIS application pool is configured to use more than one worker process (i.e. a web garden) what happens is that multiple processes will be spun by IIS to serve requests for your application. If you configured log4net to use a single file to log requests (as I did) then this means that multiple processes will attempt to write to a single file and locking issues will arise. Once I realized what the problem was finding a solution was quite easy.</p>
+
+<p>The fact that there were three worker process running also explained why I saw three <code>LogDiag.txt</code> files on my machine. Log4net was smart enough to name each file differently (remember that two of them were prefixed with a GUID) so that it's internal logging didn't experience the same problem that I was having.</p>
+
+<p>Before I discuss how you can work around this issue let me clarify that there is nothing wrong per-se with having a web garden in IIS. This configuration is actually good on a server-class machine. The discussion on when and how to configure a web garden is beyond the scope of this blog post however the lesson learned is that <i>if you have a web garden you need to take this into account when configuring the RollingFileAppender</i>.</p>
+
+
+<h2>How to address the issue</h2>
+
+<p>There are two ways that we can configure the <code>RollingFileAppender</code> to work in a web garden. One option is to configure it to use what is known as <a href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.FileAppender.LockingModel.html">minimal lock</a> on the log file. With this option log4net will only lock the file for the duration of each log operation. This option reduces the chances that more than one process will collide as they keep the file locked to a minimum. However, there is no guarantee that under load they might actually collide. Additionally there is a performance penalty in opening and closing the file on each log entry. I am not sure if the penalty is too high but it's worth testing if you decide to use this option. Below is an example of how to configure the <code>RollingFileAppender</code> to use minimal locking (notice the <code>lockingModel</code> setting in line 2.)</p>
+
+
+<pre class="code">
+&lt;appender name="LogFileAppender" type="log4net.Appender.RollingFileAppender,log4net"&gt;
+  &lt;lockingModel type="log4net.Appender.FileAppender+MinimalLock" />
+  &lt;param name="File" value=".\\App_Data\\LogFile" />
+  &lt;param name="AppendToFile" value="true" />
+  &lt;datePattern value=".yyyy-MM-dd'.txt'" />
+  &lt;rollingStyle value="Composite" />
+  &lt;maxSizeRollBackups value="5" />
+  &lt;maximumFileSize value="100KB" />
+  &lt;staticLogFileName value="true" />
+  &lt;layout type="log4net.Layout.PatternLayout"&gt;
+    &lt;conversionPattern value="[LOGENTRY] %date %-5level %logger{2} - %message %newline" />
+  &lt;layout&gt;
+&lt;appender&gt;
+</pre>
+
+<p>The second option to take care of the problem is to <b>make sure that each IIS worker process writes to its own file</b> so that there are no collisions at all. With this option if the web garden is configured to use three worker processes then you'll have three simultaneous log files (one for each active worker process.) Each of them can use an exclusive lock on the file as these files are not shared across processes. This method is guaranteed not to have collisions and allows you to keep using the fast exclusive lock method. The disadvantage is that now you have multiple log files to look at rather than a single consolidated one. Below is an example on how to configure the <code>RollingFileAppender</code> to create one file for each process. Notice how line 2 now has been configured to use a <code>PatternString</code> to name the file and the inclusion of pattern <code>%processid</code> to make each file unique by each process ID.</p>
+
+<pre class="code">
+&lt;appender name="LogFileAppender" type="log4net.Appender.RollingFileAppender,log4net"&gt;
+  &lt;file type="log4net.Util.PatternString" value=".\\App_Data\\Log[%processid]" />
+  &lt;param name="AppendToFile" value="true" />
+  &lt;datePattern value=".yyyy-MM-dd'.txt'" />
+  &lt;rollingStyle value="Composite" />
+  &lt;maxSizeRollBackups value="5" />
+  &lt;maximumFileSize value="100KB" />
+  &lt;staticLogFileName value="true" />
+  &lt;layout type="log4net.Layout.PatternLayout"&gt;
+    &lt;conversionPattern value="[LOGENTRY] %date %-5level %logger{2} - %message %newline" />
+  &lt;layout&gt;
+&lt;appender&gt;
+</pre>
+
+
+<h2>Another reason for this problem...</h2>
+<p><b>Update Nov/2012</b> A few months ago a reader of this blog alerted me than in addition to the web garden scenario described in this blog post the issue described here also happens when IIS "Disable Overlapped Recycle" is set to false (which is the default value.) As the reader noted:</p>
+
+<blockquote>
+When an application pool restarts, there is a brief period of time<br/>
+where typically multiple w3wp processes are serving the same application, even if web gardens are disabled.<br/>
+In some cases, where there are a large number of outstanding requests, the period may be longer than brief.<br/>
+<br/>
+This would manifest the same symptom as you described. -- Greg Askew<br/>
+</blockquote>
+
+<p>The following screenshot shows this setting in IIS's Default Application Pool:</p>
+
+<p><img src="https://hectorcorrea.com/images/iis_disableoverlappedrecycle.png" alt="Disable Overlapped Recycle" title="Disable Overlapped Recycle" /></p>
+
+
+<h2>But I thought log4net was thread-safe?</h2>
+
+<p>Log4net is indeed thread-safe as it is clearly indicated on log4net's <a href="http://logging.apache.org/log4net/release/faq.html">FAQ</a>. A lot of people get confused on this because the documentation for the <a href="http://logging.apache.org/log4net/release/sdk/log4net.Appender.RollingFileAppender.html">RollingFileAppender</a> says that the <i>appender</i> is not thread safe. In reality the log4net code takes this into account (see <a href="http://stackoverflow.com/questions/1294668/log4net-fileappender-not-thread-safe/1294842#1294842">here</a> and <a href="http://stackoverflow.com/questions/4098409/thread-safety-of-log4net/4102027#4102027">here</a>) and makes sure logging is thread-safe. Some people have even run <a href="http://stackoverflow.com/questions/1519211/multithread-safe-logging/1520449#1520449">tests to prove this</a>.</p>
+
+<p><b> Update Dec/2014:</b> Apparently some people have found that log4net can be "deadlock-prone" and they have logged an <a href="https://issues.apache.org/jira/browse/LOG4NET-431">issue about this</a>. Thanks John Zabroski for the heads up!</p>
+
+<p>However, the fact that log4net is <i>thread-safe</i> does not mean that is <i>process-safe</i> to write to a single file. This is not log4net's fault, there is no such thing as the ability to have multiple processes write concurrently to the same text file. We use relational databases (not text files) when we need to have multiple processes write to a single repository of data.</p>
+
+
+<h2>In summary</h2>
+
+<p>If you are using log4net's <code>RollingFileAppender</code> in an environment where IIS is configured to use multiple worker processes (i.e. a web garden) you must ensure that the <code>RollingFileAppender</code> uses one file per worker process rather than a single file.</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

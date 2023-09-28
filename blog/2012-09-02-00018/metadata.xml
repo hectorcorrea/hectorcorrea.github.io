@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Encrypt and Decrypt a string in C#</title>
+      <slug>encrypt-and-decrypt-a-string-in-c-sharp</slug>
+      <summary>This blog posts presents an easy to use C# class to encrypt and decrypt strings in .NET.</summary>
+      <createdOn>2012-09-02 03:08:04</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2010-10-29 03:46:00 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>18</value>
+      </fields>
+  </TextEntry>

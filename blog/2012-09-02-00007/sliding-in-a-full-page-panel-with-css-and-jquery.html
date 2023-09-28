@@ -112,35 +112,120 @@
     </div>
 
     <div class="container">
-      <p><a href="/blog/2012-09-02-00029/book-review-lean-software-development">Book review: Lean Software Development</a></p>
-<p><a href="/blog/2012-09-02-00003/drawing-a-binary-tree-in-coffeescript">Drawing a Binary Tree in CoffeeScript</a></p>
-<p><a href="/blog/2012-09-02-00006/functional-asynchronicity-explained">Functional Asynchronicity Explained</a></p>
-<p><a href="/blog/2012-09-02-00008/future-directions-for-c-sharp-and-visual-basic">Future Directions for C# and Visual Basic</a></p>
-<p><a href="/blog/2012-09-02-00004/javascript-async-programming-for-sync-heads">JavaScript Async Programming for Sync Heads</a></p>
-<p><a href="/blog/2012-09-02-00007/sliding-in-a-full-page-panel-with-css-and-jquery">Sliding-in a Full Page Panel with CSS and jQuery</a></p>
-<p><a href="/blog/2012-09-02-00005/web-development-on-the-mac-os-x-part-ii">Web Development on the Mac OS X (part II)</a></p>
-<p><a href="/blog/2012-09-02-00009/content">content</a></p>
-<p><a href="/blog/2012-09-02-00010/content">content</a></p>
-<p><a href="/blog/2012-09-02-00011/content">content</a></p>
-<p><a href="/blog/2012-09-02-00012/content">content</a></p>
-<p><a href="/blog/2012-09-02-00013/content">content</a></p>
-<p><a href="/blog/2012-09-02-00014/content">content</a></p>
-<p><a href="/blog/2012-09-02-00015/content">content</a></p>
-<p><a href="/blog/2012-09-02-00016/content">content</a></p>
-<p><a href="/blog/2012-09-02-00017/content">content</a></p>
-<p><a href="/blog/2012-09-02-00018/content">content</a></p>
-<p><a href="/blog/2012-09-02-00019/content">content</a></p>
-<p><a href="/blog/2012-09-02-00020/content">content</a></p>
-<p><a href="/blog/2012-09-02-00021/content">content</a></p>
-<p><a href="/blog/2012-09-02-00022/content">content</a></p>
-<p><a href="/blog/2012-09-02-00023/content">content</a></p>
-<p><a href="/blog/2012-09-02-00024/content">content</a></p>
-<p><a href="/blog/2012-09-02-00025/content">content</a></p>
-<p><a href="/blog/2012-09-02-00026/content">content</a></p>
-<p><a href="/blog/2012-09-02-00027/content">content</a></p>
-<p><a href="/blog/2012-09-02-00028/content">content</a></p>
-<p><a href="/blog/2008-10-04-00001/introduction-to-scrum">introduction-to-scrum</a></p>
-<p><a href="/blog/2021-11-11-00001/solr-debugquery">solr-debugquery</a></p>
+      <h1>Sliding-in a Full Page Panel with CSS and jQuery</h1>
+<p>In this blog post I show how to use CSS and jQuery to slide-in a panel full page on top of another and then slide back in the original content.</p>
+
+<p>You can see a running version of the code presented in this blog post <a href="https://hectorcorrea.com/demos/slide-in-panel-sample.html">here</a>.  This demo page starts with a panel showing some part of the Lorem Ipsum text. When you click on the text a new panel displaying the Bacon Ipsum text slides-in on top of the previous text.  Clicking on the new text slides the Lorem Ipsum back again. Nothing  fancy but enough to show the slide-in functionality in a full page panel.</p>
+
+
+<h2>The HTML</h2>
+
+<p>The HTML used in this example is basically composed of two HTML divs. The first div (called <code>mainDiv</code>) includes the Lorem Ipsum text while the second div (called <code>galleryDiv</code>) includes the Bacon Ipsum.</p>
+
+<pre class="code">
+&lt;div id="mainDiv"&gt;Lorem Impsum text goes here&lt;/div&gt;
+
+&lt;div id="galleryDiv"&gt;Bacon ipsum text goes here&lt;/div&gt;
+</pre>
+
+
+<h2>The CSS</h2>
+
+<p>The CSS to style these two divs is shown below. As you can see they are just plain divs using fixed positioning. The main difference between both styles is the background color (the <code>mainDiv</code> is beige and the <code>galleryDiv</code> is a tone of red.) Notice that initially the <code>mainDiv</code> is set to use all the real state (height and width are set to 100%).</p>
+
+<pre class="code">
+#mainDiv {
+  background-color:#FFD39B;
+  position:fixed;
+  left:0px;                    
+  right:0px;
+  bottom:0px;
+  height:100%;
+  width:100%;
+  overflow-y:scroll;
+}
+
+#galleryDiv{
+  background-color:#FF4040;
+  position:fixed;
+  left:0px;
+  right:0px;
+  bottom:0px;
+  overflow-y:scroll; 
+}
+</pre>
+
+<h2>The jQuery Code</h2>
+
+<p>The basics of the jQuery code to slide-in the one panel on top of another were taken from the excellent <a href="http://tympanus.net/codrops/2010/05/14/sliding-panel-photo-wall-gallery-with-jquery/">Sliding Panel Photo Wall Gallery with jQuery</a> example by Mary Lou at Codrops. I’ve simplified the code to make it easier to see what it takes to slide-in content on top of another back and forth.</p>
+
+<p>When the page first loads we force the <code>mainDiv</code> to be visible and the <code>galleryDiv</code> invisible.</p>
+
+<pre class="code">
+// Start with the mainDiv in full view...
+$('#mainDiv').css({'height':'100%'}); 
+$('#mainDiv').show();
+
+// ...and the galleryDiv collapsed.
+$('#galleryDiv').css({'height':'0px'}); 
+$('#galleryDiv').hide();
+</pre>
+
+<p>The next thing we do is to wire the <code>mainDiv</code> so that when the user clicks on it we slide-in the <code>galleryDiv</code>. The code for this is very simple too:</p>
+
+<pre class="code">
+// When clicking on the mainDiv...
+$('#mainDiv').bind('click', function() {
+
+  // ...send this div to the back...
+  $('#mainDiv').css({'z-index':'0'});  
+
+  // ...bring the galleryDiv to the front...
+  $('#galleryDiv:hidden').show();
+  $('#galleryDiv').css({'z-index':'100'});
+
+  // ...resize it...
+  $('#galleryDiv').animate({'height':'100%'},speed,function(){
+    // ...and collapse the mainDiv
+    $('#mainDiv').css({'height':'0px'}); 
+  }); // animate
+
+}); // bind click
+</pre>
+
+<p>This code does the following:</p>
+<ul>
+<li>Pushes the mainDiv to the back by setting its z-index to zero.
+<li>Pops the galleryDiv to the front by setting its z-index to something greater than zero, in our case to 100.
+<li>Sets the height of the galleryDiv to 100% using an animation (so that the slide-in effect is noticeable.)
+<li>Finally we collapse the mainDiv by setting its height to zero. This allows us to animate it when we slide-in back again.
+</ul>
+
+<p>The code to wire the <code>galleryDiv</code> to do the reverse is also very simple:</p>
+
+<pre class="code">
+// When clicking on the galleryDiv...
+$('#galleryDiv').bind('click', function() {
+
+  // ...send this div to the back...
+  $('#galleryDiv').css({'z-index':'0'});
+
+  // ...bring the mainDiv to the front...
+  $('#mainDiv').css({'z-index':'100'});
+
+  // ...resize it...
+  $('#mainDiv').animate({'height':'100%'},speed,function(){
+    // ...and collapse the galleryDiv
+    $('#galleryDiv').css({'height':'0px'}); 
+  }); // animate
+
+}); // bind click
+</pre>
+
+
+<h2>And that’s it</h2>
+
+<p>With just a few of lines of code we can easily slide-in content in our web pages. You can see this code running in <a href="https://hectorcorrea.com/demos/slide-in-panel-sample.html">this link</a>. The page is self contained. View source and grab the code if you like it.</p>
 
     </div>
 

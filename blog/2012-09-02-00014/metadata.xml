@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Git Basics</title>
+      <slug>git-basics</slug>
+      <summary>A beginners&#39; guide (written by a git beginner) on how to perform basic version control operations with git including initializing a repository, adding files to it, and using branches.</summary>
+      <createdOn>2012-09-02 02:55:46</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2011-02-21 03:06:00 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>14</value>
+      </fields>
+  </TextEntry>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Running Visual Studio inside Mac OS X</title>
+      <slug>running-visual-studio-inside-mac-os-x</slug>
+      <summary>A quick explanation on how I got Microsoft Visual Studio Web Developer Express on my MacAir by using a Virtual Machine with VirtualBox</summary>
+      <createdOn>2012-09-02 02:43:12</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2011-08-27 01:55:00 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>11</value>
+      </fields>
+  </TextEntry>

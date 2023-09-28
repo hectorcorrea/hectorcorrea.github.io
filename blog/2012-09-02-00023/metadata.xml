@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Flickr Library in C#</title>
+      <slug>flickr-library-in-c-sharp</slug>
+      <summary>A light-weight C# class library that provides the ability to retrieve the list of photosets in your Flickr account and retrieve information about the photos in a photoset.</summary>
+      <createdOn>2012-09-02 04:00:17</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2008-11-30 17:27:00 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>28</value>
+      </fields>
+  </TextEntry>

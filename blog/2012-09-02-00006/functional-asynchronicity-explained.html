@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>Functional Asynchronicity Explained</h1>
+<p>Over at the Pragmatic Bookshelf Trevor Burnham has a great post titled <a href="http://pragprog.com/magazines/2011-05/a-coffeescript-intervention">A CoffeeScript Intervention</a> in which he shows several code snippets that demonstrate how CoffeeScript code is typically smaller and cleaner than the equivalent JavaScript code.</p>
+
+<p>In particular I love the example under the <b>Functional Asynchronicity</b> section. In this section he shows a piece of code that trips most new JavaScript developers.</p>
+
+<pre class="code">
+for (var i = 1; i &lt;= 3; i++) {
+  setTimeout(function() { console.log(i); }, 0);
+}
+</pre>
+
+<p>When this code is executed it will output <code>4, 4, 4</code> to the console rather than <code>1, 2, 3</code> as most people guess the first time they work with JavaScript.</p>
+
+<p>Although in his original blog post Trevor explains the reason for this behavior, in this blog I would like to expand a little bit more on <i>the reasons</i> why we get <code>4, 4, 4</code> rather than <code>1, 2, 3</code> since I believe they are fundamental to both understand and appreciate CoffeeScript.</p>
+
+<p>There are two reasons why we get <code>4, 4, 4</code> in the previous code. The first reason is related to the way JavaScript’s <code>setTimeout</code> function works. The second reason has to do with the way JavaScript picks the value of <code>i</code> when the <code>console.log(i)</code> line is finally executed.</p>
+
+
+<h2>Understanding setTimeout in JavaScript</h2>
+
+<p>In JavaScript the <a href="http://www.w3schools.com/js/js_timing.asp">setTimeout()</a> function is used to execute a piece of code <i>sometime in the future</i>. In his book <a href="http://www.amazon.com/CoffeeScript-Accelerated-Development-Trevor-Burnham/dp/1934356786">CoffeeScript: Accelerated JavaScript Development</a> (p. 108) Trevor sums it up like this:</p>
+
+<blockquote>
+setTimeout always adds its target to the “event queue,”<br/>
+which isn’t invoked until after all the other code has run.<br/>
+</blockquote>
+
+<p>In our particular example this means that the <code>function() { console.log(i); }</code> (aka the target) will be queued up and executed when the for loop has ended -- not on each iteration.</p>
+
+<p>This is true regardless of the timeout value used. Since we used a timeout value of 0 ms the target functions would be executed immediately after the loop has ended. If we had used a value of 1000 ms they would be executed 1000 ms after the loop ended. <i>The important thing to recognize is that the targets won’t be executed until after the loop has ended</i>.</p>
+
+<p>This <a href="http://stackoverflow.com/questions/4574940/settimeout-with-zero-delay-used-often-in-web-pages-why">thread in stackoverflow.com</a> gives a great overview on deferred execution in JavaScript and it’s worth a look if you are not very familiar with this concept.</p>
+
+
+<h2>The value of "i"</h2>
+
+<p>Now that we know that the calls to <code>console.log</code> won’t happen until after the loop has ended, we need to understand how does JavaScript determine what value of <code>i</code> would be used at that time.</p>
+
+<p>We know that at the end of the loop the value of <code>i</code> would be <code>4</code>. That’s easy enough to understand. However, what most JavaScript newcomers fail to grasp is that when we create an inner function that references an existing variable, the inner function will actually have access to the original variable when is eventually executed. Let’s spell this out.</p>
+
+<p>The first thing to notice is that <i>we are not passing the value of “i” to the setTimeout function</i>. Instead <i>we are creating and passing a function to setTimeout</i>.</p>
+
+<p>Secondly, the function that we are creating and passing to <code>setTimeout</code> references a variable <code>i</code> which exists in the context in which we are creating it. This is a key concept called <b>closure</b> and not found in most programming languages.</p>
+
+<p>In his book <a href="http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742">JavaScript: The Good Parts</a> p. 38) Douglas Crockford defines closure as:</p>
+
+<blockquote>
+the ability of a function to access the context in which it was created<br/>
+</blockquote>
+
+<p>In our case the new function (which just outputs the value of <code>i</code> to the console) was created in a context that has an <code>i</code> variable defined and therefore <i>the new function will have access to the value of “i” whenever it is executed</i>. Notice that this is very different than assuming that the new function will have the value of <code>i</code> at the time the new function was created!</p>
+
+<p>We know from our review of <code>setTimeout</code> that the target (i.e. the new function that outputs <code>i</code> to the console) won’t be executed until after the for loop ends and that time the value of <code>i</code> will be <code>4</code>. This explains why we got <code>4, 4, 4</code>.</p>
+
+<p>On his book Crockford also has a great example showing how a variable lingers after the original function has completed if the variable is referenced by any of the inner functions. In fact the whole context in which the inner function was created is what lingers. Definitively worth reading if you are not familiar with closures in JavaScript.</p>
+
+
+<h2>Yeah, but that’s still not what I wanted...</h2>
+
+<p>So now that you understand why JavaScript outputs <code>4, 4, 4</code> in our example rather than <code>1, 2, 3</code> you are probably wondering but how can I change this behavior.</p>
+
+<p>Basically what you need to do is create a new context for the <code>function() { console.log(i); }</code> and make sure that in this new context the value of <code>i</code> is locked to the value of the iteration (1, 2, 3.)</p>
+
+<p>Here is how Trevor does this on his blog post:</p>
+
+<pre class="code">
+for (var i = 1; i &lt;= 3; i++) {
+  (function(i) {
+    setTimeout(function() { console.log(i); }, 0);
+  })(i);   // execute it!
+}
+</pre>
+
+<p>In this example a new anonymous function with an <code>i</code> parameter is created and executed immediately on each iteration of the loop. Notice the <code>(i);</code> in line number 4 means we are executing it.</p>
+
+<p>When this new anonymous function is executed on each iteration it calls <code>setTimeout</code> and creates a new function to output the value of <code>i</code> to the console - just as we did before. However, in this case the context in which the <code>console.log</code> will be executed will see the <code>i</code> defined as a parameter to this anonymous function -- not the <code>i</code> in the for loop!</p>
+
+<p>In other words, the context in which the <code>function() { console.log(i) }</code> is created is now <code>function(i) { … }</code> rather than the original for loop. Therefore when <code>console.log(i)</code> runs it will pick the value of <code>i</code> from this new context and this new context receives a single value on each iteration.</p>
+
+<p>Below is a slightly modified version of Trevor's code. In this new version I’ve renamed the variable <code>i</code> in the for loop to <code>x</code> to make it easier to see what we are trying to do:</p>
+
+<pre class="code">
+for (var x = 1; x &lt;= 3; x++) {
+  (function(i) {
+    setTimeout(function() { console.log(i); }, 0);
+  })(x);
+}
+</pre>
+
+<p>From this example it should be clearer that the we are creating a new variable <code>i</code> in the declaration of the anonymous function. The variable of the for loop is irrelevant because <code>setTimeout</code> and its target function will have a brand new context on each iteration and in this new context <code>i</code> will have the expected value (1, 2, 3) on each iteration.</p>
+
+
+<h2>The CoffeeScript Way</h2>
+
+<p>Trevor makes a great point on his post when he shows how much simpler the code to achieve the same result is in CoffeeScript:</p>
+
+<pre class="code">
+for i in [1..3]
+  do (i) -&gt;
+    setTimeout (-&gt; console.log i), 0
+</pre>
+
+<p>In this case <code>do(i) -&gt;</code> is doing the dirty work of creating a new function and executing it. Gotta love the simplicity of CoffeeScript syntax!</p>
+
+<p>However, I doubt many CoffeeScript newcomers will really understand how this work unless they understand how JavaScript works behind the scenes. I hope this blog post helps to clarify what it’s really going on behind the scenes.</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>
