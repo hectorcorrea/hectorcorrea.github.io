@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>Encrypt and Decrypt a string in C#</h1>
+<p>This blog posts presents an easy to use C# class to encrypt and decrypt strings in .NET.</p>
+
+<p>Although the <a href="http://msdn.microsoft.com/en-us/library/system.security.cryptography.aspx">System.Security.Cryptography</a> namespace in the .NET Framework provides a wealth of classes to encrypt and decrypt values, it seems that MSDN falls short of providing a good and simple example on how to use these classes for the most common request: encrypt a string.</p>
+
+<p>The class presented in this blog allows you to encrypt and decrypt a string with the following lines of code:</p>
+
+<pre class="code">
+string encryptionPassword = "supersecret";
+string textToEncrypt = "the quick brown fox jumps over the lazy dog";
+string encrypted = Crypto.Encrypt(textToEncrypt, encryptionPassword);
+string original = Crypto.Decrypt(encrypted, encryptionPassword);
+</pre>
+
+<p>Disclaimer: The code presented in this blog post is just one of the many ways to encrypt and decrypt strings in .NET. If you need to encrypt incredible confidential information (like the nuke launch codes) you should check specific books on Cryptography. Having said that, you probably arrived to this post because you are in search of a simple example on encryption with .NET. If that's the case then this post is for you.</p>
+
+<p>Below is the code of a simple C# class to encrypt and decrypt strings. All in all it's 60 lines of code including curly braces. You can just copy and paste this code to your project and voilà you are ready to encrypt and decrypt strings. If you are bit curious the remainder of this post explains how the code works.</p>
+
+<pre class="code">
+// Code based on the book "C# 3.0 in a nutshell by Joseph Albahari" (pages 630-632)
+// and from this StackOverflow post by somebody called Brett
+// http://stackoverflow.com/questions/202011/encrypt-decrypt-string-in-net/2791259#2791259
+static public class Crypto
+{
+  private static readonly byte[] salt = Encoding.ASCII.GetBytes("Ent3r your oWn S@lt v@lu# h#r3");
+
+  public static string Encrypt(string textToEncrypt, string encryptionPassword)
+  {
+    var algorithm = GetAlgorithm(encryptionPassword);
+
+    byte[] encryptedBytes;
+    using (ICryptoTransform encryptor = algorithm.CreateEncryptor(algorithm.Key, algorithm.IV))
+    {
+      byte[] bytesToEncrypt = Encoding.UTF8.GetBytes(textToEncrypt);
+      encryptedBytes = InMemoryCrypt(bytesToEncrypt, encryptor);
+    }
+    return Convert.ToBase64String(encryptedBytes);
+  }
+
+  public static string Decrypt(string encryptedText, string encryptionPassword)
+  {
+    var algorithm = GetAlgorithm(encryptionPassword);
+
+    byte[] descryptedBytes;
+    using (ICryptoTransform decryptor = algorithm.CreateDecryptor(algorithm.Key, algorithm.IV))
+    {
+      byte[] encryptedBytes = Convert.FromBase64String(encryptedText);
+      descryptedBytes = InMemoryCrypt(encryptedBytes, decryptor);
+    }
+    return Encoding.UTF8.GetString(descryptedBytes);
+    }
+
+    // Performs an in-memory encrypt/decrypt transformation on a byte array.
+    private static byte[] InMemoryCrypt(byte[] data, ICryptoTransform transform)
+    {
+      MemoryStream memory = new MemoryStream();
+      using (Stream stream = new CryptoStream(memory, transform, CryptoStreamMode.Write))
+      {
+        stream.Write(data, 0, data.Length);
+      }
+      return memory.ToArray();
+    }
+
+    // Defines a RijndaelManaged algorithm and sets its key and Initialization Vector (IV) 
+    // values based on the encryptionPassword received.
+    private static RijndaelManaged GetAlgorithm(string encryptionPassword)
+    {
+      // Create an encryption key from the encryptionPassword and salt.
+      var key = new Rfc2898DeriveBytes(encryptionPassword, salt);
+
+      // Declare that we are going to use the Rijndael algorithm with the key that we've just got.
+      var algorithm = new RijndaelManaged();
+
+      int bytesForKey = algorithm.KeySize / 8;
+      int bytesForIV = algorithm.BlockSize / 8;
+      algorithm.Key = key.GetBytes(bytesForKey);
+      algorithm.IV = key.GetBytes(bytesForIV);
+      return algorithm;
+    }
+}
+</pre>
+
+
+<h2>The Crypto class</h2>
+
+<p>The Crypto class presented in this post has four methods. Methods <code>Crypt</code> and <code>Decrypt</code> are public and are the ones that your code calls to encrypt and decrypt values. The other two methods (<code>InMemoryCrypt</code> and <code>GetAlgorithm</code>) are used internally by the class.</p>
+
+
+<h2>Encrypt()</h2>
+
+<p>The process of encrypting values in .NET requires a few steps that are not evident to first comers. In a nutshell this process involves setting up the algorithm that will be used for encryption and pushing the data to encrypt through it. In our case since we want to encrypt strings and the .NET cryptography classes don't provide overloads for strings out of the box we'll need to take a few extra steps to account for this. The <code>Encrypt()</code> method in our <code>Crypto</code> class takes care of these steps. Let's review this method in detail.</p>
+
+<pre class="code">
+  public static string Encrypt(string textToEncrypt, string encryptionPassword)
+  {
+    var algorithm = GetAlgorithm(encryptionPassword);
+
+    byte[] encryptedBytes;
+    using (ICryptoTransform encryptor = algorithm.CreateEncryptor(algorithm.Key, algorithm.IV))
+    {
+      byte[] bytesToEncrypt = Encoding.UTF8.GetBytes(textToEncrypt);
+      encryptedBytes = InMemoryCrypt(bytesToEncrypt, encryptor);
+    }
+    return Convert.ToBase64String(encryptedBytes);
+  }
+</pre>
+
+<p>The first thing we do in the <code>Encrypt()</code> method is <b>define what algorithm</b> we want to use for encryption. In our case the we will use the <i>Rijndael</i> algorithm (more on this later.) This algorithm class has the ability to provide either an encryptor or a decryptor. For the <code>Encrypt()</code> method we obviously need an encryptor.</p>
+
+<p>The second thing we do is <b>convert to bytes the string</b> that we received with the value to encrypt. This is an important step as the .NET encryption classes work with bytes, not strings.</p>
+
+<p>As you probably already know <a href="http://csharpindepth.com/Articles/General/Strings.aspx">strings in .NET are encoded in Unicode</a> and as such they can hold characters from pretty much any language in the world. Some of these characters need more than one byte to be stored and therefore the number of <i>bytes</i> that you get on line 15 might be larger than the number of <i>characters</i> in your string.</p>
+
+<p>If you only deal with ASCII values you probably don't give this much thought as most of the characters in your strings translate to a single byte (for example character "A" can be represented by one byte with value of 65 - its ASCII value.) However, strings in .NET can hold characters that need multiple bytes to be stored. For example, the Japanese character &#12453; maps to three bytes with values 227, 130, and 166.</p>
+
+<p>So now that we have defined an algorithm to use (along with its corresponding encryptor) and converted to bytes the information to encrypt we are ready to pass this information to the <code>InMemoryCrypt</code> method to finally <b>perform the encryption</b>. We'll talk about the details of the <code>InMemoryCrypt</code> method in the section below but for now let's just say that it encrypts the bytes that we pass to it and gives us back the corresponding encrypted bytes.</p>
+
+<p>Finally, we <b>convert the encrypted bytes back to a .NET string</b> since that's what we want as an end result.</p>
+
+<p>As you can see, although the Encrypt method is only a few lines long there is a lot going on. This is not exactly what I would call a self evident process and it is no wonder this is one of the most commonly asked questions in .NET message boards!</p>
+
+
+<h2>GetAlgorithm()</h2>
+
+<p>The <code>GetAlgorithm()</code> method declares what algorithm will be used for encryption and sets up the corresponding encryption keys. The .NET framework supports several algorithms and each of them has different strengths and weaknesses. On this particular example we are using the <a href="http://en.wikipedia.org/wiki/Advanced_Encryption_Standard">Rijndael algorithm</a>. You can find a lot of information about this algorithm on the web but for the purpose of this blog post let's just say that it uses a pair of values (known as key and initialization vector) to encrypt a set of bytes. In our case both, the key and the initialization vector (IV), will be calculated from an <code>encryptionPassword</code> that we provide.</p>
+
+<p>Let's look in detail at the code of this method.</p>
+
+<pre class="code">
+    // Defines a RijndaelManaged algorithm and sets its key and Initialization Vector (IV) 
+    // values based on the encryptionPassword received.
+    private static RijndaelManaged GetAlgorithm(string encryptionPassword)
+    {
+      // Create an encryption key from the encryptionPassword and salt.
+      var key = new Rfc2898DeriveBytes(encryptionPassword, salt);
+
+      // Declare that we are going to use the Rijndael algorithm with the key that we've just got.
+      var algorithm = new RijndaelManaged();
+
+      int bytesForKey = algorithm.KeySize / 8;
+      int bytesForIV = algorithm.BlockSize / 8;
+      algorithm.Key = key.GetBytes(bytesForKey);
+      algorithm.IV = key.GetBytes(bytesForIV);
+      return algorithm;
+    }
+</pre>
+
+<p>First we call <code>Rfc2898DeriveBytes</code> to get a <b>generator of pseudo-random bytes</b> based on our <code>encryptionPassword</code> and <code>salt</code> values.</p>
+
+<p>We then <b>declare an instance of the Rijndael algorithm</b> and <b>set the key and initialization vector (IV) values</b> needed by this algorithm. Notice how we set these two values with as many bytes required depending on the <code>KeySize</code> and <code>BlockSize</code> of the algorithm.</p>
+
+<p>Technically you could skip the call to <code>Rfc2898DeriveBytes</code> and manually set the values used for key and initialization vector. However if you do this you need to make sure that you have enough bytes to fill the key and initialization vector. This can be a problem if the <code>encryptionPassword</code> value was too short (say it's only 10 bytes long but the algorithm expects 32 bytes values.) The <code>Rfc2898DeriveBytes</code> takes care of this problem as it can generate enough bytes even if the <code>encryptionPassword</code> and <code>salt</code> are too short.</p>
+
+
+<h2>InMemoryCrypt()</h2>
+
+<p>The classes on the .NET Framework use streams to perform the encryption process. This allows the encryption of very large blocks of text while consuming very little memory. This is a nice feature of the framework as it allows you to encrypt entire documents without having to load the entire document in memory in one chunk. The drawback is that you must go through these streams even when you encrypt small sets of data like in our example.</p>
+
+<p>The <code>InMemoryCrypt()</code> method hides the process of setting up the streams to read through the bytes to encrypt and dump the resulting bytes into another stream.</p>
+
+
+<h2>Encryption password and Salt</h2>
+
+<p>The 1encryptionPassword1 value that the <code>Encrypt()</code> and <code>Decrypt()</code> methods receive should be a value that only you know. This 1encryptionPassword1 alone is enough to decrypt a value encrypted with this code.</p>
+
+<p>On the other hand the <code>salt</code> value defined at the class level and used in <code>GetAlgorithm()</code> on does not need to be kept secret as it is useless without the encryption password. It is important however that you use the exact same <code>salt</code> value to decrypt as you used to encrypt which is why I declared it as a static member of the class rather than make it a parameter to <code>Encrypt</code> and <code>Decrypt</code>. Feel free to update this value or make it configurable on your own implementation.</p>
+
+
+<h2>A few final words</h2>
+
+<p>The <code>Decrypt()</code> method is pretty much the reverse of the <code>Encrypt()</code> method so I won't elaborate on it.</p>
+
+<p>There are many things to consider when choosing an encryption algorithm:</p>
+
+<ul>
+<li>Some algorithms are one-way only meaning that they can encrypt a value but you cannot decrypt it. These algorithms are known as <i>hashing algorithms</i> and are perfect for storing password in a database.
+<li>Other algorithms do allow for encryption and decryption. Within these algorithms some of them are symmetrical (like Rijndael) meaning they use the same key for encryption and decryption whereas others are asymmetrical and use different keys known as private and public keys.
+</ul>
+
+<p>Keep this in mind when deciding what algorithm to use in your application.</p>
+
+<h3>References</h3>
+
+<p>As indicated at the top of the <code>Crypto</code> class most of the code for this blog post was taken from the excellent book <a href="http://www.amazon.com/3-0-Nutshell-Desktop-Reference-OReilly/dp/0596527578">C# 3.0 in a Nutshell</a> by Joseph Albahari and Ben Albahari (pages 630-632) and from this <a href="http://stackoverflow.com/questions/202011/encrypt-decrypt-string-in-net/2791259#2791259">post</a> in StackOverflow by somebody called Brett.</p>
+
+<p>There is a good summary of the different encryption options in the book "C# 3.0 in a Nutshell" (see pages 627-638)</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

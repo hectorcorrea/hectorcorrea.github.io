@@ -112,35 +112,26 @@
     </div>
 
     <div class="container">
-      <p><a href="/blog/2012-09-02-00009/8-traits-of-great-metro-style-apps">8 Traits of Great Metro Style Apps</a></p>
-<p><a href="/blog/2012-09-02-00019/ajax-calls-with-jquery-in-asp-net-mvc">AJAX calls with jQuery in ASP.NET MVC</a></p>
-<p><a href="/blog/2012-09-02-00028/binary-tree-in-c-sharp">Binary Tree in C#</a></p>
-<p><a href="/blog/2012-09-02-00029/book-review-lean-software-development">Book review: Lean Software Development</a></p>
-<p><a href="/blog/2012-09-02-00025/computer-museum-paris">Computer Museum (Paris)</a></p>
-<p><a href="/blog/2012-09-02-00024/devconnections-2008">DevConnections 2008</a></p>
-<p><a href="/blog/2012-09-02-00026/dotwiki-2-0">DotWiki 2.0</a></p>
-<p><a href="/blog/2012-09-02-00003/drawing-a-binary-tree-in-coffeescript">Drawing a Binary Tree in CoffeeScript</a></p>
-<p><a href="/blog/2012-09-02-00013/drawing-a-binary-tree-in-ruby">Drawing a Binary Tree in Ruby</a></p>
-<p><a href="/blog/2012-09-02-00018/encrypt-and-decrypt-a-string-in-c-sharp">Encrypt and Decrypt a string in C#</a></p>
-<p><a href="/blog/2012-09-02-00027/estimates-on-software-projects">Estimates on Software Projects</a></p>
-<p><a href="/blog/2012-09-02-00022/expose-your-data-as-an-rss-feed-with-net-3-5">Expose your data as an RSS Feed with .NET 3.5</a></p>
-<p><a href="/blog/2012-09-02-00012/finder-error-36-on-a-nas">Finder Error -36 on a NAS</a></p>
-<p><a href="/blog/2012-09-02-00023/flickr-library-in-c-sharp">Flickr Library in C#</a></p>
-<p><a href="/blog/2012-09-02-00021/flow-second-generation-lean-product-development">Flow: Second Generation Lean Product Development</a></p>
-<p><a href="/blog/2012-09-02-00006/functional-asynchronicity-explained">Functional Asynchronicity Explained</a></p>
-<p><a href="/blog/2012-09-02-00008/future-directions-for-c-sharp-and-visual-basic">Future Directions for C# and Visual Basic</a></p>
-<p><a href="/blog/2012-09-02-00014/git-basics">Git Basics</a></p>
-<p><a href="/blog/2012-09-02-00004/javascript-async-programming-for-sync-heads">JavaScript Async Programming for Sync Heads</a></p>
-<p><a href="/blog/2012-09-02-00017/log4net-thread-safe-but-not-process-safe">Log4net Thread-Safe but not Process-Safe</a></p>
-<p><a href="/blog/2012-09-02-00020/password-recovery-in-an-asp-net-mvc-project">Password Recovery in an ASP.NET MVC Project</a></p>
-<p><a href="/blog/2012-09-02-00016/returning-http-404-in-asp-net-mvc">Returning HTTP 404 in ASP.NET MVC</a></p>
-<p><a href="/blog/2012-09-02-00015/ruby-development-on-the-mac-os-x">Ruby Development on the Mac OS X</a></p>
-<p><a href="/blog/2012-09-02-00011/running-visual-studio-inside-mac-os-x">Running Visual Studio inside Mac OS X</a></p>
-<p><a href="/blog/2012-09-02-00010/simple-branching-strategies-for-team-foundation-server">Simple Branching Strategies for Team Foundation Server</a></p>
-<p><a href="/blog/2012-09-02-00007/sliding-in-a-full-page-panel-with-css-and-jquery">Sliding-in a Full Page Panel with CSS and jQuery</a></p>
-<p><a href="/blog/2012-09-02-00005/web-development-on-the-mac-os-x-part-ii">Web Development on the Mac OS X (part II)</a></p>
-<p><a href="/blog/2008-10-04-00001/introduction-to-scrum">introduction-to-scrum</a></p>
-<p><a href="/blog/2021-11-11-00001/solr-debugquery">solr-debugquery</a></p>
+      <h1>Running Visual Studio inside Mac OS X</h1>
+<p>Lookie here...I am running Microsoft Visual Web Developer Express on my MacAir!</p>
+
+<p><img src="https://hectorcorrea.com/images/osxwin7.png" alt="Windows 7 inside OS X Lion" width="80%" /></p>
+
+<p>When I bought <a href="https://hectorcorrea.com/blog/ruby-development-on-the-mac-os-x/15">my MacAir last year</a> to start learning Ruby and Ruby on Rails I wasn't sure how much I was going to really use it. Overtime, I've gotten familiar with it and little by little it has become my main machine at home to do pretty much everything including Ruby programming, managing my music, pictures, and documents, and web browsing. It's gotten to the point that the only reason I power up my Windows laptop at home is when I need to update one of my personal ASP.NET projects or research some C# topic in particular.</p>
+
+<p>My Windows laptop at home is a nice small Lenovo 3000 v200 that is about 4 or 5 years old. It's a very nice laptop but compared with the MacAir it feels like a clunker. There isn't anything wrong it per-se, it just feels like an old machine.</p>
+
+<p>As time went on I started pondering how to run Visual Studio inside my Mac so that I don' have to rely on two machines. There are many options to host virtual machines inside OS X including the built-in Boot Camp software that comes with the Mac, VMWare, and VirtualBox.</p>
+
+<p>In my case I decided to use <a href="http://www.virtualbox.org/">VirtualBox</a> to create a Windows 7 virtual machine where I can install Microsoft Visual Web Developer Express 2010.</p>
+
+<p>The screenshot at the beginning of this blog post shows Visual Web Developer Express running inside a Windows 7 virtual machine hosted on OS X.</p>
+
+<p>I decided to use VirtualBox over the other virtualization options for two main reasons. One is that it's free (that's hard to beat) but also because is multi-platform which allowed me to create the virtual machine on my Windows machine (where I have plenty of disk space) and once it was ready just transfer VM to my Mac and power it up there.</p>
+
+<p>Although I configured the virtual machine that emulate a hard drive with 20 GB the VM itself only uses 12.5 GB with Windows 7 and Visual Web Developer Express installed. That was perfect for me as my MacAir has a very small solid state drive to begin with. Being able to create the virtual machine on a different machine with plenty of disk space was a big plus for me.</p>
+
+<p>Now I am able to work on all my home projects on the same machine regardless of whether I want to program in Ruby or in ASP.NET. I am not quite ready to sell my Windows laptop yet, though. We'll see if that changes in the future.</p>
 
     </div>
 

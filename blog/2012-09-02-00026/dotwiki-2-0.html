@@ -112,35 +112,28 @@
     </div>
 
     <div class="container">
-      <p><a href="/blog/2012-09-02-00009/8-traits-of-great-metro-style-apps">8 Traits of Great Metro Style Apps</a></p>
-<p><a href="/blog/2012-09-02-00019/ajax-calls-with-jquery-in-asp-net-mvc">AJAX calls with jQuery in ASP.NET MVC</a></p>
-<p><a href="/blog/2012-09-02-00028/binary-tree-in-c-sharp">Binary Tree in C#</a></p>
-<p><a href="/blog/2012-09-02-00029/book-review-lean-software-development">Book review: Lean Software Development</a></p>
-<p><a href="/blog/2012-09-02-00025/computer-museum-paris">Computer Museum (Paris)</a></p>
-<p><a href="/blog/2012-09-02-00024/devconnections-2008">DevConnections 2008</a></p>
-<p><a href="/blog/2012-09-02-00026/dotwiki-2-0">DotWiki 2.0</a></p>
-<p><a href="/blog/2012-09-02-00003/drawing-a-binary-tree-in-coffeescript">Drawing a Binary Tree in CoffeeScript</a></p>
-<p><a href="/blog/2012-09-02-00013/drawing-a-binary-tree-in-ruby">Drawing a Binary Tree in Ruby</a></p>
-<p><a href="/blog/2012-09-02-00018/encrypt-and-decrypt-a-string-in-c-sharp">Encrypt and Decrypt a string in C#</a></p>
-<p><a href="/blog/2012-09-02-00027/estimates-on-software-projects">Estimates on Software Projects</a></p>
-<p><a href="/blog/2012-09-02-00022/expose-your-data-as-an-rss-feed-with-net-3-5">Expose your data as an RSS Feed with .NET 3.5</a></p>
-<p><a href="/blog/2012-09-02-00012/finder-error-36-on-a-nas">Finder Error -36 on a NAS</a></p>
-<p><a href="/blog/2012-09-02-00023/flickr-library-in-c-sharp">Flickr Library in C#</a></p>
-<p><a href="/blog/2012-09-02-00021/flow-second-generation-lean-product-development">Flow: Second Generation Lean Product Development</a></p>
-<p><a href="/blog/2012-09-02-00006/functional-asynchronicity-explained">Functional Asynchronicity Explained</a></p>
-<p><a href="/blog/2012-09-02-00008/future-directions-for-c-sharp-and-visual-basic">Future Directions for C# and Visual Basic</a></p>
-<p><a href="/blog/2012-09-02-00014/git-basics">Git Basics</a></p>
-<p><a href="/blog/2012-09-02-00004/javascript-async-programming-for-sync-heads">JavaScript Async Programming for Sync Heads</a></p>
-<p><a href="/blog/2012-09-02-00017/log4net-thread-safe-but-not-process-safe">Log4net Thread-Safe but not Process-Safe</a></p>
-<p><a href="/blog/2012-09-02-00020/password-recovery-in-an-asp-net-mvc-project">Password Recovery in an ASP.NET MVC Project</a></p>
-<p><a href="/blog/2012-09-02-00016/returning-http-404-in-asp-net-mvc">Returning HTTP 404 in ASP.NET MVC</a></p>
-<p><a href="/blog/2012-09-02-00015/ruby-development-on-the-mac-os-x">Ruby Development on the Mac OS X</a></p>
-<p><a href="/blog/2012-09-02-00011/running-visual-studio-inside-mac-os-x">Running Visual Studio inside Mac OS X</a></p>
-<p><a href="/blog/2012-09-02-00010/simple-branching-strategies-for-team-foundation-server">Simple Branching Strategies for Team Foundation Server</a></p>
-<p><a href="/blog/2012-09-02-00007/sliding-in-a-full-page-panel-with-css-and-jquery">Sliding-in a Full Page Panel with CSS and jQuery</a></p>
-<p><a href="/blog/2012-09-02-00005/web-development-on-the-mac-os-x-part-ii">Web Development on the Mac OS X (part II)</a></p>
-<p><a href="/blog/2008-10-04-00001/introduction-to-scrum">introduction-to-scrum</a></p>
-<p><a href="/blog/2021-11-11-00001/solr-debugquery">solr-debugquery</a></p>
+      <h1>DotWiki 2.0</h1>
+<p>I've posted a new version of the DotWiki that I introduced back in 2004 in this <a href="http://www.codemag.com/Article/0403081">CODE magazine article</a>. This new version 2.0 is a complete rewrite using C# and it has several new features and a more attractive look and feel. Security is probably the most important new feature since it had been by far the most commonly requested feature since I released the original version in 2002.</p>
+
+<p>Previous versions of the DotWiki had been updates to the original VB.NET code and I felt that a full rewrite was in order to clean up the code, remove unused features, reflect what I've learn since the original release, and add a few more features. Since I've been doing exclusively C# for the last few years I took the plunge and rewrote it in C#.</p>
+
+<p>Security is implemented using the ASP.NET Membership provider. It's amazing how easy was to secure the site using the built-in features for membership for creating new users, resetting your password, logging in, logging out, and such.</p>
+
+<p>This new version also uses Rockford Lhotka's <a href="http://www.lhotka.net/cslanet/Default.aspx">CSLA</a> business objects framework. The business objects to read and write data are typical CSLA business objects. You don't need to know much (if anything) about CSLA to understand the code and yet it helps me tremendously to keep the code in logical tiers.</p>
+
+<p>This version still uses the <a href="http://www.fckeditor.net/">FCKeditor</a> to provide a what  you see is what you get (WYSIWYG) experience to the user. I updated the code to use version 2.6 which supports the Safari browser.</p>
+
+<p>I am continuously amazed on how much free stuff there is for ASP.NET applications and how good it is. CSLA is a fantastic middle tier business object framework and is open source. The FCKeditor integrates seamlessly with ASP.NET and comes with all the JavaScript source code. The ASP.NET Membership provider is part of the .NET framework since version 2.0 and the design starter kits for ASP.NET applications have always been free.</p>
+
+<p>The DotWiki itself is open source and I hope developers find the new version as useful (or more!) as previous versions.</p>
+
+<p><b>Update February/2015</b> I no longer maintain or support the code for the DotWiki. However the code is still available for download at the following links:</p>
+
+<ul>
+<li><a href="https://hectorcorrea.com/downloads/dotwiki.zip">Latest source code</a> (C#)
+<li><a href="https://hectorcorrea.com/downloads/dotwiki_vs2005.zip">Previous version</a> (VB.NET)
+</ul>
+
 
     </div>
 
