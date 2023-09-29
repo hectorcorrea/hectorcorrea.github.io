@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>Multiple Endpoints for a WCF Service</h1>
+<p>One of the nice features that Windows Communication Foundation (WCF) provides is the ability to expose a single service via multiple endpoints so that different client applications can consume the same service over different network protocols. For example the same service can be exposed via HTTP for external clients and via TCP for internal clients.</p>
+
+<p>In WCF an <b>endpoint</b> refers to the combination of the address where service is available, the binding used to communicate to it, and the contract that the service exposes, these three parameters are commonly known as the "ABC" of the endpoint.</p>
+
+<ul>
+<li>The <b>address</b> represents the URL where the service is to be found, for example <code>http://localhost:8000/HelloWorld/HelloWorldService</code> or <code>net.tcp://localhost:9000/HelloWorld/HelloWorldService</code>
+<li>The <b>binding</b> describes the transport protocols for the communication channel, for example HTTP vs TCP
+<li>The <b>contract</b> represents the functionality that the service exposes and it maps to a <code>ServiceContract</code> interface in your C# code.
+</ul>
+
+<p>An endpoint for a WCF Service can be configured via the <code>app.config</code> of the service or through code. In this post I am going to focus on how to configure a service via the <code>app.config</code> file to be available to multiple endpoints.</p>
+
+
+<h2>The Service</h2>
+
+<p>So let's assume we have a simple "Hello World" WCF service that implements <code>IHelloWorld</code> interface like the one shown in the following code snippet.</p>
+
+<pre class="code">
+[ServiceContract(Namespace="https://hectorcorrea.com/wcf")]
+public interface IHelloWorld
+{
+    [OperationContract] string Greetings(string yourName);
+    [OperationContract] DateTime TheTimeIs();
+}
+
+public class HelloWorldService : IHelloWorld
+{
+    public string Greetings(string yourName)
+    {
+        return string.Format("Hello {0}", String.IsNullOrEmpty(yourName) ? "Guest" : yourName);
+    }
+
+    public DateTime TheTimeIs()
+    {
+        return DateTime.Now;
+    }
+}
+</pre>
+
+<p>To host this service you can use the following code. The first line creates a host object for the <code>HelloWorldService</code> and the second line opens a communication channel to receive and process requests for this service. The call to <code>host.Open()</code> in this example will read the settings from the <code>app.config</code> (more on this later) to decide what endpoints will be opened for the service. The rest of the code displays what endpoints were found in the app.config for this service and finally we use <code>ReadLine</code> to put the host in a wait state and let it process requests as they come.</p>
+
+<pre class="code">
+ServiceHost host = new ServiceHost(typeof(TheService.HelloWorldService));
+host.Open();
+Console.WriteLine("Host has been started");
+Console.WriteLine("Endpoints");
+foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
+{
+    Console.WriteLine("Address: {0}", endpoint.Address);
+    Console.WriteLine("Binding: {0}", endpoint.Binding);
+    Console.WriteLine("Contract: {0}", endpoint.Contract.ContractType);
+    Console.WriteLine();
+}
+
+Console.WriteLine("Please [ENTER] to close the service host...");
+Console.ReadLine();
+host.Close(); 
+</pre>
+
+
+<h2>Server Side Configuration</h2>
+
+<p>The following XML shows how the different endpoints for the <code>TheService.HelloWorldService</code> are defined in the <code>app.config</code>. This is the config file that lives on the <i>server side</i>. Notice the three endpoints for the contract <code>TheService.IHelloWorld</code>, these endpoints expose the service via basic HTTP binding, TCP binding, and WS binding and each of them has its own URL.</p>
+
+<pre class="code">
+&lt;service behaviorConfiguration="TheServiceBehavior" name="TheService.HelloWorldService"&gt;
+  &lt;!-- endpoint 1: Basic HTTP --&gt;
+  &lt;endpoint address="http://localhost:8000/HelloWorld/HelloWorldService"
+            binding="basicHttpBinding" name="httpEndpoint" 
+            contract="TheService.IHelloWorld" />
+  &lt;!-- endpoint 2: TCP --&gt;
+  &lt;endpoint address="net.tcp://localhost:9000/HelloWorld/HelloWorldService"
+            binding="netTcpBinding" bindingConfiguration="" name="tcpEndpoint"
+            contract="TheService.IHelloWorld" />
+  &lt;!-- endpoint 3: WS HTTP --&gt;
+  &lt;endpoint address="http://localhost:8003/HelloWorld/HelloWorldService"
+            binding="wsHttpBinding" bindingConfiguration="" name="wsHttpBinding"
+            contract="TheService.IHelloWorld" />
+  &lt;host&gt;
+    &lt;timeouts openTimeout="00:30:00" />
+  &lt;/host&gt;
+&lt;/service&gt;
+</pre>
+
+
+<h2>On the Client Side</h2>
+
+<p>Now that we have a WCF <code>HelloWorld</code> service implemented and a host running waiting for requests to be send let's turn to the client side and create a simple console application to consume it.</p>
+
+<p>The following code will connect to the <code>HelloWorld</code> service via a proxy class called <code>HelloWorldClient</code> using the endpoint named <code>tcpEndpoint</code>. It then makes a couple of calls to the <code>Greetings</code> and <code>TheTimeIs</code> methods in the service and finally closes the connection.</p>
+
+<pre class="code">
+HelloWorldClient service = new HelloWorldClient("tcpEndpoint");
+Console.WriteLine("Greetings: {0}", service.Greetings("Hector"));
+Console.WriteLine("The time is: {0}", service.TheTimeIs());
+service.Close();
+Console.WriteLine("Channel closed.");
+Console.WriteLine(); 
+</pre>
+
+<p>In this code the class <code>HelloWorldClient</code> is a proxy for the <code>HelloWorld</code> service that we created before. The process to generate this proxy class is beyond the scope of this post (see references at the bottom of this post for more information.) In a nutshell, this proxy is a class that implements a skinny version of the <code>HelloWorldService</code> that uses WCF to forward the request across the wire to the actual server. Thanks to WCF we don't have to write any of the low level networking stuff to deal with HTTP or TCP since WCF wraps that functionality for us.</p>
+
+<p>This proxy class makes the code in the client application looks like its calling a class running on the same machine as the client. By just looking at this code, you have no idea if the call to <code>service.Greetings</code> is to a class running on the same machine as the client or in a different machine across the country.</p>
+
+<p>So how do we tell the client where to find the real <code>HelloWorld</code> service? As with the server side settings you can do it either via code or using a config file. In this post I am going to show how to do it using a config file (keep in mind that this client side config file is different config from the server side config file that we discussed before.)</p>
+
+
+<h2>Client Side Configuration</h2>
+
+<p>Like the server side configuration file that we reviewed before, the client side configuration also has endpoints and, as you can imagine, they are subset of the endpoints that the server exposes. <i>The client side config tells the client application where to find the service while the server side config tells the server where to listen for requests.</i></p>
+
+<p>The following XML shows how the endpoints are defined in the client side config. In this particular example we have all three endpoints for the <code>HelloWorldService</code> listed for illustration purposes, but we could have as well just one. You will notice that the definition of these endpoints is similar to the ones that we used for the server config file as they also have an address, a binding, and a contract. Yet, keep in mind that this is a different config file -- this config defines client side settings.</p>
+
+<pre class="code">
+&lt;client&gt;
+  &lt;!-- endpoint 1: Basic HTTP --&gt;
+  &lt;endpoint address="http://localhost:8000/HelloWorld/HelloWorldService"
+            binding="basicHttpBinding" bindingConfiguration="httpBindingParameters"
+            contract="HelloWorldProxy.IHelloWorld" name="httpEndpoint" />
+  &lt;!-- endpoint 2: TCP --&gt;
+  &lt;endpoint address="net.tcp://localhost:9000/HelloWorld/HelloWorldService"
+            binding="netTcpBinding" bindingConfiguration="tcpBindingParameters"
+            contract="HelloWorldProxy.IHelloWorld" name="tcpEndpoint" />
+  &lt;!-- endpoint 3: WS HTTP --&gt;
+  &lt;endpoint address="http://localhost:8003/HelloWorld/HelloWorldService"
+            binding="wsHttpBinding" bindingConfiguration="wsHttpBindingParameters"
+            contract="HelloWorldProxy.IHelloWorld" name="wsHttpEndpoint" />
+&lt;/client&gt;
+</pre>
+
+<p>You will notice that the name (<code>tcpEndpoint</code>) of the second endpoint in this XML matches with the name of the endpoint that we indicated in the line</p>
+
+<pre class="code">
+HelloWorldClient service = new HelloWorldClient("tcpEndpoint");
+</pre>
+
+<p>When this line is executed WCF will read the values of the <code>tcpEndpoint</code> from the client config file and open a TCP communication channel at the address indicated to communicate with a service that recognizes messages for the <code>HelloWorldService</code> contract.</p>
+
+<p>After this the calls to <code>service.Greetings()</code> and <code>service.TheTimeIs()</code> are automatically forwarded to the real service. If our service is up and running and listening for request on the same endpoint (i.e. same address, binding, and contract) it will process the request and return the expected result.</p>
+
+<p>You could change the first line to use the HTTP endpoint by just changing the name of the endpoint:</p>
+
+<pre class="code">
+HelloWorldClient service = new HelloWorldClient("httpEndpoint");
+</pre>
+
+<p>That's it, with one little change the client application will now use HTTP instead of TCP to send requests to the server but <i>the rest of the code in the client application remains unchanged</i>. As I mentioned at the beginning a typical scenario is to use TCP for internal clients and HTTP for external clients.</p>
+
+
+<h3>References</h3>
+
+<p>A great book on WCF and where I learned most the information in this blog post is <a href="http://www.amazon.com/Learning-WCF-Hands-Michele-Bustamante/dp/0596101627">Learning WCF</a> by Michelle Leroux Bustamante</p>
+
+<p>If you want more information on how to create the proxy class used on the client two good references are <a href="http://msdn.microsoft.com/en-us/library/ms733133.aspx">this MSDN link</a> and Miguel Castro's article on <a href="http://www.devx.com/codemag/Article/39837/0/page/1">how to do it manually</a>.</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

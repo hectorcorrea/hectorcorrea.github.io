@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>Software Developers and Process Improvement</h1>
+<p>One of the topics that I've been noticing for a while is how we (as developers) tend to worry about our software development process and try to educate ourselves on the topic while other project stakeholders don't seem to show as much interest on it.</p>
+
+<p>For example, I often talk to other developers who are trying to implement Scrum, RUP, or other software development process at their companies and they fell that other project stakeholders (executives, business owners, analysts) are not as interested in the process as they should. It seems that it's always developers trying to drive these initiatives.</p>
+
+<p>The most interesting part, however, is that process improvement is not an activity that should be left alone to developers, not even when is about software development process. If the software has an impact on the bottom line of the company (and it usually does) it should be an activity that is done in collaboration with executives, business owners, QA, and developers. Developers, as well intended as we might be, don't always see the whole picture and we are bound to make one-sided conclusions. Or as <a href="http://blog.businessofsoftware.org/2007/10/an-angry-mans-s.html">Buxton</a> says:</p>
+
+<blockquote>
+"the typical approach of software engineers having sole responsibility for new product development<br/>
+[is like] an ice hockey team with all goalies. No matter how good your goalies are,<br/>
+they aren’t going to beat even a bad team with the proper mix of players."<br/>
+</blockquote>
+
+<p>One of my co-coworkers had the great idea of taking a couple of business owners to our local Agile user group and they both seemed to have enjoyed it and learned a few things. Yet, that was the only time they attended one of these meetings.</p>
+
+<p>I've given books on Scrum and Lean Software Development to some of our product owners with moderate success. Although they read it, it usually fails to spark ideas on what else we should be doing.</p>
+
+<p>From what I've seen there are several reasons why most non-software developers don't pay as much attention to software development process improvement as they should:</p>
+
+<ul>
+<li>Software is just a small part of their job. They deal with it because they have to (e.g. the business needs a new software to help in the creation of X, but X is the real goal and software is just a necessary evil.) Although I've seen people not care too much about software development process even on software development companies where X is a piece of software!
+<li>Every time there is a conversation about process improvement it inevitably turns into a discussion about software tools and other geeky issues where they feel lost.
+<li>They don't think there is anything wrong with the existing process.
+<li>Although they see problems with the existing process but they thing that's the way it is.
+<li>They just haven't realized they could participate on it and that is on their best interest doing so.
+</ul>
+
+<p>This is an open invitation to all project stakeholders (executives, business owners, QA, developers, users) to jump into the software development process improvement in your company. Talk to your team members and see what you and others can do to develop better software and get it to your users more often.</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

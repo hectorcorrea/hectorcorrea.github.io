@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>TransactionScope.Complete Maybe</h1>
+<p>During a training class this week I learned that the <code>Complete()</code> method in the <code>TransactionScope</code> class works different from what I have always thought. I've always thought that when you issue a call to the <code>Complete()</code> method the transaction is either committed or you get an exception if the transaction cannot be committed. In my mind once the call to <code>Complete()</code> returned it was a sure bet that the transaction was successfully committed. It turns out that is not necessarily true.</p>
+
+<p>The following code snippet shows a typical usage of <code>TransactionScope</code> when connecting to a SQL Server database. The steps are basically start a transaction, issue a few SQL commands, and call the complete method to commit the transaction. In a real application you will have more than one SQL Command and perhaps nested transactions but the idea is pretty much the same.</p>
+
+<pre class="code">
+using (TransactionScope tx = new TransactionScope())
+{
+  using (SqlConnection conn = new SqlConnection(connString))
+  {
+    conn.Open();
+    string sql ="INSERT INTO MyTable(ID,Name) VALUES(1,'Test')";
+    SqlCommand command = new SqlCommand(sql, conn);
+    command.ExecuteNonQuery();
+  } // conn
+
+  Console.WriteLine("INSERT command has been issued but not committed.");
+  Console.WriteLine("Stop SQL Server and press [ENTER] to continue...");
+  Console.ReadLine();
+  tx.Complete();
+  Console.WriteLine("Yikes! tx.Complete() didn't throw an exception even though SQL Server has been stopped.");
+  Console.WriteLine("Press [ENTER] to continue...");
+  Console.ReadLine();
+} // tx
+</pre>
+
+<p>In this particular example however I am purposely forcing an error condition by pausing the program right before the call to <code>Complete()</code>, then manually shutting down SQL Server, and finally letting the program continue its execution. This is definitively not something that you will do in an application but the point of this example is to emulate what happens if the server goes down right before the call to <code>tx.Complete()</code>. My thought was that the program will throw an exception on the call to <code>tx.Complete()</code> but to my surprise that was not the case. The call to <code>tx.Complete()</code> executed and came back with no indication that an error has happened. Below is the output that this program gave me:</p>
+
+<p><img src="https://hectorcorrea.com/images/txComplete.jpg" alt="tx.Complete didn't throw exception" title="tx.Complete didn't throw exception" /></p>
+
+<p>Notice how the lines after <code>tx.Complete()</code> were executed which means that no Exception was thrown even though SQL Server was down at the time of the call! How come this is possible? Does this mean that I have no way of knowing that the transaction succeeded or failed. This is kind of a big deal.</p>
+
+<p>It turns out the real issue here is that the <code>Complete()</code> method does not work quite the way I thought it did. Here is what what <a href="http://msdn.microsoft.com/en-us/library/system.transactions.transactionscope.complete.aspx">MSDN</a> says:</p>
+
+<blockquote>
+When you are satisfied that all operations within the scope are completed successfully, you should call this method only once to inform that transaction manager that the state across all resources is consistent, and the transaction can be committed. It is very good practice to put the call as the last statement in the using block. [...] The actual work of commit between the resources manager happens at the End Using statement if the TransactionScope object created the transaction. If it did not create the transaction, the commit occurs whenever Commit is called by the owner of the CommittableTransaction object. At that point the Transaction Manager calls the resource managers and informs them to either commit or rollback, based on whether this method was called on the TransactionScope object.<br/>
+</blockquote>
+
+<p>Notice that it clearly says you call this method to <b>inform</b> the transaction manager that the transaction can be committed. The actual commit happens at the end using statement. Indeed, if I let the program continue its execution I do get an exception when I reach to the end of the using statement. Below is an example of the Exception that I got:</p>
+
+<p><img src="https://hectorcorrea.com/images/txCompleteEx.jpg" alt="Exception was thrown here" title="Exception was thrown here" /></p>
+
+<p>With this knowledge, let's review what happened when the line <code>tx.Complete()</code> was executed and SQL Server was already shutdown. The call to <code>tx.Complete()</code> informed the transaction manager that as far as we were concerned the transaction could be committed. This is why that line executed with no problems. Next, when the transaction scope reached the end using statement and it tried to commit it detected that something was wrong and threw an exception indicating that <b>"the transaction is in doubt"</b>. There was also an inner exception that elaborated that a "transport-level error has occurred" in this case as a result of .NET not being able to reach SQL Server to confirm if indeed SQL Server committed the transaction or not. The best <code>TransactionScope</code> could do is doubt it.</p>
+
+<p>This is actually really good. If a similar situation where to happen in a production environment I would doubt that the transaction was committed too. In this particular example I know for sure it wasn't committed since I shutdown SQL Server at the right moment, but in real application there wouldn't be a way for us to know if we lost connectivity with SQL before or after the commit command was sent. For example, let's say that SQL Server didn't go down but rather that our program lost network connectivity with it. In that case we couldn't confirm that SQL Server committed the transaction but SQL Server might have received the commit command just before we lost connectivity and indeed committed the transaction successfully. In that case the best <code>TransactionScope</code> can do is doubt it and that's as correct as you can ask for.</p>
+
+<p>To make matters more interesting you can use <code>TransactionScope</code> to handle nested transactions and transactions against resources other than databases. I am glad to know that whoever wrote this code in the framework already thought of these conditions so that I don't have to. Check out the MDSN documentation for the <a href="http://msdn.microsoft.com/en-us/library/system.transactions.transactionscope.aspx">TransactionScope</a> class and on <a href="http://msdn.microsoft.com/en-us/library/ms229973.aspx">Writting Transactional Applications</a> for more information.</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

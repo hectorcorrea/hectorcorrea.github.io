@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>Skeletons, Mona Lisa, and Problem Solving</h1>
+<p>One of the best practices when building applications that I've learned over the years is the value of always having a running version of the application available to show end-to-end progress on the system being developed. Although this is common sense it's easy to get caught on the day-to-day activities and lose track of these things.</p>
+
+<p>A typical situation in which teams seem to forget the value of always having a running version of the application is when writing a brand new application. In this scenario is common to have a bunch of components half-way written and not ready for production and most development teams tend to be OK with this. I am OK with this <i>as long as they all compile and can be run successfully to show the functionality implemented so far</i>. It does not matter the system can only perform a sub-set of features that the final system will have. It should always run so that people can experience first hand how each of the modules interact with each other.</p>
+
+
+<h2>Walking Skeleton</h2>
+
+<p><img alt="Walking Skeleton" align="left" src="https://hectorcorrea.com/images/skeleton.jpg"/>In trying to explain this concept to a friend of mine I found that there is even a pattern that explains this idea when it comes to building new applications. Cockburn<sup>[1]</sup> calls it a <a href="http://alistair.cockburn.us/index.php/Walking_skeleton">Walking Skeleton</a>:</p>
+
+<blockquote>
+"A Walking Skeleton is a tiny implementation of the system<br/>
+that performs a small end-to-end function.<br/>
+It need not use the final architecture,<br/>
+but it should link together the main architectural components.<br/>
+The architecture and the functionality can then evolve in parallel."<br/>
+</blockquote>
+
+<p>As Cockburn points out a Walking Skeleton is different from a proof of concept (or spike) in the sense that the later is meant to be throw away code while the Walking Skeleton is meant to evolve over time.</p>
+
+<p>This approach relies heavily on having a procedure in place to support the evolution of the code as the skeleton is fleshed out (pun intended.) Cockburn calls this strategy Incremental Rearchitecture.</p>
+
+<p>I recommend that teams use unit testing to make sure the code that performs some basic features today remains fully functional tomorrow as new few features are implemented and the architecture of the system updated to accommodate new features and new ideas.</p>
+
+
+<h2>Mona Lisa</h2>
+
+<p><img alt="Mona Lisa" align="left" src="https://hectorcorrea.com/images/monalisa.jpg"/>On his article <a href="https://www.stickyminds.com/article/neglected-practice-iteration">The Neglected Practice of Iteration</a> Jeff Patton talks about the difference between iterating and incrementing (no, they are not synonyms) and touches on the idea of a Walking Skeleton from a different angle.</p>
+
+<p>Jeff uses a Mona Lisa drawing to describe the differences between an iterative and an incremental approach to software development. If we were to use a <i>pure incremental</i> approach to drawing the Mona Lisa we would start by drawing to perfection a section of this painting (say her hands), then we'll draw completely her arms, then her face, and so on and so forth. Using an iterative approach we would start by drawing a sketch of the Mona Lisa in pencil (that's our first iteration), then we'll do a second iteration in which we increment the detail and perhaps give some coloring to the drawing, then we'll do a third iteration and put the final touches (keep incrementing the detail) on the painting. His article has great images that show this graphically.</p>
+
+<p>The point of Jeff's article is that you need both (iterations and increments) in software development. A lot of people thing these two words are synonyms and use a pure incremental approach in which they work one a single module of the software to perfection before moving to the next module. The pure incremental approach has the disadvantage that neither the user nor the developers get to see the complete picture until the system is complete...and by then is usually too late. By using an iterative and incremental approach both the users and the developers get a rough idea of the whole system early on and how each module relates to each other.</p>
+
+
+<h2>Depth-First versus Breadth-First Problem Solving</h2>
+
+<p>On their book Lean Software Development the Poppendiecks<sup>[2]</sup> talk about two different ways to solve problems: Depth-First versus Breadth-First.</p>
+
+<blockquote>
+"Breadth-first problem solving might be thought of as funnel,<br/>
+while depth-first problem solving is more like a tunnel.<br/>
+Breadth-first involves delaying commitments,<br/>
+while depth-first invokes making early commitments."<br/>
+</blockquote>
+
+<p>The breadth-first approach is similar to the Walking Skeleton in the sense that aim first to get an application running end-to-end and then incrementally update its architecture as more is known about the problem domain.</p>
+
+<p>I think both approaches are complimentary, just like incremental and iterative are. There are times where breadth-first is preferred over depth-first and vice-versa. The Poppendiecks put it in these words:</p>
+
+<blockquote>
+"Notice that both breadth-first and depth-first approaches require expertise in the domain.<br/>
+A depth-first approach will work only if there was a correct selection of the area to zero in on.<br/>
+Getting this selection right requires two things:<br/>
+someone with the expertise to make the early decisions correctly and<br/>
+assurance that there will not be any changes that render these decisions obsolete.<br/>
+Lacking these two conditions, a breadth-first approach will lead to better results."<br/>
+</blockquote>
+
+<p>One of the observations that the Poppendiecks made on their book is that "most novice designers are biased toward the depth-first approach." The irony on this is that depth-first requires people to get the decision right early on, something that a novice designer (by definition) probably won't do. Further more, I believe this bias on novice designers is the reason they tend to apply a pure incremental approach instead of an iterative and incremental approach.</p>
+
+<p>Breadth-first work better than depth-first when the knowledge of the business domain is expected to evolve (as it typically does in software development) and it is also very effective when the domain is stable (e.g. you have strong knowledge about the problem domain.) Again, in the words of the Poppendiecks:</p>
+
+<blockquote>
+"A breadth-first approach requires someone with expertise to understand<br/>
+how the details will most likely emerge and the savvy to know when the time to make commitments has arrived.<br/>
+However, the breadth-first approach does not need a stable domain;<br/>
+it is the approach of choice when the business domain is expected to evolve.<br/>
+It is also an effective approach when the domain is stable."<br/>
+</blockquote>
+
+<p>Personality types play a big factor in the way people use breadth-first or depth-first approach. This is an important consideration since there are probably people in your team that would favor one approach over the other. This is OK. Remember that these approaches are complimentary. When you are not sure about the domain use a breadth-first approach, once you know enough and are ready to make a commitment go deep.</p>
+
+<h3>References</h3>
+<p>[1] Cockburn, Alistar. <i>Crystal Clear A Human-Powered Methodology for Small Teams</i>. 2005. Addison Wesley. Pages 49-53.</p>
+<p>[2] Poppendieck, Mary et al. <i>Lean Software Development An Agile Toolkit</i>. 2003. Addison Wesley. Pages 60-62.</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

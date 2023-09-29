@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>TransactionScope.Complete Maybe</title>
+      <slug>transactionscope-complete-maybe</slug>
+      <summary>I&#39;ve always thought that when you issue a call to the TransactionScope.Complete() the transaction is either committed or you get an exception if the transaction cannot be committed. In my mind once the call to Complete() returned it was a sure bet th...</summary>
+      <createdOn>2012-09-17 02:05:57</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2009-04-18 16:07:01 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>45</value>
+      </fields>
+  </TextEntry>

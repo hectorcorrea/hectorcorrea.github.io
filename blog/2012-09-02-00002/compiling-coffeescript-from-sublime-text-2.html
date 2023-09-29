@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>Compiling CoffeeScript from Sublime Text 2</h1>
+<p>A few days ago I configured Sublime Text 2 editor to use three different hotkeys for compiling and running CoffeeScript files. I am new to Sublime so I consider somewhat of an achievement that I was able to pull this off with help from the interwebz and a bit of luck.</p>
+
+<h2>Run a CoffeeScript file in the Sublime console</h2>
+
+<p>The first hotkey that I configured runs a CoffeeScript file and displays its output to the Sublime’s console window. This is useful when I want to quickly run a small CoffeeScript program that outputs to the console. The following screenshot shows this:</p>
+
+<p><img src="https://hectorcorrea.com/images/sublimetextconsole.png" alt="Sublime Text Console" title="Sublime Text Console" /></p>
+
+<p>To wire up this hotkey I created a new <i>Build System</i> for CoffeeScript files. You can do this via the Tools + Build System + New Build System menu option. Copy the following code inside the editor and save it as CoffeeScriptRun.sublime-build in the default directory (in my Mac the path was <code>~/Library/Application Support/Sublime Text 2/Packages/User</code>)</p>
+
+<p>For Mac</p>
+
+<pre class="code">
+{
+    "cmd": ["coffee", "$file"],
+    "selector" : "source.coffee",
+    "path" : "/usr/local/bin"
+}
+</pre>
+
+<p>For Windows</p>
+
+<pre class="code">
+{
+    "cmd": ["coffee", "$file"],
+    "selector" : "source.coffee"
+}
+</pre>
+
+<p>From now on, when I hit <b>command+B</b> (?+B) while editing a CoffeeScript file, Sublime automatically calls the CoffeeScript compiler with the current opened file. Command+B is the default key in Sublime Text to run the build command. You can also run this command from the menu by going to Tools + Build. The output of the CoffeeScript will be displayed in the Sublime Text console at the bottom of the screen.</p>
+
+
+<h2>Generate the JavaScript file for a CoffeeScript file</h2>
+
+<p>The second command that I configured was to re-generate the JavaScript file associated with a CoffeeScript file.</p>
+
+<p>One easy way to do this is to create another build file like I did above but use a slightly different command to tell the CoffeeScript compiler to produce a JavaScript file. The disadvantage of this approach is that then I have to toggle between build modes via the Tools + Build System and then use command+B to produce the JavaScript file. This is just too many steps for something that I need to do quite often.</p>
+
+<p>What I really wanted was a hotkey to re-generate the JavaScript file in one shot. To do this I had to create a new key binding (Sublime Text wording for hotkey) by going to the Sublime Text 2 + Preferences + Key bindings - User and entering the following text:</p>
+
+<pre class="code">
+[
+    { "keys": ["super+j"], "command": "coffeescript_to_javascript" }
+]
+</pre>
+
+<p>This tells Sublime to wire the <b>command+J</b> key to a command called “coffeescript_to_javascript”. The next step is to create the code associated with “coffeescript_to_javascript”. To do this I went to Tools + New Plugin... menu and replaced the default code with the following:</p>
+
+<pre class="code">
+import sublime, sublime_plugin
+
+class CoffeescriptToJavascript(sublime_plugin.TextCommand):
+  def run(self, edit):
+    self.view.window().run_command('exec', {'cmd': ["coffee", "-c", self.view.file_name()]})
+</pre>
+
+<p>Two things to notice in this code. One is that the name of the class (CoffeescriptToJavascript) is the CamelCase version of the name of the command (“coffeescript_to_javascript”) that I defined in the key bindings. This is very important as Sublime will automatically look for a class with the CamelCase version for the value defined in the key bindings.</p>
+
+<p>I wish I could remember where I stole the idea for this code, I know it was somewhere in the <a href="http://www.sublimetext.com/forum/">Sublime message board</a> but I didn’t save the link.</p>
+
+<p>The second thing to notice is that the run command in this code is calling the CoffeeScript compiler (coffee) and passing both the <code>-c</code> flag to produce the JavaScript and the name of the file to compile (which will be the name of the current file being edited.)</p>
+
+<p>I saved this plugin file as <code>CoffeeScriptCompile.py</code> in the same location where you saved the build file that we created before. I restarted Sublime to make sure the new plugin was loaded.</p>
+
+<p>From now on, when I use <b>command+J</b> Sublime runs <code>coffee -c somefile.coffee</code> and generates the corresponding <code>somefile.js</code> file. This command does not output the result to the console, though.</p>
+
+
+<h2>Outputting the JavaScript code to the Sublime Console</h2>
+
+<p>Lastly, using the steps defined in the previous section I created another plugin to output the JavaScript to Sublime’s console rather than to a file. This is very useful when I want to dig and see how a particular CoffeeScript feature is translated to its JavaScript equivalent.</p>
+
+<p>I wired this command to the <b>command+M</b> key and pass the <code>-p</code> flag to the CoffeeScript compiler to get the JavaScript to the standard output.</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

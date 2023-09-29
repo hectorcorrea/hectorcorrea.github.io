@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>The Model View Controller is dead, long live the Model View Controller</title>
+      <slug>the-model-view-controller-is-dead-long-live-the-model-view-controller</slug>
+      <summary>A review of some common misunderstandings when people talk about the Model View Controller and what are some other related patterns that might be more appropriated for the technology options that we have on this day and age.</summary>
+      <createdOn>2012-09-16 20:50:34</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2009-02-02 01:23:13 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>41</value>
+      </fields>
+  </TextEntry>
