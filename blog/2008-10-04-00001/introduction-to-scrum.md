@@ -1,3 +1,4 @@
+# Introduction to Scrum
 <img align="left" src="https://hectorcorrea.com/images/CodeMayJune2008.jpg" />My article Introduction to Scrum has been published in the [May/June 2008 issue of CoDe magazine](http://www.code-magazine.com/Article.aspx?quickid=0805051).
 
 As I said in this article:
