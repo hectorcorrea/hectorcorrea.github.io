@@ -1,3 +1,4 @@
+# Solr debugQuery
 `debugQuery` is a parameter that we can pass to Solr when submitting a query, with this parameter Solr will include extra information in the response that is useful to troubleshoot a variety of issues in Solr queries. The information returned is helpful to diagnose:
 
 * *how* is Solr interpreting a search query
