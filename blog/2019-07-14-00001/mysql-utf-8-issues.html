@@ -112,25 +112,56 @@
     </div>
 
     <div class="container">
-      <p>I am a software developer in Hartford, CT. This site is where I host <a href="https://hectorcorrea.com/blog/">my blog</a> and post small pieces about software development.</p>
+      <h1>MySQL UTF-8 issues</h1>
+<p>A few months ago I upgraded the machine where this website runs from a machine with Ubuntu 14 to one running Ubuntu 19. Because I was coming from a very old version of Ubuntu I decided to create a brand new virtual machine with Ubuntu 19 and move the content myself rather than letting Ubuntu attempt to migrate my stuff.</p>
 
-<p>I have been a software developer for many years. Since 2014 my focus has been on Ruby on Rails applications for academic libraries with a strong focus on indexing and searching data through Apache Solr and on institutional repositories.</p>
+<p>This was a good idea because a lot has changed from Ubuntu 14 to Ubuntu 19, plus it gave me the chance to start from a clean slate. However, in doing the migration manually I missed the step to configure the MySQL database to use UTF-8 and I left it instead with the default of Latin 1.</p>
 
-<p>Currently I work at the Princeton University Library as part of the team that develops the applications to manage <a href="https://datacommons.princeton.edu/discovery/">research data</a> (<a href="https://github.com/pulibrary/pdc_discovery/">code</a>). I have also been involved in the <a href="https://catalog.princeton.edu/">discovery application for the catalog</a> and its related services (<a href="https://github.com/pulibrary/bibdata">code</a>).</p>
+<p>This resulted in a few of the blogs displaying a bunch strange characters for things that are not part of the Latin 1 character set, for example several of the blogs where showing <code>Â</code> or <code>â€™</code> and you'll see  <code>Iâ€™ve</code> instead of  <code>I've</code>.</p>
 
-<p>From 2016 to 2020 I worked at the Brown University Library on several projects related to discovery (<a href="https://github.com/Brown-University-Library/bul-search">code</a>), <a href="https://vivo.brown.edu/">research profiles</a> (<a href="https://github.com/Brown-University-Library/vivo-on-rails">code</a>), and <a href="https://www.riamco.org/">archives</a> (<a href="https://github.com/Brown-University-Library/riamco">code</a>). Most of these applications were Ruby on Rails applications using Solr, some of them through Blacklight others straight through.</p>
+<p>When I saw this I knew right away that the problem was character encoding in the database, but I wasn't sure how to fix the data. Turns out there were two steps that I had to take.</p>
 
-<p>From 2014 to 2016 I worked at Penn State on the development of <a href="https://scholarsphere.psu.edu/">ScholarSphere</a>, Penn State&#39;s institutional repository (<a href="https://github.com/psu-stewardship/scholarsphere">code</a>).</p>
+<h2>Step 1 - configure the database</h2>
 
-<p>Before academic libraries I was heavily involved on the Microsoft stack (C#, ASP.NET MVC, SQL Server) building complex and high-volume applications for a variety of industries.</p>
+<p>The first step was to configure the database to use UTF-8 character set. This was pretty straight forward. From the MySQL prompt I issued the following command to see what the current character set was, notice that it reported <code>latin1</code>:</p>
 
-<p>My main areas of interest are web development in small and collaborative teams. I also enjoy learning new and interesting technologies and you'll find a wide variety of topics in my blog including algorithms and data structures, Go, Ruby on Rails, Node.js/JavaScript, Solr, C#/ASP.NET MVC, NoSQL databases, Linked Data, and software development in general.</p>
+<pre>
+mysql&gt; SELECT @@character_set_database, @@collation_database;
++--------------------------+----------------------+
+| @@character_set_database | @@collation_database |
++--------------------------+----------------------+
+| latin1                   | latin1_swedish_ci    |
++--------------------------+----------------------+
+</pre>
 
-<p>I hold a Bachelor of Science in Computer Science from Instituto Tecnológico de Colima (Mexico) and several certifications including Microsoft Certified Software Developer (MCSD), ScrumMaster, and MongoDB for Developers (M101P).</p>
+<p>Then I changed the character set to <code>utf8</code> via the <code>ALTER DATABASE</code> command:</p>
 
-<p>In the last few years I've given presentations at local events as well as regional and national conferences in a variety of topics including <a href="https://github.com/hectorcorrea/solr-for-newbies">Solr</a>, <a href="https://hectorcorrea.com/blog/introduction-to-node-js/51">Node.js</a>, <a href="https://www.slideshare.net/hectorwashere/introduction-to-nosql-with-mongodb">NoSQL/MongoDB</a>, <a href="https://hectorcorrea.com/blog/introduction-to-ldp/67">Linked Data</a>, and <a href="https://hectorcorrea.com/blog/build-your-own-software/70">sustainable software development</a>.</p>
+<pre>
+mysql&gt; ALTER DATABASE blogdb CHARACTER SET utf8 COLLATE utf8_general_ci;
+Query OK, 1 row affected (0.00 sec)
 
-<p>Feel free to browse around and contact me at <a href="mailto:hector@hectorcorrea.com">hector@hectorcorrea.com</a> if you have any questions or comments.</p>
+mysql&gt; SELECT @@character_set_database, @@collation_database;
++--------------------------+----------------------+
+| @@character_set_database | @@collation_database |
++--------------------------+----------------------+
+| utf8                     | utf8_general_ci      |
++--------------------------+----------------------+
+</pre>
+
+<h2>Step 2 - update the data</h2>
+
+<p>Setting the character set as I did above makes sure that the database uses UTF-8 as I save new data into it, but it did not update the records already stored on it. I found <a href="https://stackoverflow.com/a/9305294/446681">this answer</a> in StackOverflow that shows how to convert the existing data from one character set to another.</p>
+
+<p>In my case I ran a SQL script that converted the <code>contentMd</code> field to <code>binary</code> and then to <code>utf8</code> and that took care of the issue:</p>
+
+<pre>
+mysql&gt; update blogs set contentMd = convert(convert(contentMd using binary) using utf8);
+</pre>
+
+<h2>Final words</h2>
+<p>Of course, I backed up the database before and after I did these steps, just in case, but so far, it looks like the data now is handled correctly.</p>
+
+<p>I also updated my server notes to remind me to configure the character set if I ever setup a brand new Ubuntu box. You can see my Ubuntu Server configuration notes on this <a href="https://github.com/hectorcorrea/ubuntuserver">GitHub repo</a>.</p>
 
     </div>
 

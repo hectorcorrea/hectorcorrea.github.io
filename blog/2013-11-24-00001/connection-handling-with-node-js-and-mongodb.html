@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>Connection handling with Node.js and MongoDB</h1>
+<p>One of the things that trips most newcomers to Node.js and MongoDB is how different the process to connect to databases from Node.js is compared to other programming environments.</p>
+
+<p>For example, the pseudo-code below is a typical example of how database connection is handled in most programming environments:</p>
+
+<pre class="code">
+db = driver.openDB("connection string")
+data = db.find("some-query")
+db.close()
+// do something with the data
+</pre>
+
+<p>The general concept <b>in most programming environments</b> is to connect to the database only when you need to access data and to <b>disconnect from it as soon as you are done accessing it</b>. This process makes perfect sense in multi-threaded environments because there could be hundreds of concurrent threads trying to access the database and, unless you close your database connection, you might run out of connection handlers. Internally database drivers create and manage a connection pool to share a limited number of network connections with a potentially large number of clients. However, the client must close its connection in order for a connection from the pool to be available to other threads.</p>
+
+<p><b>In Node.js</b> since there is only <a href="http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/">one thread</a> executing JavaScript code there is <i></i>no need to close the database connection as soon as your request completes*. You can and should open the database connection once and leave it open for as long as your web site is running. This allows the next request to use an already opened connection rather than having to re-open the connection to MongoDB on every request. You could close the connection as soon as you are done using it, but at least with MongoDB, there is no real reason to do so. In fact it is recommended that you keep it open. The following quote is from <a href="https://groups.google.com/d/msg/node-mongodb-native/mSGnnuG8C1o/Hiaqvdu1bWoJ">Christian Amor Kvalheim</a>, one of the authors of the MongoDB driver for Node.js:</p>
+
+<blockquote>
+You open do MongoClient.connect once when your app boots up and reuse the db object. [...]<br/>
+So open it once an reuse across all requests.<br/>
+</blockquote>
+
+<p>This means that the pseudo-code to do database access in with Node.js and MongoDB is as follow:</p>
+
+<pre class="code">
+// Connect <i>once</i> to the DB as soon as your program is loaded
+db = driver.openDB("connection string")
+
+// ...on every request..
+// when you need access to the database assume is already opened
+data = db.find("some-query")
+
+// do something with the data
+// and don't close the connection
+</pre>
+
+
+<h2>Problems with Keeping the Database Open</h2>
+
+<p>Keeping the database open means that you need to maintain an object around to reuse the connection. This is fine except that passing a <i>database object</i> around means that several layers of your application are now passing an object that they really shouldn't know anything about. For example, if your Node.js application is an Express.js application, you will probably connect to the database in your main <i>server.js</i> program, save the value to a <i>db</i> variable, pass this variable around to your <i>routes</i> which in turn will pass it to your <i>models</i>. This is doable but ugly.</p>
+
+
+<h2>Handling Disconnects</h2>
+
+<p>The other issue to consider is what happens if you connect to the database successfully when your site first launches, but then you lose connectivity to the database. When this happens <b>the MongoDB driver for Node.js will hang</b> when trying to execute commands on this bad connection. It would be nice if the driver would timeout and let you know that the database is not longer available, but that's not how it works. I've played with some of the server parameters like <a href="http://mongodb.github.io/node-mongodb-native/driver-articles/mongoclient.html#server-a-hash-of-options-at-the-server-level-not-supported-by-the-url">connectTimeoutMS and socketTimeoutMS</a> to no avail.</p>
+
+<p>Fortunately, as indicated in this <a href="http://stackoverflow.com/questions/18688282/handling-timeouts-with-node-js-and-mongodb">StackOverflow post</a> the MongoDB client for Node.js issues a <b>close event</b> as soon as it loses connectivity to the database. You can tap into this event an invalidate your existing connection object.</p>
+
+
+<h2>mongoconnect Module</h2>
+
+<p>I've written a Node.js module called <i>mongoconnect</i> that you can use to make the handling of connections to MongoDB from Node.js a black box so that you don't have to worry about the issues that I've mentioned in this blog post. This module is just a wrapper around the native <a href="http://mongodb.github.io/node-mongodb-native/api-generated/mongoclient.html#mongoclient-connect">MongoClient.connect</a> which means that you still get to use all the built-in functionality that the driver provides, but without having to worry about connect/disconnect issues.</p>
+
+<p>To get started you can install this module from NPM.</p>
+
+<pre class="terminal">
+npm install mongoconnect
+</pre>
+
+<p>Once installed you call the <code>setup()</code> method to configure what database you will connect to. This is something that you will typically do in your main <i>server.js</i> program.</p>
+
+<pre class="code">
+// In your server.js
+var mongoConnect = require('mongoconnect');
+mongoConnect.setup('mongodb://localhost:27017/yourDB');
+</pre>
+
+<p>Once configured then you just need to call the <code>execute()</code> method anywhere that you need to execute a command against MongoDB. For example, if you need to find a list of documents in your <i>blogModel.js</i> file you can do the following:</p>
+
+<pre class="code">
+// In blogModel.js
+var mongoConnect = require('mongoconnect');
+exports.getAll = function(callback) {
+
+  mongoConnect.execute(function(err, db) {
+
+    if(err) {
+      // could not connect (or reconnect) to the DB
+      return callback(err);    
+    }
+
+    db.collection('blog').find().toArray(function(err, docs) {
+
+      if(err) {
+        // could not fetch data
+        return callback(err);
+      }
+      // let our callback handle the data
+      callback(null, docs);
+
+    }); 
+
+  });
+
+};
+</pre>
+
+<p>The beauty of <code>mongoConnect.execute()</code> is that you don't have to worry about opening the database, checking if it has already been opened, or if the connection is still valid. The <code>execute()</code> method does this for you. By the time your code is executed you just need to check the <i>err</i> and <i>db</i> values passed to you. You can find more documentation about this module and <a href="https://github.com/hectorcorrea/mongoConnect">the entire source code in this GitHub repo</a>.</p>
+
+<p>The way this module is written at this time <b>it only supports connecting to one single MongoDB database</b>. This is fine for most small applications but you might want to make changes to it if you need to connect to multiple databases...or shoot me and e-mail and I might do that for you :)</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

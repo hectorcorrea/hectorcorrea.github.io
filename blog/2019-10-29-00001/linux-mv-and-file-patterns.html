@@ -112,25 +112,85 @@
     </div>
 
     <div class="container">
-      <p>I am a software developer in Hartford, CT. This site is where I host <a href="https://hectorcorrea.com/blog/">my blog</a> and post small pieces about software development.</p>
+      <h1>Linux mv and file patterns</h1>
+<p>Last week I ran into an interesting issue renaming a bunch of files in my machine. The command I ran was:</p>
 
-<p>I have been a software developer for many years. Since 2014 my focus has been on Ruby on Rails applications for academic libraries with a strong focus on indexing and searching data through Apache Solr and on institutional repositories.</p>
+<pre>
+$ mv &#42;.jpeg &#42;.jpg
+</pre>
 
-<p>Currently I work at the Princeton University Library as part of the team that develops the applications to manage <a href="https://datacommons.princeton.edu/discovery/">research data</a> (<a href="https://github.com/pulibrary/pdc_discovery/">code</a>). I have also been involved in the <a href="https://catalog.princeton.edu/">discovery application for the catalog</a> and its related services (<a href="https://github.com/pulibrary/bibdata">code</a>).</p>
+<p>I was expecting this command to rename all <code>.jpeg</code> files to <code>.jpg</code> but instead the command returned</p>
 
-<p>From 2016 to 2020 I worked at the Brown University Library on several projects related to discovery (<a href="https://github.com/Brown-University-Library/bul-search">code</a>), <a href="https://vivo.brown.edu/">research profiles</a> (<a href="https://github.com/Brown-University-Library/vivo-on-rails">code</a>), and <a href="https://www.riamco.org/">archives</a> (<a href="https://github.com/Brown-University-Library/riamco">code</a>). Most of these applications were Ruby on Rails applications using Solr, some of them through Blacklight others straight through.</p>
+<pre>
+$ mv &#42;.jpeg &#42;.jpg
+usage: mv [-f | -i | -n] [-v] source target
+       mv [-f | -i | -n] [-v] source ... directory
+</pre>
 
-<p>From 2014 to 2016 I worked at Penn State on the development of <a href="https://scholarsphere.psu.edu/">ScholarSphere</a>, Penn State&#39;s institutional repository (<a href="https://github.com/psu-stewardship/scholarsphere">code</a>).</p>
+<p>At first I thought I had a typo in my command but the reality is that this is not a valid <code>mv</code> command.</p>
 
-<p>Before academic libraries I was heavily involved on the Microsoft stack (C#, ASP.NET MVC, SQL Server) building complex and high-volume applications for a variety of industries.</p>
+<p>The culprit is that my shell (Bash) is expanding <code>&#42;.jpeg</code> and <code>&#42;.jpg</code> <i>before</i> executing the <code>mv</code> command and understandably <code>mv</code> refuses to continue. To illustrate this let's assume there are two <code>.jpeg</code> files and no <code>.jpg</code> files on my machine, when I execute my original command what Bash passes to <code>mv</code> is something like this:</p>
 
-<p>My main areas of interest are web development in small and collaborative teams. I also enjoy learning new and interesting technologies and you'll find a wide variety of topics in my blog including algorithms and data structures, Go, Ruby on Rails, Node.js/JavaScript, Solr, C#/ASP.NET MVC, NoSQL databases, Linked Data, and software development in general.</p>
+<pre>
+$ mv file1.jpeg file2.jpeg &#42;.jpg
+</pre>
 
-<p>I hold a Bachelor of Science in Computer Science from Instituto Tecnológico de Colima (Mexico) and several certifications including Microsoft Certified Software Developer (MCSD), ScrumMaster, and MongoDB for Developers (M101P).</p>
+<p>Notice that Bash expanded <code>&#42;.jpeg</code> into the two individual files and  <code>&#42;.jpg</code> stayed as-is since there is nothing to expand it into. Certainly not what I was intending to do. A few searches on the web showed many people having this same problem, here is <a href="https://unix.stackexchange.com/questions/181141/rename-multiple-files-with-mv-to-change-the-extension">one example</a>.</p>
 
-<p>In the last few years I've given presentations at local events as well as regional and national conferences in a variety of topics including <a href="https://github.com/hectorcorrea/solr-for-newbies">Solr</a>, <a href="https://hectorcorrea.com/blog/introduction-to-node-js/51">Node.js</a>, <a href="https://www.slideshare.net/hectorwashere/introduction-to-nosql-with-mongodb">NoSQL/MongoDB</a>, <a href="https://hectorcorrea.com/blog/introduction-to-ldp/67">Linked Data</a>, and <a href="https://hectorcorrea.com/blog/build-your-own-software/70">sustainable software development</a>.</p>
+<p>Working around this issue was easy enough. I wrote a quick shell script to do the job:</p>
 
-<p>Feel free to browse around and contact me at <a href="mailto:hector@hectorcorrea.com">hector@hectorcorrea.com</a> if you have any questions or comments.</p>
+<pre>
+for FILE in &#96;ls -1 &#42;.jpeg&#96;
+do
+    BASENAME=&#96;basename $FILE .jpeg&#96;
+    TARGET=$BASENAME".jpg"
+    mv $FILE $TARGET
+done
+</pre>
+
+<p>I posted about this issue on Twitter and got several suggestions on how to make this script better. The solution provided by <a href="https://twitter.com/borwick/status/1188697953768050689">John Borwick</a> in particular is very neat:</p>
+
+<pre>
+for FILE in &#42;.jpeg
+do
+    TARGET="${FILE%.jpeg}.jpg"
+    mv "$FILE" "$TARGET"
+done
+</pre>
+
+<p>A few other people suggested that I use either <code>rename</code> or <code>mmv</code> to do what I was trying to do. Both of these utilities can be installed easily on Mac or Linux systems.</p>
+
+<p>Using <a href="https://www.cgarbs.de/blog/archives/430-mmv-mass-rename-of-files-and-more!.html">mmv</a> the syntax to rename the files is:</p>
+
+<pre>
+$ mmv -n "&#42;.jpeg" "#1.jpg"
+</pre>
+
+<p>Using <a href="https://www.putorius.net/rename-command-linux.html">rename</a> the syntax is:</p>
+
+<pre>
+$ rename -xa .jpg &#42;.jpeg
+</pre>
+
+<p>One of the things that dawned on me while reading the blog post for <a href="https://www.cgarbs.de/blog/archives/430-mmv-mass-rename-of-files-and-more!.html">mmv</a> and the local man pages for <code>rename (1)</code> was that my original command would have worked in DOS, and I was a DOS/Windows user a long time ago. The <code>mmv</code> blog post even says</p>
+
+<blockquote>
+Under good old DOS you could rename multiple files by saying<br/>
+REN A&#42;.&#42; B&#42;.&#42;<br/>
+</blockquote>
+
+<p>but the reason this worked is because DOS had pretty simple shell that didn't support Unix style pathname pattern expansion (glob). The man page for <code>rename (1)</code> on my system even has the following note:</p>
+
+<blockquote>
+...<br/>
+-g, --glob<br/>
+   Glob filename arguments. This is useful if you're using a braindead shell such as cmd.exe which won't expand wildcards on behalf of the user.<br/>
+...<br/>
+</blockquote>
+
+<p>So that explains why I was so puzzled. I probably did rename files with a command "like this" before, but it must have been 10 years or so ago and in a different operating system :)</p>
+
+<p><b>Note:</b> Beware that <code>rename</code> is a native system function in Linux systems and <code>man rename</code> might give you information about the function <code>rename (2)</code> rather than the program <code>rename (1)</code> if the program is not installed on your machine. See <a href="https://unix.stackexchange.com/questions/3586/what-do-the-numbers-in-a-man-page-mean">also</a>.</p>
 
     </div>
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Linux mv and file patterns</title>
+      <slug>linux-mv-and-file-patterns</slug>
+      <summary>A short post on a curiosity that I ran into when trying to rename files using two file patterns via the Linux mv program</summary>
+      <createdOn>2019-10-29 18:44:14</createdOn>
+      <updatedOn>2019-11-01 17:25:01 +0000 UTC</updatedOn>
+      <postedOn>2019-10-29 23:22:08 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>81</value>
+      </fields>
+  </TextEntry>

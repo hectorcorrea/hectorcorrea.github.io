@@ -112,25 +112,64 @@
     </div>
 
     <div class="container">
-      <p>I am a software developer in Hartford, CT. This site is where I host <a href="https://hectorcorrea.com/blog/">my blog</a> and post small pieces about software development.</p>
+      <h1>String encoding in Ruby and JSON.generate()</h1>
+<p>Last week at work we ran into an interesting string encoding issue. The gist of the problem is that we had a string that was valid in Ruby but Ruby threw an exception when we used it in a call to <code>JSON.generate()</code>. Below is a simplified version of this scenario:</p>
 
-<p>I have been a software developer for many years. Since 2014 my focus has been on Ruby on Rails applications for academic libraries with a strong focus on indexing and searching data through Apache Solr and on institutional repositories.</p>
+<pre>
+&gt;&gt; text = "\x81ru"
+=&gt; "\x81ru"
 
-<p>Currently I work at the Princeton University Library as part of the team that develops the applications to manage <a href="https://datacommons.princeton.edu/discovery/">research data</a> (<a href="https://github.com/pulibrary/pdc_discovery/">code</a>). I have also been involved in the <a href="https://catalog.princeton.edu/">discovery application for the catalog</a> and its related services (<a href="https://github.com/pulibrary/bibdata">code</a>).</p>
+&gt;&gt; hash = { "language" =&gt; text }
+=&gt; {"language"=&gt;"\x81ru"}
 
-<p>From 2016 to 2020 I worked at the Brown University Library on several projects related to discovery (<a href="https://github.com/Brown-University-Library/bul-search">code</a>), <a href="https://vivo.brown.edu/">research profiles</a> (<a href="https://github.com/Brown-University-Library/vivo-on-rails">code</a>), and <a href="https://www.riamco.org/">archives</a> (<a href="https://github.com/Brown-University-Library/riamco">code</a>). Most of these applications were Ruby on Rails applications using Solr, some of them through Blacklight others straight through.</p>
+&gt;&gt; JSON.generate(hash)
+=&gt; [...] JSON::GeneratorError (source sequence is illegal/malformed utf-8)
 
-<p>From 2014 to 2016 I worked at Penn State on the development of <a href="https://scholarsphere.psu.edu/">ScholarSphere</a>, Penn State&#39;s institutional repository (<a href="https://github.com/psu-stewardship/scholarsphere">code</a>).</p>
+&gt;&gt; puts text
+?ru
+=&gt; nil
+</pre>
 
-<p>Before academic libraries I was heavily involved on the Microsoft stack (C#, ASP.NET MVC, SQL Server) building complex and high-volume applications for a variety of industries.</p>
+<p>Notice how Ruby accepts the string and that I am able to use it in a hash, but then <code>JSON.generate()</code> throws an exception when it tries to use it.</p>
 
-<p>My main areas of interest are web development in small and collaborative teams. I also enjoy learning new and interesting technologies and you'll find a wide variety of topics in my blog including algorithms and data structures, Go, Ruby on Rails, Node.js/JavaScript, Solr, C#/ASP.NET MVC, NoSQL databases, Linked Data, and software development in general.</p>
+<p>If I print the string to the console with <code>puts text</code> the output is <code>?ru</code> which is already suspicious, notice the "?" at the beginning. Something is amiss with this string but what is it? And why can I pass it around but then <code>JSON.generate()</code> throws an error?</p>
 
-<p>I hold a Bachelor of Science in Computer Science from Instituto Tecnológico de Colima (Mexico) and several certifications including Microsoft Certified Software Developer (MCSD), ScrumMaster, and MongoDB for Developers (M101P).</p>
+<h2>Digging into the issue</h2>
+<p>The exception reported makes it clear that this is an encoding issue, the text itself says "malformed utf-8". In looking for information about string encoding in Ruby I ran into the post <a href="https://tenderlovemaking.com/2020/01/13/guide-to-string-encoding-in-ruby.html">Guide to String Encoding in Ruby</a> by Aaron Patterson that helped me get a better understanding of the problem.</p>
 
-<p>In the last few years I've given presentations at local events as well as regional and national conferences in a variety of topics including <a href="https://github.com/hectorcorrea/solr-for-newbies">Solr</a>, <a href="https://hectorcorrea.com/blog/introduction-to-node-js/51">Node.js</a>, <a href="https://www.slideshare.net/hectorwashere/introduction-to-nosql-with-mongodb">NoSQL/MongoDB</a>, <a href="https://hectorcorrea.com/blog/introduction-to-ldp/67">Linked Data</a>, and <a href="https://hectorcorrea.com/blog/build-your-own-software/70">sustainable software development</a>.</p>
+<p>One of the things that Patterson makes clear is that the <i>encoding</i> of a string is a separate property of the string. The string itself is an array of bytes and the encoding is a separate object that is related to the string. This is why it's possible to have strings (i.e. sequence of bytes) assigned to the wrong encoding.</p>
 
-<p>Feel free to browse around and contact me at <a href="mailto:hector@hectorcorrea.com">hector@hectorcorrea.com</a> if you have any questions or comments.</p>
+<p>Ruby provides some helpful methods to dig further into a string and its encoding. The method <code>valid_encoding?</code> for example checks the string against its current encoding and reports whether it's valid or not. Below is an example of how our problematic string is reported:</p>
+
+<pre>
+&gt;&gt; text = "\x81ru"
+=&gt; "\x81ru"
+
+&gt;&gt; text.encoding
+=&gt; #&lt;Encoding:UTF-8&gt;
+
+&gt;&gt; text.valid_encoding?
+=&gt; false
+</pre>
+
+<p>As we can see the string is assigned UTF-8 encoding by default but this particular string is <b>not</b> valid UTF-8.</p>
+
+<p>The fact that the bytes and the encoding are separate explains why we can have a string with an incorrect encoding and why we were able to pass it around and use it (like inside a hash). The post by Patterson provides more information on why this is a good design and reviews other methods that we can use to handle encodings in Ruby strings.</p>
+
+<h2>JSON.generate() error</h2>
+<p>So now we know why we were able to store our problematic string and pass it around. The last piece of the puzzle is to find out why does <code>JSON.generate()</code> throw an exception when it tries to use it. My guess is that <code>JSON.generate()</code> is somehow making sure the string is valid for the UTF-8 encoding and since it isn't it throws an exception.</p>
+
+<p>I can force Ruby to throw a similar (but not identical) exception with the following code:</p>
+
+<pre>
+&gt;&gt; text = "\x81ru"
+=&gt; "\x81ru"
+
+&gt;&gt; text.encode("ASCII", "UTF-8")
+[...] Encoding::InvalidByteSequenceError ("\x81" on UTF-8)
+</pre>
+
+<p>I found the text of the original exception "source sequence is illegal/malformed utf-8" inside the Ruby source code. It seems to me that the code for <code>JSON.generate()</code> relies on <a href="https://github.com/ruby/ruby/blob/d92f09a5eea009fa28cd046e9d0eb698e3d94c5c/ext/json/generator/generator.c#L140-L143">this C code</a> to make sure the string is valid UTF-8 before using it, but I am not familiar with the Ruby source code so take this with a grain of salt.</p>
 
     </div>
 

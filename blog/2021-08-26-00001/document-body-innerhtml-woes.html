@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>document body innerHTML woes</h1>
+<p>Today I ran into an issue setting the value of <code>document.body.innerHTML</code> that caught me by surprise. I have always known that I can set an HTML fragment to <code>document.body.innerHTML</code> and the rendering engine (the browser usually) does the right thing and renders it correctly. You can even pass a <i>malformed HTML</i> and the rendering engine usually makes pretty good guesses and parses it correctly.</p>
+
+<p>But today I used a fragment that caused the rendering engine to parse the HTML in a way that had me confused for a while. What was worse, is that the HTML that I used was properly formed, but turns out it was incomplete in a way that the rendering engine parsed it all wrong.</p>
+
+
+<h2>A good fragment</h2>
+<p>Below is an example of a good HTML fragment that the browser knows how to parse:</p>
+
+<pre>
+document.body.innerHTML = "&lt;p&gt;hello &lt;b&gt;world&lt;/b&gt;&lt;/p&gt;"
+console.log(document.body.innerHTML)
+
+&lt;p&gt;hello &lt;b&gt;world&lt;/b&gt;&lt;/p&gt;
+</pre>
+
+<p>Notice that there is no <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, or <code>&lt;body&gt;</code> HTML tag and yet the browser parses this correctly. You can test this by opening a <i>new browser window</i>, then <i>inspect</i> the page, and on the <i>console</i> type the line above.</p>
+
+<p>In the examples in this post I print via <code>console.log(document.body.innerHTML)</code> the value assigned rather than relying on the value that the browser displays immediately after the assignment. This is important because the value assigned could be different from the value given since the browser parses it before assigning it. This is what the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML">MDN documentation</a> says on the subject:</p>
+
+<blockquote>
+Setting the value of innerHTML removes all of the element's descendants and replaces them with nodes constructed by parsing the HTML given in the string htmlString.<br/>
+</blockquote>
+
+
+<h2>A malformed fragment</h2>
+<p>Now let's see what happens if I use a malformed HTML fragment. In the example below I replaced the <code>&lt;b&gt;</code> HTML tag with <code>&lt;span&gt;</code> but I left the closing <code>&lt;/b&gt;</code> tag and did not include a closing <code>&lt;/span&gt;</code> tag.</p>
+
+<pre>
+document.body.innerHTML = "&lt;p&gt;hello &lt;span&gt;world&lt;/b&gt;&lt;/p&gt;"
+</pre>
+
+<p>In this case the browser is pretty smart and will parse this correctly and if you were to print the new value to the console you will see something similar to this:</p>
+
+<pre>
+document.body.innerHTML = "&lt;p&gt;hello &lt;span&gt;world&lt;/b&gt;&lt;/p&gt;"
+console.log(document.body.innerHTML)
+
+&lt;p&gt;hello &lt;span&gt;world&lt;/span&gt;&lt;/p&gt;
+</pre>
+
+<p>Notice how the value that was parsed and eventually assigned to <code>document.body.innerHTML</code> includes the proper <code>&lt;span&gt;</code> and <code>&lt;/span&gt;</code> tags and ditches the extra closing <code>&lt;/b&gt;</code> tag. The browser had to guess and it did a pretty good job. You could argue that it could have replaced the opening <code>&lt;span&gt;</code> tag and with <code>&lt;b&gt;</code> but the browser had to make a choice and what it did is reasonable.</p>
+
+
+<h2>A problematic fragment</h2>
+<p>But today, while dealing with an HTML fragment that was part of a table I ran into a strange issue that turns out has a perfectly valid explanation.</p>
+
+<p>Below is a simplified version of fragment that I had: a table with just one row and two columns. Notice how there is not <code>&lt;table&gt;</code> HTML tag, instead there is <code>&lt;tbody&gt;</code>, and turns out that was the real issue behind my problem:</p>
+
+<pre>
+document.body.innerHTML = "&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;span&gt;row 1, colum 1&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;row 1, column 2&lt;/span&gt;&lt;tr&gt;&lt;/tbody&gt;"
+console.log(document.body.innerHTML)
+
+&lt;span&gt;row 1, colum 1&lt;/span&gt;&lt;span&gt;row 1, column 2&lt;/span&gt;
+</pre>
+
+<p>Because there was no <code>&lt;table&gt;</code> HTML tag the rendering engine did not know what to do with the <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code> tags and discarded them and just preserved the <code>&lt;span&gt;</code> tags. This resulted in a very different HTML document than the one that I intended, and because in my case I needed this HTML fragment for a JavaScript test against the DOM this was a big problem. Plus in my case the HTML table was much bigger than this example and that made the problem harder to spot since the resulting HTML looks OK at first glance.</p>
+
+<p>If my HTML fragment had started with <code>&lt;table&gt;</code> instead of <code>&lt;tbody&gt;</code> the rendering engine would have parsed the fragment correctly and preserved the <code>&lt;tr&gt;</code> and <code>&lt;td&gt;</code> tags, heck it even added the missing <code>&lt;tbody&gt;</code> tag if I don't put it:</p>
+
+<pre>
+document.body.innerHTML = "&lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;span&gt;row 1, colum 1&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;row 1, column 2&lt;/span&gt;&lt;tr&gt;&lt;/table&gt;"
+console.log(document.body.innerHTML)
+
+&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;span&gt;row 1, colum 1&lt;/span&gt;&lt;/td&gt;&lt;td&gt;&lt;span&gt;row 1, column 2&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+</pre>
+
+<p>The moral of the story is to make sure that the HTML fragment that you assign to <code>document.body.innerHTML</code> is parsed as you would expect.</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

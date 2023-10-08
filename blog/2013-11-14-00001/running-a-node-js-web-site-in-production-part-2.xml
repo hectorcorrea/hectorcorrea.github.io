@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Running a Node.js web site in production (part 2)</title>
+      <slug>running-a-node-js-web-site-in-production-part-2</slug>
+      <summary>Last year I blogged about my first experiences hosting a Node.js website in production and the things that you need to consider like running on port 80, reboots, crashes, security, and so on. This blog post is an update to that post a year later.</summary>
+      <createdOn>2013-11-14 04:25:58</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2013-11-23 19:57:54 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>53</value>
+      </fields>
+  </TextEntry>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Log4Shell and Solr</title>
+      <slug>log4shell-and-solr</slug>
+      <summary>A post on how the Log4Shell vulnerability affects Solr and how to validate that you have fixed it.</summary>
+      <createdOn>2021-12-13 20:40:33</createdOn>
+      <updatedOn>2022-01-12 19:36:08 +0000 UTC</updatedOn>
+      <postedOn>2021-12-13 22:36:21 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>88</value>
+      </fields>
+  </TextEntry>

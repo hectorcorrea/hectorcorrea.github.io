@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>Goodbye Gmail</h1>
+<p>One of the advantages of owning my web domain is that I can host my website and email anywhere I like. This allows me to switch web or mail providers without having to change my domain or email address. This week I <i>moved my email from being hosted at Gmail to be hosted at a different provider</i> and deleted my Google account entirely. This blog post elaborates on why I did and I how I went about it.</p>
+
+
+<h2>Background</h2>
+<p>I hosted my email for <code>hector@hectorcorrea.com</code> with Gmail for many years. I don't remember well how I hosted it before that, I have a vague recollection of hosting it on an Exchange server at home at some point and later on using the built-in email service that my web hosting company provided.</p>
+
+<p>When I first switched to Gmail to host my email in 2007 I remember I was really happy with the hands-off approach that Gmail afforded me and I was particularly impressed with the spam filter that they provided. Overnight I went from having to worry about spam to not having to worry about it at all. Back then <i>I knew</i> Google was analyzing the text of my email in order to detect spam and it was well known that they were using this analysis to provide better advertising via the little ads at the top of the page. I was OK with that.</p>
+
+<p>As time went on, I became a little concerned on how much of my information I was sharing with Google: email, search history, Google Documents, calendars, and so on. A few years ago I started using <a href="https://duckduckgo.com/">DuckDuckGo</a> as my default search engine and switched to <a href="https://www.mozilla.org/">FireFox</a> as my default browser in at attempt to reduce how much of my identity I share with Google in the form of search and browse history but I didn't do much else.</p>
+
+<p>Last year when Google accidentally started <a href="https://www.blog.google/products/docs/protecting-our-google-docs-and-drive-users/">blocking people's access</a> to their own Google Documents was a wake up call for me. This incident highlighted how much Google is working on <i>analyzing the content and context</i> of all the data that they host for me "for free". One thing is knowing that Google is parsing the text looking for words like "software development" to detect that I probably want advertising on software development books, but knowing that their analysis is becoming smarter at making connections with all the data that <i>I was storing at their servers</i> made me uneasy.</p>
+
+<p>Reading <a href="https://nyupress.org/books/9781479837243/">Algorithms of Oppression</a> by Safiya Umoja Noble earlier this year was another wake up call. Noble makes it clear that at its core, Google is an advertising company, not a search company. With this perspective I became more concerned about all the data that I was giving Google to store for me. Is it worth it?</p>
+
+<p>The last straw for me was the recent addition of <a href="https://www.blog.google/products/gmail/save-time-with-smart-reply-in-gmail/">smart reply</a> buttons on their email service. All of a sudden when I get an email Gmail suggests a few potential quick replies that I could use. These replies are contextual, Gmail gives different suggestions depending on the content of the email. In one email it will suggest "It's working", "Success", and "Got it!" and in another "OK, I'll take a look", "Will do", "Thanks, I'll check them out". That was a clear indication on how deep into the content of my email Google is going. I was OK with Google doing some <i>word matching</i> with my information but at one point they crossed the line into a more deep and personal analysis of my email. I was not comfortable with this.</p>
+
+
+<h2>Webmail providers</h2>
+
+<p>A few weeks ago I started looking for alternatives for hosting my email outside of Gmail. One of the things that became clear to me is that if I don't want companies to dig into my email <i>I will need to pay for email hosting</i> (what a concept, right?). I didn't think any of the major free email providers like Outlook and Yahoo were going to be any different from Gmail when it comes to the privacy of my information. As the saying goes <a href="https://www.forbes.com/sites/marketshare/2012/03/05/if-youre-not-paying-for-it-you-become-the-product/">if you're not paying for it, you become the product</a>. For a service that I depend on as much as I do, paying for email sounds reasonable to me, even though I have never paid for it before.</p>
+
+<p>I found a good reference of <a href="https://en.wikipedia.org/wiki/Comparison_of_webmail_providers">major webmail providers</a> in Wikipedia and I looked at several of the options. In the end I was between ProtonMail and FastMail.</p>
+
+<p><a href="https://protonmail.com/">ProtonMail</a> has gotten a lot of of publicity recently because they have a strong focus on privacy, they store email encrypted in a way that not even they can read it. The downside of this approach is that you cannot check your email with some of the standard Mail apps, for example it does not work with the built-in Mail application on the iPhone, instead you must use their own Mail application which supports passing the encryption keys.</p>
+
+<p>For my needs I found that <a href="https://www.fastmail.com/">FastMail</a> was good enough. They might not be as strong on privacy as ProtonMail but I trust that they won't be mining my information the way Google does. And they are reasonable priced, the entry level plan is $30 per year.</p>
+
+
+<h2>Making the switch to FastMail</h2>
+
+<p>Before making the switch to a new provider I downloaded all my data from Google. I am thankful for the <a href="https://en.wikipedia.org/wiki/Google_Takeout">Google Takeout</a> option to do this.</p>
+
+<p>Then I opened an account with <a href="https://www.fastmail.com/">FastMail</a> and test drove their service for a few days (you can do this for free for 30 days). Once I was comfortable with their service and offerings I chose a paid plan. I am using the Standard plan ($50 per year) because that's the one that allows for custom domains. I love how clear the pricing is and that you can pay month by month without a long term contract.</p>
+
+<p>After that I updated the MX records of my domain to point to the FastMail servers. This was the most stressful part of the process for me. I had not updated the MX records in my domain in more than 10 years and I wanted to be sure I got this right. FastMail provides <a href="https://www.fastmail.com/help/receive/domains.html?u=f6d1409f">great instructions</a> to do this, they even have a built-in check to tell you whether you did it right.</p>
+
+<p>Once I changed my MX records and configured my domain information on FastMail I started getting email sent to <code>hector@hectorcorrea.com</code> on the FastMail server within 15 minutes or so. Pretty painless.</p>
+
+<p>Giving that spam filtering was one of the big gains that Gmail gave me in 2007 I was a bit curious to see how this was going to work with FastMail in 2018. So far, so good. I think this is an area where most email providers have made huge improvements and are good enough by now without much fanfare.</p>
+
+
+<h2>Life without a Google account</h2>
+
+<p>In my case I did not import my email from Gmail into my FastMail account. I decided that I really don't need 11 years worth of email and I can afford to start fresh. I did a quick scan of the more than 12 thousand emails in my Gmail account and, although it was a nice trip down memory lane, it was not worth bringing over. If I really need something I can always go back to the Google Takeout file that I downloaded and get it from there, but I would be surprised if I do.</p>
+
+<p>After a few days running on FastMail without hiccups I deleted my Google account. I could have deleted my email only and keep my Google account but I decided to delete my account entirely and see what life without a Google account feels like. <strike>Actually, I still have an extra Google account (like everybody else) that I use for junk email subscriptions, but I am not counting that since that account does not store much information and I am never logged into it.</strike> (<b>Update January/2019</b>: That other account is also gone now.)</p>
+
+<p>One of the things that I didn't think through before deleting my Google account was that my StackOverflow account was linked to Google for authentication. When I tried to login to StackOverflow it failed. Luckily for me StackOverflow has an option to set a password on my account and login without Google authentication.</p>
+
+
+<h2>Calendars, contacts, and documents</h2>
+
+<p>One of the things that I had to reevaluate once I deleted my Google account was where and how to manage Calendars and Contacts. For calendar I ended using the Calendars that Apple offers via iCloud. I was able to connect the iCloud calendar to my FastMail account relatively easily.</p>
+
+<p>I am still not sure what I am going to do for Contacts. I use the contacts from my Phone for phone calls and texting, but for email I am still not sure. I never liked the Contacts app that comes with Gmail, but I loved how I never had to worry much about email addresses since Google (for better or for worse) remembered every person that I emailed to. I could just import contacts on my FastMail account but I haven't done this.</p>
+
+<p>Google Docs is another part of the puzzle that I have not figured out how to replace yet. It was nice to store a few personal documents and spreadsheets on Google Drive and have read-write access to them from my work or home computers. I hardly ever accessed these documents from my phone, though. It's possible that I won't need to replace this with anything. Time will tell.</p>
+
+
+<h2>The long tail</h2>
+<p>Of course there is a long list of other Google products that I used over time that I had completely forgotten about and that I will start noticing as time goes on.</p>
+
+<p>Today I was reminded about Google Analytics, which I used on my personal site. This is one of those things that I don't have access anymore since I deleted my Google account and that information does not come in the Google Takeout. This is not a big loss for me, I mostly had Google Analytics turned on as way for me to learn how to use it and try different features in my personal site without having to mess with sites at work. In the future I will probably use a log analyzer like <a href="https://goaccess.io/">GoAccess</a> to monitor traffic to my site.</p>
+
+<p>I also used to subscribe to a few Google Groups using my Google account. I will need to resubscribe somehow if I want to post to them. Again, not a big deal to me.</p>
+
+<h2>A year later...</h2>
+<p><b>Update February/2020</b>: It's been more than a year that I made the switch and I thought it might be a good idea to update this post with some of my experiences since I made the switch in September of 2018.</p>
+
+<p>Overall I am very pleased I made the switch to Fastmail and I have not missed Gmail at all. The email service that Fastmail provides is top notch and so is their availability and spam filtering. Although I did get a bit more spam in the first couple of weeks after I switched, the spam eventually stopped. I suspect this is the time that it took the spam detection algorithm at Fastmail to "learn" what I consider spam.</p>
+
+<p>The integration of Fastmail with the Apple Calendar was not as easy as I had hoped for, but once configured it works as well as Google Calendars did.</p>
+
+<p>I should clarify that although I don't have a <i>personal</i> Google account anymore, I do have one at work, so I am not in the dark about what the Google products do, since I use them everyday at work.</p>
+
+
+
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

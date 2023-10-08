@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextoEntry>
+      <title>My (strange) journey to becoming a Ruby developer</title>
+      <slug>my-strange-journey-to-becoming-a-ruby-developer</slug>
+      <summary>Five years ago I took my first job as Ruby developer, this blog post is a reflection on what that experience has been for me.&#xD;&#xA;</summary>
+      <createdOn>2019-11-17 01:20:36</createdOn>
+      <updatedOn>2023-06-06 19:31:29.010</updatedOn>
+      <postedOn>2019-11-18 23:58:55 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>82</value>
+      </fields>
+      <fields>
+          <name>type</name>
+          <value>blog</value>
+      </fields>
+  </TextoEntry>

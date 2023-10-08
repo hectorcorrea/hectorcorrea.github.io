@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextoEntry>
+      <title>document body innerHTML woes</title>
+      <slug>document-body-innerhtml-woes</slug>
+      <summary>A short post on what happens when you assign a value to document.body.innerHTML and a warning about incomplete fragments.</summary>
+      <createdOn>2021-08-26 17:32:33</createdOn>
+      <updatedOn>2022-04-17 13:17:29.100</updatedOn>
+      <postedOn>2021-08-26 19:24:56 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>85</value>
+      </fields>
+      <fields>
+          <name>type</name>
+          <value>blog</value>
+      </fields>
+  </TextoEntry>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Connection handling with Node.js and MongoDB</title>
+      <slug>connection-handling-with-node-js-and-mongodb</slug>
+      <summary>A brief description on how database access with Node.js and MongoDB is different than database access in other platforms. I discuss the issues of keeping the database connection open, handling re-connections, and a Node.js module to make this process...</summary>
+      <createdOn>2013-11-24 18:38:40</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2013-11-24 20:37:21 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>54</value>
+      </fields>
+  </TextEntry>

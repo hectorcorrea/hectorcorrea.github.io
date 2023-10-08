@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextoEntry>
+      <title>MySQL UTF-8 issues</title>
+      <slug>mysql-utf-8-issues</slug>
+      <summary>A quick post on how I set the character set to UTF-8 of MySQL database after the fact and converted existing data from Latin1 to UTF-8</summary>
+      <createdOn>2019-07-14 18:53:28</createdOn>
+      <updatedOn>2022-09-19 19:49:48.714</updatedOn>
+      <postedOn>2019-07-14 19:38:54 +0000 UTC</postedOn>
+      <fields>
+          <name>oldId</name>
+          <value>80</value>
+      </fields>
+      <fields>
+          <name>type</name>
+          <value>blog</value>
+      </fields>
+  </TextoEntry>

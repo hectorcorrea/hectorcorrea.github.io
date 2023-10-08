@@ -1,0 +1,106 @@
+# My (strange) journey to becoming a Ruby developer
+Five years ago (in 2014), after being a C# developer for many years I took my first job as a Ruby developer. Transitioning from one technology stack to another is not uncommon among software developers, most of us have jumped from one tech to another more than once in our lifetime (e.g. from DOS to Windows, from Desktop to web, from single user to client-server), but each transition is different, each one brings different challenges and rewards. In this post I want to reflect on how going from C# (on Windows) to Ruby (on Mac/Linux) worked out for me.
+
+
+## Before Ruby 
+Before taking a job as a Ruby developer I worked as a C# / .NET developer for 10+ years. My first .NET applications were Windows Desktop applications built with VB.NET and later on I moved on to build web applications with C#. When I came to Ruby, although I had little experience with Mac or Linux, I was very comfortable with foundational concepts like system design, object oriented programming, relational databases, web development, and such.
+
+A few years before I took my first job as a Ruby developer I bought a Mac to play with Ruby in my spare time. I spent many nights (hello Rails for Zombies) getting acquainted with the different tools and workflows that Ruby developers in the Mac and Linux ecosystem use. Initially, the switch from Graphical User Interfaces in Windows to working on the terminal in Mac/Linux was the biggest shock to me. But eventually I embraced it. I blogged about my initial non-professional experiences with Ruby on the Mac/Linux [in 2011](https://hectorcorrea.com/blog/ruby-development-on-the-mac-os-x/15) and [in 2012](https://hectorcorrea.com/blog/web-development-on-the-mac-os-x-part-ii/5).
+
+
+## Why did I jump
+I didn't "rage quit" C# or anything like that. I enjoyed working in C# while I did it and I still think it's a great programming language. Yet, after noticing that the programming world outside of Windows was *so different and unknown to me* I wondered what was I missing by staying as a C# developer on Windows, particularly since there are more non-Windows developers that Windows developers. The idea of fully understanding this "other" way of building systems appealed to me. 
+
+
+## The non-technical part of my journey
+I took my first job as a Ruby developer with a wonderful team at Penn State in 2014. In this job I worked on a Ruby on Rails application built on top of the Hydra (now Samvera) framework. This was a challenging application because it was not a typical Ruby on Rails application talking to a relational database and being developed by a small collocated team. Instead the application stored its information in a [repository platform with native linked data support](https://duraspace.org/fedora/) and [Solr](http://lucene.apache.org/solr/), it was developed using a large number of open source components that were in early development stages, and required collaboration and coordination with many developers outside of Penn State. 
+
+For me the challenging part of this project was not the Ruby part of the job, but rather the highly distributed nature of the team (in fact at one point I was one of the remote developers) and working with gems that were in early stages of development. I learned a lot and enjoyed the experience quite a bit. Since my job entailed working with people from a variety of institutions I had the opportunity to interact with a large number of Ruby developers and many of them were veterans in Ruby and Ruby on Rails which helped me better understand the Rails ecosystem.
+
+Also, other than personal projects, this was the first time that I worked on an [open source application](https://github.com/psu-stewardship/scholarsphere). There is something beautiful about working in an environment in which your code is open for the world to see and allow other institutions to view it, use it, criticize it, or enhance it. This is something that would have been much harder for me to experience in the C# Windows world.
+
+After a couple of years at Penn State, in 2016, I took a job at Brown University. At the Brown University Library I have been involved in Ruby on Rails projects that are also not exactly typical Rails applications in the sense that they interact with non-relational databases. A lot of the work that I have done at Brown involves [working with Solr](https://github.com/Brown-University-Library/bul-search) and interacting with [other systems via APIs](https://github.com/Brown-University-Library/vivo-on-rails). This team has a very different structure than the one at Penn State. At the Brown University Library I am *the* Ruby developer (scary, right?), although there are many senior developers on the team that can write Ruby code, they are for the most part Python or PHP developers. Also this development team is collocated, smaller, and with close access to domain experts (librarians) that makes understanding requirements and iterating in the development process much simpler.
+
+I believe a big part of my journey as a Ruby developer has been the fact that I went from working in the corporate world to the world of higher education. When I started learning Ruby I never thought I would end up working at large higher ed institutions, if anything I thought I would end up in a small organization or a startup. 
+
+
+## The programming journey 
+Given that I have been a developer for many years learning Ruby was not too hard for me. The part of the language that took the longest to get used to was the dynamic typed nature of Ruby (C# is statically typed). There are some incredibly benefits of dynamic typing, and I love it, but there are tradeoffs too. Recently I have also been working with Go, which like C# supports static typing, and I love the safety net that it gives me as a developer, yet I cringe at how many times I have to declare something in Go before I can run even a small program. I cannot have it both ways I guess. 
+
+One thing that I love about Ruby is how easy is to prototype ideas. I am amazed how powerful the Ruby language is to create proof of concepts. The kind of work that I do requires a lot of exploratory steps and Ruby is perfect for this kind of work. The Ruby language comes built-in with tooling to connect to an HTTP endpoint, read/write files, parse JSON, manipulate arrays, create classes (or use plain hashes) without a lot of ceremony or verbosity. And of course Ruby is also very good to take the stuff from proof of concept to production, but the part that amazes me is the former.  
+
+Here is an example of a full Ruby program to connect to the Brown University Library catalog, search for books about "Ruby programming", and display the results (*note: this program no longer works because Brown has changed their library catalog, but the code is still a good example of the built-in functionality that comes with Ruby*). This little program shows how easy is to connect to an HTTP endpoint, convert the JSON response to Ruby hashes, sort them, iterate over them, and print them to the console: 
+
+```
+require "net/http"
+require "json"
+
+# Make HTTP request
+url = "https://search.library.brown.edu/catalog.json?q=ruby+programming&search_field=all_fields"
+uri = URI(url)
+response = Net::HTTP.get(uri)
+json = JSON.parse(response)
+
+# Create a simple array of hashes with the data
+books = json["response"]["docs"].map do |doc|
+    {
+        title: doc["title_display"],
+        author: doc["author_display"] || "unknown",
+        year: doc["pub_date"].first.to_i
+    }
+end
+
+# Sort descending by year
+books = books.sort_by {|b| -b[:year] }
+
+# Output to the console
+books.each do |book|
+    puts "#{book[:year]} - #{book[:title]} by #{book[:author]}"
+end
+```
+
+Ruby on Rails on the other hand took me a while to grok. I am familiar with web technologies and I appreciate a lot of what Rails does for you but I also dislike some of the "magic" that is so prevalent in Rails applications. There are plenty of things in Rails that I love, like the fact that most applications follow a similar structure (models, views, and controllers), database migrations, the asset pipeline, routing of requests, ActiveController, ActiveRecord, and so on. 
+
+Although my last .NET projects used ASP.NET MVC I did a fair amount of Web Forms in ASP.NET as well (Viewstate anyone?) and I appreciate the simplicity of the request processing in Rails and how much closer it's to the way HTTP works than Web Forms.
+
+After using Rails for 5 years I am finally comfortable turning off some of the default features, being more verbose in certain areas to expose the "magic", and do a more bare-bones web development within Rails. For example I try to use plain HTML tags in web pages (as opposed to Rails Helpers) since I prefer standard HTML than Rails specific syntax. I mean, unlike [RubyGuides](https://www.rubyguides.com/2019/05/rails-link_to-method/) I would rather see
+
+```
+<a href="/ruby-book">HTML rocks</a>
+```
+
+than 
+
+```
+<%= link_to "HTML Rocks", "/ruby-book" %>
+```
+
+but I suspect I am in the minority when it comes to this. I also prefer JavaScript to CoffeeScript (even thought at one point [I also thought CoffeeScript was a good idea](https://hectorcorrea.com/blog/a-decaf-introduction-to-coffeescript/1)). 
+
+Likewise I use plain HTML + JavaScript as much as possible rather than the monstrosity that Rails does with the [Server Generated Javascript Responses](https://signalvnoise.com/posts/3697-server-generated-javascript-responses) or [Turbolinks](https://guides.rubyonrails.org/working_with_javascript_in_rails.html#turbolinks), but maybe that's because I am comfortable with JavaScript and jQuery.
+
+Perhaps one day I will write a book titled "Ruby on Rails the Good Parts" - just kidding.
+
+### Dependencies and more dependencies
+I have mixed feelings about the way Rails applications are built using a very large number of external gems. The dependency nightmare that it introduces still baffles me, particularly when developers adopt a gem just to save a few lines of code. Keep in mind that I came from C# where the number of dependencies tends to be small compared to what we see in Rails applications. But as I become more familiar with Rails I am starting to notice that although there are many people that love to adopt gems (even at the expense of maintenance) there are also those that are cautious about it and give more though before adopting a dependency. The problem is that as a newcomer to the language is hard to see these patterns and know who and what to follow. But I am becoming better at this. 
+
+Part of the problem with dependencies is that Ruby is an interpreted language and does not produce binaries that you can just copy to a server and be done. Instead you have to download the code and resolve the dependencies on the server. This problem is augmented by the fact that we use different operating systems for development (Mac) from what we deploy in production (Linux). This works well most of the times but when it doesn't it can be hard to figure out and timing can be bad since I personally don't like surprises during deployment. 
+
+An example of an issue I ran into with dependencies was when a program required a version of a gem that had been removed from the RubyGem registry (e.g. [logger 1.2.8 was yanked](https://rubygems.org/gems/logger/versions)). This was particularly tricky because I did not find out about it until I tried to deploy to production. My local machine had cached the version that had been yanked but the production server had not so it bombed when trying to resolve dependencies in the production server -- talk about bad timing. The problem is compounded by the fact that these dependencies can be very deep and you might not even know that your program depends on something until it causes problems.
+
+Another issue with dependencies is the reliance on gems that require C extensions which is quite common (e.g. `nokogiri` and `mysql2`). This is a problem mostly because there are different default versions of the C compiler on Mac than on Linux and I have ran into issues where a particular gem that worked on my Mac did not compile on Linux because the gem [required a new version of the GCC compiler](https://github.com/sass/sassc-ruby/issues/37#issuecomment-248959463) that was not installed on the Linux server. Having to hunt down specific versions of GCC compilers and installing them on a Linux server is really not what I want to learn when I am ready to deploy my Ruby application. Again this is also an artifact of developing on one operating system and deploying to another, but such is life in the Ruby world. 
+
+
+### Tooling
+One of the things that surprised me the most about developing and deploying Ruby applications was the large number of tools and configurations available. Seeing that people where using a variety of text editors, relational databases (MySQL, Postgres), web servers (Apache, Nginx), application servers (Passenger, Thin, Puma), and so on, was puzzling and complex to me at the beginning. Not to mention the tools for provisioning, deployment, and monitoring applications. Keep in mind I was coming from Window's web development where most applications where written in Visual Studio, used SQL Server as the database, IIS as the webserver, and that was it. Although there were variations in the Windows setup as well, they pale in comparison to the variety that I have experienced in the Ruby/Linux environment.
+
+After 5 years working on Ruby/Linux environment I find this variety of tools quite normal and productive. I have personally tried many text editors, databases (relational and NoSQL), web servers, operating systems (OS X and many flavors of Linux), and whatnot.
+
+I am now more comfortable with using more than one programming language too. I used to write all my tools and projects with C#. Now it's not uncommon for me to have projects in Ruby, Go, or even shell scripts to do a variety of things, and I am perfectly comfortable with this. This might just be a matter of professional growth as a developer (use the right tool for the job kind of thing) but I suspect it was largely influenced by the way the Linux world operates.
+
+
+## In closing
+My journey from a C# developer to a Ruby developer has been very pleasant. I've learned a lot of new technologies and ways of doing things. In my case the biggest learning curve was not Ruby per-se but rather learning the Linux way of doing things. The other big learning curve was going from corporate to higher ed (academic libraries in particular) and that would probably be the subject of another post.  
+
+But my journey hasn't ended. I have a whole lot more to learn about Ruby and Mac/Linux before I am as proficient on it as I was on C# and Windows. And there are also a lot of other technologies that I am exploring or would like to explore. As I indicated before I am also using Go for some projects (like [solrdora](https://github.com/hectorcorrea/solrdora) and [marcli](https://github.com/hectorcorrea/marcli)) and recently I decided to learn Python since that's the language that most of the developers in my team use and it's pervasive in library-land. I am not planning on becoming a Python developer but I would like to become competent on it. To be fair, I wasn't planning on becoming a Ruby developer either when I started learning Ruby...so time will tell.
+

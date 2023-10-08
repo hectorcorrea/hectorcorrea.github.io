@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>Installing Ruby with ruby-install and chruby</h1>
+<p>When I started writing code on Ruby I learned there were many ways to download and install Ruby on a Mac. Initially I was comfortable with the version of Ruby that comes installed on OS X by default or using the installer available at <a href="https://www.ruby-lang.org/en/downloads/">ruby-lang.org</a>  to install the latest version. As my needs evolved I needed to have more than one version of Ruby installed on my machine to work on different projects that use specific versions of Ruby.</p>
+
+<p>There are many tools to install and manage multiple versions of Ruby on a Mac. Among the options that I tried were <a href="https://rvm.io/">RVM</a>, <a href="https://github.com/rbenv/rbenv">rbenv</a>, and <a href="https://github.com/postmodern/chruby">chruby</a>. In the end I found the combination of <code>chruby</code> and <code>ruby-install</code> the best for my needs, in large due to their minimalist approach.</p>
+
+<p>Below are the instructions that I follow on a brand new Mac to install specific versions of Ruby and switch among them. First install <code>ruby-install</code> and <code>chruby</code> via <a href="https://brew.sh/">Homebrew</a>:</p>
+
+<pre>
+$ brew install ruby-install
+$ brew install chruby
+</pre>
+
+<p>Then I use <code>ruby-install</code> to install a particular version of Ruby, for example to install version 2.3.5 I use:</p>
+
+<pre>
+$ ruby-install ruby 2.3.5
+</pre>
+
+<p>You can also use <code>ruby-install --latest</code> to install the latest version of Ruby available.</p>
+
+<p><code>chruby</code> provides a script that you can add to your Bash init script to let you change to a specific version of Ruby installed on your machine and configure the environment to point to the correct locations for that Ruby version by setting your PATH, GEM_HOME, and GEM_PATH environment variables. These are the lines that I add to my <code>.bashrc</code> file to automatically select Ruby 2.3.5 on my machine as the default Ruby.</p>
+
+<pre>
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+chruby 2.3.5
+</pre>
+
+<p><code>chruby</code> also provides another script (<code>auto.sh</code>) to automatically switch the version of Ruby as you <code>cd</code> into a specific project. I do <b>not</b> use this script, I prefer to manually issue a <code>chruby</code> command when I want to switch versions.</p>
+
+<p>And that's pretty much all I need to setup my Ruby environment on a Mac. Pretty simple and non-intrusive.</p>
+
+<p>The rest of this post are a few notes on things that I've learned about <code>ruby-install</code> and <code>chruby</code> that were not obvious to me when I first started using them.</p>
+
+
+<h2>ruby-install oddities</h2>
+
+<p>One thing that still confuses me with <code>ruby-install</code> is that it does not keep a list of newer versions of Ruby available to download and install. For example even though Ruby 2.5.1. is now available at the ruby-lang.org web site this is what <code>ruby-install</code> shows on my machine:</p>
+
+<pre>
+~ $ ruby-install --version
+ruby-install: 0.7.0
+
+~ $ ruby-install 
+Stable ruby versions:
+  ruby:
+    2.1.9
+    2.2.7
+    2.3.4
+    2.4.1
+  jruby:
+   # more stuff
+</pre>
+
+<p>Notice that there is no mention whatsoever of version 2.5.1. You <b>can request to install a newer version of Ruby</b> if you know there is one available, for example I can issue <code>ruby-install ruby 2.5.1</code> and it will install this version.</p>
+
+<pre>
+$ ruby-install ruby 2.5.1
+<i></i>* Unknown ruby version 2.5.1. Proceeding anyways ...
+&gt;&gt;&gt; Installing ruby 2.5.1 into /Users/hector/.rubies/ruby-2.5.1 ...
+&gt;&gt;&gt; Installing dependencies for ruby 2.5.1 ...
+# continues with the installation...
+&gt;&gt;&gt; Successfully installed ruby 2.5.1 into /Users/hector/.rubies/ruby-2.5.1
+</pre>
+
+<p>Even more puzzling is that <i>even after downloading and installing Ruby 2.5.1 on my machine</i> ruby-install will not show that it is available when I run <code>ruby-install</code> without arguments.</p>
+
+<p>The last gotcha that I'll point out is that you must indicate "ruby" when you run ruby-install, for example notice the error that I get when I run <code>ruby-install 2.5.1</code> rather than <code>ruby-install <b>ruby</b> 2.5.1</code></p>
+
+<pre>
+$ ruby-install 2.5.1
+!!! Unknown ruby: 2.5.1
+</pre>
+
+<p>Despite these peculiarities I find <code>ruby-install</code> a great tool to get my environment ready since I usually know what version of Ruby I am after.</p>
+
+
+<h2>chruby notes</h2>
+
+<p>Something that surprised me when I started using <code>chruby</code> was that when you <code>brew install chruby</code> you don't get a <code>chruby</code> executable per-se, if you issue <code>which chruby</code> the OS will report nothing. That's because <code>chruby</code> is actually a Bash function that is defined in the <code>/usr/local/opt/chruby/share/chruby/chruby.sh</code> script. Once you <code>source</code> this script the OS will report that is indeed a function. For example:</p>
+
+<pre>
+$ type chruby
+-bash: type: chruby: not found
+
+$ source source /usr/local/opt/chruby/share/chruby/chruby.sh
+$ type chruby
+chruby is a function
+chruby () 
+{ 
+   # code for the function goes here
+} 
+</pre>
+
+<p>Another quirky thing with <code>chruby</code> and <code>ruby-install</code> is that after installing a new version of Ruby you must reload the <code>/usr/local/opt/chruby/share/chruby/chruby.sh</code> shell script for the new version to be available to chruby. In practice I typically just close my terminal window and open a new one to force this to happen since the chruby script is loaded by my Bash init script.</p>
+
+
+
+
+
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

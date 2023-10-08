@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>Hydra Connect 2</h1>
+<p><img src="https://hectorcorrea.com/images/hydraconnect2.jpg" alt="Hydra Connect ballroom" title="Hydra Connect ballroom" /></p>
+
+<p>This is my first time attending a <a href="https://wiki.duraspace.org/display/hydra/Hydra+Connect+2+-+Fall+2014">Hydra Connect</a> and I was very impressed with the overall experience. From what I understand there were about 150 attendees representing 47 different institutions.</p>
+
+<p>The event had a good mix of workshops, lightning talks, tutorials, sessions, un-conference sessions, and working groups meetings. Below are my notes and thoughts from some of the sessions that I attended.</p>
+
+
+<h2>Geodata in Blacklight and Hydra</h2>
+<p>The first session that I attended was on a project that Stanford is working to make use of geographical information via Blacklight. The name of the project is "Geo Blacklight" and it allows users to perform searches by selecting a bounding box in a map. Once an area has been selected different kind of data/documents can be shown about that particular area, this allows researches to narrow down the list of documents that they need to review without having to download and open them individually.</p>
+
+<p>Stanford is using an "overlap ratio" to rate search GIS results.</p>
+
+<p>Bess Sadler made the point that we should be thinking on</p>
+
+<blockquote>
+how are libraries going to curate geo-spatial data,<br/>
+there seems to be a changing culture around this data and the metadata are still in flux<br/>
+</blockquote>
+
+<p>An area that is still is open for development is the mix of text and geo searches. For example, if I type "cleveland" I might be light to see results for documents related to Cleveland even if these documents don't have the word "Cleveland" in them but the geodata on them points to an area inside Cleveland.</p>
+
+<p>Geo Blacklight is a full app (like Blacklight.) There was a mention of a "Blacklight maps" plugin that is also available to plot points on a map. They are two different things, though.</p>
+
+<p>They are using Solr to do the geo-filtering. Solr provides the concept of bounding box to select by a square area and "geofilt" to filter by a circle. More information here: <a href="https://wiki.apache.org/solr/SpatialSearch">https://wiki.apache.org/solr/SpatialSearch</a></p>
+
+<p>Geo Blacklight uses Leaflet, a JavaScript plug-in, to handle the map interactions on the page: <a href="http://leafletjs.com/">http://leafletjs.com/</a></p>
+
+<p>Beth and Jack Reed also mentioned "OpenGeo Suite" which is a server product to handle caching, multiple formats (shape file, KML, json, pdf, JPEG), and other server side requirements. <a href="http://boundlessgeo.com/solutions/opengeo-suite/">http://boundlessgeo.com/solutions/opengeo-suite/</a></p>
+
+
+<h2>RDF and Hydra</h2>
+<p>In this session Tom Johnson gave a hands-on tutorial on ActiveTriples, a Ruby gem to work with RDF triples. The source code that we used during the presentation is available here: <a href="https://gist.github.com/no-reply/fce0771254a3a25817dd#file-walkthrough-rb">https://gist.github.com/no-reply/fce0771254a3a25817dd#file-walkthrough-rb</a></p>
+
+<p>ActiveTriples abstracts most of the RDF syntax and wraps it on Ruby objects so that you can work with them without much regard of what RDF store the data came from or will end up in. ActiveTriples does not connect to Fedora for example, it just handles the objects in memory. This is a really neat gem. I believe the way Tom described it was along the lines of</p>
+
+<blockquote>
+ActiveTriples is a projection on the underlying RDF graph<br/>
+</blockquote>
+
+<p>The source code for this gem can be found here: <a href="https://github.com/no-reply/ActiveTriples">https://github.com/no-reply/ActiveTriples</a></p>
+
+<h2>Fedora 4 and Hydra Test Drive</h2>
+<p>In this session Esmé Cowles gave a quick hands-on tutorial on how to connect to Fedora 4 from Ruby using Active Fedora 4. The code he used during the tutorial can be found here: <a href="https://github.com/escowles/testdrive">https://github.com/escowles/testdrive</a></p>
+
+<p>ActiveFedora 4 builds on top of ActiveTriples. Whereas ActiveTiples abstracts RDF into Ruby objects, ActiveFedora provides the operations so that these objects behave like ActiveRecord classes in a regular Rails application. Later on I learned that there is another piece to the puzzle called LDP client that makes the HTTP connection to Fedora.</p>
+
+<p><img src="https://hectorcorrea.com/images/activefedora_diag.jpg" alt="ActiveFedora, LDP, and ActiveTriples diagram" title="ActiveFedora, LDP, and ActiveTriples diagram" /></p>
+
+<p>The fact that the Fedora API is "based loosely around the Linked Data Platform [LDP] 1.0 Architecture" is clearly indicated on the <a href="https://wiki.duraspace.org/display/FF/RESTful+HTTP+API">Fedora REST API documentation</a> but it didn't mean much to me until I heard it in context at the conference. You can find more about LDP here: <a href="http://www.w3.org/TR/ldp">http://www.w3.org/TR/ldp/</a>.</p>
+
+
+<h2>What does Fedora 4 do for the Hydra stack?</h2>
+
+<p>Although I have plenty of experience on relational databases and am somewhat comfortable with some of the NoSQL databases, I am total n00b when it comes to Fedora, so I was really curious to attend this presentation in which Andrew Woods (the tech lead for the Fedora project) and Esmé Cowles presented on why is Fedora a good option for the needs of the Hydra community.</p>
+
+<p>Andrew talked about how "Fedora shares sensibilities" with the Hydra community and provides a solid base (institutions, users, and developers). <a href="https://wiki.duraspace.org/download/attachments/63408008/F4-Hydra-Connect-stack-2014-10-02.pdf">slides</a>.</p>
+
+<p>Some of the features of Fedora 4 are that are particularly interesting for Hydra are the ability to handle large files, scalability, versioning, and durable storage.</p>
+
+<p>Andrew also talked about Fedora 4's "Native Linked Data" feature and how it can be used to handle inter-connected repositories with shared content and vocabulary. I am not particularly thrilled with this concept. I think the idea of sharing data at the database level is attractive at the beginning but does not scale well over time, at least that has been my experience in the world of relational databases. Personally, I think we should focus on sharing data via services and not via databases.  [Update: I guess somebody can make the case that Fedora is acting as a "service" by supporting LDP, but I still think of Fedora as a storage repository. Not sure about this yet, ...food for thought.]</p>
+
+<p>Some of the areas that are still under development for Fedora 4 are transactions, asynchronous storage (e.g. to access a remote store in AWS), and a shared index with Solr.</p>
+
+
+<h2>Hydra on top of Fedora 4</h2>
+
+<p>Adam Wead and Justin Coyne gave a couple of presentations on the topic of migrating Hydra applications from Fedora 3 to Fedora 4. There are several conceptual changes in Fedora 4. For example, in Fedora 3 we have one DigitalObject with many datastreams, these datastreams might have properties, content or both. In Fedora 4 all items are "Nodes" but some of them are of subtype "DataStreamNode". DatastreamNodes can have properties, content, or both. In addition, the concept of disseminators in Fedora 3 is now gone in Fedora 4. The RELS-EXT datastream is also gone in Fedora 4.</p>
+
+<p>There is significant progress by many developers from many institutions on updating the Hydra stack to work with Fedora 4. We currently have an "alpha" version of Sufia using ActiveFedora 8. <a href="http://jcoyne.github.io/hydra-on-top-of-fedora4.html#slide-25">slides</a></p>
+
+<p>Adam pointed out that we are now going to "take advantage of the native RDF in Fedora 4" and provided a code example on how this looks like <a href="http://awead.github.io/presentations/fedora-migrate/#/8">slides</a> He also talked about some of the areas that we are still working on like Versions and Relationships.</p>
+
+
+<h2>Metadata, RDF, linked data</h2>
+
+<p>Given that I am new to the world of libraries and the tools and technologies used by librarians and archivists I made a point of attending several sessions on metadata, RDF, and linked data. Most of the sessions were way over my head, but interesting as I immerse myself on this domain.</p>
+
+<p>In one of the sessions Karen Estlund talked about the difficulties of creating metadata that is both human and machine readable, or that can be entered by humans or machines. She indicated that libraries should feel free to create their own ontologies when needed but strongly encouraged people to use URIs rather than strings as predicates.</p>
+
+<p>I found very interesting the wide range of topics that were discussed in these sessions. For example, I was surprised to realize that there are still discussions on how to represent ordered lists in the RDF world, a problem that pretty the rest of the non-RDF world has already solved. On the other hand, some of the RDF topics where on big and difficult topics like access rights in a distributed environment, see <a href="http://www.w3.org/wiki/WebAccessControl">http://www.w3.org/wiki/WebAccessControl</a>.  As I said before, a very wide range of topics.</p>
+
+<p>I was glad to hear that the book that I am currently reading was recommended as a good resource to learn RDF: <a href="http://workingontologist.org">Semantic Web for the Working Ontologist</a> by Dean Allemang and Jim Hendler.</p>
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

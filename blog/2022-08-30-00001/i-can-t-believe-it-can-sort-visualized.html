@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+ 
+    <style>
+      .header-container {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        max-width: unset;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        max-height: 75px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+      
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container header-container">
+      <!-- header source: https://getbootstrap.com/docs/5.1/examples/headers/
+        changes: removed border-bottom -->
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+          <span class="fs-4">HectorCorrea.com</span>
+        </a>
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a id="home-menu" href="/" class="nav-link" aria-current="page">Home</a></li>
+          <li class="nav-item"><a id="about-menu" href="/about" class="nav-link">About</a></li>
+          <li class="nav-item"><a id="blog-menu" href="/blog" class="nav-link">Blog</a></li>
+        </ul>
+      </header>
+    </div>
+
+    <div class="container">
+      <h1>I can't believe it can sort - visualized</h1>
+<p>A few months ago I came across a paper titled <a href="https://arxiv.org/abs/2110.01111">Is this the simplest (and most surprising) sorting algorithm ever?</a> by Stanley P. Y. Fung in which he presents an incredibly simple sorting algorithm, the entire code is just 4 lines of code:</p>
+
+<pre>
+for i = 1 to n do
+  for j = 1 to n do
+    if A[i] &lt; A[j] then
+      swap A[i] and A[j]
+</pre>
+
+<p>That's it, that's the entire algorithm. As Fung indicates on the paper, at first glance it looks like this algorithm cannot possible work (e.g. the comparison looks wrong) but if you try it, you'll notice that it is indeed correct. Fung also indicates that the algorithm is not efficient by any stretch of imagination and shouldn't be used as a first example to introduce sorting to students.</p>
+
+<p>And yet, as Fung points out, the appealing thing about it "may be its simplicity, in terms of lines of code and the 'symmetry' of the two loops".</p>
+
+<p>When I first saw this algorithm I had to try it myself to make sure it does indeed work since, as Fung indicates, "there seems to be no intuition behind it, and its correctness is not entirely obvious". Below is an implementation in JavaScript (notice that JavaScript arrays are zero-based):</p>
+
+<pre>
+for(i=0; i&lt;n; i++) {
+    for(j=0; j&lt;n; j++) {
+        if (a[i] &lt; a[j]) {
+            tmp = a[j];
+            a[j] = a[i];
+            a[i] = tmp;
+        }
+    }
+}
+</pre>
+
+<p>And of course it works.</p>
+
+<p>But despite the clear explanation on Fung's paper I couldn't quite understand the mechanics of it so I decided to create a sample program to visualize its execution. Below is an example of how each of the elements in the array are shifted as the algorithm executes with an input array <code>a = [10, 5, 99, 7]</code>:</p>
+
+<pre>
+initial data: 10, 5, 99, 7
+
+i     j     a[i] &lt; [j]  swap?     a
+--    --    ----------  ------    -------------
+0     0     10 &lt; 10     false     10, 5, 99, 7
+0     1     10 &lt; 5      false     10, 5, 99, 7
+0     2     10 &lt; 99     true      <b>99</b>, 5, <b>10</b>, 7
+0     3     99 &lt; 7      false     99, 5, 10, 7
+1     0     5 &lt; 99      true      <b>5</b>, <b>99</b>, 10, 7
+1     1     99 &lt; 99     false     5, 99, 10, 7
+1     2     99 &lt; 10     false     5, 99, 10, 7
+1     3     99 &lt; 7      false     5, 99, 10, 7
+2     0     10 &lt; 5      false     5, 99, 10, 7
+2     1     10 &lt; 99     true      5, <b>10</b>, <b>99</b>, 7
+2     2     99 &lt; 99     false     5, 10, 99, 7
+2     3     99 &lt; 7      false     5, 10, 99, 7
+3     0     7 &lt; 5       false     5, 10, 99, 7
+3     1     7 &lt; 10      true      5, <b>7</b>, 99, <b>10</b>
+3     2     10 &lt; 99     true      5, 7, <b>10</b>, <b>99</b>
+3     3     99 &lt; 99     false     5, 7, 10, 99
+
+final data: 5, 7, 10, 99
+</pre>
+
+<p>As Fung indicates, one of the surprising things of this algorithm is that, without any obvious logic, the algorithm performs two different phases: a select maximum phase and an insertion sort phase.</p>
+
+<p>The <b>select maximum phase</b> is executed when <code>i = 0</code> (notice that I am using zero-based indexes). In this phase the algorithm selects the <i>maximum number</i> and moves it to the front of the array, you can see this in the table above how when <code>i = 0 and j = 3</code> the resulting array is <code>a = [99, 5, 10, 7]</code> with <code>99</code> being the maximum value in our initial array. The fact that it moves the maximum value (not the lowest!) to the front is counter intuitive, but the next phase takes care of it.</p>
+
+<p>The <b>insertion sort phase</b> is the rest of the execution, that is when <code>i = 1, 2, or 3</code>. In this phase the algorithm works similar to an <a href="https://en.wikipedia.org/wiki/Insertion_sort">insertion sort algorithm</a>. As you can see in the table above the insertions happen when <code>swap = true</code> and little by little it sorts the array by shifting the elements. For example, when <code>i = 1 and j = 0</code> it moves <code>5</code> to the front, when <code>i = 2 and j = 1</code> it moves <code>10</code> closer to the front, and so on, until <code>i = 3 and j = 2</code> when it gets to the final form <code>a = [5, 7, 10, 99]</code>.</p>
+
+<p>If you want to visualize the algorithm yourself you can try this <a href="https://hectorcorrea.com/demos/i-cannot-believe-it-can-sort.html">HTML + JavaScript example</a> and use different data to see how it behaves. The source code is available <a href="https://gist.github.com/hectorcorrea/7332762794a3370a4722fe5c3dceaf0a">here</a>.</p>
+
+<p><b>Update September 2022:</b> Fung has a <a href="https://www.cs.le.ac.uk/people/pyfung/sorting.html">page with comments and criticism</a> that he has gotten about the algorithm that are interesting and worth reading if you have made it this far.</p>
+
+
+
+
+    </div>
+
+    <div class="container">
+      <footer>
+        <p>
+          <hr>
+          License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+        </p>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var menuId = "home-menu";
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          menuId = "blog-menu";
+        } else if(url == "/about") {
+          menuId = "about-menu";
+        } if(url == "/draft") {
+          menuId = "draft-menu";
+        }if(url == "/page") {
+          menuId = "page-menu";
+        }
+        var el = document.getElementById(menuId);
+        el.classList.add("active");
+      }
+
+      // Display the session expiration time in local time
+      var displaySessionLocalTime = function() {
+        var el = document.getElementById("sessionExpiresOn");
+        if (el === null) {
+          return;
+        }
+        var zTime = el.textContent.substring(0,19) + "Z";
+        var date = new Date(zTime);
+        el.textContent = date.toLocaleString();
+      }
+
+      highlightMenu();
+      displaySessionLocalTime();
+    </script>
+  </body>
+</html>

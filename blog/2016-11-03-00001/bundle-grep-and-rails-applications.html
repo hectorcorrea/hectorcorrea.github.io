@@ -112,25 +112,56 @@
     </div>
 
     <div class="container">
-      <p>I am a software developer in Hartford, CT. This site is where I host <a href="https://hectorcorrea.com/blog/">my blog</a> and post small pieces about software development.</p>
+      <h1>Bundle, grep, and Rails Applications</h1>
+<p>When I first started programming in Ruby and Ruby on Rails one of the things that I struggled the most was finding <i>where a particular piece of code (a method, a class, a string) was defined</i>. This was particularly difficult when the code that I was looking for was defined in a gem and not in the code of my application.</p>
 
-<p>I have been a software developer for many years. Since 2014 my focus has been on Ruby on Rails applications for academic libraries with a strong focus on indexing and searching data through Apache Solr and on institutional repositories.</p>
+<p>A couple of years ago <a href="https://github.com/mjgiarlo">Mike Giarlo</a>  showed me a great tip to search through the entire code of Rails application (your code and the code of your dependencies) by using <code>grep</code> and <code>bundle</code>. Today while working with somebody else new to Ruby I noticed that this tip needs to get broader attention since I think is incredibly helpful, particularly for newcomers.</p>
 
-<p>Currently I work at the Princeton University Library as part of the team that develops the applications to manage <a href="https://datacommons.princeton.edu/discovery/">research data</a> (<a href="https://github.com/pulibrary/pdc_discovery/">code</a>). I have also been involved in the <a href="https://catalog.princeton.edu/">discovery application for the catalog</a> and its related services (<a href="https://github.com/pulibrary/bibdata">code</a>).</p>
+<p>Most Rails applications these days use <code>bundle</code> to manage dependencies and <code>bundle</code> provides an option to list the path to all the gems that your application is using. You can see this by running:</p>
 
-<p>From 2016 to 2020 I worked at the Brown University Library on several projects related to discovery (<a href="https://github.com/Brown-University-Library/bul-search">code</a>), <a href="https://vivo.brown.edu/">research profiles</a> (<a href="https://github.com/Brown-University-Library/vivo-on-rails">code</a>), and <a href="https://www.riamco.org/">archives</a> (<a href="https://github.com/Brown-University-Library/riamco">code</a>). Most of these applications were Ruby on Rails applications using Solr, some of them through Blacklight others straight through.</p>
+<pre class="terminal">
+$ bundle list --paths
+</pre>
 
-<p>From 2014 to 2016 I worked at Penn State on the development of <a href="https://scholarsphere.psu.edu/">ScholarSphere</a>, Penn State&#39;s institutional repository (<a href="https://github.com/psu-stewardship/scholarsphere">code</a>).</p>
+<p>For example, on a new brand new Rails application it will show you something along the lines of:</p>
 
-<p>Before academic libraries I was heavily involved on the Microsoft stack (C#, ASP.NET MVC, SQL Server) building complex and high-volume applications for a variety of industries.</p>
+<pre class="code">
+/Users/xyz/.gem/ruby/2.3.1/gems/actioncable-5.0.0.1
+/Users/xyz/.gem/ruby/2.3.1/gems/actionpack-5.0.0.1
+/Users/xyz/.gem/ruby/2.3.1/gems/actionview-5.0.0.1
+/Users/xyz/.gem/ruby/2.3.1/gems/activejob-5.0.0.1
+/Users/xyz/.gem/ruby/2.3.1/gems/activemodel-5.0.0.1
+/Users/xyz/.gem/ruby/2.3.1/gems/activerecord-5.0.0.1
+plus a million other paths
+</pre>
 
-<p>My main areas of interest are web development in small and collaborative teams. I also enjoy learning new and interesting technologies and you'll find a wide variety of topics in my blog including algorithms and data structures, Go, Ruby on Rails, Node.js/JavaScript, Solr, C#/ASP.NET MVC, NoSQL databases, Linked Data, and software development in general.</p>
+<p>By combining the output of <code>bundle list --paths</code> with the venerable Linux <code>grep</code> tool you can search through the entire code base for things that you have no idea where they have been defined. For example, let's say that you want to find the definition of the method <code>retry_job</code> that your Rails application is calling. You can issue the following command:</p>
 
-<p>I hold a Bachelor of Science in Computer Science from Instituto Tecnológico de Colima (Mexico) and several certifications including Microsoft Certified Software Developer (MCSD), ScrumMaster, and MongoDB for Developers (M101P).</p>
+<pre class="terminal">
+$ grep -r "retry_job" $(bundle list --paths) .
+</pre>
 
-<p>In the last few years I've given presentations at local events as well as regional and national conferences in a variety of topics including <a href="https://github.com/hectorcorrea/solr-for-newbies">Solr</a>, <a href="https://hectorcorrea.com/blog/introduction-to-node-js/51">Node.js</a>, <a href="https://www.slideshare.net/hectorwashere/introduction-to-nosql-with-mongodb">NoSQL/MongoDB</a>, <a href="https://hectorcorrea.com/blog/introduction-to-ldp/67">Linked Data</a>, and <a href="https://hectorcorrea.com/blog/build-your-own-software/70">sustainable software development</a>.</p>
+<p>and review the output which would be something like this:</p>
 
-<p>Feel free to browse around and contact me at <a href="mailto:hector@hectorcorrea.com">hector@hectorcorrea.com</a> if you have any questions or comments.</p>
+<pre class="code">
+.../2.3.1/gems/activejob-5.0.0.1/CHANGELOG.md:     retry_job(wait: 10)
+.../2.3.1/gems/activejob-5.0.0.1/lib/active_job/core.rb:  # retry_job(wait: 10)
+.../2.3.1/gems/activejob-5.0.0.1/lib/active_job/enqueuing.rb: # retry_job queue: :low_priority
+.../2.3.1/gems/activejob-5.0.0.1/lib/active_job/enqueuing.rb: def retry_job(options={})
+</pre>
+
+<p>The result shows that this method is defined in the <code>activejob</code> gem, in fact the fourth file that grep returned points directly to the line where the method is defined, notice the <code>def retry_job()</code> on the last match.</p>
+
+<p>To be fair, most of the Rails code and its API are very well documented and a simple  Google search tends to give good results for things defined in Rails. However, not all gems are as well documented as Rails, and Google does not always do a good job with some of the less popular gems. I use the <code>bundle grep</code> approach that I describe in this blog post when I am trying to figure out which gem defined  a particular function or class, or when I am depending on gems that are not nearly as well documented as Rails itself.</p>
+
+<p>One thing to notice is the dot at the end of the <code>grep</code> command.  This is important since that instructs <code>grep</code> to search <i>also</i> on the current folder. If you leave this out <code>grep</code> will only search on the gems defined in your application, but not in your own application.</p>
+
+<p>I use this method so much that I have it defined as <a href="https://gist.github.com/hectorcorrea/fd56edea3333bec47829#file-bashrc-sh-L39">a function in my bash initialization script</a> so that I can always type <code>bgrep text-to-search</code>.  I know there are <a href="https://gist.github.com/grosscol/494e972e1b9dc1dfac18430f4d631593">other developers</a> that use the same approach with <code>ag</code> (the Silver Searcher) instead of <code>grep</code> but the idea is the same.</p>
+
+<p><b>Update 12/22/2016:</b> Today I ran across <a href="https://tenderlovemaking.com/2016/02/05/i-am-a-puts-debuggerer.html">this great blog post</a> by Aaron Patterson with a bunch of tips to debug Ruby applications that you probably want to check out too.</p>
+
+<p><b>Update 2/10/2021:</b> Updated to use the new bundle syntax <code>bundle list --paths</code> instead of <code>bundle show --paths</code></p>
+
 
     </div>
 
