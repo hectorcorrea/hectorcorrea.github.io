@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+      <channel>
+          <title>HectorCorrea.com</title>
+          <description>HectorCorrea.com</description>
+          <link>https://hectorcorrea.com</link>
+          <generator>https://github.com/hectorcorrea/fixie</generator>
+          <atom:link href="https://hectorcorrea.com" rel="self" type="application/rss+xml"></atom:link>
+          <item>
+              <title>Migrating to Mastodon&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2022-11-12-00001/migrating-to-mastodon</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>I can&#39;t believe it can sort - visualized&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2022-08-30-00001/i-can-t-believe-it-can-sort-visualized</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Log4Shell and Solr&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2021-12-13-00001/log4shell-and-solr</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Solr debugQuery&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2021-11-11-00001/solr-debugquery</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>String encoding in Ruby and JSON.generate()&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2021-10-01-00001/string-encoding-in-ruby-and-json-generate</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>document body innerHTML woes&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2021-08-26-00001/document-body-innerhtml-woes</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Tiny Container&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2021-03-08-00001/tiny-container</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>My (strange) journey to becoming a Ruby developer&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2019-11-17-00001/my-strange-journey-to-becoming-a-ruby-developer</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Linux mv and file patterns&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2019-10-29-00001/linux-mv-and-file-patterns</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>MySQL UTF-8 issues&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2019-07-14-00001/mysql-utf-8-issues</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Goodbye Gmail&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2018-09-22-00001/goodbye-gmail</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Installing Ruby with ruby-install and chruby&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2017-04-15-00001/installing-ruby-with-ruby-install-and-chruby</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Build your own software&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2017-03-15-00001/build-your-own-software</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Migrating my site from Node.js to G&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2017-01-17-00001/migrating-my-site-from-node-js-to-go</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Bundle, grep, and Rails Applications&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2016-11-03-00001/bundle-grep-and-rails-applications</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Introduction to LDP&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2015-09-15-00001/introduction-to-ldp</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Code4Lib 2015&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2015-02-28-00001/code4lib-2015</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Learning JavaScript Data Structures and Algorithms&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2015-01-05-00001/learning-javascript-data-structures-and-algorithms</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Practical Object-Oriented Design in Ruby&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2014-12-22-00001/practical-object-oriented-design-in-ruby</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Hydra Connect 2&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2014-10-07-00001/hydra-connect-2</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Connection handling with Node.js and MongoDB&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2013-11-24-00001/connection-handling-with-node-js-and-mongodb</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Running a Node.js web site in production (part 2)&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2013-11-14-00001/running-a-node-js-web-site-in-production-part-2</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Introduction to Node.js&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2013-01-13-00001/introduction-to-node-js</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Using SSH without a password&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-11-11-00001/using-ssh-without-a-password</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Running a Node.js web site in production (a beginners guide)&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-10-18-00001/running-a-node-js-web-site-in-production-a-beginners-guide</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Yield Return&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-17-00001/yield-return</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Thoughts on Unit Testing&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-17-00007/thoughts-on-unit-testing</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>The Mythical Man-Month&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-17-00006/the-mythical-man-month</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Windows Presentation Foundation&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-17-00005/windows-presentation-foundation</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>The Scrum Daily Meeting&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-17-00004/the-scrum-daily-meeting</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Upgrading Your Software Development Tools&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-17-00003/upgrading-your-software-development-tools</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>TransactionScope.Complete Maybe&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-17-00002/transactionscope-complete-maybe</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Managing and Leading (The One Thing)&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-16-00006/managing-and-leading-the-one-thing</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Rubber Band Reports with Pivot Tables (reprint)&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-16-00004/rubber-band-reports-with-pivot-tables-reprint</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Multiple Endpoints for a WCF Service&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-16-00005/multiple-endpoints-for-a-wcf-service</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>The Model View Controller is dead, long live the Model View Controller&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-16-00003/the-model-view-controller-is-dead-long-live-the-model-view-controller</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Skeletons, Mona Lisa, and Problem Solving&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-16-00007/skeletons-mona-lisa-and-problem-solving</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Static constructors and ASP.NET applications&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-16-00008/static-constructors-and-asp-net-applications</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Software Developers and Process Improvement&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-16-00009/software-developers-and-process-improvement</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Team Dynamics&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-16-00002/team-dynamics</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>The Design of Design&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-16-00001/the-design-of-design</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Using layouts with EJS in Express 3.x&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-08-00001/using-layouts-with-ejs-in-express-3-x</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Flow: Second Generation Lean Product Development&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00021/flow-second-generation-lean-product-development</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Ruby Development on the Mac OS X&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00015/ruby-development-on-the-mac-os-x</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Binary Tree in C#&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00028/binary-tree-in-c-sharp</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Estimates on Software Projects&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00027/estimates-on-software-projects</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>DotWiki 2.0&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00026/dotwiki-2-0</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Computer Museum (Paris)&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00025/computer-museum-paris</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>DevConnections 2008&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00024/devconnections-2008</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Flickr Library in C#&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00023/flickr-library-in-c-sharp</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Expose your data as an RSS Feed with .NET 3.5&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00022/expose-your-data-as-an-rss-feed-with-net-3-5</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>A Decaf Introduction to CoffeeScript&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00001/a-decaf-introduction-to-coffeescript</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Password Recovery in an ASP.NET MVC Project&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00020/password-recovery-in-an-asp-net-mvc-project</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>AJAX calls with jQuery in ASP.NET MVC&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00019/ajax-calls-with-jquery-in-asp-net-mvc</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Encrypt and Decrypt a string in C#&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00018/encrypt-and-decrypt-a-string-in-c-sharp</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Log4net Thread-Safe but not Process-Safe&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00017/log4net-thread-safe-but-not-process-safe</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Returning HTTP 404 in ASP.NET MVC&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00016/returning-http-404-in-asp-net-mvc</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Book review: Lean Software Development&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00029/book-review-lean-software-development</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Git Basics&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00014/git-basics</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Drawing a Binary Tree in Ruby&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00013/drawing-a-binary-tree-in-ruby</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Finder Error -36 on a NAS&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00012/finder-error-36-on-a-nas</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Running Visual Studio inside Mac OS X&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00011/running-visual-studio-inside-mac-os-x</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Simple Branching Strategies for Team Foundation Server&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00010/simple-branching-strategies-for-team-foundation-server</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>8 Traits of Great Metro Style Apps&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00009/8-traits-of-great-metro-style-apps</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Future Directions for C# and Visual Basic&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00008/future-directions-for-c-sharp-and-visual-basic</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Sliding-in a Full Page Panel with CSS and jQuery&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00007/sliding-in-a-full-page-panel-with-css-and-jquery</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Functional Asynchronicity Explained&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00006/functional-asynchronicity-explained</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Web Development on the Mac OS X (part II)&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00005/web-development-on-the-mac-os-x-part-ii</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>JavaScript Async Programming for Sync Heads&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00004/javascript-async-programming-for-sync-heads</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Drawing a Binary Tree in CoffeeScript&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00003/drawing-a-binary-tree-in-coffeescript</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Compiling CoffeeScript from Sublime Text 2&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-09-02-00002/compiling-coffeescript-from-sublime-text-2</guid>
+              <pubDate></pubDate>
+          </item>
+          <item>
+              <title>Introduction to Scrum&#xD;</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2008-10-04-00001/introduction-to-scrum</guid>
+              <pubDate></pubDate>
+          </item>
+      </channel>
+  </rss>
