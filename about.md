@@ -1,5 +1,5 @@
 # About
-I am a software developer in Hartford, CT. This site is where I host [my blog](https://hectorcorrea.com/blog/) and post small pieces about software development.
+I am a software developer in Hartford, CT. This site is where I host [my blog](/blog/) and post small pieces about software development.
 
 I have been a software developer for many years. Since 2014 my focus has been on Ruby on Rails applications for academic libraries with a strong focus on indexing and searching data through Apache Solr and on institutional repositories.
 
