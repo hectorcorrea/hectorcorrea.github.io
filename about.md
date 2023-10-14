@@ -17,4 +17,15 @@ I hold a Bachelor of Science in Computer Science from Instituto Tecnológico de 
 
 In the last few years I've given presentations at local events as well as regional and national conferences in a variety of topics including [Solr](https://github.com/hectorcorrea/solr-for-newbies), [Node.js](/blog/introduction-to-node-js/51), [NoSQL/MongoDB](https://www.slideshare.net/hectorwashere/introduction-to-nosql-with-mongodb), [Linked Data](/blog/introduction-to-ldp/67), and [sustainable software development](/blog/build-your-own-software/70).
 
+
+## Getting in touch
+
 Feel free to browse around and contact me at [hector@hectorcorrea.com](mailto:hector@hectorcorrea.com) if you have any questions or comments.
+
+You can also find me on:
+
+* <img class="socialLogo" alt="" src="/public/github.svg" /> [GitHub](https://github.com/hectorcorrea)
+* <img class="socialLogo" alt="" src="/public/rss.svg" /> [Blog RSS Feed](blog/rss)
+* <img class="socialLogo" alt="" src="/public/stackoverflow.svg" /> [StackOverflow](https://stackoverflow.com/users/446681/hector-correa)
+* <img class="socialLogo" alt="" src="/public/mastodon.svg" /> [Mastodon](https://mastodon.social/@hectorjcorrea)
+
