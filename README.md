@@ -1,10 +1,8 @@
 # What is this?
-This site is a work in progress to see if I transfer my site from being 
-hosted on a virtual machine in Digital Ocean to being hosted in GitHub pages.
+This is the content for my site at https://hectorcorrea.com
 
-You can see the running site at https://hectorcorrea.github.io/ but it does not
-have much content yet.
+The Markdown files are the content. The HTML files are generated with via https://github.com/hectorcorrea/fixie
 
-The real site is still hosted at https://hectorcorrea.com
+The previous version of my file was a Go server that saved data to Markdown files, if you are interested on that code it is still available at https://github.com/hectorcorrea/hectorcorrea.com
 
 
