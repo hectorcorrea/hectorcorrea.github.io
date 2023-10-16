@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Goodbye Gmail</title>
+      <slug>goodbye-gmail</slug>
+      <summary>The story of why and how I moved my email from being hosted at Gmail to using another webmail provider.</summary>
+      <createdOn>2018-09-22 18:26:19</createdOn>
+      <updatedOn>2020-02-25 14:49:50 +0000 UTC</updatedOn>
+      <postedOn>2018-09-29 13:56:39 +0000 UTC</postedOn>
+      <oldSequence>00001</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>72</value>
+      </fields>
+  </TextEntry>

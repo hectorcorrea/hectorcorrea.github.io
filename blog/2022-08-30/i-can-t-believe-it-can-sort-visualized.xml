@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextoEntry>
+      <title>I can't believe it can sort - visualized</title>
+      <slug>i-can-t-believe-it-can-sort-visualized</slug>
+      <summary>A visualization of the sorting algorithm presented by Stanley P. Y. Fung</summary>
+      <createdOn>2022-08-30 01:39:02.730</createdOn>
+      <updatedOn>2022-09-13 19:26:06.137</updatedOn>
+      <postedOn>2022-08-30 16:51:50.334</postedOn>
+      <oldSequence>00001</oldSequence>
+      <fields>
+          <name>type</name>
+          <value>blog</value>
+      </fields>
+  </TextoEntry>

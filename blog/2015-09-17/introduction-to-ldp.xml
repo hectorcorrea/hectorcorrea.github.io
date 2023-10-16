@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Introduction to LDP</title>
+      <slug>introduction-to-ldp</slug>
+      <summary>Linked Data Platform (LDP) is a W3C recommendation that defines a set of rules to provide an architecture for read-write Linked Data on the web. This blog post is an introduction to the concept of Linked Data and how to get started with the Linked Da...</summary>
+      <createdOn>2015-09-15 14:08:26</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2015-09-17 02:06:31 +0000 UTC</postedOn>
+      <oldSequence>00001</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>67</value>
+      </fields>
+  </TextEntry>

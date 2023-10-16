@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextoEntry>
+      <title>Introduction to Node.js</title>
+      <slug>introduction-to-node-js</slug>
+      <summary>This blog post is an introduction to Node.js for traditional website development. In this post we go from a basic &#34;hello world&#34; website with barebones Node.js to a simple website with Express.js. </summary>
+      <createdOn>2013-01-13 20:39:57</createdOn>
+      <updatedOn>2023-06-09 13:44:58.627</updatedOn>
+      <postedOn>2013-01-15 03:40:43 +0000 UTC</postedOn>
+      <oldSequence>00001</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>51</value>
+      </fields>
+      <fields>
+          <name>type</name>
+          <value>blog</value>
+      </fields>
+  </TextoEntry>

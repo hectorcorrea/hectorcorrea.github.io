@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>JavaScript Async Programming for Sync Heads</title>
+      <slug>javascript-async-programming-for-sync-heads</slug>
+      <summary>This blog post compares how a particular synchronous piece of server side JavaScript code in Node.js looks and feels against against its asynchronous counterpart.</summary>
+      <createdOn>2012-09-02 01:34:26</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2012-04-20 00:14:00 +0000 UTC</postedOn>
+      <oldSequence>00004</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>4</value>
+      </fields>
+  </TextEntry>

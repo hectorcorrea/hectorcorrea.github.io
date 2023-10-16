@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Installing Ruby with ruby-install and chruby</title>
+      <slug>installing-ruby-with-ruby-install-and-chruby</slug>
+      <summary>A sample list of steps to install Ruby on a Mac via ruby-install and configure support for multiple versions via chruby, along with a few oddities and gotchas.</summary>
+      <createdOn>2017-04-15 17:23:55</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2018-09-22 19:31:11 +0000 UTC</postedOn>
+      <oldSequence>00001</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>71</value>
+      </fields>
+  </TextEntry>

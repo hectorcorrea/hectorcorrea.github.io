@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Sliding-in a Full Page Panel with CSS and jQuery</title>
+      <slug>sliding-in-a-full-page-panel-with-css-and-jquery</slug>
+      <summary>In this blog post I show how to use CSS and jQuery to slide-in a panel full page on top of another and then slide back in the original content.</summary>
+      <createdOn>2012-09-02 01:57:47</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2011-11-22 04:13:00 +0000 UTC</postedOn>
+      <oldSequence>00007</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>7</value>
+      </fields>
+  </TextEntry>

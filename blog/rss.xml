@@ -9,31 +9,31 @@
           <item>
               <title>Migrating to Mastodon</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2022-11-12-00001/migrating-to-mastodon</guid>
+              <guid isPermaLink="true">/blog/2022-11-12/migrating-to-mastodon</guid>
               <pubDate>Sat, 12 Nov 2022 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>I can&#39;t believe it can sort - visualized</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2022-08-30-00001/i-can-t-believe-it-can-sort-visualized</guid>
+              <guid isPermaLink="true">/blog/2022-08-30/i-can-t-believe-it-can-sort-visualized</guid>
               <pubDate>Tue, 30 Aug 2022 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Log4Shell and Solr</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2021-12-13-00001/log4shell-and-solr</guid>
+              <guid isPermaLink="true">/blog/2021-12-13/log4shell-and-solr</guid>
               <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Solr debugQuery</title>
               <description>TODO</description>
               <guid isPermaLink="true">/blog/2021-11-16/solr-debugquery</guid>
-              <pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
+              <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>String encoding in Ruby and JSON.generate()</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2021-10-01-00001/string-encoding-in-ruby-and-json-generate</guid>
+              <guid isPermaLink="true">/blog/2021-10-04/string-encoding-in-ruby-and-json-generate</guid>
               <pubDate>Fri, 01 Oct 2021 00:00:00 +0000</pubDate>
           </item>
           <item>
@@ -141,7 +141,7 @@
           <item>
               <title>Introduction to Node.js</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2013-01-13-00001/introduction-to-node-js</guid>
+              <guid isPermaLink="true">/blog/2013-01-15/introduction-to-node-js</guid>
               <pubDate>Sun, 13 Jan 2013 00:00:00 +0000</pubDate>
           </item>
           <item>
@@ -259,15 +259,15 @@
               <pubDate>Sat, 08 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
-              <title>Flow: Second Generation Lean Product Development</title>
+              <title>Password Recovery in an ASP.NET MVC Project</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00021/flow-second-generation-lean-product-development</guid>
+              <guid isPermaLink="true">/blog/2012-09-02-00020/password-recovery-in-an-asp-net-mvc-project</guid>
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
-              <title>Ruby Development on the Mac OS X</title>
+              <title>Git Basics</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00015/ruby-development-on-the-mac-os-x</guid>
+              <guid isPermaLink="true">/blog/2012-09-02-00014/git-basics</guid>
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
@@ -301,27 +301,21 @@
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
-              <title>Flickr Library in C#</title>
-              <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00023/flickr-library-in-c-sharp</guid>
-              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
-          </item>
-          <item>
               <title>Expose your data as an RSS Feed with .NET 3.5</title>
               <description>TODO</description>
               <guid isPermaLink="true">/blog/2012-09-02-00022/expose-your-data-as-an-rss-feed-with-net-3-5</guid>
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
-              <title>A Decaf Introduction to CoffeeScript</title>
+              <title>Flow: Second Generation Lean Product Development</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00001/a-decaf-introduction-to-coffeescript</guid>
+              <guid isPermaLink="true">/blog/2012-09-02-00021/flow-second-generation-lean-product-development</guid>
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
-              <title>Password Recovery in an ASP.NET MVC Project</title>
+              <title>Flickr Library in C#</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00020/password-recovery-in-an-asp-net-mvc-project</guid>
+              <guid isPermaLink="true">/blog/2008-11-30/flickr-library-in-c-sharp</guid>
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
@@ -349,15 +343,15 @@
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
-              <title>Book review: Lean Software Development</title>
+              <title>Ruby Development on the Mac OS X</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00029/book-review-lean-software-development</guid>
+              <guid isPermaLink="true">/blog/2012-09-02-00015/ruby-development-on-the-mac-os-x</guid>
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
-              <title>Git Basics</title>
+              <title>Book review: Lean Software Development</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00014/git-basics</guid>
+              <guid isPermaLink="true">/blog/2012-09-02-00029/book-review-lean-software-development</guid>
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
@@ -373,69 +367,75 @@
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
-              <title>8 Traits of Great Metro Style Apps</title>
+              <title>A Decaf Introduction to CoffeeScript</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00009/8-traits-of-great-metro-style-apps</guid>
-              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
-          </item>
-          <item>
-              <title>Future Directions for C# and Visual Basic</title>
-              <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00008/future-directions-for-c-sharp-and-visual-basic</guid>
-              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
-          </item>
-          <item>
-              <title>Sliding-in a Full Page Panel with CSS and jQuery</title>
-              <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00007/sliding-in-a-full-page-panel-with-css-and-jquery</guid>
-              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
-          </item>
-          <item>
-              <title>Functional Asynchronicity Explained</title>
-              <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00006/functional-asynchronicity-explained</guid>
-              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
-          </item>
-          <item>
-              <title>Web Development on the Mac OS X (part II)</title>
-              <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00005/web-development-on-the-mac-os-x-part-ii</guid>
-              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
-          </item>
-          <item>
-              <title>JavaScript Async Programming for Sync Heads</title>
-              <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00004/javascript-async-programming-for-sync-heads</guid>
-              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
-          </item>
-          <item>
-              <title>Drawing a Binary Tree in CoffeeScript</title>
-              <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00003/drawing-a-binary-tree-in-coffeescript</guid>
+              <guid isPermaLink="true">/blog/2012-06-19/a-decaf-introduction-to-coffeescript</guid>
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Compiling CoffeeScript from Sublime Text 2</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00002/compiling-coffeescript-from-sublime-text-2</guid>
+              <guid isPermaLink="true">/blog/2012-05-23/compiling-coffeescript-from-sublime-text-2</guid>
+              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
+          </item>
+          <item>
+              <title>Drawing a Binary Tree in CoffeeScript</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-05-22/drawing-a-binary-tree-in-coffeescript</guid>
+              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
+          </item>
+          <item>
+              <title>JavaScript Async Programming for Sync Heads</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-04-20/javascript-async-programming-for-sync-heads</guid>
+              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
+          </item>
+          <item>
+              <title>Web Development on the Mac OS X (part II)</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-04-09/web-development-on-the-mac-os-x-part-ii</guid>
+              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
+          </item>
+          <item>
+              <title>Functional Asynchronicity Explained</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2012-01-29/functional-asynchronicity-explained</guid>
+              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
+          </item>
+          <item>
+              <title>Sliding-in a Full Page Panel with CSS and jQuery</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2011-11-22/sliding-in-a-full-page-panel-with-css-and-jquery</guid>
+              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
+          </item>
+          <item>
+              <title>Future Directions for C# and Visual Basic</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2011-09-15/future-directions-for-c-sharp-and-visual-basic</guid>
+              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
+          </item>
+          <item>
+              <title>Drawing a Binary Tree in Ruby</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2011-04-11/drawing-a-binary-tree-in-ruby</guid>
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Finder Error -36 on a NAS</title>
               <description>TODO</description>
               <guid isPermaLink="true">/blog/2011-06-06/finder-error-36-on-a-nas</guid>
-              <pubDate>Mon, 06 Jun 2011 00:00:00 +0000</pubDate>
+              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
-              <title>Drawing a Binary Tree in Ruby</title>
+              <title>8 Traits of Great Metro Style Apps</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2011-04-11/drawing-a-binary-tree-in-ruby</guid>
-              <pubDate>Mon, 11 Apr 2011 00:00:00 +0000</pubDate>
+              <guid isPermaLink="true">/blog/2011-09-13/8-traits-of-great-metro-style-apps</guid>
+              <pubDate>Tue, 13 Sep 2011 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Introduction to Scrum</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2008-10-04-00001/introduction-to-scrum</guid>
+              <guid isPermaLink="true">/blog/2008-10-04/introduction-to-scrum</guid>
               <pubDate>Sat, 04 Oct 2008 00:00:00 +0000</pubDate>
           </item>
       </channel>
