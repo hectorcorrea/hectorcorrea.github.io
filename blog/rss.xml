@@ -211,6 +211,12 @@
               <pubDate>Thu, 15 Sep 2011 00:00:00 +0000</pubDate>
           </item>
           <item>
+              <title>8 Traits of Great Metro Style Apps</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2011-09-13/8-traits-of-great-metro-style-apps</guid>
+              <pubDate>Tue, 13 Sep 2011 00:00:00 +0000</pubDate>
+          </item>
+          <item>
               <title>Simple Branching Strategies for Team Foundation Server</title>
               <description>TODO</description>
               <guid isPermaLink="true">/blog/2011-08-28/simple-branching-strategies-for-team-foundation-server</guid>
@@ -431,12 +437,6 @@
               <description>TODO</description>
               <guid isPermaLink="true">/blog/2006-05-08/book-review-lean-software-development</guid>
               <pubDate>Mon, 08 May 2006 00:00:00 +0000</pubDate>
-          </item>
-          <item>
-              <title>8 Traits of Great Metro Style Apps</title>
-              <description>TODO</description>
-              <guid isPermaLink="true">/blog/2011-09-13/8-traits-of-great-metro-style-apps</guid>
-              <pubDate>Thu, 01 Jan 1970 00:00:00 +0000</pubDate>
           </item>
       </channel>
   </rss>
