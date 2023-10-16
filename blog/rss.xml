@@ -39,103 +39,103 @@
           <item>
               <title>document body innerHTML woes</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2021-08-26-00001/document-body-innerhtml-woes</guid>
+              <guid isPermaLink="true">/blog/2021-08-26/document-body-innerhtml-woes</guid>
               <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Tiny Container</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2021-03-08-00001/tiny-container</guid>
+              <guid isPermaLink="true">/blog/2021-03-09/tiny-container</guid>
               <pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>My (strange) journey to becoming a Ruby developer</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2019-11-17-00001/my-strange-journey-to-becoming-a-ruby-developer</guid>
+              <guid isPermaLink="true">/blog/2019-11-18/my-strange-journey-to-becoming-a-ruby-developer</guid>
               <pubDate>Sun, 17 Nov 2019 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Linux mv and file patterns</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2019-10-29-00001/linux-mv-and-file-patterns</guid>
+              <guid isPermaLink="true">/blog/2019-10-29/linux-mv-and-file-patterns</guid>
               <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>MySQL UTF-8 issues</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2019-07-14-00001/mysql-utf-8-issues</guid>
+              <guid isPermaLink="true">/blog/2019-07-14/mysql-utf-8-issues</guid>
               <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Goodbye Gmail</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2018-09-22-00001/goodbye-gmail</guid>
+              <guid isPermaLink="true">/blog/2018-09-29/goodbye-gmail</guid>
               <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Installing Ruby with ruby-install and chruby</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2017-04-15-00001/installing-ruby-with-ruby-install-and-chruby</guid>
+              <guid isPermaLink="true">/blog/2018-09-22/installing-ruby-with-ruby-install-and-chruby</guid>
               <pubDate>Sat, 15 Apr 2017 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Build your own software</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2017-03-15-00001/build-your-own-software</guid>
+              <guid isPermaLink="true">/blog/2017-03-15/build-your-own-software</guid>
               <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Migrating my site from Node.js to Go</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2017-01-17-00001/migrating-my-site-from-node-js-to-go</guid>
+              <guid isPermaLink="true">/blog/2017-01-18/migrating-my-site-from-node-js-to-go</guid>
               <pubDate>Tue, 17 Jan 2017 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Bundle, grep, and Rails Applications</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2016-11-03-00001/bundle-grep-and-rails-applications</guid>
+              <guid isPermaLink="true">/blog/2016-11-03/bundle-grep-and-rails-applications</guid>
               <pubDate>Thu, 03 Nov 2016 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Introduction to LDP</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2015-09-15-00001/introduction-to-ldp</guid>
+              <guid isPermaLink="true">/blog/2015-09-17/introduction-to-ldp</guid>
               <pubDate>Tue, 15 Sep 2015 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Code4Lib 2015</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2015-02-28-00001/code4lib-2015</guid>
+              <guid isPermaLink="true">/blog/2015-02-28/code4lib-2015</guid>
               <pubDate>Sat, 28 Feb 2015 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Learning JavaScript Data Structures and Algorithms</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2015-01-05-00001/learning-javascript-data-structures-and-algorithms</guid>
+              <guid isPermaLink="true">/blog/2015-01-09/learning-javascript-data-structures-and-algorithms</guid>
               <pubDate>Mon, 05 Jan 2015 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Practical Object-Oriented Design in Ruby</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2014-12-22-00001/practical-object-oriented-design-in-ruby</guid>
+              <guid isPermaLink="true">/blog/2014-12-26/practical-object-oriented-design-in-ruby</guid>
               <pubDate>Mon, 22 Dec 2014 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Hydra Connect 2</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2014-10-07-00001/hydra-connect-2</guid>
+              <guid isPermaLink="true">/blog/2014-10-07/hydra-connect-2</guid>
               <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Connection handling with Node.js and MongoDB</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2013-11-24-00001/connection-handling-with-node-js-and-mongodb</guid>
+              <guid isPermaLink="true">/blog/2013-11-24/connection-handling-with-node-js-and-mongodb</guid>
               <pubDate>Sun, 24 Nov 2013 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Running a Node.js web site in production (part 2)</title>
               <description>TODO</description>
-              <guid isPermaLink="true">/blog/2013-11-14-00001/running-a-node-js-web-site-in-production-part-2</guid>
+              <guid isPermaLink="true">/blog/2013-11-23/running-a-node-js-web-site-in-production-part-2</guid>
               <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
           </item>
           <item>
@@ -361,12 +361,6 @@
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
-              <title>Simple Branching Strategies for Team Foundation Server</title>
-              <description>TODO</description>
-              <guid isPermaLink="true">/blog/2012-09-02-00010/simple-branching-strategies-for-team-foundation-server</guid>
-              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
-          </item>
-          <item>
               <title>A Decaf Introduction to CoffeeScript</title>
               <description>TODO</description>
               <guid isPermaLink="true">/blog/2012-06-19/a-decaf-introduction-to-coffeescript</guid>
@@ -418,6 +412,12 @@
               <title>Drawing a Binary Tree in Ruby</title>
               <description>TODO</description>
               <guid isPermaLink="true">/blog/2011-04-11/drawing-a-binary-tree-in-ruby</guid>
+              <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
+          </item>
+          <item>
+              <title>Simple Branching Strategies for Team Foundation Server</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2011-08-28/simple-branching-strategies-for-team-foundation-server</guid>
               <pubDate>Sun, 02 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
