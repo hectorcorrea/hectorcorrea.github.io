@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Estimates on Software Projects</title>
+      <slug>estimates-on-software-projects</slug>
+      <summary>Software Estimates is one of the most controversial topics on software development, including the process to calculate them and the value that they add to the software development process. In this post I give a few guidelines on how to go about them.&#xD;&#xA;</summary>
+      <createdOn>2012-09-02 03:54:28</createdOn>
+      <updatedOn>2019-07-14 18:49:35 +0000 UTC</updatedOn>
+      <postedOn>2008-01-09 04:25:00 +0000 UTC</postedOn>
+      <oldSequence>00027</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>26</value>
+      </fields>
+  </TextEntry>

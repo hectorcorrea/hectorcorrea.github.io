@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Static constructors and ASP.NET applications</title>
+      <slug>static-constructors-and-asp-net-applications</slug>
+      <summary>A tip on how static constructors in ASP.NET applications don&#39;t necessarily fire up when you might thing they do.</summary>
+      <createdOn>2012-09-16 20:26:41</createdOn>
+      <updatedOn>2019-07-14 18:49:35 +0000 UTC</updatedOn>
+      <postedOn>2008-09-11 01:25:30 +0000 UTC</postedOn>
+      <oldSequence>00008</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>38</value>
+      </fields>
+  </TextEntry>

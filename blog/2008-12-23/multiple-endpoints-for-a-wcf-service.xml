@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Multiple Endpoints for a WCF Service</title>
+      <slug>multiple-endpoints-for-a-wcf-service</slug>
+      <summary>An example on how to expose a WCF service through multiple end points, for example through HTTP and through TCP</summary>
+      <createdOn>2012-09-16 18:48:00</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2008-12-23 02:56:04 +0000 UTC</postedOn>
+      <oldSequence>00005</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>34</value>
+      </fields>
+  </TextEntry>

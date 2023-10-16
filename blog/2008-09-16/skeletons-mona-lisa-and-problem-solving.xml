@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Skeletons, Mona Lisa, and Problem Solving</title>
+      <slug>skeletons-mona-lisa-and-problem-solving</slug>
+      <summary>Thoughts on the value of always having a running version of your application (even if incomplete) and the difference between iterative and incremental development.</summary>
+      <createdOn>2012-09-16 19:01:30</createdOn>
+      <updatedOn>2019-07-14 18:49:35 +0000 UTC</updatedOn>
+      <postedOn>2008-09-16 02:41:55 +0000 UTC</postedOn>
+      <oldSequence>00007</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>35</value>
+      </fields>
+  </TextEntry>

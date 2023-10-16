@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Using layouts with EJS in Express 3.x</title>
+      <slug>using-layouts-with-ejs-in-express-3-x</slug>
+      <summary>An example on how to emulate layouts with Express 3.x and EJS </summary>
+      <createdOn>2012-09-08 14:01:12</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2012-09-13 01:10:15 +0000 UTC</postedOn>
+      <oldSequence>00001</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>31</value>
+      </fields>
+  </TextEntry>

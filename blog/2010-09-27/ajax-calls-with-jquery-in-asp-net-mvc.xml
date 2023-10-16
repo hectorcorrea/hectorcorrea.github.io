@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>AJAX calls with jQuery in ASP.NET MVC</title>
+      <slug>ajax-calls-with-jquery-in-asp-net-mvc</slug>
+      <summary>In this blog post I show how to execute AJAX calls with jQuery from an ASP.NET MVC application. The first example shows how to do it with an HTTP GET call and the second one uses an HTTP POST call. Both examples use JSON in the return type.&#xD;&#xA;</summary>
+      <createdOn>2012-09-02 03:11:20</createdOn>
+      <updatedOn>2019-07-14 18:49:34 +0000 UTC</updatedOn>
+      <postedOn>2010-09-27 00:53:00 +0000 UTC</postedOn>
+      <oldSequence>00019</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>19</value>
+      </fields>
+  </TextEntry>

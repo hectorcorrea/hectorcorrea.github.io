@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>Binary Tree in C#</title>
+      <slug>binary-tree-in-c-sharp</slug>
+      <summary>A C# program to draw a binary tree. This program implements a binary tree class using C# Generics and also a Windows Form application to draw it on the screen.</summary>
+      <createdOn>2012-09-02 03:27:00</createdOn>
+      <updatedOn>2019-07-14 18:49:35 +0000 UTC</updatedOn>
+      <postedOn>2006-11-27 14:42:00 +0000 UTC</postedOn>
+      <oldSequence>00028</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>21</value>
+      </fields>
+  </TextEntry>

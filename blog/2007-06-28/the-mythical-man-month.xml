@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <TextEntry>
+      <title>The Mythical Man-Month</title>
+      <slug>the-mythical-man-month</slug>
+      <summary>A review on Frederick&#39;s Brook Mythical Man-Month book</summary>
+      <createdOn>2012-09-17 01:46:46</createdOn>
+      <updatedOn>2019-07-14 18:49:35 +0000 UTC</updatedOn>
+      <postedOn>2007-06-28 07:12:24 +0000 UTC</postedOn>
+      <oldSequence>00006</oldSequence>
+      <fields>
+          <name>oldId</name>
+          <value>42</value>
+      </fields>
+  </TextEntry>
