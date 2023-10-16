@@ -1,4 +1,6 @@
 # I can't believe it can sort - visualized
+*Posted on 2022-08-30*
+
 A few months ago I came across a paper titled [Is this the simplest (and most surprising) sorting algorithm ever?](https://arxiv.org/abs/2110.01111) by Stanley P. Y. Fung in which he presents an incredibly simple sorting algorithm, the entire code is just 4 lines of code:
 
 ```
@@ -8,7 +10,7 @@ for i = 1 to n do
       swap A[i] and A[j]
 ```
 
-That's it, that's the entire algorithm. As Fung indicates on the paper, at first glance it looks like this algorithm cannot possible work (e.g. the comparison looks wrong) but if you try it, you'll notice that it is indeed correct. Fung also indicates that the algorithm is not efficient by any stretch of imagination and shouldn't be used as a first example to introduce sorting to students. 
+That's it, that's the entire algorithm. As Fung indicates on the paper, at first glance it looks like this algorithm cannot possible work (e.g. the comparison looks wrong) but if you try it, you'll notice that it is indeed correct. Fung also indicates that the algorithm is not efficient by any stretch of imagination and shouldn't be used as a first example to introduce sorting to students.
 
 And yet, as Fung points out, the appealing thing about it "may be its simplicity, in terms of lines of code and the 'symmetry' of the two loops".
 
@@ -55,7 +57,7 @@ i     j     a[i] < [j]  swap?     a
 final data: 5, 7, 10, 99
 ```
 
-As Fung indicates, one of the surprising things of this algorithm is that, without any obvious logic, the algorithm performs two different phases: a select maximum phase and an insertion sort phase. 
+As Fung indicates, one of the surprising things of this algorithm is that, without any obvious logic, the algorithm performs two different phases: a select maximum phase and an insertion sort phase.
 
 The **select maximum phase** is executed when `i = 0` (notice that I am using zero-based indexes). In this phase the algorithm selects the *maximum number* and moves it to the front of the array, you can see this in the table above how when `i = 0 and j = 3` the resulting array is `a = [99, 5, 10, 7]` with `99` being the maximum value in our initial array. The fact that it moves the maximum value (not the lowest!) to the front is counter intuitive, but the next phase takes care of it.
 
