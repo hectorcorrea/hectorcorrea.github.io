@@ -136,7 +136,7 @@
 
 <p>Initially, when I first decided to create a static generated version of my site, I was intending on hosting that version on the same Linux machine that I already have at Digital Ocean and just serve the HTML pages through Apache. However, as I was converting the site it dawned on me that I could also host it on <a href="https://pages.github.com/">GitHub pages</a> which is what all the cool kids are doing these days.</p>
 
-<p>I have never hosted a site on GitHub pages so this was new territory to me. But the documentation is fantastic and it didn't take me long to push my code to a GitHub repository that is served via GitHub pages directly.</p>
+<p>I have never hosted a site on GitHub pages so this was new territory to me. But the documentation is fantastic and it didn't take me long to push my content to a GitHub repository that is served via GitHub pages directly.</p>
 
 <p>GitHub pages also has great instructions on how to <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">configure DNS</a> so that my original URL <code>https://hectocorrea.com</code> can be served by the content in GitHub pages. This was a bit tricky mostly because DNS is tricky and I am not super comfortable with it. But all in all the process as smooth as it can be.</p>
 
@@ -161,6 +161,13 @@
 <p>This way if somebody goes to <code>/blog/hello-world/10</code> a file will be found and that file will tell the browser to send the user to the new URL: <code>/blog/2012-09-02/hello-world</code>. This is known as <a href="&lt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections#html_redirections&gt;">HTML redirection</a>.</p>
 
 <p>A disadvantage of this approach is that there are lots of extra files on my GitHub repo that are just stub files (i.e. they contain no real content, only the HTML redirect). But, at least the links are redirected properly so I guess I'll have to live with this.</p>
+
+<h2>Page not found</h2>
+<p>GitHub pages automatically loads a file called <code>404.html</code> everytime somebody visits a link that does not exist in the GitHub site and it renders it with the proper HTTP response status <code>404</code> which is nice. You can customize the content of this page to tell your users that something was not found using whatever layout your site uses.</p>
+
+<p>I think I am handling most of the legacy links that exist out there on the web for my blog. But unfortunately I have no way of knowing since GitHub does not report how often this page is rendered and for what URLs.</p>
+
+<p>As of today there are still a few broken links to images and files available for download in some of the blog entries. I'll fix those in the next few days.</p>
 
 <h2>Source code, err, content</h2>
 
