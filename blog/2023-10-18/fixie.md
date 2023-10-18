@@ -1,4 +1,6 @@
 # fixie
+*Posted on 2023-10-18*
+
 A few weeks ago I wrote a little program called (`fixie`) to help me migrate my personal website to be served via statically generated pages.
 
 `Fixie` is similar to other static site generators like [Hugo](https://gohugo.io/) or [Jekyll](https://jekyllrb.com/): you give it a bunch of Markdown files and it produces the HTML pages with the content on those Markdown files. But `fixie` has zero customization options, well not zero, but very few customization options - [hence the name](https://en.wikipedia.org/wiki/Fixed-gear_bicycle).
