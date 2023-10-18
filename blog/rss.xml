@@ -7,6 +7,12 @@
           <generator>https://github.com/hectorcorrea/fixie</generator>
           <atom:link href="https://hectorcorrea.com" rel="self" type="application/rss+xml"></atom:link>
           <item>
+              <title>fixie</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2023-10-18/fixie</guid>
+              <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
+          </item>
+          <item>
               <title>Static Generated Site</title>
               <description>TODO</description>
               <guid isPermaLink="true">/blog/2023-10-17/static-generated-site</guid>

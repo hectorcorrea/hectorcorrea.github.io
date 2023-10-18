@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+    <link rel="canonical" href="https://hectorcorrea.com" />
+
+    <style>
+      header {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        height: 50px;
+        max-width: unset;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      footer {
+        font-weight: lighter;
+        font-size: smaller;
+        margin-left: 75px;
+        padding-right: 75px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/">HectorCorrea.com</a>
+      <span style="float:right;">
+        <a id="about-menu" href="/about" role="button" class="btn btn-secondary btn-sm">About</a>
+        <a id="blog-menu" href="/blog" role="button" class="btn btn-secondary btn-sm">Blog</a>
+      </span>
+    </header>
+
+    <div class="container">
+      <h1>fixie</h1>
+<p>A few weeks ago I wrote a little program called (<code>fixie</code>) to help me migrate my personal website to be served via statically generated pages.</p>
+
+<p><code>Fixie</code> is similar to other static site generators like <a href="https://gohugo.io/">Hugo</a> or <a href="https://jekyllrb.com/">Jekyll</a>: you give it a bunch of Markdown files and it produces the HTML pages with the content on those Markdown files. But <code>fixie</code> has zero customization options, well not zero, but very few customization options - <a href="https://en.wikipedia.org/wiki/Fixed-gear_bicycle">hence the name</a>.</p>
+
+<h2>Basics</h2>
+
+<p>Let's say that you have two Markdown files <code>about.md</code> and <code>index.md</code> in your current folder. If you run <code>fixie</code> on that folder it will create <code>about.html</code> and <code>index.html</code> with the HTML version of the Markdown files.</p>
+
+<p><code>Fixie</code> processes all files in the current directory and anything underneath. So if there is a Markdown file under <code>./help/how-to.md</code> that file will also be processed and the corresponding HTML will be generated <code>./help/how-to.html</code></p>
+
+<p>At its core, that's all <code>fixie</code> does, but you can customize it a little bit.</p>
+
+<h2>Styling the pages</h2>
+
+<p>If there is a <code>layout.html</code> on the current folder, <code>fixie</code> will use the content of this file as the as the base creating the HTML version of <code>about.md</code> and <code>contact.md</code>.</p>
+
+<p>The <code>layout.html</code> file is a normal HTML file that you create with the skeleton (header, styles, footer, JavaScript) that will be used for all the generated HTML pages. This file is expect to include a token <code>{{CONTENT}}</code> somewhere on the HTML body (say inside a <code>div</code>) and that token will be replaced with the content of each of the Markdown files as the HTML version is generated.</p>
+
+<p>For a given file, say <code>about.md</code>, the process is as follows:</p>
+
+<pre>
+1. read about.md
+2. read layout.html
+3. replace {{CONTENT}} in layout.html with the HTML for about.md
+4. save it as about.html
+</pre>
+
+<h2>Blog entries</h2>
+
+<p>I created <code>fixie</code> to help me migrate my personal site, which is a really a blog, as a result <code>fixie</code> has built-in provisions for a basic blog web site.</p>
+
+<p>Any Markdown file that is under the <code>./blog</code> folder is considered a blog entry. <code>Fixie</code> processes these files as any other Markdown file: if there is a file called <code>./blog/2021-12-20/static-sites.md</code> it will create the corresponding HTML file <code>./blog/2021-12-20/static-sites.html</code> using the <code>layout.html</code> file.</p>
+
+<p>But there are several other goodies that happen to these blog entries:</p>
+
+<ul>
+<li>If the filename or the path to the file has a date in the form <code>YYYY-MM-DD</code> (e.g. 2021-12-20 in the example above) that date is considered the date the blog was posted.
+<li>If the first line of the Markdown file starts with a header line (e.g. <code># Static sites are cool</code>) that line is considered the title of the blog entry. Otherwise the filename is used as the title.
+<li>An extra HTML file <code>./blog/index.html</code> is generated with all the blog entries listed, grouped by year, and with the most recent entry first. This HTML uses the same <code>layout.html</code> as the rest of the site, except that <code>{{CONTENT}}</code> is automatically replaced with the list of blog entries.
+<li>An extra XML file <code>./blog/rss.xml</code> is generated with the RSS feed for the blog entries.
+</ul>
+
+<p>You need to manually reference these two files (<code>./blog/index.html</code> and <code>./blog/rss.xml</code>) if you want to link to them from your site. For example, you can add links in <code>layout.html</code> or somewhere in one of you other Markdown files (e.g. <code>about.md</code>)</p>
+
+<p><code>Fixie</code> does a few other extra things if there is an XML file next to each Markdown file under the <code>./blog</code> folder. This is because the data from my previous web site kept metadata for blog entries in separate XML files. You do not need to create these separate XML files, but if you go poking around the source code you'll notice code that uses these files - just ignore it.</p>
+
+<h2>Local web server</h2>
+
+<p><code>Fixie</code> produces HTML files and sometimes it's nice to preview the HTML site before you push it to an actual web server, particularly if you are tweaking the layout.</p>
+
+<p>You can run <code>fixie -server</code> to run a local web server and preview the content of your web site. By default the site is available on <code>http://localhost:9001</code>. Keep in mind that this local server is just for you to preview your files, not to actually host your site.</p>
+
+<p>This local server will not automatically detect changes to the Markdown files and regenerate them (i.e. it does not support hot reload). If you make changes to the Markdown files you need to stop the server and rerun it so that it regenerates the HTML.</p>
+
+<h2>Getting started</h2>
+
+<p>You can download the <code>fixie</code> executable from <a href="https://github.com/hectorcorrea/fixie/releases">https://github.com/hectorcorrea/fixie/releases</a> or via the command line with cURL:</p>
+
+<pre>
+$ curl -LO https://github.com/hectorcorrea/fixie/releases/latest/download/fixie
+$ chmod u+x fixie
+</pre>
+
+<p>Once <code>fixie</code> is on your machine, make sure you have some Markdown files to process (and optionally a <code>layout.html</code>). If you don't have any sample files you can download the ones in the <a href="https://github.com/hectorcorrea/fixie/tree/main/sample">sample folder</a> in the GitHub repo to get started.</p>
+
+<pre>
+$ ls
+about.md
+index.md
+layout.html
+</pre>
+
+<p>Now let's run <code>fixie</code> to process these Markdown files:</p>
+
+<pre>
+$ ./fixie
+fixie - a one gear static site generator
+
+Using layout file: ./layout.html
+Processing .md files...
+  about.md
+  index.md
+No blog entries (./blog/) were found
+</pre>
+
+<p>Notice how it reports that it is using our <code>layout.html</code> file and that it processed <code>about.md</code> and <code>index.md</code> . If you list your files again you should notice now the newly generated <code>about.html</code> and <code>index.html</code> files.</p>
+
+<pre>
+$ ls
+about.md
+about.html # Generated by fixie
+index.md
+index.html # Generated by fixie
+layout.html
+</pre>
+
+<p>At this point you can also preview your site by running <code>./fixie -server</code> and pointing your browser to <code>http://localhost:9001</code></p>
+
+<p>You might have noticed that when we ran <code>./fixie</code> it reported that "No blog entries (./blog/) were found". This is because in our example we don't have a <code>./blog</code> folder with Markdown files, but if you create one you should see how those files are also processed and recognized as blog entries.</p>
+
+<h2>Source code</h2>
+
+<p>The source code is in Go, if you are interested in the code you can find it at <a href="https://github.com/hectorcorrea/fixie">https://github.com/hectorcorrea/fixie</a>.</p>
+
+<p>I am using <code>fixie</code> to produce the HTML for my personal site, <a href="https://hectorcorrea.com/blog/2023-10-17/static-generated-site">check out this blog entry</a> for more information on why I did it and how I am using it to host my site at GitHub pages.</p>
+
+
+    </div>
+
+    <footer>
+      <p>
+        <hr>
+        License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+      </p>
+    </footer>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var about = document.getElementById("about-menu");
+        var blog = document.getElementById("blog-menu");
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          blog.classList.add("btn-primary");
+          blog.classList.remove("btn-secondary");
+        } else if(url == "/about") {
+          about.classList.add("btn-primary");
+          about.classList.remove("btn-secondary");
+        }
+      }
+
+      highlightMenu();
+    </script>
+  </body>
+</html>
