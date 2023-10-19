@@ -184,13 +184,15 @@ $ curl -LO https://github.com/hectorcorrea/fixie/releases/latest/download/fixie
 $ chmod u+x fixie
 </pre>
 
-<p>Once <code>fixie</code> is on your machine, make sure you have some Markdown files to process (and optionally a <code>layout.html</code>). If you don't have any sample files you can download the ones in the <a href="https://github.com/hectorcorrea/fixie/tree/main/sample">sample folder</a> in the GitHub repo to get started.</p>
+<p>Once <code>fixie</code> is on your machine, make sure you have some Markdown files to process (and optionally a <code>layout.html</code>). Below are the steps to create to sample Markdown files:</p>
 
 <pre>
-$ ls
-about.md
-index.md
-layout.html
+$ echo "# Hello World" &gt; index.md
+$ echo "This is the home page" &gt;&gt; index.md
+$ echo "and it links to the <a href="about">About</a> page" &gt;&gt; index.md
+
+$ echo "# About page" &gt; about.md
+$ echo "This is the about page" &gt;&gt; about.md
 </pre>
 
 <p>Now let's run <code>fixie</code> to process these Markdown files:</p>
@@ -199,14 +201,14 @@ layout.html
 $ ./fixie
 fixie - a one gear static site generator
 
-Using layout file: ./layout.html
+No layout file (./layout.html) was found
 Processing .md files...
   about.md
   index.md
 No blog entries (./blog/) were found
 </pre>
 
-<p>Notice how it reports that it is using our <code>layout.html</code> file and that it processed <code>about.md</code> and <code>index.md</code> . If you list your files again you should notice now the newly generated <code>about.html</code> and <code>index.html</code> files.</p>
+<p>Notice how it reports that processed <code>about.md</code> and <code>index.md</code>. If you list your files again you should notice now the newly generated <code>about.html</code> and <code>index.html</code> files.</p>
 
 <pre>
 $ ls
@@ -219,7 +221,17 @@ layout.html
 
 <p>At this point you can also preview your site by running <code>./fixie -server</code> and pointing your browser to <code>http://localhost:9001</code></p>
 
-<p>You might have noticed that when we ran <code>./fixie</code> it reported that "No blog entries (./blog/) were found". This is because in our example we don't have a <code>./blog</code> folder with Markdown files, but if you create one you should see how those files are also processed and recognized as blog entries.</p>
+<p>You might have noticed that <code>fixie</code> reported that no <code>layout.html</code> file was found. If we create one with the following content (notice that this is an HTML file with the special <code>{{CONTENT}}</code> token)</p>
+
+<pre>
+$ echo "&lt;header&gt;This is the header&lt;/header&gt;" &gt; layout.html
+$ echo "&lt;div&gt;{{CONTENT}}&lt;/div&gt;" &gt;&gt; layout.html
+$ echo "&lt;footer&gt;This is the footer&lt;/footer&gt;" &gt;&gt; layout.html
+</pre>
+
+<p>and rerun <code>./fixie -server</code> you'll see the same header and footer in both pages (index.html and about.html)</p>
+
+<p>Likewise, you might have noticed that when we ran <code>./fixie</code> it reported that "No blog entries (./blog/) were found". This is because in our example we don't have a <code>./blog</code> folder with Markdown files, but if you create one you should see how those files are also processed and recognized as blog entries.</p>
 
 <h2>Source code</h2>
 
