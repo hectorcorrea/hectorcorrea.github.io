@@ -142,7 +142,7 @@ So open it once an reuse across all requests.<br/>
 <p>This means that the pseudo-code to do database access in with Node.js and MongoDB is as follow:</p>
 
 <pre class="code">
-// Connect <i>once</i> to the DB as soon as your program is loaded
+// Connect *once* to the DB as soon as your program is loaded
 db = driver.openDB("connection string")
 
 // ...on every request..

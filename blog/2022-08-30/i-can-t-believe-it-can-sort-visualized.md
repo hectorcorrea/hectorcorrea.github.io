@@ -39,22 +39,24 @@ i     j     a[i] < [j]  swap?     a
 --    --    ----------  ------    -------------
 0     0     10 < 10     false     10, 5, 99, 7
 0     1     10 < 5      false     10, 5, 99, 7
-0     2     10 < 99     true      **99**, 5, **10**, 7
+0     2     10 < 99     true      _99_, 5, _10_, 7
 0     3     99 < 7      false     99, 5, 10, 7
-1     0     5 < 99      true      **5**, **99**, 10, 7
+1     0     5 < 99      true      _5_, _99_, 10, 7
 1     1     99 < 99     false     5, 99, 10, 7
 1     2     99 < 10     false     5, 99, 10, 7
 1     3     99 < 7      false     5, 99, 10, 7
 2     0     10 < 5      false     5, 99, 10, 7
-2     1     10 < 99     true      5, **10**, **99**, 7
+2     1     10 < 99     true      5, _10_, _99_, 7
 2     2     99 < 99     false     5, 10, 99, 7
 2     3     99 < 7      false     5, 10, 99, 7
 3     0     7 < 5       false     5, 10, 99, 7
-3     1     7 < 10      true      5, **7**, 99, **10**
-3     2     10 < 99     true      5, 7, **10**, **99**
+3     1     7 < 10      true      5, _7_, 99, _10_
+3     2     10 < 99     true      5, 7, _10_, _99_
 3     3     99 < 99     false     5, 7, 10, 99
 
 final data: 5, 7, 10, 99
+
+(numbers with the underscores are the ones that were shifted in the iteration)
 ```
 
 As Fung indicates, one of the surprising things of this algorithm is that, without any obvious logic, the algorithm performs two different phases: a select maximum phase and an insertion sort phase.
