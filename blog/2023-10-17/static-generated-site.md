@@ -17,7 +17,7 @@ Since the content of my blog was already stored as text files, switching to a st
 
 So that's what I did. I wrote a little Go program that parses Markdown files and generates the HTML for each of them. Given I use my personal site mostly to blog, this little Go program has logic to generate the specific blog pages (like an index that list all blog entries grouped by year) and an RSS feed so that the content of the blog can be consumed via RSS readers.
 
-The program that I wrote is called **fixie** and it's [available on GitHub](https://github.com/hectorcorrea/fixie).
+The program that I wrote is called `fixie` and it's [available on GitHub](https://github.com/hectorcorrea/fixie).
 
 ## Hosting the static site
 

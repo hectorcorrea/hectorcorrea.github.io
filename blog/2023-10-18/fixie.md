@@ -17,7 +17,7 @@ At its core, that's all `fixie` does, but you can customize it a little bit.
 
 If there is a `layout.html` on the current folder, `fixie` will use the content of this file as the as the base creating the HTML version of `about.md` and `contact.md`.
 
-The `layout.html` file is a normal HTML file that you create with the skeleton (header, styles, footer, JavaScript) that will be used for all the generated HTML pages. This file is expect to include a token `{{CONTENT}}` somewhere on the HTML body (say inside a `div`) and that token will be replaced with the content of each of the Markdown files as the HTML version is generated.
+The `layout.html` file is a normal HTML file that you create with the skeleton (header, styles, footer, JavaScript) that will be used for all the generated HTML pages. This file is expected to include a token `{{CONTENT}}` somewhere on the HTML body (say inside a `div`) and that token will be replaced with the content of each of the Markdown files as the HTML version is generated.
 
 For a given file, say `about.md`, the process is as follows:
 
