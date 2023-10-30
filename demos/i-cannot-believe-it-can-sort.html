@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        th { 
+            border-style: solid;
+        }
+        
+        td { 
+            border: 0px;
+            padding-top: 0px;
+            padding-left: 20px;
+            padding-bottom: 0px;
+            padding-right: 20px;
+        }
+
+        .tr_even { 
+            background-color: #82bbee;
+            padding-bottom: 10px;
+        }
+
+        .tr_odd {
+            background-color: #40e1da;
+        }
+
+        .tr_initial { 
+            background-color: #eec882;
+            padding-bottom: 10px;
+        }
+
+        .tr_final { 
+            background-color:#eec882;
+            padding-bottom: 10px;
+        }
+
+
+        .swapped {
+            font-weight: bold;
+        }
+    </style>
+    <body>
+        <h1>Visualizing "I can't belive it can sort"</h1>
+        <p>A simple visualization of the sorting algorithm presented by Stanley P. Y. Fung
+            in paper <a href="https://arxiv.org/abs/2110.01111">Is this the simplest 
+            (and most surprising) sorting algorithm ever?</a>. For more details about this
+            code visit 
+            <a href="https://hectorcorrea.com/blog/i-can-t-believe-it-can-sort-visualized/2022-08-30-00001">this blog post.</a>
+        </p>
+        <h2>Data to sort</h2>
+        <div>
+            <p>Comma separated list of values</p>
+            <textarea id="input" rows="1" cols="60">10, 5, 99, 7</textarea>
+            <button id="btnSort">Sort</button>
+        </div>
+
+        <h2>Sort Process</h2>
+        <table id="dataTable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th style="width: 30px">i</th>
+                    <th style="width: 30px">j</th>
+                    <th style="width: 100px">condition</th>
+                    <th style="width: 100px">swap?</th>
+                    <th>data</th>
+                </tr>
+            </thead>
+            <tbody id="dataTable-body">
+            </tbody>
+        </table>
+    </body>
+
+    <script>
+
+        document.getElementById("btnSort").onclick = function() {
+            var dataTable = document.getElementById("dataTable-body");
+            dataTable.innerHTML = "";
+            sortInput();
+            return false;
+        }
+
+        var displayData = function(i, j, condition, swap, data) {
+            var dataTable = document.getElementById("dataTable-body");
+            var row = document.createElement("tr");
+
+            if ((i % 2) == 0) {
+                row.className = "tr_even";
+            } else {
+                row.className = "tr_odd";
+            } 
+
+
+            var dataSpans = [];
+            for(x = 0; x < data.length; x++) {
+                if (swap && ((x==i) || (x==j))) {
+                    dataSpans.push(`<span class="swapped">` + data[x] + `</span>`);
+                } else {
+                    dataSpans.push(`<span>` + data[x] + `</span>`);
+                }
+            }
+
+            row.innerHTML = `
+                <td>${i}</td>
+                <td>${j}</td>
+                <td>${condition}</td>
+                <td>${swap}</td>
+                <td>${dataSpans.join(", ")}</td>`;
+            dataTable.appendChild(row);
+        };
+
+        var displayFinal = function(data) {
+            var dataTable = document.getElementById("dataTable-body");
+            var row = document.createElement("tr");
+            row.className = "tr_final";
+            row.innerHTML = `
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>final data</td>
+                <td>${data.join(", ")}</td>`;
+            dataTable.appendChild(row);
+        }
+
+        var displayInitial = function(data) {
+            var dataTable = document.getElementById("dataTable-body");
+            var row = document.createElement("tr");
+            row.className = "tr_final";
+            row.innerHTML = `
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>initial data</td>
+                <td>${data.join(", ")}</td>`;
+            dataTable.appendChild(row);
+        }
+
+        var sortInput = function() {
+            // Reference: https://arxiv.org/abs/2110.01111
+            var textArea = document.getElementById("input");
+            var data = textArea.value.split(",").map(function(x) {
+                return parseInt(x.trim(),10)
+            });
+            var n = data.length;
+            var i, j, tmp, swap;
+            displayInitial(data);
+            for(i=0; i<n; i++) {
+                for(j=0; j<n; j++) {
+                    swap = false;
+                    ai = data[i];
+                    aj = data[j];
+                    condition = `${ai} < ${aj}`;
+                    if (data[i] < data[j]) {
+                        swap = true;
+                        tmp = data[j];
+                        data[j] = data[i];
+                        data[i] = tmp;
+                    }
+                    displayData(i, j, condition, swap, data)
+                }
+            }
+            displayFinal(data)
+        }
+    </script>
+</html>

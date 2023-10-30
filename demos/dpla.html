@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DPLA API demo</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+  <h2>DPLA API Demo</h2>
+  <p>Enter your DPLA API and git <i>Go</i> to fetch images from the Getty Trust</p>
+  <form action="#">
+    Your DPLA API key: <input id="apiKey" type="text" placeholder="your API key"></input>
+    <input id="submit" type="submit" value="Go" onclick="getData();false;"></input>
+  </form>
+  <p>Go <a href="http://dp.la/info/developers/codex/policies/#get-a-key" target="_blank">here</a> to obtain an API key if you don't have one.</p>
+  <p id="progressBar"></p>
+  <p id="apiUrl"></p>
+  <h2>Results</h2>
+  <ul class="results">
+  </ul>
+
+</body>
+
+<script type="text/javascript">
+  function getApiKey() {
+    // Get the API key entered in the textbox
+    return $("#apiKey").val();
+  }
+
+  function getData() {
+    var dplaRoot = "http://api.dp.la/";
+    var pageNum = Math.round(Math.random() * 9000);
+    // generic search
+    // var dplaSearchUrl = dplaRoot + "items?q=getty";
+    // Items from the Jetty Trust
+    var dplaSearchUrl = dplaRoot + "items?provider.name=J.+Paul+Getty+Trust";
+    var dplaUrl = dplaSearchUrl + "&page=" + pageNum + "&api_key=" + getApiKey();
+    $("#progressBar").text("loading...");
+    $("#apiUrl").text(dplaUrl);
+    var request = {
+      url: dplaUrl,
+      jsonp: "callback",
+      dataType: "jsonp"
+    };
+    $.ajax(request).done(handleResponse).fail(handleFailure);
+  }
+
+  function handleResponse(response) {
+    for(var i=0; i < response.docs.length; i++) {
+      var doc = response.docs[i];
+      var image = '<img src="' + doc.object + '">';
+      var shownAt = '<a href="' + doc.isShownAt + '" target="_blank">(see original)</a>';
+      var dplaLink = '<a href="http://dp.la/item/' + doc.id + '" target="_blank">(DPLA entry)</a>';
+      var line = "<div>" + 
+        "<h3>" + doc.sourceResource.title + "</h3>" +
+        "<p>" + doc.sourceResource.description + " " + shownAt + " " + dplaLink + "</p>" +
+        image;
+      $(".results").append("<li>" + line);
+    }
+    $("#progressBar").text("");
+  }
+
+  function handleFailure(response) {
+    var errorMsg = "Error: " + response.status + ", " + response.statusText;
+    $("#progressBar").text(errorMsg);
+  }
+</script>
+</html> 
