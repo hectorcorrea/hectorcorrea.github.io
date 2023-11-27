@@ -1,0 +1,145 @@
+<!doctype html>
+<head>mainDiv
+  <!-- 
+    This sample shows how to use jQuery to expand one div to take over 
+    the screen and then expand the previous div to come back.
+    
+    http://hectorcorrea.com/Blog/Sliding-in-a-Full-Page-Panel-with-CSS-and-jQuery
+    
+    The basics of this code came from the excellent "Sliding Panel Photo Wall Gallery with jQuery"
+    by Mary Lou at http://tympanus.net/codrops/2010/05/14/sliding-panel-photo-wall-gallery-with-jquery/
+    
+    Text for Lorem ipsum taken from http://www.lipsum.com/
+    Text for Bacon ipsum taken http://baconipsum.com/
+  -->
+  <title>Sliding Full Panel with CSS and jQuery</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="description" content="Sliding Panel with CSS and jQuery" />
+  <meta name="keywords" content="css, jquery, slide, panel"/>
+  
+  <style type="text/css">
+    .body { 
+      font-size: 16px;
+    }
+    
+    #mainDiv {
+      background-color:#FFD39B;
+      position:fixed;
+      left:0px;                    
+      right:0px;
+      bottom:0px;
+      height:100%;
+      width:100%;
+      overflow-y:scroll; /* let this panel scroll */
+    }
+            
+    #galleryDiv{
+      background-color:#FF4040;
+      position:fixed;
+      left:0px;
+      right:0px;
+      bottom:0px;
+      overflow-y:scroll; /* let this panel scroll */
+    }
+
+  </style>
+</head>
+
+<body>
+  
+  <div id="mainDiv">
+    <div id="loremIpsum">
+      <div id="header">header</div>
+      <div id="nav">option 1 | option 2 | option 3</div>
+      <div id="content">
+        <p><b><i>Click anywhere to slide in the meatier Bacon Ipsum</i></b></p>
+        <p>1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus quis tellus condimentum posuere eget id magna. Nunc hendrerit, metus in faucibus scelerisque, ante mi auctor lacus, ut ullamcorper lectus magna sed nunc. Donec gravida placerat justo, facilisis eleifend lorem dictum nec. Nunc rutrum varius risus vitae mollis. Vivamus nunc diam, viverra at molestie fermentum, accumsan nec metus. Aenean gravida quam vel nisl rhoncus facilisis. Duis hendrerit mi ut purus iaculis euismod. Ut convallis odio non leo faucibus gravida.</p>
+        <p>1 Etiam ut consequat nisi. Ut tristique elit quis eros condimentum dignissim. Proin feugiat aliquet adipiscing. Morbi vitae vestibulum neque. Sed sagittis, odio et pretium faucibus, ante leo molestie nulla, eget accumsan magna nunc vel nulla. Integer luctus venenatis purus quis tincidunt. Duis et massa nisl, sit amet pellentesque ante. Sed at ipsum ut magna interdum ultricies. Phasellus vitae arcu orci, eget iaculis mi. Etiam a ultrices tellus. Maecenas suscipit est sed erat lobortis a tincidunt enim convallis. Sed justo massa, lobortis vitae aliquam at, consequat a lacus. Donec sit amet pellentesque nisl.</p>
+        <p>1 Proin ultrices laoreet tristique. Maecenas tempus pellentesque augue, ac placerat neque placerat nec. Sed id metus arcu, ac lacinia diam. Etiam vestibulum dignissim nisi nec accumsan. Quisque tincidunt purus ac dui interdum adipiscing nec a dolor. Etiam molestie tempor mauris eget convallis. Praesent velit tellus, commodo eget interdum id, mollis sit amet lacus.</p>
+        <p>2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus quis tellus condimentum posuere eget id magna. Nunc hendrerit, metus in faucibus scelerisque, ante mi auctor lacus, ut ullamcorper lectus magna sed nunc. Donec gravida placerat justo, facilisis eleifend lorem dictum nec. Nunc rutrum varius risus vitae mollis. Vivamus nunc diam, viverra at molestie fermentum, accumsan nec metus. Aenean gravida quam vel nisl rhoncus facilisis. Duis hendrerit mi ut purus iaculis euismod. Ut convallis odio non leo faucibus gravida.</p>
+        <p>2 Etiam ut consequat nisi. Ut tristique elit quis eros condimentum dignissim. Proin feugiat aliquet adipiscing. Morbi vitae vestibulum neque. Sed sagittis, odio et pretium faucibus, ante leo molestie nulla, eget accumsan magna nunc vel nulla. Integer luctus venenatis purus quis tincidunt. Duis et massa nisl, sit amet pellentesque ante. Sed at ipsum ut magna interdum ultricies. Phasellus vitae arcu orci, eget iaculis mi. Etiam a ultrices tellus. Maecenas suscipit est sed erat lobortis a tincidunt enim convallis. Sed justo massa, lobortis vitae aliquam at, consequat a lacus. Donec sit amet pellentesque nisl.</p>
+        <p>2 Proin ultrices laoreet tristique. Maecenas tempus pellentesque augue, ac placerat neque placerat nec. Sed id metus arcu, ac lacinia diam. Etiam vestibulum dignissim nisi nec accumsan. Quisque tincidunt purus ac dui interdum adipiscing nec a dolor. Etiam molestie tempor mauris eget convallis. Praesent velit tellus, commodo eget interdum id, mollis sit amet lacus.</p>
+        <p>3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus quis tellus condimentum posuere eget id magna. Nunc hendrerit, metus in faucibus scelerisque, ante mi auctor lacus, ut ullamcorper lectus magna sed nunc. Donec gravida placerat justo, facilisis eleifend lorem dictum nec. Nunc rutrum varius risus vitae mollis. Vivamus nunc diam, viverra at molestie fermentum, accumsan nec metus. Aenean gravida quam vel nisl rhoncus facilisis. Duis hendrerit mi ut purus iaculis euismod. Ut convallis odio non leo faucibus gravida.</p>
+        <p>3 Etiam ut consequat nisi. Ut tristique elit quis eros condimentum dignissim. Proin feugiat aliquet adipiscing. Morbi vitae vestibulum neque. Sed sagittis, odio et pretium faucibus, ante leo molestie nulla, eget accumsan magna nunc vel nulla. Integer luctus venenatis purus quis tincidunt. Duis et massa nisl, sit amet pellentesque ante. Sed at ipsum ut magna interdum ultricies. Phasellus vitae arcu orci, eget iaculis mi. Etiam a ultrices tellus. Maecenas suscipit est sed erat lobortis a tincidunt enim convallis. Sed justo massa, lobortis vitae aliquam at, consequat a lacus. Donec sit amet pellentesque nisl.</p>
+        <p>3 Proin ultrices laoreet tristique. Maecenas tempus pellentesque augue, ac placerat neque placerat nec. Sed id metus arcu, ac lacinia diam. Etiam vestibulum dignissim nisi nec accumsan. Quisque tincidunt purus ac dui interdum adipiscing nec a dolor. Etiam molestie tempor mauris eget convallis. Praesent velit tellus, commodo eget interdum id, mollis sit amet lacus.</p>
+        <p>4 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus quis tellus condimentum posuere eget id magna. Nunc hendrerit, metus in faucibus scelerisque, ante mi auctor lacus, ut ullamcorper lectus magna sed nunc. Donec gravida placerat justo, facilisis eleifend lorem dictum nec. Nunc rutrum varius risus vitae mollis. Vivamus nunc diam, viverra at molestie fermentum, accumsan nec metus. Aenean gravida quam vel nisl rhoncus facilisis. Duis hendrerit mi ut purus iaculis euismod. Ut convallis odio non leo faucibus gravida.</p>
+        <p>4 Etiam ut consequat nisi. Ut tristique elit quis eros condimentum dignissim. Proin feugiat aliquet adipiscing. Morbi vitae vestibulum neque. Sed sagittis, odio et pretium faucibus, ante leo molestie nulla, eget accumsan magna nunc vel nulla. Integer luctus venenatis purus quis tincidunt. Duis et massa nisl, sit amet pellentesque ante. Sed at ipsum ut magna interdum ultricies. Phasellus vitae arcu orci, eget iaculis mi. Etiam a ultrices tellus. Maecenas suscipit est sed erat lobortis a tincidunt enim convallis. Sed justo massa, lobortis vitae aliquam at, consequat a lacus. Donec sit amet pellentesque nisl.</p>
+        <p>4 Proin ultrices laoreet tristique. Maecenas tempus pellentesque augue, ac placerat neque placerat nec. Sed id metus arcu, ac lacinia diam. Etiam vestibulum dignissim nisi nec accumsan. Quisque tincidunt purus ac dui interdum adipiscing nec a dolor. Etiam molestie tempor mauris eget convallis. Praesent velit tellus, commodo eget interdum id, mollis sit amet lacus.</p>
+        <p>5 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus quis tellus condimentum posuere eget id magna. Nunc hendrerit, metus in faucibus scelerisque, ante mi auctor lacus, ut ullamcorper lectus magna sed nunc. Donec gravida placerat justo, facilisis eleifend lorem dictum nec. Nunc rutrum varius risus vitae mollis. Vivamus nunc diam, viverra at molestie fermentum, accumsan nec metus. Aenean gravida quam vel nisl rhoncus facilisis. Duis hendrerit mi ut purus iaculis euismod. Ut convallis odio non leo faucibus gravida.</p>
+        <p>5 Etiam ut consequat nisi. Ut tristique elit quis eros condimentum dignissim. Proin feugiat aliquet adipiscing. Morbi vitae vestibulum neque. Sed sagittis, odio et pretium faucibus, ante leo molestie nulla, eget accumsan magna nunc vel nulla. Integer luctus venenatis purus quis tincidunt. Duis et massa nisl, sit amet pellentesque ante. Sed at ipsum ut magna interdum ultricies. Phasellus vitae arcu orci, eget iaculis mi. Etiam a ultrices tellus. Maecenas suscipit est sed erat lobortis a tincidunt enim convallis. Sed justo massa, lobortis vitae aliquam at, consequat a lacus. Donec sit amet pellentesque nisl.</p>
+        <p>5 Proin ultrices laoreet tristique. Maecenas tempus pellentesque augue, ac placerat neque placerat nec. Sed id metus arcu, ac lacinia diam. Etiam vestibulum dignissim nisi nec accumsan. Quisque tincidunt purus ac dui interdum adipiscing nec a dolor. Etiam molestie tempor mauris eget convallis. Praesent velit tellus, commodo eget interdum id, mollis sit amet lacus.</p>
+        <p>6 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus quis tellus condimentum posuere eget id magna. Nunc hendrerit, metus in faucibus scelerisque, ante mi auctor lacus, ut ullamcorper lectus magna sed nunc. Donec gravida placerat justo, facilisis eleifend lorem dictum nec. Nunc rutrum varius risus vitae mollis. Vivamus nunc diam, viverra at molestie fermentum, accumsan nec metus. Aenean gravida quam vel nisl rhoncus facilisis. Duis hendrerit mi ut purus iaculis euismod. Ut convallis odio non leo faucibus gravida.</p>
+        <p>6 Etiam ut consequat nisi. Ut tristique elit quis eros condimentum dignissim. Proin feugiat aliquet adipiscing. Morbi vitae vestibulum neque. Sed sagittis, odio et pretium faucibus, ante leo molestie nulla, eget accumsan magna nunc vel nulla. Integer luctus venenatis purus quis tincidunt. Duis et massa nisl, sit amet pellentesque ante. Sed at ipsum ut magna interdum ultricies. Phasellus vitae arcu orci, eget iaculis mi. Etiam a ultrices tellus. Maecenas suscipit est sed erat lobortis a tincidunt enim convallis. Sed justo massa, lobortis vitae aliquam at, consequat a lacus. Donec sit amet pellentesque nisl.</p>
+        <p>6 Proin ultrices laoreet tristique. Maecenas tempus pellentesque augue, ac placerat neque placerat nec. Sed id metus arcu, ac lacinia diam. Etiam vestibulum dignissim nisi nec accumsan. Quisque tincidunt purus ac dui interdum adipiscing nec a dolor. Etiam molestie tempor mauris eget convallis. Praesent velit tellus, commodo eget interdum id, mollis sit amet lacus.</p>
+      </div> <!-- content -->
+      <div id="footer">footer</div>
+    </div> <!-- main -->
+  </div> <!-- mainDiv -->
+
+  <div id="galleryDiv">
+    <div id="baconIpsum">
+    <p><b><i>Click anywhere to slide in the traditional Lorem ipsum</i></b></p>  
+    <p>1 Pastrami fatback short ribs, beef corned beef capicola chuck turducken. Flank jerky chuck t-bone. Tail brisket tongue pork belly salami chuck, turducken rump. Swine ball tip beef strip steak spare ribs, leberkäse sausage kielbasa tongue pork belly venison pastrami. Corned beef pork chop cow jerky brisket. Turkey spare ribs cow pork belly, shoulder turducken shank meatloaf leberkäse chuck pork chop beef ribs jerky pork swine. Chuck ribeye andouille jowl.</p>
+    <p>1 Ham bresaola chicken rump short loin, chuck pastrami cow pig meatloaf shankle capicola t-bone tri-tip. Rump leberkäse pancetta, pork chop salami ribeye chicken filet mignon short ribs shank. Tri-tip andouille meatloaf meatball, bacon tenderloin corned beef ham hock short loin turkey fatback chuck cow. Corned beef andouille pig pastrami capicola, tongue chuck bacon jerky turkey filet mignon salami. Venison tongue shank, brisket strip steak jowl pork loin andouille corned beef leberkäse turkey flank ham hock t-bone rump. Pastrami capicola tri-tip, ham hock brisket drumstick fatback flank pork chop pork belly sausage biltong ground round leberkäse. Frankfurter turkey sirloin meatloaf, corned beef brisket pig salami andouille.</p>
+    <p>1 Ribeye salami hamburger pork loin ham. Boudin ball tip cow spare ribs leberkäse. Ham hock biltong flank shank venison filet mignon. Rump sirloin bresaola chicken t-bone. Prosciutto shoulder strip steak frankfurter pork chop, venison pork drumstick sirloin rump ribeye beef ham. Ball tip brisket tongue, meatball spare ribs leberkäse turducken pastrami tri-tip. Sausage cow tenderloin, shank fatback bacon rump.</p>
+    <p>2 Pastrami fatback short ribs, beef corned beef capicola chuck turducken. Flank jerky chuck t-bone. Tail brisket tongue pork belly salami chuck, turducken rump. Swine ball tip beef strip steak spare ribs, leberkäse sausage kielbasa tongue pork belly venison pastrami. Corned beef pork chop cow jerky brisket. Turkey spare ribs cow pork belly, shoulder turducken shank meatloaf leberkäse chuck pork chop beef ribs jerky pork swine. Chuck ribeye andouille jowl.</p>
+    <p>2 Ham bresaola chicken rump short loin, chuck pastrami cow pig meatloaf shankle capicola t-bone tri-tip. Rump leberkäse pancetta, pork chop salami ribeye chicken filet mignon short ribs shank. Tri-tip andouille meatloaf meatball, bacon tenderloin corned beef ham hock short loin turkey fatback chuck cow. Corned beef andouille pig pastrami capicola, tongue chuck bacon jerky turkey filet mignon salami. Venison tongue shank, brisket strip steak jowl pork loin andouille corned beef leberkäse turkey flank ham hock t-bone rump. Pastrami capicola tri-tip, ham hock brisket drumstick fatback flank pork chop pork belly sausage biltong ground round leberkäse. Frankfurter turkey sirloin meatloaf, corned beef brisket pig salami andouille.</p>
+    <p>2 Ribeye salami hamburger pork loin ham. Boudin ball tip cow spare ribs leberkäse. Ham hock biltong flank shank venison filet mignon. Rump sirloin bresaola chicken t-bone. Prosciutto shoulder strip steak frankfurter pork chop, venison pork drumstick sirloin rump ribeye beef ham. Ball tip brisket tongue, meatball spare ribs leberkäse turducken pastrami tri-tip. Sausage cow tenderloin, shank fatback bacon rump.</p>
+    </div>
+  </div>
+
+  <!-- The JavaScript -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+  
+    var speed = 1000;
+    
+    // Start with the mainDiv in full view...
+    $('#mainDiv').css({'height':'100%'}); 
+    $('#mainDiv').show();
+    
+    // ...and the galleryDiv collapsed.
+    $('#galleryDiv').css({'height':'0px'}); 
+    $('#galleryDiv').hide();
+
+    // When clicking on the mainDiv...
+    $('#mainDiv').bind('click', function() {
+      
+      // ...send this div to the back...
+      $('#mainDiv').css({'z-index':'0'});  
+      
+      // ...bring the galleryDiv to the front...
+      $('#galleryDiv:hidden').show();
+      $('#galleryDiv').css({'z-index':'100'});
+      
+      // ...resize it...
+      $('#galleryDiv').animate({'height':'100%'},speed,function(){
+        // ...and collapse the mainDiv
+        $('#mainDiv').css({'height':'0px'}); 
+      }); // animate
+                
+    }); // bind click
+
+    // When clicking on the galleryDiv...
+    $('#galleryDiv').bind('click', function() {
+
+      // ...send this div to the back...
+      $('#galleryDiv').css({'z-index':'0'});
+      
+      // ...bring the mainDiv to the front...
+      $('#mainDiv').css({'z-index':'100'});
+
+      // ...resize it...
+      $('#mainDiv').animate({'height':'100%'},speed,function(){
+        // ...and collapse the galleryDiv
+        $('#galleryDiv').css({'height':'0px'}); 
+      }); // animate
+
+    }); // bind click
+
+  }); // function
+
+  </script>
+
+</body>
