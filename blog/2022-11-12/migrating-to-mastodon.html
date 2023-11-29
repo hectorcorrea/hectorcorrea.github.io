@@ -125,7 +125,9 @@
 
 <blockquote>
 Mastodon started in 2016 as an open-source project by Eugen Rochko, who, as an avid user since 2008, was dissatisfied with the state and direction of Twitter.<br/>
-<br/>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
 Believing that instant global communications were too crucial for modern society to belong to a single commercial company, he sought to build a user-friendly microblogging product that would not belong to any central authority, but remain practical for everyday use. - <a href="https://joinmastodon.org/about">https://joinmastodon.org/about</a><br/>
 </blockquote>
 
@@ -198,6 +200,12 @@ Believing that instant global communications were too crucial for modern society
       // Redirect legacy blog URLs
       if (window.location.hash.startsWith("#/blog")) {
         window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Hande this redirect via JavaScript because GitHub pages does not let me
+      // handle this via an HTML redirect due to the ".aspx" extension
+      if (window.location.pathname === "/blog/The-Mythical-Man-Month.aspx") {
+        window.location = "https://hectorcorrea.com/blog/2007-06-28/the-mythical-man-month";
       }
 
       // Highlight the current menu option

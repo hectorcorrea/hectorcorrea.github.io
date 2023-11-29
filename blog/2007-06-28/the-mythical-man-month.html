@@ -184,6 +184,12 @@ but that are no inherent."<br/>
         window.location = window.location.toString().replace("#/blog/","blog/");
       }
 
+      // Hande this redirect via JavaScript because GitHub pages does not let me
+      // handle this via an HTML redirect due to the ".aspx" extension
+      if (window.location.pathname === "/blog/The-Mythical-Man-Month.aspx") {
+        window.location = "https://hectorcorrea.com/blog/2007-06-28/the-mythical-man-month";
+      }
+
       // Highlight the current menu option
       var highlightMenu = function() {
         var about = document.getElementById("about-menu");

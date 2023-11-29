@@ -189,7 +189,7 @@ $ chmod u+x fixie
 <pre>
 $ echo "# Hello World" &gt; index.md
 $ echo "This is the home page" &gt;&gt; index.md
-$ echo "and it links to the [About](about) page" &gt;&gt; index.md
+$ echo "and it links to the <a href="about">About</a> page" &gt;&gt; index.md
 
 $ echo "# About page" &gt; about.md
 $ echo "This is the about page" &gt;&gt; about.md
@@ -250,6 +250,12 @@ $ echo "&lt;footer&gt;This is the footer&lt;/footer&gt;" &gt;&gt; layout.html
       // Redirect legacy blog URLs
       if (window.location.hash.startsWith("#/blog")) {
         window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Hande this redirect via JavaScript because GitHub pages does not let me
+      // handle this via an HTML redirect due to the ".aspx" extension
+      if (window.location.pathname === "/blog/The-Mythical-Man-Month.aspx") {
+        window.location = "https://hectorcorrea.com/blog/2007-06-28/the-mythical-man-month";
       }
 
       // Highlight the current menu option

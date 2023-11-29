@@ -175,7 +175,7 @@ Stable ruby versions:
 
 <pre>
 $ ruby-install ruby 2.5.1
-*** Unknown ruby version 2.5.1. Proceeding anyways ...
+<i></i>* Unknown ruby version 2.5.1. Proceeding anyways ...
 &gt;&gt;&gt; Installing ruby 2.5.1 into /Users/hector/.rubies/ruby-2.5.1 ...
 &gt;&gt;&gt; Installing dependencies for ruby 2.5.1 ...
 # continues with the installation...
@@ -228,6 +228,12 @@ chruby ()
       // Redirect legacy blog URLs
       if (window.location.hash.startsWith("#/blog")) {
         window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Hande this redirect via JavaScript because GitHub pages does not let me
+      // handle this via an HTML redirect due to the ".aspx" extension
+      if (window.location.pathname === "/blog/The-Mythical-Man-Month.aspx") {
+        window.location = "https://hectorcorrea.com/blog/2007-06-28/the-mythical-man-month";
       }
 
       // Highlight the current menu option

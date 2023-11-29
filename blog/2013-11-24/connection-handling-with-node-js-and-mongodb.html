@@ -142,7 +142,7 @@ So open it once an reuse across all requests.<br/>
 <p>This means that the pseudo-code to do database access in with Node.js and MongoDB is as follow:</p>
 
 <pre class="code">
-// Connect *once* to the DB as soon as your program is loaded
+// Connect <i>once</i> to the DB as soon as your program is loaded
 db = driver.openDB("connection string")
 
 // ...on every request..
@@ -228,6 +228,12 @@ exports.getAll = function(callback) {
       // Redirect legacy blog URLs
       if (window.location.hash.startsWith("#/blog")) {
         window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Hande this redirect via JavaScript because GitHub pages does not let me
+      // handle this via an HTML redirect due to the ".aspx" extension
+      if (window.location.pathname === "/blog/The-Mythical-Man-Month.aspx") {
+        window.location = "https://hectorcorrea.com/blog/2007-06-28/the-mythical-man-month";
       }
 
       // Highlight the current menu option
