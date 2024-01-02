@@ -6,7 +6,10 @@
 
 ## Presentations
 * [Unboxing the Repository Model](https://hectorcorrea.com/downloads/2023-dlf-out-of-the-box.pdf) Presentation at the DLF Forum 2023 in St. Louis, MO (with Hannah Hadley)
-* [marcli](https://github.com/hectorcorrea/marcli) Lightning talk at Code4Lib 2021 on a tool to process MARC files.
-* [Indexing and Searching Chinese, Japanese, and Korean text in Solr](https://hectorcorrea.com/downloads/2020-indexing-cjk.pdf) Talk at VuFind 2020 on how to index CJK text with Solr.
+* [marcli](https://github.com/hectorcorrea/marcli) Lightning talk at Code4Lib 2021 on a tool to process MARC files
+* [Indexing and Searching Chinese, Japanese, and Korean text in Solr](https://hectorcorrea.com/downloads/2020-indexing-cjk.pdf) Talk at VuFind 2020 on how to index CJK text with Solr
 * [Collaboration Driven Development](https://hectorcorrea.com/downloads/2019-collaboration-driven-development.pdf) Presentation at NERCOMP 2019 Annual Conference in Providence, RI (with Jeanette Norris)
-* [Build your own software, yes, build it](https://hectorcorrea.com/blog/2017-03-15/build-your-own-software) Presentation at Code4Lib 2017 in Los Angeles, CA.
+* [A new frontend for VIVO](https://hectorcorrea.com/downloads/2017-vivo-new-frontend.pdf) Presentation at the VIVO 2017 Conference in New York, NY (with Steven McCauley)
+* [Build your own software, yes, build it](https://hectorcorrea.com/blog/2017-03-15/build-your-own-software) Presentation at Code4Lib 2017 in Los Angeles, CA
+* [Introduction to the Linked Data Platform](https://hectorcorrea.com/downloads/introduction_to_ldp.pdf) Presentation at Hydra Connect 2015 in Minneapolis, MN
+* [Intro to NoSQL databases with MongoDB](https://hectorcorrea.com/downloads/2013-introduction-to-nosql-mongo.pdf) Presentation at the Pittsburgh Tech Fest 2013 in Pittsburgh, PA
