@@ -113,7 +113,7 @@
       <a href="/">HectorCorrea.com</a>
       <span style="float:right;">
         <a id="about-menu" href="/about" role="button" class="btn btn-secondary btn-sm">About</a>
-        <a id="blog-menu" href="/presentations" role="button" class="btn btn-secondary btn-sm">Presentations</a>
+        <a id="presentations-menu" href="/presentations" role="button" class="btn btn-secondary btn-sm">Presentations</a>
         <a id="blog-menu" href="/blog" role="button" class="btn btn-secondary btn-sm">Blog</a>
       </span>
     </header>
@@ -213,15 +213,19 @@ class CoffeescriptToJavascript(sublime_plugin.TextCommand):
 
       // Highlight the current menu option
       var highlightMenu = function() {
-        var about = document.getElementById("about-menu");
-        var blog = document.getElementById("blog-menu");
+        var activeOption = null;
         var url = window.location.pathname;
         if (url.startsWith("/blog/")) {
-          blog.classList.add("btn-primary");
-          blog.classList.remove("btn-secondary");
+          activeOption = document.getElementById("blog-menu");
         } else if(url == "/about") {
-          about.classList.add("btn-primary");
-          about.classList.remove("btn-secondary");
+          activeOption = document.getElementById("about-menu");
+        } else if(url == "/presentations") {
+          activeOption = document.getElementById("presentations-menu");
+        }
+
+        if (activeOption != null) {
+          activeOption.classList.add("btn-primary");
+          activeOption.classList.remove("btn-secondary");
         }
       }
 
