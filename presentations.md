@@ -12,4 +12,5 @@
 * [A new frontend for VIVO](https://hectorcorrea.com/downloads/2017-vivo-new-frontend.pdf) Presentation at the VIVO 2017 Conference in New York, NY (with Steven McCauley)
 * [Build your own software, yes, build it](https://hectorcorrea.com/blog/2017-03-15/build-your-own-software) Presentation at Code4Lib 2017 in Los Angeles, CA
 * [Introduction to the Linked Data Platform](https://hectorcorrea.com/downloads/introduction_to_ldp.pdf) Presentation at Hydra Connect 2015 in Minneapolis, MN
+* [Introduction to Node.js](https://hectorcorrea.com/downloads/intro-to-nodejs.pdf) Presentation at the 2013 Penn State Web Conference in State College, PA.
 * [Intro to NoSQL databases with MongoDB](https://hectorcorrea.com/downloads/2013-introduction-to-nosql-mongo.pdf) Presentation at the Pittsburgh Tech Fest 2013 in Pittsburgh, PA
