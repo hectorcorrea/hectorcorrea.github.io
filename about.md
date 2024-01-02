@@ -3,6 +3,8 @@ I am a software developer in Hartford, CT. This site is where I host [my blog](/
 
 I have been a software developer for many years. Since 2014 my focus has been on Ruby on Rails applications for academic libraries with a strong focus on indexing and searching data through Apache Solr and on institutional repositories.
 
+<img style="float:right;" alt="" src="/public/hectorcorrea.jpg" />
+
 Currently I work at the Princeton University Library as part of the team that develops the applications to manage [research data](https://datacommons.princeton.edu/discovery/) ([code](https://github.com/pulibrary/pdc_discovery/)). I have also been involved in the [discovery application for the catalog](https://catalog.princeton.edu/) and its related services ([code](https://github.com/pulibrary/bibdata)).
 
 From 2016 to 2020 I worked at the Brown University Library on several projects related to discovery ([code](https://github.com/Brown-University-Library/bul-search)), [research profiles](https://vivo.brown.edu/) ([code](https://github.com/Brown-University-Library/vivo-on-rails)), and [archives](https://www.riamco.org/) ([code](https://github.com/Brown-University-Library/riamco)). Most of these applications were Ruby on Rails applications using Solr, some of them through Blacklight others straight through.
@@ -28,4 +30,3 @@ You can also find me on:
 * <img class="socialLogo" alt="" src="/public/rss.svg" /> [Blog RSS Feed](blog/rss)
 * <img class="socialLogo" alt="" src="/public/stackoverflow.svg" /> [StackOverflow](https://stackoverflow.com/users/446681/hector-correa)
 * <img class="socialLogo" alt="" src="/public/mastodon.svg" /> [Mastodon](https://mastodon.social/@hectorjcorrea)
-
