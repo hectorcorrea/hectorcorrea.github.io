@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+    <link rel="canonical" href="https://hectorcorrea.com" />
+
+    <style>
+      header {
+        background-color:  #e1ebf7;
+        margin-left: 0px;
+        height: 50px;
+        max-width: unset;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+      }
+
+      footer {
+        font-weight: lighter;
+        font-size: smaller;
+        margin-top: 10px;
+        margin-left: 0px;
+        height: 50px;
+        max-width: unset;
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-top-style: solid;
+        border-top-width: 1px;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      blockquote {
+        padding: 10px 20px;
+        margin: 0 0 20px;
+        border-left: 5px solid #eee;
+        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* Overwrite Bootstrap's default */
+      code {
+        background-color: #f0f1f2;
+        color: #0D0D0D; /* gray-ish */
+      }
+
+      /* Custom code and terminal styles */
+      pre, pre.code {
+        margin-left: 20px;
+        display: block;
+        padding: 9.5px;
+        margin: 0 0 10px;
+        margin-left: 0px;
+        font-size: 13px;
+        line-height: 1.428571429;
+        color: #333;
+        word-break: break-all;
+        word-wrap: break-word;
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      pre.terminal {
+        margin-left: 20px;
+        margin-bottom: 20px;
+        background-color: #363446;
+        color: #DAD681; /* yellow-ish */
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 50px;
+      }
+
+      .socialList {
+        list-style: none;
+        padding: 5px;
+      }
+
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/">HectorCorrea.com</a>
+      <span style="float:right;">
+        <a id="about-menu" href="/about" role="button" class="btn btn-secondary btn-sm">About</a>
+        <a id="blog-menu" href="/blog" role="button" class="btn btn-secondary btn-sm">Blog</a>
+      </span>
+    </header>
+
+    <div class="container">
+      <h1>Web Development in a Nutshell</h1>
+<p>This page contains links that you'll need during the workshop.</p>
+
+
+<h2>Workshop Materials</h2>
+<ul>
+<li><a href="https://github.com/hectorcorrea/webdev-nutshell#required-software">Required Software</a>
+<li><a href="https://docs.google.com/presentation/d/1dFwsNCUd7iTUzFKF7Po1DZ5KLFQ0t7qprB5VrCiABaM/edit#slide=id.g25432a504aa_0_0">Slides</a>
+<li><a href="https://github.com/hectorcorrea/webdev-nutshell/blob/main/tutorial.md">Tutorial</a> with all the commands
+<li><a href="https://github.com/hectorcorrea/webdev-nutshell/">GitHub repo</a> with everything (sample data, slides in PDF, tutorial)
+</ul>
+
+
+<h2>Live Demo Web site installation</h2>
+<p>The following Solr will be available for the duration of the workshop. You can use it to execute searches and see the results and play with Solr without having to install it on your machine. Please don't share this link outside the workshop.</p>
+<ul>
+<li>http://--.--.--.--/solr/#/bibdata/query - notice that this URL uses <code>http</code> not <code>https</code>
+</ul>
+
+
+    </div>
+
+    <footer>
+      License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+    </footer>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Hande this redirect via JavaScript because GitHub pages does not let me
+      // handle this via an HTML redirect due to the ".aspx" extension
+      if (window.location.pathname === "/blog/The-Mythical-Man-Month.aspx") {
+        window.location = "https://hectorcorrea.com/blog/2007-06-28/the-mythical-man-month";
+      }
+
+      // Highlight the current menu option
+      var highlightMenu = function() {
+        var about = document.getElementById("about-menu");
+        var blog = document.getElementById("blog-menu");
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          blog.classList.add("btn-primary");
+          blog.classList.remove("btn-secondary");
+        } else if(url == "/about") {
+          about.classList.add("btn-primary");
+          about.classList.remove("btn-secondary");
+        }
+      }
+
+      highlightMenu();
+    </script>
+  </body>
+</html>
