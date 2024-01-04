@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="HectorCorrea.com">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>HectorCorrea.com</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+
+    <!-- Styles from https://newcss.net/ -->
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.css">
+
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+    <link rel="canonical" href="https://hectorcorrea.com" />
+
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+
+    <style>
+      nav {
+        float:right;
+      }
+
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      footer {
+        background: var(--nc-bg-2);
+        border-bottom: 1px solid var(--nc-bg-3);
+        padding: 2rem 1.5rem;
+
+        margin: -2rem calc(0px - (50vw - 50%)) 2rem;
+
+        padding-left: calc(50vw - 50%);
+        padding-right: calc(50vw - 50%);
+
+        margin-top: -0px;
+        margin-bottom: 0px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        color: gray;
+        font-size: x-small;
+      }
+
+      .header-link {
+        /* Main body text, see new.css */
+        color: var(--nc-tx-2);
+        text-decoration: none;
+      }
+
+      .nav-link-selected {
+        font-weight: bold;
+      }
+
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><a class="header-link" href="/">Hector Correa</a></h1>
+      <nav>
+        <a id="about-menu" href="/about" role="button" class="btn btn-secondary btn-sm">About</a>
+        / <a id="presentations-menu" href="/presentations" role="button" class="btn btn-secondary btn-sm">Presentations</a>
+        / <a id="blog-menu" href="/blog" role="button" class="btn btn-secondary btn-sm">Blog</a>
+      </nav>
+    </header>
+
+    <div id="search-params">
+      <input id="search-terms" />
+      <button id="search-button">Search</button>
+    </div>
+
+    <div id="search-results">
+    </div>
+
+    <footer>
+      License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+    </footer>
+
+    <script src="/searchIndex.js"></script>
+
+    <script>
+      // Define the Lunr index
+      var lunrIndex = lunr(function () {
+        this.ref('id')
+        this.field('name')
+        this.field('text')
+
+        searchDocuments.forEach(function (doc) {
+          this.add(doc)
+        }, this)
+      });
+
+      // Run the search
+      var runSearch = function() {
+        // Clear the previous results
+        const resultsEl = document.getElementById("search-results");
+        resultsEl.innerHTML = "";
+
+        // Run the search
+        const searchTerms = document.getElementById("search-terms").value;
+        const results = lunrIndex.search(searchTerms);
+
+        if (results.length == 0) {
+          var noResults = document.createElement("p");
+          noResults.textContent = "No results found";
+          resultsEl.appendChild(noResults);
+          return;
+        }
+
+        // Process the results
+        results.forEach(function(result) {
+          var matchDoc = searchDocuments.find(x => x.id === result.ref)
+          var linkEl = document.createElement("a");
+          linkEl.href = matchDoc.id;
+          linkEl.text = matchDoc["name"];
+
+          var resultEl = document.createElement("p");
+          resultEl.appendChild(linkEl);
+
+          resultsEl.appendChild(resultEl);
+        });
+      }
+
+      document.getElementById("search-button").addEventListener("click", (event) => {
+        runSearch();
+      });
+    </script>
+  </body>
+</html>
