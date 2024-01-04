@@ -1,4 +1,4 @@
-# Welcome to HectorCorrea.com
+# Welcome
 
 I am Hector Correa, a software developer in Hartford, CT. This site is where I host [my blog](/blog/) and post small pieces about software development.
 

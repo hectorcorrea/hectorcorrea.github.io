@@ -11,48 +11,15 @@
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Styles from https://newcss.net/ -->
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.css">
+
     <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
     <link rel="canonical" href="https://hectorcorrea.com" />
 
     <style>
-      header {
-        background-color:  #e1ebf7;
-        margin-left: 0px;
-        height: 50px;
-        max-width: unset;
-        padding-top: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        border-bottom-style: solid;
-        border-bottom-width: 2px;
-      }
-
-      footer {
-        font-weight: lighter;
-        font-size: smaller;
-        margin-top: 10px;
-        margin-left: 0px;
-        height: 50px;
-        max-width: unset;
-        padding-top: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        border-top-style: solid;
-        border-top-width: 1px;
-      }
-
-      h1 {
-        margin-top: 20px;
-      }
-
-      blockquote {
-        padding: 10px 20px;
-        margin: 0 0 20px;
-        border-left: 5px solid #eee;
-        font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
-      }
-
       img {
         padding: 5px;
         box-shadow: 3px 3px 8px #222;
@@ -60,43 +27,32 @@
         margin-bottom: 10px;
       }
 
-      /* Overwrite Bootstrap's default */
-      code {
-        background-color: #f0f1f2;
-        color: #0D0D0D; /* gray-ish */
+      footer {
+        background: var(--nc-bg-2);
+        border-bottom: 1px solid var(--nc-bg-3);
+        padding: 2rem 1.5rem;
+
+        margin: -2rem calc(0px - (50vw - 50%)) 2rem;
+
+        padding-left: calc(50vw - 50%);
+        padding-right: calc(50vw - 50%);
+
+        margin-top: -0px;
+        margin-bottom: 0px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        color: gray;
+        font-size: x-small;
       }
 
-      /* Custom code and terminal styles */
-      pre, pre.code {
-        margin-left: 20px;
-        display: block;
-        padding: 9.5px;
-        margin: 0 0 10px;
-        margin-left: 0px;
-        font-size: 13px;
-        line-height: 1.428571429;
-        color: #333;
-        word-break: break-all;
-        word-wrap: break-word;
-        background-color: #f5f5f5;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+      .header-link {
+        /* Main body text, see new.css */
+        color: var(--nc-tx-2);
+        text-decoration: none;
       }
 
-      pre.terminal {
-        margin-left: 20px;
-        margin-bottom: 20px;
-        background-color: #363446;
-        color: #DAD681; /* yellow-ish */
-        padding-bottom: 10px;
-        padding-top: 10px;
-        padding-left: 10px;
-        padding-right: 50px;
-      }
-
-      .socialList {
-        list-style: none;
-        padding: 5px;
+      .nav-link-selected {
+        font-weight: bold;
       }
 
       .socialLogo {
@@ -110,12 +66,12 @@
   </head>
   <body>
     <header>
-      <a href="/">HectorCorrea.com</a>
-      <span style="float:right;">
+      <h1><a class="header-link" href="/">Hector Correa</a></h1>
+      <nav style="float:right;">
         <a id="about-menu" href="/about" role="button" class="btn btn-secondary btn-sm">About</a>
-        <a id="presentations-menu" href="/presentations" role="button" class="btn btn-secondary btn-sm">Presentations</a>
-        <a id="blog-menu" href="/blog" role="button" class="btn btn-secondary btn-sm">Blog</a>
-      </span>
+        / <a id="presentations-menu" href="/presentations" role="button" class="btn btn-secondary btn-sm">Presentations</a>
+        / <a id="blog-menu" href="/blog" role="button" class="btn btn-secondary btn-sm">Blog</a>
+      </nav>
     </header>
 
     <div class="container">
@@ -185,8 +141,7 @@
         }
 
         if (activeOption != null) {
-          activeOption.classList.add("btn-primary");
-          activeOption.classList.remove("btn-secondary");
+          activeOption.classList.add("nav-link-selected");
         }
       }
 
