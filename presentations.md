@@ -2,7 +2,7 @@
 
 ## Workshops
 * [Solr for newbies](https://hectorcorrea.com/solr-for-newbies) Workshop presented at Code4Lib 2018, 2019, and 2023.
-* [Web development in a nutshell](https://hectorcorrea.com/webdev-nutshell) Worshop to be presented at Wintersession 2024 at Princeton University.
+* [Web development in a nutshell](https://hectorcorrea.com/webdev-nutshell) Workshop to be presented at Wintersession 2024 at Princeton University.
 
 ## Presentations
 * [Unboxing the Repository Model](https://hectorcorrea.com/downloads/2023-dlf-out-of-the-box.pdf) Presentation at the DLF Forum 2023 in St. Louis, MO (with Hannah Hadley)
