@@ -19,11 +19,9 @@
     <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
     <link rel="canonical" href="https://hectorcorrea.com" />
 
-    <style>
-      nav {
-        float:right;
-      }
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
 
+    <style>
       img {
         padding: 5px;
         box-shadow: 3px 3px 8px #222;
@@ -59,6 +57,14 @@
         font-weight: bold;
       }
 
+      .search-menu {
+        float: right;
+      }
+
+      .invisible {
+        display: none;
+      }
+
       .socialLogo {
         padding: 0px;
         box-shadow: none;
@@ -72,9 +78,17 @@
     <header>
       <h1><a class="header-link" href="/">Hector Correa</a></h1>
       <nav>
-        <a id="about-menu" href="/about" role="button" class="btn btn-secondary btn-sm">About</a>
-        / <a id="presentations-menu" href="/presentations" role="button" class="btn btn-secondary btn-sm">Presentations</a>
-        / <a id="blog-menu" href="/blog" role="button" class="btn btn-secondary btn-sm">Blog</a>
+        <a id="about-menu" href="/about">About</a>
+        | <a id="presentations-menu" href="/presentations">Presentations</a>
+        | <a id="blog-menu" href="/blog">Blog</a>
+        <span class="search-menu">
+          <a href="/search" title="Search">
+            <!--Magnifying glass source: https://icons.getbootstrap.com/icons/search/ -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg>
+          </a>
+        </span>
       </nav>
     </header>
 
@@ -171,6 +185,15 @@ public async SomeMethodAsync()
 
     </div>
 
+    <div id="search-section" class="invisible">
+      <div id="search-params" class="">
+        <input id="search-terms" size="50" />
+        <button id="search-button">Go</button>
+      </div>
+      <div id="search-results">
+      </div>
+    </div>
+
     <footer>
       License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
     </footer>
@@ -205,6 +228,92 @@ public async SomeMethodAsync()
       }
 
       highlightMenu();
+    </script>
+
+    <script>
+      if (window.location.pathname.startsWith("/search")) {
+        // Only load the search index when we are on the search page
+        // since it's kind of heavy, ~200KB.
+        // Source https://stackoverflow.com/a/52478867/446681
+        //
+        // IMPORTANT: The call to document.write() will insert the
+        // dynamic <script src=/searchIndex.js> block immediately
+        // after this <script> block and therefore the code to
+        // reference it MUST be on a separate <script> block.
+        console.log("Loaded search index");
+        document.write('<script src="/searchIndex.js"><\/script>');
+      }
+    </script>
+
+    <script>
+      // This <script> block has access to the searchDocuments
+      // variable defined in searchIndex.js (see above)
+      if (window.location.pathname.startsWith("/search")) {
+        // Define the Lunr index
+        var lunrIndex = lunr(function () {
+          this.ref('id')
+          this.field('name')
+          this.field('text')
+
+          searchDocuments.forEach(function (doc) {
+            if (doc.id == "/404") {
+              // don't index the content of the "404 not found" page
+            } else {
+              this.add(doc)
+            }
+          }, this)
+        });
+
+        // Function to execute the search
+        var runSearch = function() {
+          // Clear the previous results
+          const resultsEl = document.getElementById("search-results");
+          resultsEl.innerHTML = "";
+
+          // Run the search
+          const searchTerms = document.getElementById("search-terms").value;
+          const results = lunrIndex.search(searchTerms);
+
+          if (results.length == 0) {
+            var noResults = document.createElement("p");
+            noResults.textContent = "No results found";
+            resultsEl.appendChild(noResults);
+            return;
+          }
+
+          // Process the results
+          results.forEach(function(result) {
+            var matchDoc = searchDocuments.find(x => x.id === result.ref)
+            var linkEl = document.createElement("a");
+            linkEl.href = matchDoc.id;
+            linkEl.text = matchDoc["name"];
+
+            var resultEl = document.createElement("p");
+            resultEl.appendChild(linkEl);
+
+            resultsEl.appendChild(resultEl);
+          });
+        }
+
+        // Make the search section visible
+        document.getElementById("search-section").classList.remove("invisible");
+
+        // Wire the click even in the search button
+        document.getElementById("search-button").addEventListener("click", (event) => {
+          runSearch();
+        });
+
+        // Wire the enter key on the search textbox
+        // Source https://stackoverflow.com/a/46063448/446681
+        document.getElementById("search-terms").addEventListener("keyup", (event) => {
+          if (event.key === "Enter") {
+            runSearch();
+          }
+        });
+
+        // Give the focus to the search box
+        document.getElementById("search-terms").focus();
+      }
     </script>
   </body>
 </html>
