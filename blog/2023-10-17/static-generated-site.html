@@ -144,6 +144,16 @@
 
 <p>A disadvantage of this approach is that there are lots of extra files on my GitHub repo that are just stub files (i.e. they contain no real content, only the HTML redirect). But, at least the links are redirected properly so I guess I'll have to live with this.</p>
 
+<p><b>Update January/2024:</b> I had an interesting case in which one of my legacy links was to an <code>.aspx</code> page, this is a link from back when this site was written in C#. It seems that there is a page in Wikipedia that references the blog post <code>/blog/The-Mythical-Man-Month.aspx</code> and it made sense to keep supporting this link. However, I could not handle this redirect with the HTML Redirection mentioned above (something about the <code>.aspx</code> extension) so I ended up adding come JavaScript to layout of the site to handle this very specific case.</p>
+
+<pre>
+// Hande this redirect via JavaScript because GitHub pages does not let me
+// handle this via an HTML redirect due to the ".aspx" extension
+if (window.location.pathname === "/blog/The-Mythical-Man-Month.aspx") {
+   window.location = "https://hectorcorrea.com/blog/2007-06-28/the-mythical-man-month";
+}
+</pre>
+
 <h2>Page not found</h2>
 <p>GitHub pages automatically loads a file called <code>404.html</code> everytime somebody visits a link that does not exist in the GitHub site and it renders it with the proper HTTP response status <code>404</code> which is nice. You can customize the content of this page to tell your users that something was not found using whatever layout your site uses.</p>
 
