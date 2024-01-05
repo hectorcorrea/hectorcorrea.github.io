@@ -1,4 +1,5 @@
-# Selected presentations and workshops
+# Pesentations and workshops
+A selected list of presentations and workshops that I've given over the years.
 
 ## Workshops
 * [Solr for newbies](https://hectorcorrea.com/solr-for-newbies) Workshop presented at Code4Lib 2018, 2019, and 2023.
