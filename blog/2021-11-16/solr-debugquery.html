@@ -19,7 +19,9 @@
     <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
     <link rel="canonical" href="https://hectorcorrea.com" />
 
+    <!-- Lunr.js for searching, Mark.js for highlighting search results -->
     <script src="/public/lunr.min.js"></script>
+    <script src="/public/mark.min.js"></script>
 
     <style>
       img {
@@ -57,8 +59,16 @@
         font-weight: bold;
       }
 
-      .search-menu {
+      .search-options {
         float: right;
+      }
+
+      .highlight-icon-on > a {
+        background: var(--nc-ac-1);
+      }
+
+      .highlight-icon-off > a {
+        background: var(--nc-bg-2);
       }
 
       .invisible {
@@ -81,18 +91,27 @@
         <a id="about-menu" href="/about">About</a>
         | <a id="presentations-menu" href="/presentations">Presentations</a>
         | <a id="blog-menu" href="/blog">Blog</a>
-        <span class="search-menu">
-          <a href="/search" title="Search">
-            <!--Magnifying glass source: https://icons.getbootstrap.com/icons/search/ -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-            </svg>
-          </a>
+        <span class="search-options">
+          <span>
+            <a href="/search" title="Search">
+              <!--Magnifying glass source: https://icons.getbootstrap.com/icons/search/ -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+              </svg></a>
+          </span>
+          <span id="highlight-menu" class="invisible">
+            <a href="#" title="Toggle highlight">
+              <!-- Highlighter source: https://icons.getbootstrap.com/icons/highlighter/ -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-highlighter" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.096.644a2 2 0 0 1 2.791.036l1.433 1.433a2 2 0 0 1 .035 2.791l-.413.435-8.07 8.995a.5.5 0 0 1-.372.166h-3a.5.5 0 0 1-.234-.058l-.412.412A.5.5 0 0 1 2.5 15h-2a.5.5 0 0 1-.354-.854l1.412-1.412A.5.5 0 0 1 1.5 12.5v-3a.5.5 0 0 1 .166-.372l8.995-8.07zm-.115 1.47L2.727 9.52l3.753 3.753 7.406-8.254zm3.585 2.17.064-.068a1 1 0 0 0-.017-1.396L13.18 1.387a1 1 0 0 0-1.396-.018l-.068.065zM5.293 13.5 2.5 10.707v1.586L3.707 13.5z"/>
+              </svg>
+            </a>
+          </span>
         </span>
       </nav>
     </header>
 
-    <div class="container">
+    <div id="page-content">
       <h1>Solr debugQuery</h1>
 <p><code>debugQuery</code> is a parameter that we can pass to Solr when submitting a query, with this parameter Solr will include extra information in the response that is useful to troubleshoot a variety of issues in Solr queries. The information returned is helpful to diagnose:</p>
 
@@ -302,8 +321,8 @@ curl 'http://localhost:8983/solr/your-core/select?debugQuery=on&q=*'
         window.location = "https://hectorcorrea.com/blog/2007-06-28/the-mythical-man-month";
       }
 
-      // Highlight the current menu option
-      var highlightMenu = function() {
+      // Mark as selected the current menu option
+      var selectMenu = function() {
         var activeOption = null;
         var url = window.location.pathname;
         if (url.startsWith("/blog/")) {
@@ -319,7 +338,44 @@ curl 'http://localhost:8983/solr/your-core/select?debugQuery=on&q=*'
         }
       }
 
-      highlightMenu();
+      // Highlight search terms indicated in the URL via the
+      // hl query string parameter
+      var highlightSearchTerms = function() {
+        const queryString = window.location.search
+        const urlParams = new URLSearchParams(queryString);
+        if (urlParams.has("hl")) {
+          var context = document.querySelector("#page-content");
+          var instance = new Mark(context);
+          instance.mark(urlParams.get("hl"));
+          var hlMenu = document.getElementById("highlight-menu");
+          hlMenu.classList.remove("invisible");
+          hlMenu.classList.add("highlight-icon-on");
+          hlMenu.classList.remove("highlight-icon-off");
+        }
+      }
+
+      // Unhighlight the search terms
+      var unhighlightSearchTerms = function() {
+        var context = document.querySelector("#page-content");
+        var instance = new Mark(context);
+        instance.unmark();
+        var hlMenu = document.getElementById("highlight-menu");
+        hlMenu.classList.remove("highlight-icon-on");
+        hlMenu.classList.add("highlight-icon-off");
+      }
+
+      // Wire the button to toggle the highlight
+      document.getElementById("highlight-menu").addEventListener("click", (event) => {
+        var hlMenu = document.getElementById("highlight-menu");
+        if (hlMenu.classList.contains("highlight-icon-on")) {
+          unhighlightSearchTerms();
+        } else {
+          highlightSearchTerms();
+        }
+      });
+
+      selectMenu();
+      highlightSearchTerms();
     </script>
 
     <script>
@@ -375,9 +431,11 @@ curl 'http://localhost:8983/solr/your-core/select?debugQuery=on&q=*'
 
           // Process the results
           results.forEach(function(result) {
+            // This does not work because of word stemming (e.g. ruby => rubi)
+            // var matchTerms = Object.keys(result.matchData.metadata).join(" ");
             var matchDoc = searchDocuments.find(x => x.id === result.ref)
             var linkEl = document.createElement("a");
-            linkEl.href = matchDoc.id;
+            linkEl.href = matchDoc.id + "?hl=" + searchTerms;
             linkEl.text = matchDoc["name"];
 
             var resultEl = document.createElement("p");
