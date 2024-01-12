@@ -1,4 +1,4 @@
-# Pesentations and workshops
+# Presentations and workshops
 A selected list of presentations and workshops that I've given over the years.
 
 ## Workshops
