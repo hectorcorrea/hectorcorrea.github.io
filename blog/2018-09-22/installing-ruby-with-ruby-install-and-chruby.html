@@ -113,6 +113,8 @@
 
     <div id="page-content">
       <h1>Installing Ruby with ruby-install and chruby</h1>
+<p><i>Posted on 2018-09-22, updated on 2024-02-07</i></p>
+
 <p>When I started writing code on Ruby I learned there were many ways to download and install Ruby on a Mac. Initially I was comfortable with the version of Ruby that comes installed on OS X by default or using the installer available at <a href="https://www.ruby-lang.org/en/downloads/">ruby-lang.org</a>  to install the latest version. As my needs evolved I needed to have more than one version of Ruby installed on my machine to work on different projects that use specific versions of Ruby.</p>
 
 <p>There are many tools to install and manage multiple versions of Ruby on a Mac. Among the options that I tried were <a href="https://rvm.io/">RVM</a>, <a href="https://github.com/rbenv/rbenv">rbenv</a>, and <a href="https://github.com/postmodern/chruby">chruby</a>. In the end I found the combination of <code>chruby</code> and <code>ruby-install</code> the best for my needs, in large due to their minimalist approach.</p>
@@ -154,7 +156,7 @@ chruby 2.3.5
 ~ $ ruby-install --version
 ruby-install: 0.7.0
 
-~ $ ruby-install 
+~ $ ruby-install
 Stable ruby versions:
   ruby:
     2.1.9
@@ -188,6 +190,22 @@ $ ruby-install 2.5.1
 <p>Despite these peculiarities I find <code>ruby-install</code> a great tool to get my environment ready since I usually know what version of Ruby I am after.</p>
 
 
+<h2>Common errors with Ruby 3.x</h2>
+<p>Since Ruby 3.x I have experienced a new set of issues when installing Ruby. The errors are not related to <code>ruby-install</code> per-se since they also happen if you try to <a href="https://www.ruby-lang.org/en/news/2024/01/18/ruby-3-2-3-released/">install Ruby from source</a>.</p>
+
+<p>The first issue has to do with Open SSL. If <code>ruby-install</code> throws an error related to Open SSL the first thing that I will suggest is to use the <code>--with-openssl-dir</code> flag to tell it what Open SSL library to use. For example:</p>
+
+<pre>
+$ ruby-install 3.1.3 -- --with-openssl-dir=$(brew --prefix openssl@1.1)
+</pre>
+
+<p>The other issue that I've seen recently is "error: use of undeclared identifier 'RUBY_FUNCTION_NAME_STRING'". This <a href="https://dev.to/franklinyu/error-of-rubyfunctionnamestring-when-compiling-ruby-32b8">blog post by Franklin Yu</a> gives a great explanation of the problem and notes that many people have reported that the culprit in this case is the version of the Xcode command line tools installed on your Mac. To address this you can <a href="https://github.com/rbenv/ruby-build/discussions/1938#discussioncomment-2213912">remove your Xcode command line tools and install them again</a>:</p>
+
+<pre>
+$ sudo rm -rf /Library/Developer/CommandLineTools
+$ sudo xcode-select --install
+</pre>
+
 <h2>chruby notes</h2>
 
 <p>Something that surprised me when I started using <code>chruby</code> was that when you <code>brew install chruby</code> you don't get a <code>chruby</code> executable per-se, if you issue <code>which chruby</code> the OS will report nothing. That's because <code>chruby</code> is actually a Bash function that is defined in the <code>/usr/local/opt/chruby/share/chruby/chruby.sh</code> script. Once you <code>source</code> this script the OS will report that is indeed a function. For example:</p>
@@ -199,10 +217,10 @@ $ type chruby
 $ source source /usr/local/opt/chruby/share/chruby/chruby.sh
 $ type chruby
 chruby is a function
-chruby () 
-{ 
+chruby ()
+{
    # code for the function goes here
-} 
+}
 </pre>
 
 <p>Another quirky thing with <code>chruby</code> and <code>ruby-install</code> is that after installing a new version of Ruby you must reload the <code>/usr/local/opt/chruby/share/chruby/chruby.sh</code> shell script for the new version to be available to chruby. In practice I typically just close my terminal window and open a new one to force this to happen since the chruby script is loaded by my Bash init script.</p>
