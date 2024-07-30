@@ -66,7 +66,7 @@ $ ruby-install ruby 2.5.1
 
 Even more puzzling is that *even after downloading and installing Ruby 2.5.1 on my machine* ruby-install will not show that it is available when I run `ruby-install` without arguments.
 
-The last gotcha that I'll point out is that you must indicate "ruby" when you run ruby-install, for example notice the error that I get when I run `ruby-install 2.5.1` rather than `ruby-install **ruby** 2.5.1`
+The last gotcha that I'll point out is that you must indicate "ruby" when you run ruby-install, for example notice the error that I get when I run `ruby-install 2.5.1` rather than `ruby-install **ruby** 2.5.1` (Update: it seems that with newer versions of `ruby-install` this is not longer an issue, I recently tried with version `0.9.3` and didn't have this issue)
 
 ```
 $ ruby-install 2.5.1
