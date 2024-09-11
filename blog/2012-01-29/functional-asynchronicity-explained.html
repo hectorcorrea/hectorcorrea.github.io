@@ -263,6 +263,19 @@ for i in [1..3]
         }
       }
 
+
+      // Show the highlight menu if there is a hl query string parameter.
+      // Notice that we don't automatically highlight search terms because that's annoying on the display
+      // when there are too many hits.
+      var showHighlightMenu = function() {
+        const queryString = window.location.search
+        const urlParams = new URLSearchParams(queryString);
+        if (urlParams.has("hl")) {
+          var hlMenu = document.getElementById("highlight-menu");
+          hlMenu.classList.remove("invisible");
+        }
+      }
+
       // Highlight search terms indicated in the URL via the
       // hl query string parameter
       var highlightSearchTerms = function() {
@@ -300,7 +313,7 @@ for i in [1..3]
       });
 
       selectMenu();
-      highlightSearchTerms();
+      showHighlightMenu();
     </script>
 
     <script>
