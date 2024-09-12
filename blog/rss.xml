@@ -7,6 +7,12 @@
           <generator>https://github.com/hectorcorrea/fixie</generator>
           <atom:link href="https://hectorcorrea.com" rel="self" type="application/rss+xml"></atom:link>
           <item>
+              <title>Museum of Informatics (Valencia)</title>
+              <description>TODO</description>
+              <guid isPermaLink="true">/blog/2024-09-12/computer-muesum-valencia</guid>
+              <pubDate>Thu, 12 Sep 2024 00:00:00 +0000</pubDate>
+          </item>
+          <item>
               <title>fixie</title>
               <description>TODO</description>
               <guid isPermaLink="true">/blog/2023-10-18/fixie</guid>
