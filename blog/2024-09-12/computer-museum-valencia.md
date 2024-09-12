@@ -1,7 +1,7 @@
-# Museum of Informatics (Valencia)
+# Computer Museum (Valencia)
 *Posted on 2024-09-12*
 
-Earlier this month I visited the [Museum of Informatics of the School of Informatics of the Universitat Politècnica de València](https://museo.inf.upv.es/en/el-museo/) which has a nice collection of older computer equiment ranging from mainframes from the 60s, microcomputers from the 70s, early personal computers from the late 70s and 80s, and a few other interesting exhibits here and there.
+Earlier this month I visited the [Museum of Informatics of the School of Informatics of the Universitat Politècnica de València](https://museo.inf.upv.es/en/el-museo/) which has a nice collection of older computer equiment including mainframes from the 60s, microcomputers from the 70s, early personal computers from the late 70s and 80s, and a few other interesting exhibits here and there.
 
 The museum is housed by the university as part of the School of Informatics and it's not a typical museum in the sense that the exhibits are located all throughout the halls of the school rather than in dedicated room. Most of the exhibits are located within the same buiding, though.
 
@@ -9,7 +9,7 @@ I visited in early September before classes start and the halls were empty so I 
 
 
 ## Mainframes
-The first thing I saw as I entered was this massive mainframe. I don't remember the exact model of this one, I think it was an "IBM System/370" or something like that. I do remember thinking this machine is very close to what Fred Brooks was designing when he wrote the Mythical Man-Month. These machines were still in use when I started college, but I never really used anything like this.
+The first thing I saw as I entered was this massive mainframe. I don't remember the exact model of this one, I think it was an "IBM System/370" or something like that. I do remember thinking this machine is very close to what Fred Brooks was designing when he wrote the Mythical Man-Month. These machines were still talked about when I started college, but I never really used anything like this.
 
 ![IBM Mainframe](https://hectorcorrea.com/images/val-mainframe.jpg)
 
@@ -23,17 +23,17 @@ Below is a picture of a Commodore 64 which was probably the first computer I eve
 
 There was a section about video games that I also found interesting despite the fact that *I am not a gamer and have very little interest in video games*. One of the exhibits at the museum highlighted how much [the interest in video games was one of the reasons microcomputers made its way into peoples homes](https://museo.inf.upv.es/en/microinformatica/):
 
-> "These new personal microcomputers, designed with an 8-bit architecture, will find in the videogame sector an ideal field to offer the consumer a new amusement product, though always disguised as a tool of the future. However, this connection between videogames and the first home computers not only avoided the drive of computing, but also became the main reason for the demand explosion and development of new products, which finally led to the final implementation of the personal computer just as we know it today."
+> "These new personal microcomputers, designed with an 8-bit architecture, will find in the videogame sector an ideal field to offer the consumer a new amusement product, though always disguised as a tool of the future. However, this connection between videogames and the first home computers not only [did not prevent] the drive of computing, but also became the main reason for the demand explosion and development of new products, which finally led to the final implementation of the personal computer just as we know it today."
 
 ![Game console](https://hectorcorrea.com/images/val-micro1.jpg)
 
 ![Game console](https://hectorcorrea.com/images/val-micro2.jpg)
 
-On the more "business" class of computers there were several machines that really captured the era that I grew up in. For example, below is an *IBM System/23 Datamaster* an "all in one" kind of computer. I never used a computer like this but I did see a lot of them. Notice that it came with an Intel 8085 processor and 256 KB of RAM.
+On the more "business" class of computers there were several machines that really captured the era that I grew up in. For example, below is an *IBM System/23 Datamaster* an "all in one" kind of computer. I never used a computer like this but I did see a lot of them. Notice that it came with an Intel 8085 processor and 256 KB of RAM (that's four times more RAM than the Commodore 64 above).
 
 ![IBM Datamaster](https://hectorcorrea.com/images/val-datamaster.jpg)
 
-Below are two classical IBM PCs from the 80s. Notice how the first one has a 5¼-inch floppy drive and the second one has a 3½-inch floppy drive. The second one has also a more modern look, a bigger monitor, and a mouse!. The cases were made out of metal in these machines, they were heavy and sturdy...and those keyboards, look at those keyboards!
+Below are two classical IBM PCs from the 80s. Notice how the first one has a 5¼-inch floppy drive and the second one has a 3½-inch floppy drive. The second one has also a more modern look, it's smaller, has a bigger monitor, and comes with a mouse! The cases were made out of metal in these machines, they were heavy and sturdy...and those keyboards, look at those keyboards!
 
 ![IBM PC](https://hectorcorrea.com/images/val-pc-ibm1.jpg)
 
@@ -49,11 +49,11 @@ I still have memories of opening my first computer to add a second floppy drive 
 ## Software
 Another section in the museum was about software and they have a few exhibits showing software and training manuals from different eras. Below are a couple of pictures of how we used to get software in boxes and sometimes you had to buy it in the right floppy drive size if the box didn't include both formats (5¼-inch and 3½-inch).
 
-![Operating Systems](https://hectorcorrea.com/images/val-pc-ibm1.jpg)
+![Operating Systems](https://hectorcorrea.com/images/val-software-os.jpg)
 
-![Borland Software](https://hectorcorrea.com/images/val-pc-ibm2.jpg)
+![Borland Software](https://hectorcorrea.com/images/val-software-lang.jpg)
 
-After BASIC my next programming language was Turbo Pascal so it warmed my heart to see it represented (although I think I started with version 3) but I had forgotten how big Borland software was at the time.
+After BASIC my next programming language was Turbo Pascal so it warmed my heart to see it represented (although I think I started with Turbo Pascal 3) but I had forgotten how big Borland software was at the time.
 
 
 ## Bits en feminí
