@@ -1,5 +1,7 @@
 # Computer Museum (Paris)
-Early August I had the opportunity to visit the computer museum in Paris. The [Musee de l'Informatique](http://www.museeinformatique.fr) has a neat variety of computers in display that range from 1960s mainframe computers, early personal computer models (IBM, Apple, Commodore) from the 80s, and other computer related stuff including punch cards, old hard drives, mother boards, software, to name a few.
+*Posted on 2008-09-03, Updated on 2024-09-12*
+
+In 2008 I had the opportunity to visit the computer museum in Paris. The [Musee de l'Informatique](https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_l%27informatique_%28La_D%C3%A9fense%29) had a neat variety of computers in display that range from 1960s mainframe computers, early personal computer models (IBM, Apple, Commodore) from the 80s, and other computer related stuff including punch cards, old hard drives, mother boards, software, to name a few. Sadly, it seems that the museum closed in 2010.
 
 Here are a few pictures that I took while I was there.
 
@@ -32,3 +34,6 @@ Hard drives and floppy disks
 ![Hard drive](https://hectorcorrea.com/images/harddrive.jpg)
 
 ![Floopy disks](https://hectorcorrea.com/images/floppies.jpg)
+
+## See also
+If you are interested in this kind stuff, see also my post on the [Computer Museum in Valencia](https://hectorcorrea.com/blog/2024-09-12/computer-museum-valencia).
