@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="As I start learning Node.js one of the things that have puzzled me the most is having to write JavaScript code to run in an asynchronous fashion. Since Node.js uses an event-driven, non-blocking I/O model pretty much everything has to be written to run asynchronously. For somebody like me, that has always written code to be executed synchronously, the asynchronous paradigm takes a while to get used to. This blog post compares **how a particular synchronous piece of JavaScript code looks and feels against against its asynchronous counterpart**. My gut feeling was that the asynchronous code would be much longer (in lines of code) and more complicated than the synchronous version but I wanted to see proof of it, well, at least as much proof as one single code example could provide. I should clarify that I am, by no means, an expert on asynchronous programming or Node.js and the approach that I am showing in this blog post might not be optimal. I think it is a decent implementation but you should factor my newbie status on this kind of programming as you read this post.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>JavaScript Async Programming for Sync Heads</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -323,8 +323,22 @@ function getTopicByUrl(url, callback) {
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

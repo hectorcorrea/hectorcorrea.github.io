@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Last week I ran into an interesting issue renaming a bunch of files in my machine. The command I ran was: I was expecting this command to rename all `.jpeg` files to `.jpg` but instead the command returned At first I thought I had a typo in my command but the reality is that this is not a valid `mv` command.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Linux mv and file patterns</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -285,8 +285,22 @@ REN A&#42;.&#42; B&#42;.&#42;<br/>
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="In this blog post I show how to use CSS and jQuery to slide-in a panel full page on top of another and then slide back in the original content. You can see a running version of the code presented in this blog post [here](https://hectorcorrea.com/demos/slide-in-panel-sample.html).  This demo page starts with a panel showing some part of the Lorem Ipsum text. When you click on the text a new panel displaying the Bacon Ipsum text slides-in on top of the previous text.  Clicking on the new text slides the Lorem Ipsum back again. Nothing  fancy but enough to show the slide-in functionality in a full page panel. The HTML used in this example is basically composed of two HTML divs. The first div (called `mainDiv`) includes the Lorem Ipsum text while the second div (called `galleryDiv`) includes the Bacon Ipsum.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Sliding-in a Full Page Panel with CSS and jQuery</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -320,8 +320,22 @@ $('#galleryDiv').bind('click', function() {
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

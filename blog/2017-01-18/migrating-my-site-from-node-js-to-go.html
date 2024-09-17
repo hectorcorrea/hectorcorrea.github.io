@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Over the years I have written the code to power my website (hectorcorrea.com) in a variety of programming languages and platforms. The last version of the site was a Node.js application using MongoDB to store the data, the version before that was a C# ASP.NET MVC application with a SQL Server backend. One of the things that I liked the most about Node.js is how lightweight it was compared to a C# website. When I started to learn Go I was surprised how lightweight the language felt while at the same time being incredibly powerful so **I decided to rewrite this site in Go to compare the experience with the Node.js implementation that I had written before**. I first became interested in Go after reading Rob Pike's post [Less is exponentially more](https://commandcenter.blogspot.com/2012/06/less-is-exponentially-more.html) in which he tells the story on how he, Robert Griesemer, and Ken Thompson were disappointed on how many more features were going to be added to the C++ language. Instead of going with the flow they decided to create **a new programming language with less features** but with enough power to develop serious applications (e.g.  big programs, written and maintained by big teams ). At the time I felt the same way about the C# and Rails ecosystems that seem to thrive in adding more and more features to the platform to the point that you need a multi-gigabyte IDE to work in C# or tons of gems to do anything useful in Ruby. During my career I have worked with statically typed languages (mainly C#) as well as dynamically typed ones (mostly Ruby and Node.js.) Go strikes me as a language that, although it's statically typed, it feels as lightweight as dynamically typed languages tend to. The fact that it comes with a superb standard library means that you can get going with the language as-is and without having to download a bunch of utilities to build a basic application.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Migrating my site from Node.js to Go</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -279,8 +279,22 @@ scp mybinary user@server:/some/path/
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

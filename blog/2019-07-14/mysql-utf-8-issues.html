@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="A few months ago I upgraded the machine where this website runs from a machine with Ubuntu 14 to one running Ubuntu 19. Because I was coming from a very old version of Ubuntu I decided to create a brand new virtual machine with Ubuntu 19 and move the content myself rather than letting Ubuntu attempt to migrate my stuff. This was a good idea because a lot has changed from Ubuntu 14 to Ubuntu 19, plus it gave me the chance to start from a clean slate. However, in doing the migration manually I missed the step to configure the MySQL database to use UTF-8 and I left it instead with the default of Latin 1. This resulted in a few of the blogs displaying a bunch strange characters for things that are not part of the Latin 1 character set, for example several of the blogs where showing `Â` or `â€™` and you'll see  `Iâ€™ve` instead of  `I've`.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>MySQL UTF-8 issues</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -256,8 +256,22 @@ mysql&gt; update blogs set contentMd = convert(convert(contentMd using binary) u
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

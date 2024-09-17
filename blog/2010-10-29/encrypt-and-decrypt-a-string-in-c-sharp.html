@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="This blog posts presents an easy to use C# class to encrypt and decrypt strings in .NET. Although the [System.Security.Cryptography](http://msdn.microsoft.com/en-us/library/system.security.cryptography.aspx) namespace in the .NET Framework provides a wealth of classes to encrypt and decrypt values, it seems that MSDN falls short of providing a good and simple example on how to use these classes for the most common request: encrypt a string. The class presented in this blog allows you to encrypt and decrypt a string with the following lines of code:">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Encrypt and Decrypt a string in C#</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -392,8 +392,22 @@ static public class Crypto
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

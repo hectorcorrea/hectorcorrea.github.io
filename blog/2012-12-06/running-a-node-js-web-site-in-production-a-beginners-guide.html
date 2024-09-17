@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="In this post I describe my experiences taking my first Node.js website to production, running it on port 80, and hosting it outside my local box so that it's available to the world wide web. The site in question is the site where you are reading this post and it can be described as a typical low-traffic website that uses Node.js, Express.js, and CoffeeScript. Although I have deployed to production many C# web sites on Windows before, *this is the first time that I host anything in a Linux environment*. Keep this is in mind as you read this blog post. **Update:** See also [part II of this blog post with my experiences 12 months later](https://hectorcorrea.com/blog/running-a-node-js-web-site-in-production-part-2/53).">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Running a Node.js web site in production (a beginners guide)</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -335,8 +335,22 @@ forever stop webserver.js
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

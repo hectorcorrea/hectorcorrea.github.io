@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Last week at work we ran into an interesting string encoding issue. The gist of the problem is that we had a string that was valid in Ruby but Ruby threw an exception when we used it in a call to `JSON.generate()`. Below is a simplified version of this scenario: Notice how Ruby accepts the string and that I am able to use it in a hash, but then `JSON.generate()` throws an exception when it tries to use it. If I print the string to the console with `puts text` the output is `?ru` which is already suspicious, notice the  ?  at the beginning. Something is amiss with this string but what is it? And why can I pass it around but then `JSON.generate()` throws an error?">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>String encoding in Ruby and JSON.generate()</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -264,8 +264,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

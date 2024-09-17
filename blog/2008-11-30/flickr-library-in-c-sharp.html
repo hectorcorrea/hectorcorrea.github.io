@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="The last few days I've been working on a sample C# library to access Flickr pictures using Flickr's own API. This library is a light-weight C# class that provides two basic features: (1) retrieve the list of photosets in your account and (2) retrieve information about the photos in a photoset. Using this class you can retrieve the photosets in your Flickr account and display them in a combobox with a few lines of code like these: Once you select a photoset you can retrieve information about the photos inside it (like title and URL) with the following code. In this example I am binding the list of photos to an ASP.NET datalist control to display them:">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Flickr Library in C#</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -248,8 +248,22 @@ http://api.flickr.com/services/rest/?method=methodName&amp;param1=value1&amp;par
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

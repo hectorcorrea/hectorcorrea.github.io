@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Lookie here...I am running Microsoft Visual Web Developer Express on my MacAir!   When I bought [my MacAir last year](https://hectorcorrea.com/blog/ruby-development-on-the-mac-os-x/15) to start learning Ruby and Ruby on Rails I wasn't sure how much I was going to really use it. Overtime, I've gotten familiar with it and little by little it has become my main machine at home to do pretty much everything including Ruby programming, managing my music, pictures, and documents, and web browsing. It's gotten to the point that the only reason I power up my Windows laptop at home is when I need to update one of my personal ASP.NET projects or research some C# topic in particular.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Running Visual Studio inside Mac OS X</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -226,8 +226,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Last year I blogged about my [first experiences hosting a Node.js website in production](https://hectorcorrea.com/blog/running-a-node-js-web-site-in-production-a-beginners-guide/49). In this post I detail what I have learned in the last 12 months about hosting Node.js applications. The first thing that I learned is that there are still **no cheap web hosting providers for Node.js** like there are for other programming environments. For example, you can easily find hosting companies for PHP, Ruby, or ASP.NET with support for multiple sites, using your own domain, with file storage included, and database access for under $100 a year. But that's not the case for Node.js. Although you can find many great hosting companies that support Node.js (Nodejitsu, Heroku, Azure) the price to get a full environment to host many sites, under your domain, with file storage, and database access easily goes into $300 a year. Not too expensive if you are running a business, but more than I wanted to spend for my pet projects.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Running a Node.js web site in production (part 2)</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -347,8 +347,22 @@ exports.all = function(req, res) {
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="  The folks at Packt Publishing asked me to review one of their newest books [Learning JavaScript Data Structures and Algorithms](https://www.packtpub.com/application-development/learning-javascript-data-structures-and-algorithms) by Loiane Groner.&lt;sup&gt;[1]&lt;/sup&gt; As a fan of data structures and algorithms I am glad to see a book on the subject targeted at JavaScript developers. The publication of this book is rather timely given the tremendous growth in popularity that JavaScript has experienced over the years, not only as *the* language for front-end web development, but also recently as a viable alternative for backend development via Node.js. Although there are a lot of books on data structures and algorithms, most of them are targeted to Java/C developers, and there is very little on the subject for JavaScript developers. As Groner indicates&lt;sup&gt;[2]&lt;/sup&gt;  who said data structures and algorithms were only made for languages such as C and Java  [p. 37] In this book Groner describes some of the basic data structures and algorithms that most books in this category typically cover including Stacks, Queues, Lists, Trees, Graphs, Sorting and Searching and provides clear and simple implementations for them in JavaScript. Many developers would benefit from reading this book, but particularly those who started their software development career with JavaScript (or other scripting language) and haven't taken traditional computer science degree courses where data structures and algorithms are typically taught.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Learning JavaScript Data Structures and Algorithms</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -340,8 +340,22 @@ function Graph() {
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

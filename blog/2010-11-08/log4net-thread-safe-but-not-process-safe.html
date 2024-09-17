@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="A few days ago I was struggling with a problem with [log4net](http://logging.apache.org/log4net/index.html) in a web application. I have used log4net in many applications before with little or no problem but in this case even with a single user hitting the web site I was seeing strange logging behaviors. In my case **some of the log entries were being logged but others were not**. The application in question is a C# ASP.NET MVC web application running under IIS. I am using the true and tried `RollingFileAppender`. It couldn't have been a more typical use of log4net and yet I was seeing a weird things. Here are the symptoms that I was seeing: Since some entries were being logged but not others I was able to rule out the possibility that IIS might not have enough rights to write to the folder configured for the `RollingFileAppender`. This is a typical issue but not applicable in my case since if IIS wouldn't have enough rights nothing would be logged at all. In addition since the issue was happening even when I was the only user on the site I was sure it was not due to heavy utilization or some sort of race condition (which log4net typically handles nicely anyway.)">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Log4net Thread-Safe but not Process-Safe</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -325,8 +325,22 @@ This would manifest the same symptom as you described. -- Greg Askew<br/>
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content=" Earlier this month I received a draft manuscript of Frederick Brook’s latest book [The Design of Design – essays from a computer scientist](http://www.amazon.com/Design-Essays-Computer-Scientist/dp/0201362988) &lt;sup&gt;[1]&lt;/sup&gt; in which he reviews both what is design and how the design process works. Although there is plenty literature on the concept of design and the design process Brooks feels there are several good reason to write another book on the subject. The first reason that he mentions is that **the design process** has changed a lot since World War II and the new challenges have rarely been discussed. The new challenges that he mentions is that design is now a **team activity** rather than an individual one. Another challenge is that unlike designers of previous generations nowadays designers cannot longer built with their own hands what they design. Instead designs are captured in computer models and build by somebody else [p. xi]">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>The Design of Design</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -356,8 +356,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

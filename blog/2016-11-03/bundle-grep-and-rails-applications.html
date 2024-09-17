@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="When I first started programming in Ruby and Ruby on Rails one of the things that I struggled the most was finding *where a particular piece of code (a method, a class, a string) was defined*. This was particularly difficult when the code that I was looking for was defined in a gem and not in the code of my application. A couple of years ago [Mike Giarlo](https://github.com/mjgiarlo)  showed me a great tip to search through the entire code of Rails application (your code and the code of your dependencies) by using `grep` and `bundle`. Today while working with somebody else new to Ruby I noticed that this tip needs to get broader attention since I think is incredibly helpful, particularly for newcomers. Most Rails applications these days use `bundle` to manage dependencies and `bundle` provides an option to list the path to all the gems that your application is using. You can see this by running:">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Bundle, grep, and Rails Applications</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -256,8 +256,22 @@ $ grep -r "retry_job" $(bundle list --paths) .
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content=" A few years ago my friend Bill from [Rebar Business Builders](http://rebarbusinessbuilders.com) recommended me the book [The One Thing You Need to Know...About Great Managing, Great Leading, and Sustained Individual Success](http://www.amazon.com/One-Thing-You-Need-Know/dp/0743261658) by Marcus Buckingham. For a while I hesitated to buy this book, initially the title about  the one thing  kind of put me off but I ended up buying it and reading it. Back then I knew I had enjoyed the book but until recently I didn't realize how much I took from it. The first thing that the book helped me clarify was the difference between managing and leading. Not only are these two roles (and the talents needed to perform them) different but they are opposite. Marcus points that the main focus of great managers are his/her employees while the main focus of great leaders is a better future.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Managing and Leading (The One Thing)</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -244,8 +244,22 @@ Discover What Is <b>Universal</b> and Capitalize on It<br/>
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

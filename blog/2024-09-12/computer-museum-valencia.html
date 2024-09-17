@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="*Posted on 2024-09-12* Earlier this month I visited the [Museum of Informatics of the School of Informatics of the Universitat Politècnica de València](https://museo.inf.upv.es/en/el-museo/) which has a nice collection of older computer equiment including mainframes from the 60s, microcomputers from the 70s, early personal computers from the late 70s and 80s, and a few other interesting exhibits here and there. The museum is housed by the university as part of the School of Informatics and it's not a typical museum in the sense that the exhibits are located all throughout the halls of the school rather than in dedicated room. Most of the exhibits are located within the same buiding, though.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Computer Museum (Valencia)</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -285,8 +285,22 @@ Through this installation, the advance of the female role in one of the sectors 
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

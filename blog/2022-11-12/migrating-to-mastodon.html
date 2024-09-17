@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="*Posted on 2022-11-12* Mastodon is an open source project with the goal of providing a platform to create decentralized social networks. The goal of creating a decentralized social media platform is something that aligns with my idea of the web, but my previous two attempts at joining Mastodon were disappointing since I had a hard time finding people to follow - the site felt like an empty warehouse with little to offer. But this month, with the massive [Twitter Migration](https://www.msn.com/en-us/news/technology/considering-joining-the-twitter-migration-check-out-these-platform-alternatives/ar-AA13NZlw), it looks like things are starting to turn around for Mastodon and the amount of people posting interesting stuff has grown exponentially and that makes me optimistic about it.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Migrating to Mastodon</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -275,8 +275,22 @@ Believing that instant global communications were too crucial for modern society
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

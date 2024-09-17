@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="*Posted on 2022-08-30* A few months ago I came across a paper titled [Is this the simplest (and most surprising) sorting algorithm ever?](https://arxiv.org/abs/2110.01111) by Stanley P. Y. Fung in which he presents an incredibly simple sorting algorithm, the entire code is just 4 lines of code: That's it, that's the entire algorithm. As Fung indicates on the paper, at first glance it looks like this algorithm cannot possible work (e.g. the comparison looks wrong) but if you try it, you'll notice that it is indeed correct. Fung also indicates that the algorithm is not efficient by any stretch of imagination and shouldn't be used as a first example to introduce sorting to students.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>I can't believe it can sort - visualized</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -279,8 +279,22 @@ final data: 5, 7, 10, 99
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

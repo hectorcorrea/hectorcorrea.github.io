@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="A few weeks ago I noticed that when users of my site request a blog topic that does not exist although I was displaying a user friendly message indicating that the topic does not exist **I was not returning the proper HTTP status code (404) to indicate to the user that the page was not found**. This approach is typically not a problem if the user visiting my site is a human (users don’t really care about HTTP status codes) but it is important if the “user” visiting the site is a web crawler like the Googlebot or the Yahoo Slurp because **for these non-human users the HTTP code is very important as it means something concrete to them**. In digging deeper into this issue I realized that I was doing what is known as a “soft 404” which is not good for web crawlers because it fools them into thinking that there is a valid page for an invalid URL. In my case my site was returning a status code 200 (which means OK) rather than a status code 404 that means “Not Found.” This is in fact so common that both, the Googlebot and the Yahoo Slurp, web sites talk about this problem [here](http://www.google.com/support/webmasters/bin/answer.py?answer=181708) and [here](http://help.yahoo.com/l/us/yahoo/search/webcrawler/indexing-12.html). The code that was causing this issue in my controller looked similar to this:">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Returning HTTP 404 in ASP.NET MVC</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -292,8 +292,22 @@ public ActionResult Sample3(string topic)
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

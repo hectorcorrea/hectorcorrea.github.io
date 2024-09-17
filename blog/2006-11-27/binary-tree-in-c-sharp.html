@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="A few months ago I decided write a C# program to handle binary trees. I was lucky to still remember some of the basics of this data structure from my college days and was able to write a program to handle the add operation and the code to  walk the tree  in a few hours. To make things more interesting I also decided to write a program to draw the binary tree on the screen. This turned out to be an interesting challenge and kept me busy for a few weeks. The [source code for this program is here](https://hectorcorrea.com/downloads/DataStructures.zip). This version uses generics so it can be used with any type that implements the `IComparable` interface. A binary tree, as indicated in [Wikipedia](http://en.wikipedia.org/wiki/Binary_tree), is a tree data structure in which each node has at most two children. To implement this data structure I created two classes: `BinaryTreeNode` and `BinaryTree`. The former is used to represent each node while the later is used to organize the nodes following the rules of binary trees. In addition, I created a third class `BinaryTreeDrawer` that implements the algorithm to actually draw a binary tree on the screen and let you *see* how the information is organized.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Binary Tree in C#</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -235,8 +235,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="![Hydra Connect ballroom](https://hectorcorrea.com/images/hydraconnect2.jpg) This is my first time attending a [Hydra Connect](https://wiki.duraspace.org/display/hydra/Hydra+Connect+2+-+Fall+2014) and I was very impressed with the overall experience. From what I understand there were about 150 attendees representing 47 different institutions. The event had a good mix of workshops, lightning talks, tutorials, sessions, un-conference sessions, and working groups meetings. Below are my notes and thoughts from some of the sessions that I attended.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Hydra Connect 2</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -289,8 +289,22 @@ ActiveTriples is a projection on the underlying RDF graph<br/>
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

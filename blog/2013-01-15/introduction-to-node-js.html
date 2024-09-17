@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="[Node.js](http://nodejs.org) is a JavaScript interpreter that runs in a server environment and gives us the ability to run JavaScript code directly on the server (i.e. outside of a browser) just like we can run server side code in other languages like PHP, Python, Ruby, C#, or Java. Node.js is based on the JavaScript engine that Google wrote and uses for the Chrome browser. The author of Node.js, Ryan Dahl, took this JavaScript engine (called V8) and [repurposed it so that it can run in a server environment](http://www.ibm.com/developerworks/opensource/library/os-nodejs/). Ryan also added some features that are important when running on a server, for example, the ability to read and write from the file system and the ability to receive and send HTTP requests. Node.js is open source and there are installers available for Mac, Windows, and Linux. The installer for Mac is under 8MB in size. You can download and install the proper installer for your platform from [here](http://nodejs.org/). Once you have Node.js installed you should be able to run it from your terminal window as follows:">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Introduction to Node.js</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -560,8 +560,22 @@ app.get('/books/:id', function(req, res) {
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

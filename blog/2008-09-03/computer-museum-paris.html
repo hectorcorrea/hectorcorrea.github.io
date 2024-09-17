@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="*Posted on 2008-09-03, Updated on 2024-09-12* In 2008 I had the opportunity to visit the computer museum in Paris. The [Musee de l'Informatique](https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_l%27informatique_%28La_D%C3%A9fense%29) had a neat variety of computers in display that range from 1960s mainframe computers, early personal computer models (IBM, Apple, Commodore) from the 80s, and other computer related stuff including punch cards, old hard drives, mother boards, software, to name a few. Sadly, it seems that the museum closed in 2010. Here are a few pictures that I took while I was there.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Computer Museum (Paris)</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -246,8 +246,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

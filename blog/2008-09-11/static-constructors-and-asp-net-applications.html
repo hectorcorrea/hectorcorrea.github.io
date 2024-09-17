@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="A few days ago I was running into an issue with a static class in an ASP.NET application. The issue (I thought) was that the static constructor was not being fired. It turns out the static constructor was being fired as it should but not as often as I thought it would be. Static constructs are fired once per App Domain. In a *Windows application* this means that the constructor is fired once every time I launch the application and access the static class. If I close the application, run it again, and hit the static class the constructor will be fired again.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Static constructors and ASP.NET applications</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -254,8 +254,22 @@ public partial class _Default : System.Web.UI.Page
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

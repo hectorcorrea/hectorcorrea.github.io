@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Late last year (late November 2007 to be exact) Microsoft released [Visual Studio 2008](http://msdn2.microsoft.com/en-us/vs2008/default.aspx) with .NET 3.5 to production. This has generated a lot of buzz around the new features, what’s hot, what you should be looking into, and so on. The beta cycle for VS 2008 was long and very public. There has been a lot of articles and access to the new features for a while but now it’s here, now it’s real. People can go and buy VS 2008 today or download it from MSDN. Teams that have been just wondering how to go about the upgrade now need to answer the question: how do we upgrade? Most software developers are technology driven so we love new tools and technologies. This seems to be a personality trait regardless of the technology that we chose. The desire to move to the latest and greatest version seems to be as strong in .NET developers today as it was for FoxPro and VB 6 developers in the late nineties. We crave the day when we can use new tools. Yet, we have a responsibility to our users in doing this responsibly. Upgrades can be hard to perform on medium to large systems that have large number of users in production. Like most things on these kinds of systems upgrades need to be planned in order to give the most to the customers. Although the decision to upgrade or not to upgrade to a new version of development tools is very specific to every project, I usually tend to recommend upgrading on-going projects (with new features actively being developed) and thinking twice before upgrading projects that have been switched to maintenance mode (no new features are being developed.)">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Upgrading Your Software Development Tools</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -230,8 +230,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

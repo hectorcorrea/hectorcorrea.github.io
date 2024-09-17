@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="One of the things that trips most newcomers to Node.js and MongoDB is how different the process to connect to databases from Node.js is compared to other programming environments. For example, the pseudo-code below is a typical example of how database connection is handled in most programming environments: The general concept **in most programming environments** is to connect to the database only when you need to access data and to **disconnect from it as soon as you are done accessing it**. This process makes perfect sense in multi-threaded environments because there could be hundreds of concurrent threads trying to access the database and, unless you close your database connection, you might run out of connection handlers. Internally database drivers create and manage a connection pool to share a limited number of network connections with a potentially large number of clients. However, the client must close its connection in order for a connection from the pool to be available to other threads.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Connection handling with Node.js and MongoDB</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -305,8 +305,22 @@ exports.getAll = function(callback) {
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

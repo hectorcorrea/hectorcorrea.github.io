@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="A few days ago I configured Sublime Text 2 editor to use three different hotkeys for compiling and running CoffeeScript files. I am new to Sublime so I consider somewhat of an achievement that I was able to pull this off with help from the interwebz and a bit of luck. The first hotkey that I configured runs a CoffeeScript file and displays its output to the Sublime’s console window. This is useful when I want to quickly run a small CoffeeScript program that outputs to the console. The following screenshot shows this: ![Sublime Text Console](https://hectorcorrea.com/images/sublimetextconsole.png)">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Compiling CoffeeScript from Sublime Text 2</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -279,8 +279,22 @@ class CoffeescriptToJavascript(sublime_plugin.TextCommand):
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="*Posted on 2023-10-17* Earlier this month I migrated my personal site at [https://hectorcorrea.com](https://hectorcorrea.com) to be hosted as a statically generated set of HTML pages hosted on GitHub pages. This post elaborates on why and how I did it. Recently I have been interested in how much we can achieve on the web with just the basics (HTML + CSS + JavaScript) and in keeping with the tradition of trying things on my personal site I decided to convert this site to a static generated set of pages and see how well this idea works in practice.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Static Generated Site</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -280,8 +280,22 @@ if (window.location.pathname === "/blog/The-Mythical-Man-Month.aspx") {
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

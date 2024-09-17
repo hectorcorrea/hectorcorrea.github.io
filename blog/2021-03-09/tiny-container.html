@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="A few weeks ago I read the book [Linux Containers and Virtualization - A Kernel Perspective](https://www.apress.com/gp/book/9781484262825) by Shashank Mohan Jain and I was fascinated by the example that he provides on how to build your own container from scratch in Go. In this blog post I replicate a part of the code that Mr. Jain presents but I tweaked it to run its own shell (rather than having to download a separate set of Linux libraries from the web). My version of the code only supports the functionality to show isolation of the file system whereas the original code in the book shows how to provide network and memory isolation. The code examples that I created are available at [https://github.com/hectorcorrea/tiny-container](https://github.com/hectorcorrea/tiny-container). File `tinyContainer.go` is a copy of the code provided by Shashank Mohan Jain but tweaked as mentioned above. File `tinyShell.go` is a program that I created to emulate a few commands that a typical Linux shell provides (like `cat`, `cd`, `env`, `ls`, and `hostname`) so that we can test the isolation of the file system that `tinyContainer.go` provides. I should point out that I am a newbie when it comes to Linux kernel stuff and system calls and this topic is way out of my league. Please feel free to reach out if I got some of the concepts wrong or they could use a better explanation.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Tiny Container</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -446,8 +446,22 @@ diff    hexdump  grep vi
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

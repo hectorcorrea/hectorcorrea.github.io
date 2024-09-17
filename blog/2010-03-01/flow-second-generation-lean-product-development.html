@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content=" The last few weeks I've been reading the book [The Principles of Product Development Flow](http://www.amazon.com/Principles-Product-Development-Flow-Generation/dp/1935401009) by Donald Reinertsen&lt;sup&gt;[1]&lt;/sup&gt; in which he describes what he calls the second generation of Lead Product Development. I've been reading the book from the perspective of software development products and this review will highlight examples on that area. However Reinertsen's book is about product development in general (e.g. the development of a new drug or a new cell phone) and not software in particular. Reinertsen describes a paradigm for product development that although it could be called Lean Product Development he chooses to call **Flow-Based Product Development** (Flow) to highlight the differences that exist between lean manufacturing and lean product development.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Flow: Second Generation Lean Product Development</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -288,8 +288,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="This blog post is an extended version of the notes that I used for my talk titled [Build your own software, yes, build it](http://2017.code4lib.org/talks/Build-your-own-software-yes-build-it) at Code4Lib in Los Angeles, California on March 7th, 2017. You can also watch the [recording of the presentation](https://youtu.be/eUArNAG-CY4?t=2h57m30s), it's about 20 minutes long. This post, like the original talk at Code4Lib, is an attempt to create a discussion about the benefits of writing our own software solutions as opposed to adopting large open source solutions. During my (short) tenure within the Libraries I’ve gotten the impression that people almost always prefer to adopt large open source solutions over developing one. By “large open source solutions” I mean projects like [VIVO](http://www.vivoweb.org/), [Hydra](https://github.com/projecthydra), [Islandora](http://islandora.ca/), and [FOLIO](https://www.folio.org), to name a few. While I think open source is a wonderful idea and brings great opportunities for collaboration, I believe in the libraries we have swung the pendulum too far towards adopting large open source solutions rather than building our own software. Adopting large solutions seems to be the default mode these days. This post tries to counter this approach by purposely highlighting the disadvantages of adopting open source solutions as well as emphasizing the advantages of building our own software.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Build your own software</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -343,8 +343,22 @@ it interacts with everything around us."<br/>
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

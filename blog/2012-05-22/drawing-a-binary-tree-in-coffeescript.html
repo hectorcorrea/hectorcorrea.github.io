@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="![Binary Tree](https://hectorcorrea.com/images/binarytreecoffee.png) A few months ago I wrote a small **CoffeeScript program to draw binary search trees on a web page page** using the HTML 5 Canvas element and was very pleased with clarity and structure of the resulting code. This blog post elaborates on the code structure and how it compares to previous implementations of the same idea that I have done in other languages. I’ve written programs to draw binary search trees before in C# and Ruby and I wasn’t sure how a CoffeeScript implementation would compare against implementations in more traditional object oriented programming languages. Thanks to CoffeeScript’s support for classes the structure of this implementation is pretty much as you would expect: a BinaryNode class to hold node data, a BinaryTree class to implement the basic binary search tree operations (add, walk), and a BinaryTreeDrawer to calculate the coordinates where each of the nodes should be drawn.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Drawing a Binary Tree in CoffeeScript</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -447,8 +447,22 @@ $ -&gt;
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

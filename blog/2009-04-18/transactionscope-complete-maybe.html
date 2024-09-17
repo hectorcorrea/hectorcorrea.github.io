@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="During a training class this week I learned that the `Complete()` method in the `TransactionScope` class works different from what I have always thought. I've always thought that when you issue a call to the `Complete()` method the transaction is either committed or you get an exception if the transaction cannot be committed. In my mind once the call to `Complete()` returned it was a sure bet that the transaction was successfully committed. It turns out that is not necessarily true. The following code snippet shows a typical usage of `TransactionScope` when connecting to a SQL Server database. The steps are basically start a transaction, issue a few SQL commands, and call the complete method to commit the transaction. In a real application you will have more than one SQL Command and perhaps nested transactions but the idea is pretty much the same. In this particular example however I am purposely forcing an error condition by pausing the program right before the call to `Complete()`, then manually shutting down SQL Server, and finally letting the program continue its execution. This is definitively not something that you will do in an application but the point of this example is to emulate what happens if the server goes down right before the call to `tx.Complete()`. My thought was that the program will throw an exception on the call to `tx.Complete()` but to my surprise that was not the case. The call to `tx.Complete()` executed and came back with no indication that an error has happened. Below is the output that this program gave me:">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>TransactionScope.Complete Maybe</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -253,8 +253,22 @@ When you are satisfied that all operations within the scope are completed succes
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="*Posted on 2018-09-22, updated on 2024-02-07* When I started writing code on Ruby I learned there were many ways to download and install Ruby on a Mac. Initially I was comfortable with the version of Ruby that comes installed on OS X by default or using the installer available at [ruby-lang.org](https://www.ruby-lang.org/en/downloads/)  to install the latest version. As my needs evolved I needed to have more than one version of Ruby installed on my machine to work on different projects that use specific versions of Ruby. There are many tools to install and manage multiple versions of Ruby on a Mac. Among the options that I tried were [RVM](https://rvm.io/), [rbenv](https://github.com/rbenv/rbenv), and [chruby](https://github.com/postmodern/chruby). In the end I found the combination of `chruby` and `ruby-install` the best for my needs, in large due to their minimalist approach.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Installing Ruby with ruby-install and chruby</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -323,8 +323,22 @@ chruby ()
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

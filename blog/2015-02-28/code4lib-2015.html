@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="  [Code4Lib](http://code4lib.org) is an annual conference that brings together a mix of people that work at libraries and/or develop software for libraries. Given that I am a newcomer to the library domain, this was my first time attending and I learned a lot. Among the things that I found interesting is that Code4Lib is a single-track conference. This means that all 400+ attendees are on the same room listening to same sessions all the time (except the pre-conference workshops.) I have not attended a single-track conference in a long time but I liked several things about this approach. Most of the conferences that I have attended in the last 10 years have been technology oriented only. Code4lib on the other hand has [a mix of topics](http://code4lib.org/conference/2015/schedule) including technologies for libraries, team dynamics, social issues, and so on. This is the first conference that I attend where I learn about maternity leave in the morning and about Solr indexing in the afternoon.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Code4Lib 2015</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -284,8 +284,22 @@ I want us to spend the next nine years inventing, building, library software. Bu
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

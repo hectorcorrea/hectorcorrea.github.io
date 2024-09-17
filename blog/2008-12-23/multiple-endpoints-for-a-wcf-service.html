@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="One of the nice features that Windows Communication Foundation (WCF) provides is the ability to expose a single service via multiple endpoints so that different client applications can consume the same service over different network protocols. For example the same service can be exposed via HTTP for external clients and via TCP for internal clients. In WCF an **endpoint** refers to the combination of the address where service is available, the binding used to communicate to it, and the contract that the service exposes, these three parameters are commonly known as the  ABC  of the endpoint. An endpoint for a WCF Service can be configured via the `app.config` of the service or through code. In this post I am going to focus on how to configure a service via the `app.config` file to be available to multiple endpoints.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Multiple Endpoints for a WCF Service</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -361,8 +361,22 @@ HelloWorldClient service = new HelloWorldClient("httpEndpoint");
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

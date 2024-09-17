@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="One of the best practices when building applications that I've learned over the years is the value of always having a running version of the application available to show end-to-end progress on the system being developed. Although this is common sense it's easy to get caught on the day-to-day activities and lose track of these things. A typical situation in which teams seem to forget the value of always having a running version of the application is when writing a brand new application. In this scenario is common to have a bunch of components half-way written and not ready for production and most development teams tend to be OK with this. I am OK with this *as long as they all compile and can be run successfully to show the functionality implemented so far*. It does not matter the system can only perform a sub-set of features that the final system will have. It should always run so that people can experience first hand how each of the modules interact with each other. &lt;img alt= Walking Skeleton  align= left  src= https://hectorcorrea.com/images/skeleton.jpg /&gt;In trying to explain this concept to a friend of mine I found that there is even a pattern that explains this idea when it comes to building new applications. Cockburn&lt;sup&gt;[1]&lt;/sup&gt; calls it a [Walking Skeleton](http://alistair.cockburn.us/index.php/Walking_skeleton):">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Skeletons, Mona Lisa, and Problem Solving</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -281,8 +281,22 @@ It is also an effective approach when the domain is stable."<br/>
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

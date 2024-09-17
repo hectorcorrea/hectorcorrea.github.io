@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Over at the Pragmatic Bookshelf Trevor Burnham has a great post titled [A CoffeeScript Intervention](http://pragprog.com/magazines/2011-05/a-coffeescript-intervention) in which he shows several code snippets that demonstrate how CoffeeScript code is typically smaller and cleaner than the equivalent JavaScript code. In particular I love the example under the **Functional Asynchronicity** section. In this section he shows a piece of code that trips most new JavaScript developers. When this code is executed it will output `4, 4, 4` to the console rather than `1, 2, 3` as most people guess the first time they work with JavaScript.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Functional Asynchronicity Explained</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -311,8 +311,22 @@ for i in [1..3]
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="One of the nice things about ASP.NET MVC is the ability to easily integrate standard web libraries like jQuery in .NET web applications. In this blog post I am going to show how to execute AJAX calls with jQuery from an ASP.NET MVC application. The first example shows how to do it with an **HTTP GET** call and the second one uses an **HTTP POST** call. Both examples use JSON in the return type. This is probably the simplest example on how to execute an AJAX call with jQuery but it should be OK to show the general concept. In this page when the user clicks on the  click here  hyperlink a request is made to the server to retrieve the time on the server and display to the user. The AJAX part of this example is that the request to the server is executed *without* making a full page reload as it can be seen in the screenshot below (notice that the time the page was originally loaded does not change after I clicked the hyperlink and retrieved the server time.) Again, not terribly exciting but good enough for our purposes. ![Ajax Sample 1 screenshot](https://hectorcorrea.com/images/AjaxSample1Screen.jpg)">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>AJAX calls with jQuery in ASP.NET MVC</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -418,8 +418,22 @@ public ActionResult SaveComment(string comment, string emailAddress)
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Last year I blogged about [my first impressions using a Mac for web development](https://hectorcorrea.com/blog/ruby-development-on-the-mac-os-x/15) from the point of view of somebody with a strong Windows/C# background. This blog post is a long overdue continuation to that post. I bought a Mac Air a year and a half ago with the intention of experiencing what is like to develop web applications in a non-Windows environment and it has been a great learning experience. I am amazed how much I've learned in those 18 months and the breadth of technologies and tools that I've played with in that time. The Mac Air is undoubtedly a fantastic piece of hardware, it's slim, lightweight, powerful, and overall a beautiful piece of hardware. It's not cheap, but it's worth every penny.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Web Development on the Mac OS X (part II)</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -263,8 +263,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

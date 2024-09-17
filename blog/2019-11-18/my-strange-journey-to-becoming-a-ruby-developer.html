@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Five years ago (in 2014), after being a C# developer for many years I took my first job as a Ruby developer. Transitioning from one technology stack to another is not uncommon among software developers, most of us have jumped from one tech to another more than once in our lifetime (e.g. from DOS to Windows, from Desktop to web, from single user to client-server), but each transition is different, each one brings different challenges and rewards. In this post I want to reflect on how going from C# (on Windows) to Ruby (on Mac/Linux) worked out for me. Before taking a job as a Ruby developer I worked as a C# / .NET developer for 10+ years. My first .NET applications were Windows Desktop applications built with VB.NET and later on I moved on to build web applications with C#. When I came to Ruby, although I had little experience with Mac or Linux, I was very comfortable with foundational concepts like system design, object oriented programming, relational databases, web development, and such. A few years before I took my first job as a Ruby developer I bought a Mac to play with Ruby in my spare time. I spent many nights (hello Rails for Zombies) getting acquainted with the different tools and workflows that Ruby developers in the Mac and Linux ecosystem use. Initially, the switch from Graphical User Interfaces in Windows to working on the terminal in Mac/Linux was the biggest shock to me. But eventually I embraced it. I blogged about my initial non-professional experiences with Ruby on the Mac/Linux [in 2011](https://hectorcorrea.com/blog/ruby-development-on-the-mac-os-x/15) and [in 2012](https://hectorcorrea.com/blog/web-development-on-the-mac-os-x-part-ii/5).">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>My (strange) journey to becoming a Ruby developer</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -313,8 +313,22 @@ end
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

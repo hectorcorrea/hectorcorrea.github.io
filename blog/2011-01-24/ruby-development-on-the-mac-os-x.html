@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="  A little more than a month ago I got myself a MacAir. Even though I’ve own computers since the mid 80s this is the first time that I buy a Machintosh. The reason I bough a Mac rather than a PC is because I wanted to **start experimenting with the web development tools that exist for non-Windows environments**. Although I’ve been a software developer for more than 15 years all my experience is with Microsoft Windows and I thought is about time I start experimenting with the tools that “the “other half of the world” is using. Since I got a Mac most people would probably thing that I want to start writing applications for the iPhone or the Mac but in reality I want to experiment with the development tools for web applications. I will probably write an app or two for the iPhone or the Mac just to see what it’s like but my real motivation is web development using non-Windows tools.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Ruby Development on the Mac OS X</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -328,8 +328,22 @@ It has an elegant syntax that is natural to read and easy to write.”<br/>
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

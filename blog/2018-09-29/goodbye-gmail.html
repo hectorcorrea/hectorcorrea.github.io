@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="One of the advantages of owning my web domain is that I can host my website and email anywhere I like. This allows me to switch web or mail providers without having to change my domain or email address. This week I *moved my email from being hosted at Gmail to be hosted at a different provider* and deleted my Google account entirely. This blog post elaborates on why I did and I how I went about it. I hosted my email for `hector@hectorcorrea.com` with Gmail for many years. I don't remember well how I hosted it before that, I have a vague recollection of hosting it on an Exchange server at home at some point and later on using the built-in email service that my web hosting company provided. When I first switched to Gmail to host my email in 2007 I remember I was really happy with the hands-off approach that Gmail afforded me and I was particularly impressed with the spam filter that they provided. Overnight I went from having to worry about spam to not having to worry about it at all. Back then *I knew* Google was analyzing the text of my email in order to detect spam and it was well known that they were using this analysis to provide better advertising via the little ads at the top of the page. I was OK with that.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Goodbye Gmail</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -284,8 +284,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

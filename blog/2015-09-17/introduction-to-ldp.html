@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="[Linked Data Platform](http://www.w3.org/TR/ldp/) (LDP) is a W3C recommendation that defines a set of rules to provide an architecture for read-write Linked Data on the web. This blog post is an introduction to the concept of Linked Data and how to get started with the Linked Data Platform. If we are going to talk about the Linked Data Platform we should start by talking about Linked Data (if you are familiar with Linked Data already feel free to skip this section.) Linked Data is a concept that [Tim Bernes-Lee defined in 2006](http://www.w3.org/DesignIssues/LinkedData.html) in which he articulated a vision to allow the World Wide Web to move from being about linking documents (i.e. HTML web pages) that humans can read and navigate to a new model, know as the Semantic Web, that will include documents and data that both humans and machines can process. In his own words:">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Introduction to LDP</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -582,8 +582,22 @@ behavior is supported<br/>
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Estimates is one of the most controversial topics on software development, including the process to calculate them and the value that they add to the software development process. Every team that I have worked with needs to provide estimates on how long it's going to take to complete a specific feature of a system. Yet, most teams seem to struggle with this activity. Developers enjoy attending a meeting to provide estimates as much as they enjoy visiting the dentist. Project owners typically complain how unreliable estimates on software projects are, to them is unbelievable that even that developers have been writing software for many years cannot give accurate estimates. In my experience there are several reasons why providing estimates is so hard:">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Estimates on Software Projects</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -279,8 +279,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="A few years ago during my ScrumMaster certification our instructor talked about the different development stages that teams go through. He used Tuckman's development model which includes four stages: Form, Storm, Norm, and Perform. In this model teams start at the **Form** stage when they are first put together. This is the honeymoon period of new teams in which spirits are high, everybody is optimistic, but the work is just about to begin. **Storm** is the period after the honeymoon in which, once the work has commenced, team members try to find their place in the team. After the storm phase, teams go into the **Norm** stage as members start to find their place on the team and the team starts working as a cohesive unit. Finally, some teams reach another stage called **Perform** in which they become high performance teams. I've always found this knowledge of incredible valuable. Knowing that teams go through these stages and that this is normal behavior is very important. As a team leader is also important to recognize that teams need different leadership styles as they go through these stages.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Team Dynamics</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -258,8 +258,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

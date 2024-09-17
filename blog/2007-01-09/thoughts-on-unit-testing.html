@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="A unit test is a piece of code written by a developer for a developer. The intention of this piece of code is to prove that the code does what the developer intents to do ([Pragmatic Unit Testing in C#](http://www.pragmaticprogrammer.com/titles/utc2/)). Unit tests are not substitutes for requirement gathering or QA, they are an additional tool that developers can use to produce better systems. A lot of developers complain that when they write a unit test for the first time they fell kind of silly, like there is no value in writing a test to prove a piece of code that they just wrote. For example, let's say that you write a new method to add a record to the database and then you write the unit test to verify this code (e.g. the record is in fact added to the database.) Suppose you spend half your morning writing this code and then its unit test. Well *off course* that when you write the test it will pass -- you just wrote the darn code! What a lot of developers don't realize is that they do gain a whole lot when they write unit tests:">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Thoughts on Unit Testing</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -257,8 +257,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

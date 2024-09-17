@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Today I ran into an issue setting the value of `document.body.innerHTML` that caught me by surprise. I have always known that I can set an HTML fragment to `document.body.innerHTML` and the rendering engine (the browser usually) does the right thing and renders it correctly. You can even pass a *malformed HTML* and the rendering engine usually makes pretty good guesses and parses it correctly. But today I used a fragment that caused the rendering engine to parse the HTML in a way that had me confused for a while. What was worse, is that the HTML that I used was properly formed, but turns out it was incomplete in a way that the rendering engine parsed it all wrong. Below is an example of a good HTML fragment that the browser knows how to parse:">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>document body innerHTML woes</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -274,8 +274,22 @@ console.log(document.body.innerHTML)
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

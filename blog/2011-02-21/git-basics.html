@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="  This blog post is a beginners' guide (written by a git beginner) on how to perform **basic version control operations with git** including initializing a repository, adding files to it, and using branches. The goal of this post is to describe how to use git *in your local machine* for version control. In a future post I'll cover the basics of using git and github for collaboration with other developers. Everything that I show on this blog is done through git's command line via the Mac OS X terminal. The steps should be very similar in other operating systems but I have not tested them outside of the Mac.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Git Basics</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -339,8 +339,22 @@ git status
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

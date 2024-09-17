@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="*Posted on 2023-10-18* A few weeks ago I wrote a little program called (`fixie`) to help me migrate my personal website to be served via statically generated pages. `Fixie` is similar to other static site generators like [Hugo](https://gohugo.io/) or [Jekyll](https://jekyllrb.com/): you give it a bunch of Markdown files and it produces the HTML pages with the content on those Markdown files. But `fixie` has zero customization options, well not zero, but very few customization options - [hence the name](https://en.wikipedia.org/wiki/Fixed-gear_bicycle).">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>fixie</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -327,8 +327,22 @@ $ echo "&lt;footer&gt;This is the footer&lt;/footer&gt;" &gt;&gt; layout.html
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

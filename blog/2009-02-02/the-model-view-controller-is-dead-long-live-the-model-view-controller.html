@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="The last few days I've been reading [Microsoft .NET: Architecting Applications for the Enterprise](http://www.amazon.com/Microsoft-NET-Architecting-Applications-PRO-Developer/dp/073562609X) by Dino Esposito and Andrea Saltarello. On Chapter 7 Dino and Andrea talk about the Presentation Layer and in particular they touch on the Model View Controller (MVC), Model View Presenter (MVP), and Presentation Model (PM) design patterns. I really like how they demystify MVC and MVP and put them in context. Dino and Andrea start describing how these design patterns have evolved over time and state that: I completely agree with this statement and as a matter of fact this quote is the reason I stopped on the Presentation Layer chapter as I was browsing through the book even though I didn’t have an immediate need for Presentation Layer patterns. I was actually looking for Business Layer and Service Layer Patterns but that’s a topic for a future blog entry. Another interesting observation that Dino and Andrea make is that “when MVC was initially developed it was intended to be used on the whole application and not just in the presentation layer”. However, since these days most developers intuitively design applications in layers as opposed to building monolithic applications as it might have been the norm in the 1980s, the role of the MVC pattern has shifted to a presentation layer pattern more than application level pattern.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>The Model View Controller is dead, long live the Model View Controller</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -266,8 +266,22 @@ Passive View (PV) and Supervising Controller (SVC).<br/>
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

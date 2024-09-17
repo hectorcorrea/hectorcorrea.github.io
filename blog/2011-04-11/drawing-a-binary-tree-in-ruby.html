@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="&lt;img src= https://hectorcorrea.com/images/binarytree_simple.png  alt= git  align= left /&gt;When I started learning Ruby last year I decided to implement a **binary search tree** and some of its basic operations (insert, delete, walk, and search) just to get my feet wet on the language. Binary search trees are a good exercise because you need to use several features of the language like conditional statements, loops, and classes while at the same time you are solving an interesting problem. The algorithm for binary search trees is well documented in most introductory books on algorithms and on the web. To make things a bit more challenging I also implemented a program to **draw the binary search tree** so that people can see how a binary search tree looks like when it has more than just a handful of nodes. In this particular case I wrote small a web application in Ruby that draws the binary search tree using the new canvas element supported in HTML 5. You can download the entire source code for the binary tree and the demo web site from [this GitHub repo](https://github.com/hectorcorrea/binary-tree) and play with it in your local environment. This blog post gives short overview of the main methods to implement the binary search tree, the algorithm to draw the binary search tree, and the web site to demo the drawing algorithm.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Drawing a Binary Tree in Ruby</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -472,8 +472,22 @@ drawer.draw(0, 0, Proc.new { |value, x, y, px, py|
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

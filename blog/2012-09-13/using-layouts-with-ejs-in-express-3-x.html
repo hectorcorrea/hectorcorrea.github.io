@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Over the last couple of months I've been meaning to update [my sample Express.js application](https://github.com/hectorcorrea/simple-blog) from Express 2.x to Express 3.x but the fact that support for layouts was removed from Express 3.x was holding me back. In Express 2.x the framework itself supported the concept of layouts and both template engines, Jade and EJS, worked nicely with it. In Express 3.x the functionality has been removed from the framework and now the template engines need to be updated to provide this support themselves. This week I found that EJS has been updated to support [includes](https://github.com/visionmedia/ejs#includes) and that allowed me to emulate in Express 3.x the concept of layouts that I was getting with Express 2.x. This is probably the mother of all hacks, but it's simple and it works for my purposes so I am documenting it for others using Express 2.x and EJS that might be holding back on upgrading to Express 3.x just because of the lack of layouts in Express 3.x.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Using layouts with EJS in Express 3.x</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -279,8 +279,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>

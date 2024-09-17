@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="HectorCorrea.com">
+    <meta name="description" content="Last week the disclosure of the [Log4Shell vulnerability](https://www.lunasec.io/docs/blog/log4j-zero-day/) took many of us Solr users by surprise. When I first heard about it I didn't pay much attention to it since I figured that the problem was that somebody had found how to leak information *into the Solr log files*, something that is bad but that has limited exposure. However, one of my colleagues pointed out that the vulnerability allowed for *remote code execution (RCE)* and that is indeed scary. As it turns out `log4j`, the library that Solr uses to log information, can be configured to insert certain dynamic tokens of information and one of these tokens allows it to connect to a remote server to download code and execute it. I am not a Java developer so this was news to me and I got curious to see how this works in practice. In a Solr installation the problem can be triggered by a user submitting a search via our application. If the user submits a query that is logged and that query has the correct syntax to trigger the expansion then they can trigger the vulnerability. And this is surprisingly easy to do.">
     <meta name="author" content="hector@hectorcorrea.com">
 
-    <title>HectorCorrea.com</title>
+    <title>Log4Shell and Solr</title>
 
     <link rel="shortcut icon" href="/public/favicon.ico" />
     <link rel="apple-touch-icon" href="/public/favicon.png"/>
@@ -315,8 +315,22 @@ SOLR_OPTS="-Dlog4j2.formatMsgNoLookups=true" ./solr start
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>
