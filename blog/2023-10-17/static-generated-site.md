@@ -49,7 +49,7 @@ This way if somebody goes to `/blog/hello-world/10` a file will be found and tha
 
 A disadvantage of this approach is that there are lots of extra files on my GitHub repo that are just stub files (i.e. they contain no real content, only the HTML redirect). But, at least the links are redirected properly so I guess I'll have to live with this.
 
-**Update January/2024:** I had an interesting case in which one of my legacy links was to an `.aspx` page, this is a link from back when this site was written in C#. It seems that there is a page in Wikipedia that references the blog post `/blog/The-Mythical-Man-Month.aspx` and it made sense to keep supporting this link. However, I could not handle this redirect with the HTML Redirection mentioned above (something about the `.aspx` extension) so I ended up adding come JavaScript to layout of the site to handle this very specific case.
+**Update January/2024:** I had an interesting case in which one of my legacy links was to an `.aspx` page, this is a link from back when this site was written in C#. It seems that there is a page in Wikipedia that references the blog post `/blog/The-Mythical-Man-Month.aspx` and it made sense to keep supporting this link. However, I could not handle this redirect with the HTML Redirection mentioned above (something about the `.aspx` extension) so I ended up adding some JavaScript to the layout of the site to handle this very specific case.
 
 ```
 // Hande this redirect via JavaScript because GitHub pages does not let me

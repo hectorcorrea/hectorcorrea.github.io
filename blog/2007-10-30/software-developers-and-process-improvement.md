@@ -5,9 +5,7 @@ For example, I often talk to other developers who are trying to implement Scrum,
 
 The most interesting part, however, is that process improvement is not an activity that should be left alone to developers, not even when is about software development process. If the software has an impact on the bottom line of the company (and it usually does) it should be an activity that is done in collaboration with executives, business owners, QA, and developers. Developers, as well intended as we might be, don't always see the whole picture and we are bound to make one-sided conclusions. Or as [Buxton](http://blog.businessofsoftware.org/2007/10/an-angry-mans-s.html) says:
 
-> "the typical approach of software engineers having sole responsibility for new product development 
-> [is like] an ice hockey team with all goalies. No matter how good your goalies are, 
-> they aren’t going to beat even a bad team with the proper mix of players."
+> "the typical approach of software engineers having sole responsibility for new product development [is like] an ice hockey team with all goalies. No matter how good your goalies are, they aren’t going to beat even a bad team with the proper mix of players."
 
 One of my co-coworkers had the great idea of taking a couple of business owners to our local Agile user group and they both seemed to have enjoyed it and learned a few things. Yet, that was the only time they attended one of these meetings.
 
