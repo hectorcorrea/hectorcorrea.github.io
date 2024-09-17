@@ -206,8 +206,22 @@
         }
       });
 
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank;"
+          }
+        }
+      }
+
       selectMenu();
       showHighlightMenu();
+      externalLinksNewTab();
     </script>
 
     <script>
