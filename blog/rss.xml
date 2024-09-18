@@ -8,451 +8,451 @@
           <atom:link href="https://hectorcorrea.com" rel="self" type="application/rss+xml"></atom:link>
           <item>
               <title>Computer Museum (Valencia)</title>
-              <description>TODO</description>
+              <description>*Posted on 2024-09-12* Earlier this month I visited the [Museum of Informatics of the School of Informatics of the Universitat Politècnica de València](https://museo.inf.upv.es/en/el-museo/) which has a nice collection of older computer equiment including mainframes from the 60s, microcomputers from the 70s, early personal computers from the late 70s and 80s, and a few other interesting exhibits here and there. The museum is housed by the university as part of the School of Informatics and it&#39;s not a typical museum in the sense that the exhibits are located all throughout the halls of the school rather than in dedicated room. Most of the exhibits are located within the same buiding, though.</description>
               <guid isPermaLink="true">/blog/2024-09-12/computer-museum-valencia</guid>
               <pubDate>Thu, 12 Sep 2024 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>fixie</title>
-              <description>TODO</description>
+              <description>*Posted on 2023-10-18* A few weeks ago I wrote a little program called (`fixie`) to help me migrate my personal website to be served via statically generated pages. `Fixie` is similar to other static site generators like [Hugo](https://gohugo.io/) or [Jekyll](https://jekyllrb.com/): you give it a bunch of Markdown files and it produces the HTML pages with the content on those Markdown files. But `fixie` has zero customization options, well not zero, but very few customization options - [hence the name](https://en.wikipedia.org/wiki/Fixed-gear_bicycle).</description>
               <guid isPermaLink="true">/blog/2023-10-18/fixie</guid>
               <pubDate>Wed, 18 Oct 2023 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Static Generated Site</title>
-              <description>TODO</description>
+              <description>*Posted on 2023-10-17* Earlier this month I migrated my personal site at [https://hectorcorrea.com](https://hectorcorrea.com) to be hosted as a statically generated set of HTML pages hosted on GitHub pages. This post elaborates on why and how I did it. Recently I have been interested in how much we can achieve on the web with just the basics (HTML + CSS + JavaScript) and in keeping with the tradition of trying things on my personal site I decided to convert this site to a static generated set of pages and see how well this idea works in practice.</description>
               <guid isPermaLink="true">/blog/2023-10-17/static-generated-site</guid>
               <pubDate>Tue, 17 Oct 2023 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Migrating to Mastodon</title>
-              <description>TODO</description>
+              <description>*Posted on 2022-11-12* Mastodon is an open source project with the goal of providing a platform to create decentralized social networks. The goal of creating a decentralized social media platform is something that aligns with my idea of the web, but my previous two attempts at joining Mastodon were disappointing since I had a hard time finding people to follow - the site felt like an empty warehouse with little to offer. But this month, with the massive [Twitter Migration](https://www.msn.com/en-us/news/technology/considering-joining-the-twitter-migration-check-out-these-platform-alternatives/ar-AA13NZlw), it looks like things are starting to turn around for Mastodon and the amount of people posting interesting stuff has grown exponentially and that makes me optimistic about it.</description>
               <guid isPermaLink="true">/blog/2022-11-12/migrating-to-mastodon</guid>
               <pubDate>Sat, 12 Nov 2022 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>I can&#39;t believe it can sort - visualized</title>
-              <description>TODO</description>
+              <description>*Posted on 2022-08-30* A few months ago I came across a paper titled [Is this the simplest (and most surprising) sorting algorithm ever?](https://arxiv.org/abs/2110.01111) by Stanley P. Y. Fung in which he presents an incredibly simple sorting algorithm, the entire code is just 4 lines of code: That&#39;s it, that&#39;s the entire algorithm. As Fung indicates on the paper, at first glance it looks like this algorithm cannot possible work (e.g. the comparison looks wrong) but if you try it, you&#39;ll notice that it is indeed correct. Fung also indicates that the algorithm is not efficient by any stretch of imagination and shouldn&#39;t be used as a first example to introduce sorting to students.</description>
               <guid isPermaLink="true">/blog/2022-08-30/i-can-t-believe-it-can-sort-visualized</guid>
               <pubDate>Tue, 30 Aug 2022 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Log4Shell and Solr</title>
-              <description>TODO</description>
+              <description>Last week the disclosure of the [Log4Shell vulnerability](https://www.lunasec.io/docs/blog/log4j-zero-day/) took many of us Solr users by surprise. When I first heard about it I didn&#39;t pay much attention to it since I figured that the problem was that somebody had found how to leak information *into the Solr log files*, something that is bad but that has limited exposure. However, one of my colleagues pointed out that the vulnerability allowed for *remote code execution (RCE)* and that is indeed scary. As it turns out `log4j`, the library that Solr uses to log information, can be configured to insert certain dynamic tokens of information and one of these tokens allows it to connect to a remote server to download code and execute it. I am not a Java developer so this was news to me and I got curious to see how this works in practice. In a Solr installation the problem can be triggered by a user submitting a search via our application. If the user submits a query that is logged and that query has the correct syntax to trigger the expansion then they can trigger the vulnerability. And this is surprisingly easy to do.</description>
               <guid isPermaLink="true">/blog/2021-12-13/log4shell-and-solr</guid>
               <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Solr debugQuery</title>
-              <description>TODO</description>
+              <description>`debugQuery` is a parameter that we can pass to Solr when submitting a query, with this parameter Solr will include extra information in the response that is useful to troubleshoot a variety of issues in Solr queries. The information returned is helpful to diagnose: The `debugQuery` parameter is available in the Solr Admin screen ![Solr Admin](https://hectorcorrea.com/images/solr_debug_query.jpg)</description>
               <guid isPermaLink="true">/blog/2021-11-16/solr-debugquery</guid>
               <pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>String encoding in Ruby and JSON.generate()</title>
-              <description>TODO</description>
+              <description>Last week at work we ran into an interesting string encoding issue. The gist of the problem is that we had a string that was valid in Ruby but Ruby threw an exception when we used it in a call to `JSON.generate()`. Below is a simplified version of this scenario: Notice how Ruby accepts the string and that I am able to use it in a hash, but then `JSON.generate()` throws an exception when it tries to use it. If I print the string to the console with `puts text` the output is `?ru` which is already suspicious, notice the  ?  at the beginning. Something is amiss with this string but what is it? And why can I pass it around but then `JSON.generate()` throws an error?</description>
               <guid isPermaLink="true">/blog/2021-10-04/string-encoding-in-ruby-and-json-generate</guid>
               <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>document body innerHTML woes</title>
-              <description>TODO</description>
+              <description>Today I ran into an issue setting the value of `document.body.innerHTML` that caught me by surprise. I have always known that I can set an HTML fragment to `document.body.innerHTML` and the rendering engine (the browser usually) does the right thing and renders it correctly. You can even pass a *malformed HTML* and the rendering engine usually makes pretty good guesses and parses it correctly. But today I used a fragment that caused the rendering engine to parse the HTML in a way that had me confused for a while. What was worse, is that the HTML that I used was properly formed, but turns out it was incomplete in a way that the rendering engine parsed it all wrong. Below is an example of a good HTML fragment that the browser knows how to parse:</description>
               <guid isPermaLink="true">/blog/2021-08-26/document-body-innerhtml-woes</guid>
               <pubDate>Thu, 26 Aug 2021 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Tiny Container</title>
-              <description>TODO</description>
+              <description>A few weeks ago I read the book [Linux Containers and Virtualization - A Kernel Perspective](https://www.apress.com/gp/book/9781484262825) by Shashank Mohan Jain and I was fascinated by the example that he provides on how to build your own container from scratch in Go. In this blog post I replicate a part of the code that Mr. Jain presents but I tweaked it to run its own shell (rather than having to download a separate set of Linux libraries from the web). My version of the code only supports the functionality to show isolation of the file system whereas the original code in the book shows how to provide network and memory isolation. The code examples that I created are available at [https://github.com/hectorcorrea/tiny-container](https://github.com/hectorcorrea/tiny-container). File `tinyContainer.go` is a copy of the code provided by Shashank Mohan Jain but tweaked as mentioned above. File `tinyShell.go` is a program that I created to emulate a few commands that a typical Linux shell provides (like `cat`, `cd`, `env`, `ls`, and `hostname`) so that we can test the isolation of the file system that `tinyContainer.go` provides. I should point out that I am a newbie when it comes to Linux kernel stuff and system calls and this topic is way out of my league. Please feel free to reach out if I got some of the concepts wrong or they could use a better explanation.</description>
               <guid isPermaLink="true">/blog/2021-03-09/tiny-container</guid>
               <pubDate>Tue, 09 Mar 2021 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>My (strange) journey to becoming a Ruby developer</title>
-              <description>TODO</description>
+              <description>Five years ago (in 2014), after being a C# developer for many years I took my first job as a Ruby developer. Transitioning from one technology stack to another is not uncommon among software developers, most of us have jumped from one tech to another more than once in our lifetime (e.g. from DOS to Windows, from Desktop to web, from single user to client-server), but each transition is different, each one brings different challenges and rewards. In this post I want to reflect on how going from C# (on Windows) to Ruby (on Mac/Linux) worked out for me. Before taking a job as a Ruby developer I worked as a C# / .NET developer for 10+ years. My first .NET applications were Windows Desktop applications built with VB.NET and later on I moved on to build web applications with C#. When I came to Ruby, although I had little experience with Mac or Linux, I was very comfortable with foundational concepts like system design, object oriented programming, relational databases, web development, and such. A few years before I took my first job as a Ruby developer I bought a Mac to play with Ruby in my spare time. I spent many nights (hello Rails for Zombies) getting acquainted with the different tools and workflows that Ruby developers in the Mac and Linux ecosystem use. Initially, the switch from Graphical User Interfaces in Windows to working on the terminal in Mac/Linux was the biggest shock to me. But eventually I embraced it. I blogged about my initial non-professional experiences with Ruby on the Mac/Linux [in 2011](https://hectorcorrea.com/blog/ruby-development-on-the-mac-os-x/15) and [in 2012](https://hectorcorrea.com/blog/web-development-on-the-mac-os-x-part-ii/5).</description>
               <guid isPermaLink="true">/blog/2019-11-18/my-strange-journey-to-becoming-a-ruby-developer</guid>
               <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Linux mv and file patterns</title>
-              <description>TODO</description>
+              <description>Last week I ran into an interesting issue renaming a bunch of files in my machine. The command I ran was: I was expecting this command to rename all `.jpeg` files to `.jpg` but instead the command returned At first I thought I had a typo in my command but the reality is that this is not a valid `mv` command.</description>
               <guid isPermaLink="true">/blog/2019-10-29/linux-mv-and-file-patterns</guid>
               <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>MySQL UTF-8 issues</title>
-              <description>TODO</description>
+              <description>A few months ago I upgraded the machine where this website runs from a machine with Ubuntu 14 to one running Ubuntu 19. Because I was coming from a very old version of Ubuntu I decided to create a brand new virtual machine with Ubuntu 19 and move the content myself rather than letting Ubuntu attempt to migrate my stuff. This was a good idea because a lot has changed from Ubuntu 14 to Ubuntu 19, plus it gave me the chance to start from a clean slate. However, in doing the migration manually I missed the step to configure the MySQL database to use UTF-8 and I left it instead with the default of Latin 1. This resulted in a few of the blogs displaying a bunch strange characters for things that are not part of the Latin 1 character set, for example several of the blogs where showing `Â` or `â€™` and you&#39;ll see  `Iâ€™ve` instead of  `I&#39;ve`.</description>
               <guid isPermaLink="true">/blog/2019-07-14/mysql-utf-8-issues</guid>
               <pubDate>Sun, 14 Jul 2019 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Goodbye Gmail</title>
-              <description>TODO</description>
+              <description>One of the advantages of owning my web domain is that I can host my website and email anywhere I like. This allows me to switch web or mail providers without having to change my domain or email address. This week I *moved my email from being hosted at Gmail to be hosted at a different provider* and deleted my Google account entirely. This blog post elaborates on why I did and I how I went about it. I hosted my email for `hector@hectorcorrea.com` with Gmail for many years. I don&#39;t remember well how I hosted it before that, I have a vague recollection of hosting it on an Exchange server at home at some point and later on using the built-in email service that my web hosting company provided. When I first switched to Gmail to host my email in 2007 I remember I was really happy with the hands-off approach that Gmail afforded me and I was particularly impressed with the spam filter that they provided. Overnight I went from having to worry about spam to not having to worry about it at all. Back then *I knew* Google was analyzing the text of my email in order to detect spam and it was well known that they were using this analysis to provide better advertising via the little ads at the top of the page. I was OK with that.</description>
               <guid isPermaLink="true">/blog/2018-09-29/goodbye-gmail</guid>
               <pubDate>Sat, 29 Sep 2018 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Installing Ruby with ruby-install and chruby</title>
-              <description>TODO</description>
+              <description>*Posted on 2018-09-22, updated on 2024-02-07* When I started writing code on Ruby I learned there were many ways to download and install Ruby on a Mac. Initially I was comfortable with the version of Ruby that comes installed on OS X by default or using the installer available at [ruby-lang.org](https://www.ruby-lang.org/en/downloads/)  to install the latest version. As my needs evolved I needed to have more than one version of Ruby installed on my machine to work on different projects that use specific versions of Ruby. There are many tools to install and manage multiple versions of Ruby on a Mac. Among the options that I tried were [RVM](https://rvm.io/), [rbenv](https://github.com/rbenv/rbenv), and [chruby](https://github.com/postmodern/chruby). In the end I found the combination of `chruby` and `ruby-install` the best for my needs, in large due to their minimalist approach.</description>
               <guid isPermaLink="true">/blog/2018-09-22/installing-ruby-with-ruby-install-and-chruby</guid>
               <pubDate>Sat, 22 Sep 2018 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Build your own software</title>
-              <description>TODO</description>
+              <description>This blog post is an extended version of the notes that I used for my talk titled [Build your own software, yes, build it](http://2017.code4lib.org/talks/Build-your-own-software-yes-build-it) at Code4Lib in Los Angeles, California on March 7th, 2017. You can also watch the [recording of the presentation](https://youtu.be/eUArNAG-CY4?t=2h57m30s), it&#39;s about 20 minutes long. This post, like the original talk at Code4Lib, is an attempt to create a discussion about the benefits of writing our own software solutions as opposed to adopting large open source solutions. During my (short) tenure within the Libraries I’ve gotten the impression that people almost always prefer to adopt large open source solutions over developing one. By “large open source solutions” I mean projects like [VIVO](http://www.vivoweb.org/), [Hydra](https://github.com/projecthydra), [Islandora](http://islandora.ca/), and [FOLIO](https://www.folio.org), to name a few. While I think open source is a wonderful idea and brings great opportunities for collaboration, I believe in the libraries we have swung the pendulum too far towards adopting large open source solutions rather than building our own software. Adopting large solutions seems to be the default mode these days. This post tries to counter this approach by purposely highlighting the disadvantages of adopting open source solutions as well as emphasizing the advantages of building our own software.</description>
               <guid isPermaLink="true">/blog/2017-03-15/build-your-own-software</guid>
               <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Migrating my site from Node.js to Go</title>
-              <description>TODO</description>
+              <description>*Posted on: 2017-01-18, Updated on: 2024-09-17* Over the years I have written the code to power my website (hectorcorrea.com) in a variety of programming languages and platforms. The last version of the site was a Node.js application using MongoDB to store the data, the version before that was a C# ASP.NET MVC application with a SQL Server backend. One of the things that I liked the most about Node.js is how lightweight it was compared to a C# website. When I started to learn Go I was surprised how lightweight the language felt while at the same time being incredibly powerful so **I decided to rewrite this site in Go to compare the experience with the Node.js implementation that I had written before**. I first became interested in Go after reading Rob Pike&#39;s post [Less is exponentially more](https://commandcenter.blogspot.com/2012/06/less-is-exponentially-more.html) in which he tells the story on how he, Robert Griesemer, and Ken Thompson were disappointed on how many more features were going to be added to the C++ language. Instead of going with the flow they decided to create **a new programming language with less features** but with enough power to develop serious applications (e.g.  big programs, written and maintained by big teams ). At the time I felt the same way about the C# and Rails ecosystems that seem to thrive in adding more and more features to the platform to the point that you need a multi-gigabyte IDE to work in C# or tons of gems to do anything useful in Ruby.</description>
               <guid isPermaLink="true">/blog/2017-01-18/migrating-my-site-from-node-js-to-go</guid>
               <pubDate>Wed, 18 Jan 2017 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Bundle, grep, and Rails Applications</title>
-              <description>TODO</description>
+              <description>When I first started programming in Ruby and Ruby on Rails one of the things that I struggled the most was finding *where a particular piece of code (a method, a class, a string) was defined*. This was particularly difficult when the code that I was looking for was defined in a gem and not in the code of my application. A couple of years ago [Mike Giarlo](https://github.com/mjgiarlo)  showed me a great tip to search through the entire code of Rails application (your code and the code of your dependencies) by using `grep` and `bundle`. Today while working with somebody else new to Ruby I noticed that this tip needs to get broader attention since I think is incredibly helpful, particularly for newcomers. Most Rails applications these days use `bundle` to manage dependencies and `bundle` provides an option to list the path to all the gems that your application is using. You can see this by running:</description>
               <guid isPermaLink="true">/blog/2016-11-03/bundle-grep-and-rails-applications</guid>
               <pubDate>Thu, 03 Nov 2016 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Introduction to LDP</title>
-              <description>TODO</description>
+              <description>[Linked Data Platform](http://www.w3.org/TR/ldp/) (LDP) is a W3C recommendation that defines a set of rules to provide an architecture for read-write Linked Data on the web. This blog post is an introduction to the concept of Linked Data and how to get started with the Linked Data Platform. If we are going to talk about the Linked Data Platform we should start by talking about Linked Data (if you are familiar with Linked Data already feel free to skip this section.) Linked Data is a concept that [Tim Bernes-Lee defined in 2006](http://www.w3.org/DesignIssues/LinkedData.html) in which he articulated a vision to allow the World Wide Web to move from being about linking documents (i.e. HTML web pages) that humans can read and navigate to a new model, know as the Semantic Web, that will include documents and data that both humans and machines can process. In his own words:</description>
               <guid isPermaLink="true">/blog/2015-09-17/introduction-to-ldp</guid>
               <pubDate>Thu, 17 Sep 2015 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Code4Lib 2015</title>
-              <description>TODO</description>
+              <description>  [Code4Lib](http://code4lib.org) is an annual conference that brings together a mix of people that work at libraries and/or develop software for libraries. Given that I am a newcomer to the library domain, this was my first time attending and I learned a lot. Among the things that I found interesting is that Code4Lib is a single-track conference. This means that all 400+ attendees are on the same room listening to same sessions all the time (except the pre-conference workshops.) I have not attended a single-track conference in a long time but I liked several things about this approach. Most of the conferences that I have attended in the last 10 years have been technology oriented only. Code4lib on the other hand has [a mix of topics](http://code4lib.org/conference/2015/schedule) including technologies for libraries, team dynamics, social issues, and so on. This is the first conference that I attend where I learn about maternity leave in the morning and about Solr indexing in the afternoon.</description>
               <guid isPermaLink="true">/blog/2015-02-28/code4lib-2015</guid>
               <pubDate>Sat, 28 Feb 2015 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Learning JavaScript Data Structures and Algorithms</title>
-              <description>TODO</description>
+              <description>  The folks at Packt Publishing asked me to review one of their newest books [Learning JavaScript Data Structures and Algorithms](https://www.packtpub.com/application-development/learning-javascript-data-structures-and-algorithms) by Loiane Groner.&amp;lt;sup&amp;gt;[1]&amp;lt;/sup&amp;gt; As a fan of data structures and algorithms I am glad to see a book on the subject targeted at JavaScript developers. The publication of this book is rather timely given the tremendous growth in popularity that JavaScript has experienced over the years, not only as *the* language for front-end web development, but also recently as a viable alternative for backend development via Node.js. Although there are a lot of books on data structures and algorithms, most of them are targeted to Java/C developers, and there is very little on the subject for JavaScript developers. As Groner indicates&amp;lt;sup&amp;gt;[2]&amp;lt;/sup&amp;gt;  who said data structures and algorithms were only made for languages such as C and Java  [p. 37] In this book Groner describes some of the basic data structures and algorithms that most books in this category typically cover including Stacks, Queues, Lists, Trees, Graphs, Sorting and Searching and provides clear and simple implementations for them in JavaScript. Many developers would benefit from reading this book, but particularly those who started their software development career with JavaScript (or other scripting language) and haven&#39;t taken traditional computer science degree courses where data structures and algorithms are typically taught.</description>
               <guid isPermaLink="true">/blog/2015-01-09/learning-javascript-data-structures-and-algorithms</guid>
               <pubDate>Fri, 09 Jan 2015 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Practical Object-Oriented Design in Ruby</title>
-              <description>TODO</description>
+              <description>&amp;lt;img style= float:left;  src= https://hectorcorrea.com/images/poodr.jpg /&amp;gt; Anyone that has done a decent amount of programming in Ruby is bound hear about the book [Practical Object-Oriented Design in Ruby](http://www.poodr.com/) &amp;lt;sup&amp;gt;[1]&amp;lt;/sup&amp;gt; by Sandi Metz. When I started programming on Ruby I was no exception to this and kept hearing people talk about it. Having read a fair share of books on Object-Oriented Design over the years I wasn&#39;t too excited to read yet another book on the subject since eventually most of them start to look and feel alike. But I caved in, I picked up a copy of POODR (as the book is commonly abbreviated), read it and enjoyed it quite a bit. This blog post is a short review on two areas that I found interesting about POODR. In particular I found the emphasis on message passing (rather than on class structure) that Metz puts on the book a very refreshing way to understanding object-oriented systems that I think is missing in many books on the subject. Additionally, true to its name, the book provides a practical approach to understanding key concepts of object-oriented design and how to apply them. The book does not shy away from some of the difficult situations that developers will encounter when designing object-oriented systems. Instead Metz explains these situations, provides guidance on how to avoid common pitfalls, and gives great advice on how to pick sensible strategies for most situations. As I mentioned in the previous paragraph, the first thing that struck me about POODR is that Metz took the unconventional approach of dedicating the majority of the book to the concept of message passing rather than to the structure of objects and classes when working on an object-oriented system. Although the focus on messaging is not a new idea (Alan Kay has been known to say this since at least the late nineties&amp;lt;sup&amp;gt;[2][3]&amp;lt;/sup&amp;gt;), most books and articles on Object-Oriented Design (OOD) and Object-Oriented Programming (OOP) tend to put more emphasis on objects and classes than on message passing. For example, in [Wikipedia](http://en.wikipedia.org/wiki/Object-oriented_programming) the opening paragraph for Object-Oriented Programming goes like this:</description>
               <guid isPermaLink="true">/blog/2014-12-26/practical-object-oriented-design-in-ruby</guid>
               <pubDate>Fri, 26 Dec 2014 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Hydra Connect 2</title>
-              <description>TODO</description>
+              <description>![Hydra Connect ballroom](https://hectorcorrea.com/images/hydraconnect2.jpg) This is my first time attending a [Hydra Connect](https://wiki.duraspace.org/display/hydra/Hydra+Connect+2+-+Fall+2014) and I was very impressed with the overall experience. From what I understand there were about 150 attendees representing 47 different institutions. The event had a good mix of workshops, lightning talks, tutorials, sessions, un-conference sessions, and working groups meetings. Below are my notes and thoughts from some of the sessions that I attended.</description>
               <guid isPermaLink="true">/blog/2014-10-07/hydra-connect-2</guid>
               <pubDate>Tue, 07 Oct 2014 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Connection handling with Node.js and MongoDB</title>
-              <description>TODO</description>
+              <description>One of the things that trips most newcomers to Node.js and MongoDB is how different the process to connect to databases from Node.js is compared to other programming environments. For example, the pseudo-code below is a typical example of how database connection is handled in most programming environments: The general concept **in most programming environments** is to connect to the database only when you need to access data and to **disconnect from it as soon as you are done accessing it**. This process makes perfect sense in multi-threaded environments because there could be hundreds of concurrent threads trying to access the database and, unless you close your database connection, you might run out of connection handlers. Internally database drivers create and manage a connection pool to share a limited number of network connections with a potentially large number of clients. However, the client must close its connection in order for a connection from the pool to be available to other threads.</description>
               <guid isPermaLink="true">/blog/2013-11-24/connection-handling-with-node-js-and-mongodb</guid>
               <pubDate>Sun, 24 Nov 2013 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Running a Node.js web site in production (part 2)</title>
-              <description>TODO</description>
+              <description>Last year I blogged about my [first experiences hosting a Node.js website in production](https://hectorcorrea.com/blog/running-a-node-js-web-site-in-production-a-beginners-guide/49). In this post I detail what I have learned in the last 12 months about hosting Node.js applications. The first thing that I learned is that there are still **no cheap web hosting providers for Node.js** like there are for other programming environments. For example, you can easily find hosting companies for PHP, Ruby, or ASP.NET with support for multiple sites, using your own domain, with file storage included, and database access for under $100 a year. But that&#39;s not the case for Node.js. Although you can find many great hosting companies that support Node.js (Nodejitsu, Heroku, Azure) the price to get a full environment to host many sites, under your domain, with file storage, and database access easily goes into $300 a year. Not too expensive if you are running a business, but more than I wanted to spend for my pet projects.</description>
               <guid isPermaLink="true">/blog/2013-11-23/running-a-node-js-web-site-in-production-part-2</guid>
               <pubDate>Sat, 23 Nov 2013 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Introduction to Node.js</title>
-              <description>TODO</description>
+              <description>[Node.js](http://nodejs.org) is a JavaScript interpreter that runs in a server environment and gives us the ability to run JavaScript code directly on the server (i.e. outside of a browser) just like we can run server side code in other languages like PHP, Python, Ruby, C#, or Java. Node.js is based on the JavaScript engine that Google wrote and uses for the Chrome browser. The author of Node.js, Ryan Dahl, took this JavaScript engine (called V8) and [repurposed it so that it can run in a server environment](http://www.ibm.com/developerworks/opensource/library/os-nodejs/). Ryan also added some features that are important when running on a server, for example, the ability to read and write from the file system and the ability to receive and send HTTP requests. Node.js is open source and there are installers available for Mac, Windows, and Linux. The installer for Mac is under 8MB in size. You can download and install the proper installer for your platform from [here](http://nodejs.org/). Once you have Node.js installed you should be able to run it from your terminal window as follows:</description>
               <guid isPermaLink="true">/blog/2013-01-15/introduction-to-node-js</guid>
               <pubDate>Tue, 15 Jan 2013 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Running a Node.js web site in production (a beginners guide)</title>
-              <description>TODO</description>
+              <description>In this post I describe my experiences taking my first Node.js website to production, running it on port 80, and hosting it outside my local box so that it&#39;s available to the world wide web. The site in question is the site where you are reading this post and it can be described as a typical low-traffic website that uses Node.js, Express.js, and CoffeeScript. Although I have deployed to production many C# web sites on Windows before, *this is the first time that I host anything in a Linux environment*. Keep this is in mind as you read this blog post. **Update:** See also [part II of this blog post with my experiences 12 months later](https://hectorcorrea.com/blog/running-a-node-js-web-site-in-production-part-2/53).</description>
               <guid isPermaLink="true">/blog/2012-12-06/running-a-node-js-web-site-in-production-a-beginners-guide</guid>
               <pubDate>Thu, 06 Dec 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Using SSH without a password</title>
-              <description>TODO</description>
+              <description>This blog post describes the steps that I used to configure my OS X machine to SSH to a remote Linux machine without having to enter my password every time. Although there are many web sites that describe this process in detail I found that most of them assume that you know your way around a Linux machine. Since that&#39;s really not the case for me, I decided to write the steps from a Linux-newbie point of view with the hope to help others that might be on the same boat. I tested the steps on this blog post connecting from a Mac Air running OS X 10.8.2 to a Linux OpenLogic CentOS 6.2 virtual machine running on the Windows Azure cloud. I suspect the steps apply to most Linux distros but I have no way of confirming it. Before we dive into details let me define a few terms that you&#39;ll see throughout the blog post.</description>
               <guid isPermaLink="true">/blog/2012-11-11/using-ssh-without-a-password</guid>
               <pubDate>Sun, 11 Nov 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Using layouts with EJS in Express 3.x</title>
-              <description>TODO</description>
+              <description>Over the last couple of months I&#39;ve been meaning to update [my sample Express.js application](https://github.com/hectorcorrea/simple-blog) from Express 2.x to Express 3.x but the fact that support for layouts was removed from Express 3.x was holding me back. In Express 2.x the framework itself supported the concept of layouts and both template engines, Jade and EJS, worked nicely with it. In Express 3.x the functionality has been removed from the framework and now the template engines need to be updated to provide this support themselves. This week I found that EJS has been updated to support [includes](https://github.com/visionmedia/ejs#includes) and that allowed me to emulate in Express 3.x the concept of layouts that I was getting with Express 2.x. This is probably the mother of all hacks, but it&#39;s simple and it works for my purposes so I am documenting it for others using Express 2.x and EJS that might be holding back on upgrading to Express 3.x just because of the lack of layouts in Express 3.x.</description>
               <guid isPermaLink="true">/blog/2012-09-13/using-layouts-with-ejs-in-express-3-x</guid>
               <pubDate>Thu, 13 Sep 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>A Decaf Introduction to CoffeeScript</title>
-              <description>TODO</description>
+              <description> Below are the links to the slides and code samples that I used during my presentation **A Decaf Introduction to CoffeeScript** that I gave earlier this month. The slides are pretty bare since I spent most of the time showing code samples. Feel free to contact me if you have any questions as you go through them. You can find a detailed explanation of the Binary Tree sample that showed during the presentation on this [other blog post](https://hectorcorrea.com/blog/drawing-a-binary-tree-in-coffeescript/3).</description>
               <guid isPermaLink="true">/blog/2012-06-19/a-decaf-introduction-to-coffeescript</guid>
               <pubDate>Tue, 19 Jun 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Compiling CoffeeScript from Sublime Text 2</title>
-              <description>TODO</description>
+              <description>A few days ago I configured Sublime Text 2 editor to use three different hotkeys for compiling and running CoffeeScript files. I am new to Sublime so I consider somewhat of an achievement that I was able to pull this off with help from the interwebz and a bit of luck. The first hotkey that I configured runs a CoffeeScript file and displays its output to the Sublime’s console window. This is useful when I want to quickly run a small CoffeeScript program that outputs to the console. The following screenshot shows this: ![Sublime Text Console](https://hectorcorrea.com/images/sublimetextconsole.png)</description>
               <guid isPermaLink="true">/blog/2012-05-23/compiling-coffeescript-from-sublime-text-2</guid>
               <pubDate>Wed, 23 May 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Drawing a Binary Tree in CoffeeScript</title>
-              <description>TODO</description>
+              <description>![Binary Tree](https://hectorcorrea.com/images/binarytreecoffee.png) A few months ago I wrote a small **CoffeeScript program to draw binary search trees on a web page page** using the HTML 5 Canvas element and was very pleased with clarity and structure of the resulting code. This blog post elaborates on the code structure and how it compares to previous implementations of the same idea that I have done in other languages. I’ve written programs to draw binary search trees before in C# and Ruby and I wasn’t sure how a CoffeeScript implementation would compare against implementations in more traditional object oriented programming languages. Thanks to CoffeeScript’s support for classes the structure of this implementation is pretty much as you would expect: a BinaryNode class to hold node data, a BinaryTree class to implement the basic binary search tree operations (add, walk), and a BinaryTreeDrawer to calculate the coordinates where each of the nodes should be drawn.</description>
               <guid isPermaLink="true">/blog/2012-05-22/drawing-a-binary-tree-in-coffeescript</guid>
               <pubDate>Tue, 22 May 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>JavaScript Async Programming for Sync Heads</title>
-              <description>TODO</description>
+              <description>As I start learning Node.js one of the things that have puzzled me the most is having to write JavaScript code to run in an asynchronous fashion. Since Node.js uses an event-driven, non-blocking I/O model pretty much everything has to be written to run asynchronously. For somebody like me, that has always written code to be executed synchronously, the asynchronous paradigm takes a while to get used to. This blog post compares **how a particular synchronous piece of JavaScript code looks and feels against against its asynchronous counterpart**. My gut feeling was that the asynchronous code would be much longer (in lines of code) and more complicated than the synchronous version but I wanted to see proof of it, well, at least as much proof as one single code example could provide. I should clarify that I am, by no means, an expert on asynchronous programming or Node.js and the approach that I am showing in this blog post might not be optimal. I think it is a decent implementation but you should factor my newbie status on this kind of programming as you read this post.</description>
               <guid isPermaLink="true">/blog/2012-04-20/javascript-async-programming-for-sync-heads</guid>
               <pubDate>Fri, 20 Apr 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Web Development on the Mac OS X (part II)</title>
-              <description>TODO</description>
+              <description>Last year I blogged about [my first impressions using a Mac for web development](https://hectorcorrea.com/blog/ruby-development-on-the-mac-os-x/15) from the point of view of somebody with a strong Windows/C# background. This blog post is a long overdue continuation to that post. I bought a Mac Air a year and a half ago with the intention of experiencing what is like to develop web applications in a non-Windows environment and it has been a great learning experience. I am amazed how much I&#39;ve learned in those 18 months and the breadth of technologies and tools that I&#39;ve played with in that time. The Mac Air is undoubtedly a fantastic piece of hardware, it&#39;s slim, lightweight, powerful, and overall a beautiful piece of hardware. It&#39;s not cheap, but it&#39;s worth every penny.</description>
               <guid isPermaLink="true">/blog/2012-04-09/web-development-on-the-mac-os-x-part-ii</guid>
               <pubDate>Mon, 09 Apr 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Functional Asynchronicity Explained</title>
-              <description>TODO</description>
+              <description>Over at the Pragmatic Bookshelf Trevor Burnham has a great post titled [A CoffeeScript Intervention](http://pragprog.com/magazines/2011-05/a-coffeescript-intervention) in which he shows several code snippets that demonstrate how CoffeeScript code is typically smaller and cleaner than the equivalent JavaScript code. In particular I love the example under the **Functional Asynchronicity** section. In this section he shows a piece of code that trips most new JavaScript developers. When this code is executed it will output `4, 4, 4` to the console rather than `1, 2, 3` as most people guess the first time they work with JavaScript.</description>
               <guid isPermaLink="true">/blog/2012-01-29/functional-asynchronicity-explained</guid>
               <pubDate>Sun, 29 Jan 2012 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Sliding-in a Full Page Panel with CSS and jQuery</title>
-              <description>TODO</description>
+              <description>In this blog post I show how to use CSS and jQuery to slide-in a panel full page on top of another and then slide back in the original content. You can see a running version of the code presented in this blog post [here](https://hectorcorrea.com/demos/slide-in-panel-sample.html).  This demo page starts with a panel showing some part of the Lorem Ipsum text. When you click on the text a new panel displaying the Bacon Ipsum text slides-in on top of the previous text.  Clicking on the new text slides the Lorem Ipsum back again. Nothing  fancy but enough to show the slide-in functionality in a full page panel. The HTML used in this example is basically composed of two HTML divs. The first div (called `mainDiv`) includes the Lorem Ipsum text while the second div (called `galleryDiv`) includes the Bacon Ipsum.</description>
               <guid isPermaLink="true">/blog/2011-11-22/sliding-in-a-full-page-panel-with-css-and-jquery</guid>
               <pubDate>Tue, 22 Nov 2011 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Future Directions for C# and Visual Basic</title>
-              <description>TODO</description>
+              <description>These are my notes from Anders Hejlsberg session on Future Directions for C# and Visual Basic. It&#39;s been more than 10 years since managed code was introduced back in PDC 2000.  Every new release of C# has had one or two major themes: The two major themes in the next release (version 5) are support for **WinRT**in Windows 8 and **asynchronous programming**.</description>
               <guid isPermaLink="true">/blog/2011-09-15/future-directions-for-c-sharp-and-visual-basic</guid>
               <pubDate>Thu, 15 Sep 2011 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>8 Traits of Great Metro Style Apps</title>
-              <description>TODO</description>
+              <description>These are my notes from [Jensen Harris](http://blogs.msdn.com/b/jensenh/about.aspx) session at Build Windows conference on Tuesday September 13th, 2011.  Jensen is the Director of Program Management for the Microsoft Windows User Experience Team.</description>
               <guid isPermaLink="true">/blog/2011-09-13/8-traits-of-great-metro-style-apps</guid>
               <pubDate>Tue, 13 Sep 2011 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Simple Branching Strategies for Team Foundation Server</title>
-              <description>TODO</description>
+              <description>In this blog post I describe some branching strategies that I&#39;ve found useful when using traditional source control systems like Team Foundation Server (TFS). Team Foundation Server has very good branching and merging capabilities that can help teams manage source code in a team environment. However, despite the fact that TFS provides excellent branching and merging capabilities, I usually recommend a simple approach to branching since *the process* of branching and merging can easily get convoluted and out of control even with the best of tools. The way I approach branching in TFS is to have one **main branch** for all on-going development on the project. This is the branch where developers do their work on a daily basis. Once the team reaches the point where the code will be released to production then a second branch (a release branch) is created. This **release branch** is a copy of the code that will be pushed to production. The main branch stays active and most of the team will continue working of the main branch as they add new features to be released in a future version of the system. A few of the developers will make changes to the release branch to fix bugs that must be ironed out before the release goes out or even after it has been promoted to production.</description>
               <guid isPermaLink="true">/blog/2011-08-28/simple-branching-strategies-for-team-foundation-server</guid>
               <pubDate>Sun, 28 Aug 2011 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Running Visual Studio inside Mac OS X</title>
-              <description>TODO</description>
+              <description>Lookie here...I am running Microsoft Visual Web Developer Express on my MacAir!   When I bought [my MacAir last year](https://hectorcorrea.com/blog/ruby-development-on-the-mac-os-x/15) to start learning Ruby and Ruby on Rails I wasn&#39;t sure how much I was going to really use it. Overtime, I&#39;ve gotten familiar with it and little by little it has become my main machine at home to do pretty much everything including Ruby programming, managing my music, pictures, and documents, and web browsing. It&#39;s gotten to the point that the only reason I power up my Windows laptop at home is when I need to update one of my personal ASP.NET projects or research some C# topic in particular.</description>
               <guid isPermaLink="true">/blog/2011-08-27/running-visual-studio-inside-mac-os-x</guid>
               <pubDate>Sat, 27 Aug 2011 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Finder Error -36 on a NAS</title>
-              <description>TODO</description>
+              <description>Ever since I got my [MacAir late last year](https://hectorcorrea.com/blog/ruby-development-on-the-mac-os-x/15) I&#39;ve been having **issues copying files from my Mac to my external storage device**. My external storage device is a Buffalo HD-CELU2 DriveStation that can be accessed as a standard USB drive or as network attached storage (NAS.) I&#39;ve been using this device as a NAS from my Windows computers for a couple of years with no problems but my Mac refused to work smoothly with it. On my Mac I was able to read files from the NAS but I couldn&#39;t write files to it. When I tried to copy files to the NAS I got the dreaded and cryptic  Finder Error -36 . There are several people reporting similar issues when using a NAS from their Macs and it took me several months before I found a solution that worked for me. Below is an example of the error that Finder will throw when I tried to copy a file (SamplePDF.pdf) to my NAS (hd-celu2-fce7). ![Finder error -36 on NAS](https://hectorcorrea.com/images/nas_finder_error_36.png)</description>
               <guid isPermaLink="true">/blog/2011-06-06/finder-error-36-on-a-nas</guid>
               <pubDate>Mon, 06 Jun 2011 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Drawing a Binary Tree in Ruby</title>
-              <description>TODO</description>
+              <description>&amp;lt;img src= https://hectorcorrea.com/images/binarytree_simple.png  alt= git  align= left /&amp;gt;When I started learning Ruby last year I decided to implement a **binary search tree** and some of its basic operations (insert, delete, walk, and search) just to get my feet wet on the language. Binary search trees are a good exercise because you need to use several features of the language like conditional statements, loops, and classes while at the same time you are solving an interesting problem. The algorithm for binary search trees is well documented in most introductory books on algorithms and on the web. To make things a bit more challenging I also implemented a program to **draw the binary search tree** so that people can see how a binary search tree looks like when it has more than just a handful of nodes. In this particular case I wrote small a web application in Ruby that draws the binary search tree using the new canvas element supported in HTML 5. You can download the entire source code for the binary tree and the demo web site from [this GitHub repo](https://github.com/hectorcorrea/binary-tree) and play with it in your local environment. This blog post gives short overview of the main methods to implement the binary search tree, the algorithm to draw the binary search tree, and the web site to demo the drawing algorithm.</description>
               <guid isPermaLink="true">/blog/2011-04-11/drawing-a-binary-tree-in-ruby</guid>
               <pubDate>Mon, 11 Apr 2011 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Git Basics</title>
-              <description>TODO</description>
+              <description>  This blog post is a beginners&#39; guide (written by a git beginner) on how to perform **basic version control operations with git** including initializing a repository, adding files to it, and using branches. The goal of this post is to describe how to use git *in your local machine* for version control. In a future post I&#39;ll cover the basics of using git and github for collaboration with other developers. Everything that I show on this blog is done through git&#39;s command line via the Mac OS X terminal. The steps should be very similar in other operating systems but I have not tested them outside of the Mac.</description>
               <guid isPermaLink="true">/blog/2011-02-21/git-basics</guid>
               <pubDate>Mon, 21 Feb 2011 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Ruby Development on the Mac OS X</title>
-              <description>TODO</description>
+              <description>  A little more than a month ago I got myself a MacAir. Even though I’ve own computers since the mid 80s this is the first time that I buy a Machintosh. The reason I bough a Mac rather than a PC is because I wanted to **start experimenting with the web development tools that exist for non-Windows environments**. Although I’ve been a software developer for more than 15 years all my experience is with Microsoft Windows and I thought is about time I start experimenting with the tools that “the “other half of the world” is using. Since I got a Mac most people would probably thing that I want to start writing applications for the iPhone or the Mac but in reality I want to experiment with the development tools for web applications. I will probably write an app or two for the iPhone or the Mac just to see what it’s like but my real motivation is web development using non-Windows tools.</description>
               <guid isPermaLink="true">/blog/2011-01-24/ruby-development-on-the-mac-os-x</guid>
               <pubDate>Mon, 24 Jan 2011 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Returning HTTP 404 in ASP.NET MVC</title>
-              <description>TODO</description>
+              <description>A few weeks ago I noticed that when users of my site request a blog topic that does not exist although I was displaying a user friendly message indicating that the topic does not exist **I was not returning the proper HTTP status code (404) to indicate to the user that the page was not found**. This approach is typically not a problem if the user visiting my site is a human (users don’t really care about HTTP status codes) but it is important if the “user” visiting the site is a web crawler like the Googlebot or the Yahoo Slurp because **for these non-human users the HTTP code is very important as it means something concrete to them**. In digging deeper into this issue I realized that I was doing what is known as a “soft 404” which is not good for web crawlers because it fools them into thinking that there is a valid page for an invalid URL. In my case my site was returning a status code 200 (which means OK) rather than a status code 404 that means “Not Found.” This is in fact so common that both, the Googlebot and the Yahoo Slurp, web sites talk about this problem [here](http://www.google.com/support/webmasters/bin/answer.py?answer=181708) and [here](http://help.yahoo.com/l/us/yahoo/search/webcrawler/indexing-12.html). The code that was causing this issue in my controller looked similar to this:</description>
               <guid isPermaLink="true">/blog/2010-11-29/returning-http-404-in-asp-net-mvc</guid>
               <pubDate>Mon, 29 Nov 2010 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Log4net Thread-Safe but not Process-Safe</title>
-              <description>TODO</description>
+              <description>A few days ago I was struggling with a problem with [log4net](http://logging.apache.org/log4net/index.html) in a web application. I have used log4net in many applications before with little or no problem but in this case even with a single user hitting the web site I was seeing strange logging behaviors. In my case **some of the log entries were being logged but others were not**. The application in question is a C# ASP.NET MVC web application running under IIS. I am using the true and tried `RollingFileAppender`. It couldn&#39;t have been a more typical use of log4net and yet I was seeing a weird things. Here are the symptoms that I was seeing: Since some entries were being logged but not others I was able to rule out the possibility that IIS might not have enough rights to write to the folder configured for the `RollingFileAppender`. This is a typical issue but not applicable in my case since if IIS wouldn&#39;t have enough rights nothing would be logged at all. In addition since the issue was happening even when I was the only user on the site I was sure it was not due to heavy utilization or some sort of race condition (which log4net typically handles nicely anyway.)</description>
               <guid isPermaLink="true">/blog/2010-11-08/log4net-thread-safe-but-not-process-safe</guid>
               <pubDate>Mon, 08 Nov 2010 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Encrypt and Decrypt a string in C#</title>
-              <description>TODO</description>
+              <description>This blog posts presents an easy to use C# class to encrypt and decrypt strings in .NET. Although the [System.Security.Cryptography](http://msdn.microsoft.com/en-us/library/system.security.cryptography.aspx) namespace in the .NET Framework provides a wealth of classes to encrypt and decrypt values, it seems that MSDN falls short of providing a good and simple example on how to use these classes for the most common request: encrypt a string. The class presented in this blog allows you to encrypt and decrypt a string with the following lines of code:</description>
               <guid isPermaLink="true">/blog/2010-10-29/encrypt-and-decrypt-a-string-in-c-sharp</guid>
               <pubDate>Fri, 29 Oct 2010 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>AJAX calls with jQuery in ASP.NET MVC</title>
-              <description>TODO</description>
+              <description>One of the nice things about ASP.NET MVC is the ability to easily integrate standard web libraries like jQuery in .NET web applications. In this blog post I am going to show how to execute AJAX calls with jQuery from an ASP.NET MVC application. The first example shows how to do it with an **HTTP GET** call and the second one uses an **HTTP POST** call. Both examples use JSON in the return type. This is probably the simplest example on how to execute an AJAX call with jQuery but it should be OK to show the general concept. In this page when the user clicks on the  click here  hyperlink a request is made to the server to retrieve the time on the server and display to the user. The AJAX part of this example is that the request to the server is executed *without* making a full page reload as it can be seen in the screenshot below (notice that the time the page was originally loaded does not change after I clicked the hyperlink and retrieved the server time.) Again, not terribly exciting but good enough for our purposes. ![Ajax Sample 1 screenshot](https://hectorcorrea.com/images/AjaxSample1Screen.jpg)</description>
               <guid isPermaLink="true">/blog/2010-09-27/ajax-calls-with-jquery-in-asp-net-mvc</guid>
               <pubDate>Mon, 27 Sep 2010 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Password Recovery in an ASP.NET MVC Project</title>
-              <description>TODO</description>
+              <description>While rewriting one of my web sites with ASP.NET I noticed that although support for the ASP.NET Membership Provider comes included out of the box in a ASP.NET MVC 2 project not all the options are fully implemented to the same extend that they are in a brand new ASP.NET WebForms project. For example, the option to reset your own password if you forgot your old one is not available out of the box in an ASP.NET MVC project. Out of the box the following options are fully implemented in a ASP.NET MVC project: **Adding support for Password Recovery to an ASP.NET MVC project** turned out to be pretty easy as the core functionality already exists in the Membership Provider and it&#39;s just a matter of calling it from your application.</description>
               <guid isPermaLink="true">/blog/2010-05-17/password-recovery-in-an-asp-net-mvc-project</guid>
               <pubDate>Mon, 17 May 2010 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Yield Return</title>
-              <description>TODO</description>
+              <description>Even though the `yield return` statement was added to C# since version 2.0 (around 2004) I never quite understood how it really works. A few days ago while going through some tutorials I saw a sample of code that used `yield return` and decided to finally look under the covers and learn how it works. How well do you understand `yield return`? Look at the code below and answer these two questions: The answer to the first question is pretty simple: 100, 200, and 300.</description>
               <guid isPermaLink="true">/blog/2010-04-02/yield-return</guid>
               <pubDate>Fri, 02 Apr 2010 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>The Design of Design</title>
-              <description>TODO</description>
+              <description> Earlier this month I received a draft manuscript of Frederick Brook’s latest book [The Design of Design – essays from a computer scientist](http://www.amazon.com/Design-Essays-Computer-Scientist/dp/0201362988) &amp;lt;sup&amp;gt;[1]&amp;lt;/sup&amp;gt; in which he reviews both what is design and how the design process works. Although there is plenty literature on the concept of design and the design process Brooks feels there are several good reason to write another book on the subject. The first reason that he mentions is that **the design process** has changed a lot since World War II and the new challenges have rarely been discussed. The new challenges that he mentions is that design is now a **team activity** rather than an individual one. Another challenge is that unlike designers of previous generations nowadays designers cannot longer built with their own hands what they design. Instead designs are captured in computer models and build by somebody else [p. xi]</description>
               <guid isPermaLink="true">/blog/2010-03-24/the-design-of-design</guid>
               <pubDate>Wed, 24 Mar 2010 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Flow: Second Generation Lean Product Development</title>
-              <description>TODO</description>
+              <description> The last few weeks I&#39;ve been reading the book [The Principles of Product Development Flow](http://www.amazon.com/Principles-Product-Development-Flow-Generation/dp/1935401009) by Donald Reinertsen&amp;lt;sup&amp;gt;[1]&amp;lt;/sup&amp;gt; in which he describes what he calls the second generation of Lead Product Development. I&#39;ve been reading the book from the perspective of software development products and this review will highlight examples on that area. However Reinertsen&#39;s book is about product development in general (e.g. the development of a new drug or a new cell phone) and not software in particular. Reinertsen describes a paradigm for product development that although it could be called Lean Product Development he chooses to call **Flow-Based Product Development** (Flow) to highlight the differences that exist between lean manufacturing and lean product development.</description>
               <guid isPermaLink="true">/blog/2010-03-01/flow-second-generation-lean-product-development</guid>
               <pubDate>Mon, 01 Mar 2010 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Team Dynamics</title>
-              <description>TODO</description>
+              <description>A few years ago during my ScrumMaster certification our instructor talked about the different development stages that teams go through. He used Tuckman&#39;s development model which includes four stages: Form, Storm, Norm, and Perform. In this model teams start at the **Form** stage when they are first put together. This is the honeymoon period of new teams in which spirits are high, everybody is optimistic, but the work is just about to begin. **Storm** is the period after the honeymoon in which, once the work has commenced, team members try to find their place in the team. After the storm phase, teams go into the **Norm** stage as members start to find their place on the team and the team starts working as a cohesive unit. Finally, some teams reach another stage called **Perform** in which they become high performance teams. I&#39;ve always found this knowledge of incredible valuable. Knowing that teams go through these stages and that this is normal behavior is very important. As a team leader is also important to recognize that teams need different leadership styles as they go through these stages.</description>
               <guid isPermaLink="true">/blog/2009-06-03/team-dynamics</guid>
               <pubDate>Wed, 03 Jun 2009 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>TransactionScope.Complete Maybe</title>
-              <description>TODO</description>
+              <description>During a training class this week I learned that the `Complete()` method in the `TransactionScope` class works different from what I have always thought. I&#39;ve always thought that when you issue a call to the `Complete()` method the transaction is either committed or you get an exception if the transaction cannot be committed. In my mind once the call to `Complete()` returned it was a sure bet that the transaction was successfully committed. It turns out that is not necessarily true. The following code snippet shows a typical usage of `TransactionScope` when connecting to a SQL Server database. The steps are basically start a transaction, issue a few SQL commands, and call the complete method to commit the transaction. In a real application you will have more than one SQL Command and perhaps nested transactions but the idea is pretty much the same. In this particular example however I am purposely forcing an error condition by pausing the program right before the call to `Complete()`, then manually shutting down SQL Server, and finally letting the program continue its execution. This is definitively not something that you will do in an application but the point of this example is to emulate what happens if the server goes down right before the call to `tx.Complete()`. My thought was that the program will throw an exception on the call to `tx.Complete()` but to my surprise that was not the case. The call to `tx.Complete()` executed and came back with no indication that an error has happened. Below is the output that this program gave me:</description>
               <guid isPermaLink="true">/blog/2009-04-18/transactionscope-complete-maybe</guid>
               <pubDate>Sat, 18 Apr 2009 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>The Model View Controller is dead, long live the Model View Controller</title>
-              <description>TODO</description>
+              <description>The last few days I&#39;ve been reading [Microsoft .NET: Architecting Applications for the Enterprise](http://www.amazon.com/Microsoft-NET-Architecting-Applications-PRO-Developer/dp/073562609X) by Dino Esposito and Andrea Saltarello. On Chapter 7 Dino and Andrea talk about the Presentation Layer and in particular they touch on the Model View Controller (MVC), Model View Presenter (MVP), and Presentation Model (PM) design patterns. I really like how they demystify MVC and MVP and put them in context. Dino and Andrea start describing how these design patterns have evolved over time and state that: I completely agree with this statement and as a matter of fact this quote is the reason I stopped on the Presentation Layer chapter as I was browsing through the book even though I didn’t have an immediate need for Presentation Layer patterns. I was actually looking for Business Layer and Service Layer Patterns but that’s a topic for a future blog entry. Another interesting observation that Dino and Andrea make is that “when MVC was initially developed it was intended to be used on the whole application and not just in the presentation layer”. However, since these days most developers intuitively design applications in layers as opposed to building monolithic applications as it might have been the norm in the 1980s, the role of the MVC pattern has shifted to a presentation layer pattern more than application level pattern.</description>
               <guid isPermaLink="true">/blog/2009-02-02/the-model-view-controller-is-dead-long-live-the-model-view-controller</guid>
               <pubDate>Mon, 02 Feb 2009 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Rubber Band Reports with Pivot Tables (reprint)</title>
-              <description>TODO</description>
+              <description> A few years ago I wrote an article for the (now defunct) Universal Thread Magazine on how to create reports using Excel&#39;s Pivot Tables. The article was titled **Programming Rubber Band Reports with Pivot Tables** and showed how to create Excel Pivot Tables from a Visual FoxPro (VFP) application. Although the article is more than 6 years old I still get questions every now and then about the code samples that I mentioned in the article. The original code samples mentioned in the article can be found [here](https://hectorcorrea.com/downloads/correa_pivottablesvfp.zip) A VB.NET version of the code can be found at [here](https://hectorcorrea.com/downloads/pivottable.zip) A PDF version of the article can also be found [here](https://hectorcorrea.com/downloads/correapivottableswhitepaper.pdf).</description>
               <guid isPermaLink="true">/blog/2009-01-13/rubber-band-reports-with-pivot-tables-reprint</guid>
               <pubDate>Tue, 13 Jan 2009 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Expose your data as an RSS Feed with .NET 3.5</title>
-              <description>TODO</description>
+              <description>In talking with my [one of my friends](http://geekswithblogs.net/TheCodeMonkey/Default.aspx) a couple of months ago I found that .NET 3.5 now has built-in classes to generate RSS Feeds. This was great news to me since both my personal blog (this site) and the [DotWiki](https://hectorcorrea.com/blog/dotwiki-2-0/25) expose data as RSS Feeds but for the longest time I&#39;ve been using an unsupported library that I downloaded from the web years ago. Last month I updated the DotWiki to use these new .NET classes (instead of the old unsupported library) to expose recent changes to Wiki topics as an RSS Feed. Although I found the .NET classes to generate feeds rather comprehensive I had a hard time finding good practical examples on MSDN on how to use them&amp;lt;sup&amp;gt;[1]&amp;lt;/sup&amp;gt;. Lucky for me Bipin Joshi posted two great examples on how to [generate RSS feeds](http://www.dotnetbips.com/articles/4826711c-3f25-48ef-94d0-5c40b628c203.aspx) and [consume RSS feeds](http://www.dotnetbips.com/articles/addaf09f-9b6b-45d2-aba8-da11f23aa53e.aspx) with these .NET classes. Below is how the code in the DotWiki looks like to expose as an RSS Feed the list of changes in the last 24 hours. The complete code is available, follow the source code links on [this page](https://hectorcorrea.com/blog/dotwiki-2-0/25).</description>
               <guid isPermaLink="true">/blog/2009-01-07/expose-your-data-as-an-rss-feed-with-net-3-5</guid>
               <pubDate>Wed, 07 Jan 2009 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Multiple Endpoints for a WCF Service</title>
-              <description>TODO</description>
+              <description>One of the nice features that Windows Communication Foundation (WCF) provides is the ability to expose a single service via multiple endpoints so that different client applications can consume the same service over different network protocols. For example the same service can be exposed via HTTP for external clients and via TCP for internal clients. In WCF an **endpoint** refers to the combination of the address where service is available, the binding used to communicate to it, and the contract that the service exposes, these three parameters are commonly known as the  ABC  of the endpoint. An endpoint for a WCF Service can be configured via the `app.config` of the service or through code. In this post I am going to focus on how to configure a service via the `app.config` file to be available to multiple endpoints.</description>
               <guid isPermaLink="true">/blog/2008-12-23/multiple-endpoints-for-a-wcf-service</guid>
               <pubDate>Tue, 23 Dec 2008 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Flickr Library in C#</title>
-              <description>TODO</description>
+              <description>The last few days I&#39;ve been working on a sample C# library to access Flickr pictures using Flickr&#39;s own API. This library is a light-weight C# class that provides two basic features: (1) retrieve the list of photosets in your account and (2) retrieve information about the photos in a photoset. Using this class you can retrieve the photosets in your Flickr account and display them in a combobox with a few lines of code like these: Once you select a photoset you can retrieve information about the photos inside it (like title and URL) with the following code. In this example I am binding the list of photos to an ASP.NET datalist control to display them:</description>
               <guid isPermaLink="true">/blog/2008-11-30/flickr-library-in-c-sharp</guid>
               <pubDate>Sun, 30 Nov 2008 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>DevConnections 2008</title>
-              <description>TODO</description>
+              <description>Below are the brief notes that I took while at DevConnections in Las Vegas (November/2008) This blog entry is mostly bullet points of things that I found interesting without much details. I&#39;ll elaborate on some of these topics in future blog entries. Scott Gu started with an overview of some of the new features released in the last year which included: Then he went to describe some of the new things coming in Visual Studio 2010 and ASP.NET 4.0 which included:</description>
               <guid isPermaLink="true">/blog/2008-11-11/devconnections-2008</guid>
               <pubDate>Tue, 11 Nov 2008 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Managing and Leading (The One Thing)</title>
-              <description>TODO</description>
+              <description> A few years ago my friend Bill from [Rebar Business Builders](http://rebarbusinessbuilders.com) recommended me the book [The One Thing You Need to Know...About Great Managing, Great Leading, and Sustained Individual Success](http://www.amazon.com/One-Thing-You-Need-Know/dp/0743261658) by Marcus Buckingham. For a while I hesitated to buy this book, initially the title about  the one thing  kind of put me off but I ended up buying it and reading it. Back then I knew I had enjoyed the book but until recently I didn&#39;t realize how much I took from it. The first thing that the book helped me clarify was the difference between managing and leading. Not only are these two roles (and the talents needed to perform them) different but they are opposite. Marcus points that the main focus of great managers are his/her employees while the main focus of great leaders is a better future.</description>
               <guid isPermaLink="true">/blog/2008-11-10/managing-and-leading-the-one-thing</guid>
               <pubDate>Mon, 10 Nov 2008 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Introduction to Scrum</title>
-              <description>TODO</description>
+              <description> My article Introduction to Scrum has been published in the [May/June 2008 issue of CoDe magazine](http://www.code-magazine.com/Article.aspx?quickid=0805051). As I said in this article: This issue of CoDe is dedicated to Agile Development.</description>
               <guid isPermaLink="true">/blog/2008-10-04/introduction-to-scrum</guid>
               <pubDate>Sat, 04 Oct 2008 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Skeletons, Mona Lisa, and Problem Solving</title>
-              <description>TODO</description>
+              <description>One of the best practices when building applications that I&#39;ve learned over the years is the value of always having a running version of the application available to show end-to-end progress on the system being developed. Although this is common sense it&#39;s easy to get caught on the day-to-day activities and lose track of these things. A typical situation in which teams seem to forget the value of always having a running version of the application is when writing a brand new application. In this scenario is common to have a bunch of components half-way written and not ready for production and most development teams tend to be OK with this. I am OK with this *as long as they all compile and can be run successfully to show the functionality implemented so far*. It does not matter the system can only perform a sub-set of features that the final system will have. It should always run so that people can experience first hand how each of the modules interact with each other. &amp;lt;img alt= Walking Skeleton  align= left  src= https://hectorcorrea.com/images/skeleton.jpg /&amp;gt;In trying to explain this concept to a friend of mine I found that there is even a pattern that explains this idea when it comes to building new applications. Cockburn&amp;lt;sup&amp;gt;[1]&amp;lt;/sup&amp;gt; calls it a [Walking Skeleton](http://alistair.cockburn.us/index.php/Walking_skeleton):</description>
               <guid isPermaLink="true">/blog/2008-09-16/skeletons-mona-lisa-and-problem-solving</guid>
               <pubDate>Tue, 16 Sep 2008 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Static constructors and ASP.NET applications</title>
-              <description>TODO</description>
+              <description>A few days ago I was running into an issue with a static class in an ASP.NET application. The issue (I thought) was that the static constructor was not being fired. It turns out the static constructor was being fired as it should but not as often as I thought it would be. Static constructs are fired once per App Domain. In a *Windows application* this means that the constructor is fired once every time I launch the application and access the static class. If I close the application, run it again, and hit the static class the constructor will be fired again.</description>
               <guid isPermaLink="true">/blog/2008-09-11/static-constructors-and-asp-net-applications</guid>
               <pubDate>Thu, 11 Sep 2008 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Computer Museum (Paris)</title>
-              <description>TODO</description>
+              <description>*Posted on 2008-09-03, Updated on 2024-09-12* In 2008 I had the opportunity to visit the computer museum in Paris. The [Musee de l&#39;Informatique](https://fr.wikipedia.org/wiki/Mus%C3%A9e_de_l%27informatique_%28La_D%C3%A9fense%29) had a neat variety of computers in display that range from 1960s mainframe computers, early personal computer models (IBM, Apple, Commodore) from the 80s, and other computer related stuff including punch cards, old hard drives, mother boards, software, to name a few. Sadly, it seems that the museum closed in 2010. Here are a few pictures that I took while I was there.</description>
               <guid isPermaLink="true">/blog/2008-09-03/computer-museum-paris</guid>
               <pubDate>Wed, 03 Sep 2008 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>DotWiki 2.0</title>
-              <description>TODO</description>
+              <description>I&#39;ve posted a new version of the DotWiki that I introduced back in 2004 in the [Building Wiki Web Sites with ASP.NET and SQL Server](http://www.codemag.com/Article/0403081) article in CODE magazine. This new version 2.0 is a complete rewrite using C# and it has several new features and a more attractive look and feel. Security is probably the most important new feature since it had been by far the most commonly requested feature since I released the original version in 2002. Previous versions of the DotWiki had been updates to the original VB.NET code and I felt that a full rewrite was in order to clean up the code, remove unused features, reflect what I&#39;ve learn since the original release, and add a few more features. Since I&#39;ve been doing exclusively C# for the last few years I took the plunge and rewrote it in C#. Security is implemented using the ASP.NET Membership provider. It&#39;s amazing how easy was to secure the site using the built-in features for membership for creating new users, resetting your password, logging in, logging out, and such.</description>
               <guid isPermaLink="true">/blog/2008-07-27/dotwiki-2-0</guid>
               <pubDate>Sun, 27 Jul 2008 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Upgrading Your Software Development Tools</title>
-              <description>TODO</description>
+              <description>Late last year (late November 2007 to be exact) Microsoft released [Visual Studio 2008](http://msdn2.microsoft.com/en-us/vs2008/default.aspx) with .NET 3.5 to production. This has generated a lot of buzz around the new features, what’s hot, what you should be looking into, and so on. The beta cycle for VS 2008 was long and very public. There has been a lot of articles and access to the new features for a while but now it’s here, now it’s real. People can go and buy VS 2008 today or download it from MSDN. Teams that have been just wondering how to go about the upgrade now need to answer the question: how do we upgrade? Most software developers are technology driven so we love new tools and technologies. This seems to be a personality trait regardless of the technology that we chose. The desire to move to the latest and greatest version seems to be as strong in .NET developers today as it was for FoxPro and VB 6 developers in the late nineties. We crave the day when we can use new tools. Yet, we have a responsibility to our users in doing this responsibly. Upgrades can be hard to perform on medium to large systems that have large number of users in production. Like most things on these kinds of systems upgrades need to be planned in order to give the most to the customers. Although the decision to upgrade or not to upgrade to a new version of development tools is very specific to every project, I usually tend to recommend upgrading on-going projects (with new features actively being developed) and thinking twice before upgrading projects that have been switched to maintenance mode (no new features are being developed.)</description>
               <guid isPermaLink="true">/blog/2008-02-25/upgrading-your-software-development-tools</guid>
               <pubDate>Mon, 25 Feb 2008 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Estimates on Software Projects</title>
-              <description>TODO</description>
+              <description>Estimates is one of the most controversial topics on software development, including the process to calculate them and the value that they add to the software development process. Every team that I have worked with needs to provide estimates on how long it&#39;s going to take to complete a specific feature of a system. Yet, most teams seem to struggle with this activity. Developers enjoy attending a meeting to provide estimates as much as they enjoy visiting the dentist. Project owners typically complain how unreliable estimates on software projects are, to them is unbelievable that even that developers have been writing software for many years cannot give accurate estimates. In my experience there are several reasons why providing estimates is so hard:</description>
               <guid isPermaLink="true">/blog/2008-01-09/estimates-on-software-projects</guid>
               <pubDate>Wed, 09 Jan 2008 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>The Scrum Daily Meeting</title>
-              <description>TODO</description>
+              <description>We use Scrum at the office to manage our projects. One of the key practices of Scrum is the daily meeting (or [daily Scrum](http://www.controlchaos.com/about/management.php).) The daily meeting is a short meeting (15 minutes in our case) held every day at the same time with the whole team (product owners, QA, and developers.) The goal of the meeting is to keep everybody informed of the progress since the last meeting and make sure there are no roadblocks. The rules for the daily meeting are simple: The meeting must be short, time-boxed, and every team member must report</description>
               <guid isPermaLink="true">/blog/2007-12-13/the-scrum-daily-meeting</guid>
               <pubDate>Thu, 13 Dec 2007 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Windows Presentation Foundation</title>
-              <description>TODO</description>
+              <description>I&#39;ve been reading about Windows Presentation Foundation (WPF) for a while and, while at [DevConnections](http://www.devconnections.com/) this week, I&#39;ve attended a few sessions on the topic and to this day I still have mixed feelings about this new technology. On one hand I am really excited to see work done for smart clients and the user interface in Windows. The fact that WPF takes into account new graphics hardware available on most machines these days is really nice. WPF uses Direct X instead of GDI+ to render images on the display which turns into faster rendering even for more complex UIs. The Expression Blend product targeted for designers is also a nice addition that hopefully will help developers and UI designers to work together resulting in better applications for the user. On the other hand I am disappointed Microsoft has lowered the abstraction layer instead of raising it. Most of the sessions and reading that I&#39;ve seen on WPF focuses on how easy it is to do buttons, gradients, nested controls, stack panels, and such. Gosh! that&#39;s not very productive. I am eager to provide better and more polished user interfaces to our users but I cannot believe that in the year 2007 we are attending sessions on how to do gradients and nested controls. I wish MS had provided much richer environment on top of the basic functionality that they&#39;ve created.</description>
               <guid isPermaLink="true">/blog/2007-11-10/windows-presentation-foundation</guid>
               <pubDate>Sat, 10 Nov 2007 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Software Developers and Process Improvement</title>
-              <description>TODO</description>
+              <description>One of the topics that I&#39;ve been noticing for a while is how we (as developers) tend to worry about our software development process and try to educate ourselves on the topic while other project stakeholders don&#39;t seem to show as much interest on it. For example, I often talk to other developers who are trying to implement Scrum, RUP, or other software development process at their companies and they fell that other project stakeholders (executives, business owners, analysts) are not as interested in the process as they should. It seems that it&#39;s always developers trying to drive these initiatives. The most interesting part, however, is that process improvement is not an activity that should be left alone to developers, not even when is about software development process. If the software has an impact on the bottom line of the company (and it usually does) it should be an activity that is done in collaboration with executives, business owners, QA, and developers. Developers, as well intended as we might be, don&#39;t always see the whole picture and we are bound to make one-sided conclusions. Or as [Bill Buxton](https://businessofsoftware.org/2007/10/an-angry-mans-s/) says:</description>
               <guid isPermaLink="true">/blog/2007-10-30/software-developers-and-process-improvement</guid>
               <pubDate>Tue, 30 Oct 2007 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>The Mythical Man-Month</title>
-              <description>TODO</description>
+              <description>Last week I finished reading [The Mythical Man-Month](http://www.amazon.com/Mythical-Man-Month-Software-Engineering-Anniversary/dp/0201835959) by Frederick Brooks for the third (or so) time. Although this book was originally published in 1975 it is still a great reading for anyone involved in software development. The edition that I read is the 20th anniversary edition and has a few extra chapters with updated information. There are two chapters that I particularly like in this book: The Mythical Man-Month and No Silver Bullet - Essence and Accident. In this chapter Brooks explains why using</description>
               <guid isPermaLink="true">/blog/2007-06-28/the-mythical-man-month</guid>
               <pubDate>Thu, 28 Jun 2007 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Thoughts on Unit Testing</title>
-              <description>TODO</description>
+              <description>A unit test is a piece of code written by a developer for a developer. The intention of this piece of code is to prove that the code does what the developer intents to do ([Pragmatic Unit Testing in C#](http://www.pragmaticprogrammer.com/titles/utc2/)). Unit tests are not substitutes for requirement gathering or QA, they are an additional tool that developers can use to produce better systems. A lot of developers complain that when they write a unit test for the first time they fell kind of silly, like there is no value in writing a test to prove a piece of code that they just wrote. For example, let&#39;s say that you write a new method to add a record to the database and then you write the unit test to verify this code (e.g. the record is in fact added to the database.) Suppose you spend half your morning writing this code and then its unit test. Well *off course* that when you write the test it will pass -- you just wrote the darn code! What a lot of developers don&#39;t realize is that they do gain a whole lot when they write unit tests:</description>
               <guid isPermaLink="true">/blog/2007-01-09/thoughts-on-unit-testing</guid>
               <pubDate>Tue, 09 Jan 2007 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Binary Tree in C#</title>
-              <description>TODO</description>
+              <description>A few months ago I decided write a C# program to handle binary trees. I was lucky to still remember some of the basics of this data structure from my college days and was able to write a program to handle the add operation and the code to  walk the tree  in a few hours. To make things more interesting I also decided to write a program to draw the binary tree on the screen. This turned out to be an interesting challenge and kept me busy for a few weeks. The [source code for this program is here](https://hectorcorrea.com/downloads/DataStructures.zip). This version uses generics so it can be used with any type that implements the `IComparable` interface. A binary tree, as indicated in [Wikipedia](http://en.wikipedia.org/wiki/Binary_tree), is a tree data structure in which each node has at most two children. To implement this data structure I created two classes: `BinaryTreeNode` and `BinaryTree`. The former is used to represent each node while the later is used to organize the nodes following the rules of binary trees. In addition, I created a third class `BinaryTreeDrawer` that implements the algorithm to actually draw a binary tree on the screen and let you *see* how the information is organized.</description>
               <guid isPermaLink="true">/blog/2006-11-27/binary-tree-in-c-sharp</guid>
               <pubDate>Mon, 27 Nov 2006 00:00:00 +0000</pubDate>
           </item>
           <item>
               <title>Book review: Lean Software Development</title>
-              <description>TODO</description>
+              <description>A couple of weeks ago I finished reading [Lean Software Development](http://www.amazon.com/exec/obidos/ISBN=0321150783) by Mary and Tom Poppendieck. What a great little book! In this book Mary and Tom present several tools for lean (their term for agile) software development plus an excellent background on why these types of methods work. Mary has a background (theory and practice) on manufacturing processes and in this book she describes how lean processes were/are successfully applied by companies like Toyota and 3M. I am usually disappointed when people try to compare software development to other industries (e.g. construction of buildings) because most of the times they don&#39;t have any background on the other field and make unfounded simplifications. Mary, on the other hand, has real life experience on manufacturing and software development and can compare between the two with realistic examples. In this book the authors describe 7 lean principles, their rational, and how to apply them to software development:</description>
               <guid isPermaLink="true">/blog/2006-05-08/book-review-lean-software-development</guid>
               <pubDate>Mon, 08 May 2006 00:00:00 +0000</pubDate>
           </item>
