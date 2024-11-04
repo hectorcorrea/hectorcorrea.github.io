@@ -7,6 +7,12 @@
           <generator>https://github.com/hectorcorrea/fixie</generator>
           <atom:link href="https://hectorcorrea.com" rel="self" type="application/rss+xml"></atom:link>
           <item>
+              <title>US-RSE-24</title>
+              <description>*Posted on 2024-11-04* Last month (October/2024) I attended the [US Research Software Engineering 2024](https://us-rse.org/usrse24/) conference that took place in Albuquerque, NM. This post is a summary of what I learned during this event. Although I am not a Research Software Engineer (RSE) per-se, most of the projects I am involved at work are related to developing infrastructure to support research data. So, when last year I started hearing rumblings about  Research Software Engineering  conferences I got a bit curious and decided to attend the one in the US.</description>
+              <guid isPermaLink="true">/blog/2024-11-04/us-research-software-engineering-24</guid>
+              <pubDate>Mon, 04 Nov 2024 00:00:00 +0000</pubDate>
+          </item>
+          <item>
               <title>Computer Museum (Valencia)</title>
               <description>*Posted on 2024-09-12* Earlier this month I visited the [Museum of Informatics of the School of Informatics of the Universitat Politècnica de València](https://museo.inf.upv.es/en/el-museo/) which has a nice collection of older computer equiment including mainframes from the 60s, microcomputers from the 70s, early personal computers from the late 70s and 80s, and a few other interesting exhibits here and there. The museum is housed by the university as part of the School of Informatics and it&#39;s not a typical museum in the sense that the exhibits are located all throughout the halls of the school rather than in dedicated room. Most of the exhibits are located within the same buiding, though.</description>
               <guid isPermaLink="true">/blog/2024-09-12/computer-museum-valencia</guid>

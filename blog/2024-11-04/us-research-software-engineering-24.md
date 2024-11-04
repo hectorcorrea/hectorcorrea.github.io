@@ -1,0 +1,38 @@
+# US-RSE-24
+*Posted on 2024-11-04*
+
+Last month (October/2024) I attended the [US Research Software Engineering 2024](https://us-rse.org/usrse24/) conference that took place in Albuquerque, NM. This post is a summary of what I learned during this event.
+
+Although I am not a Research Software Engineer (RSE) per-se, most of the projects I am involved at work are related to developing infrastructure to support research data. So, when last year I started hearing rumblings about "Research Software Engineering" conferences I got a bit curious and decided to attend the one in the US.
+
+The range of topics at the conference was very interesting, there were sessions on best practices for software projects, project management, remote working, user experience and accessibility, the role of AI in research software, and so on. The full program can be found at https://us-rse.org/usrse24/program/ and the slides for (some of) the sessions are available here: https://zenodo.org/communities/usrse24
+
+## What is a Research Software Engineer and why do we need this?
+From what I understand, a Research Software Engineer (RSE) is someone who works in a research group and that a significant part of their job involves developing software. This kind of role is very common in large research institutions and national laboratories around the world.
+
+The concept of Research Software Engineering is something that started around 2013 in the UK and has continued evolving ever since. The [Society of Research Software Engineering](https://society-rse.org/about/history/) website provides a good overview of the history of the movement.
+
+During his keynote, [Simon Hettrick](https://slides.com/simonhettrick/usrsecon24) talked about "the colossal demand for software" in research laboratories and the need to standardize on the role. He mentioned a study in which they found that out of 400 software development job postings at research institutions there were about 200 different job titles. They concluded that standardizing the naming of these roles will be beneficial to the community as it will make it more obvious how much these (software engineering) skills are needed across all kinds of research labs. Hettrick talked about how hard it was to come up with a single name for this role, but that after some deliberation they settled on Research Software Engineer (RSE) and moved on.
+
+One of the challenges that people developing software at these institutions face is that software per-se is neither recognized nor valued nearly as much as other kinds of outputs since in these institutions publications are by large the most important measurement of somebody’s [success](https://slides.com/simonhettrick/usrsecon24#/9/3/1). So even though software is integral to the research and takes an incredible amount of effort to develop it, the people working on it don’t get the recognition they deserve. This is how the [Society of Research Software Engineering](https://society-rse.org/) phrases it:
+
+> "The Society of Research Software Engineering was founded on the belief that a world which relies on software must recognise the people who develop it. Our mission is to establish a research environment that recognises the vital role of software in research. We work to increase software skills across everyone in research, to promote collaboration between researchers and software experts, and to support the creation of an academic career path for Research Software Engineers."
+
+Personally I have been a software developer my whole life and I was taken a bit by surprise that there is a need to recognize people for writing software. I mean I get paid to do it, to me that *is the recognition*. But one of the things that became obvious during the conference and that [Sandra Gesing](https://us-rse.org/usrse24/program/keynotes/#sandra) made clear during her keynote is that these software developers are in a different category because typically they were not trained in software development despite the fact writing software is a big part of their job (e.g. they might have a PhD in astrophysics rather than a degree in Computer Science), in addition the kind of software that they write requires them to have very advanced domain specific knowledge (hence some many of these people have PhDs on their fields).
+
+During the conference I heard all sorts of scenarios and situations in which people writing software at these research institutions don’t get the recognition that they deserve. For example, people write the software that supports the results of a paper, but when the paper is published they are not mentioned as authors. This lack of recognition translates into them not getting promoted or hired (because they don’t have publications under their name) which in turn forces them to leave the field. Keep in mind these people have very specialized domain and software knowledge and losing them is a big loss for the institution as well as for the individual.
+
+Another insight that I gained at the conference was that some domains are used to work in teams and in that environment recognizing another role (i.e. a Research Software Engineer) as part of the work is an easy sell since they are used to working in teams with multiple collaborators, whereas in other domains researchers tend to work alone and integrating the contributions of somebody that mostly writes the software part of the project tends to be a harder thing to sell. The session [RSEs in domain-specific ecosystems](https://us-rse.org/usrse24/program/bofs/#bofs-1b) presented by Julia Damerow, Rebecca Sutton Koeser, Laure Thompson and Jeri E. Wierenga elaborated on this.
+
+## Some worrisome signs
+I enjoyed the conference and I really hope this movement improves the careers of people working in research teams, particularly of those that are currently being left out due to the way the reward system works in these institutions.
+
+There were two things that left me a bit worried after the conference, though.
+
+The first one was gender balance. I felt that the conference had a significantly higher number of men vs women in attendance. I don’t have exact numbers but I would guess 60/40 or maybe even higher. The field of software engineering at large has a terrible record when it comes to being a welcoming place for women, so I hope the efforts to bring Research Software Engineering to research teams does not result in only benefiting men in those teams. I should clarify I thought the conference itself was very welcoming, but then again I am a man so my view here is skewed.
+
+The second thing was the typical view of software engineering being perfect and the solution to all things. I worry that the research institutions might try to adopt some of the so-called "best practices" of software engineering that were created and developed for the corporate world and try to adopt them blindly into a new environment with entirely different dynamics. I worry that we tend to see and value only the *engineering* part of software engineering, rather than seeing and valuing the bigger picture as the field of science and technology (STS) recommends. One encoraging sign in this last point is that I got the impression that some of the research teams are starting to value the importance of having a stable team for a project and they are ditching the mentality that you can just replace one programmer with another.
+
+## In Closing
+All in all I enjoyed the conference and learned a lot. The conference will take place [next year in Philadelphia](https://us-rse.org/usrse25/) if you are interested.
+
