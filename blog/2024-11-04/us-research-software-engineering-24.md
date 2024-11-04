@@ -5,7 +5,7 @@ Last month (October/2024) I attended the [US Research Software Engineering 2024]
 
 Although I am not a Research Software Engineer (RSE) per-se, most of the projects I am involved at work are related to developing infrastructure to support research data. So, when last year I started hearing rumblings about "Research Software Engineering" conferences I got a bit curious and decided to attend the one in the US.
 
-The range of topics at the conference was very interesting, there were sessions on best practices for software projects, project management, remote working, user experience and accessibility, the role of AI in research software, and so on. The full program can be found at https://us-rse.org/usrse24/program/ and the slides for (some of) the sessions are available here: https://zenodo.org/communities/usrse24
+The range of topics at the conference was very interesting, there were sessions on best practices for software projects, project management, remote working, user experience and accessibility, the role of AI in research software, and so on. The full program can be found at [https://us-rse.org/usrse24/program/](https://us-rse.org/usrse24/program/) and the slides for (some of) the sessions are available at [https://zenodo.org/communities/usrse24](https://zenodo.org/communities/usrse24)
 
 ## What is a Research Software Engineer and why do we need this?
 From what I understand, a Research Software Engineer (RSE) is someone who works in a research group and that a significant part of their job involves developing software. This kind of role is very common in large research institutions and national laboratories around the world.
