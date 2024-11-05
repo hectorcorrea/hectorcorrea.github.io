@@ -24,6 +24,8 @@ During the conference I heard all sorts of scenarios and situations in which peo
 
 Another insight that I gained at the conference was that some domains are used to work in teams and in that environment recognizing another role (i.e. a Research Software Engineer) as part of the work is an easy sell since they are used to working in teams with multiple collaborators, whereas in other domains researchers tend to work alone and integrating the contributions of somebody that mostly writes the software part of the project tends to be a harder thing to sell. The session [RSEs in domain-specific ecosystems](https://us-rse.org/usrse24/program/bofs/#bofs-1b) presented by Julia Damerow, Rebecca Sutton Koeser, Laure Thompson and Jeri E. Wierenga elaborated on this.
 
+Renee (Hui Xin) Ng has a three part series ([part 1](https://www.linkedin.com/posts/nghuixin_usrse24-usrse24-ismb-activity-7252514948843462656-KS6Q), [part 2](https://www.linkedin.com/posts/nghuixin_usrse24-activity-7252875305160200192-dBSW/), and [part 3](https://www.linkedin.com/posts/nghuixin_usrse24-activity-7253592127446626304-2NvE)) with some of her thoughts on RSE and the conference.
+
 ## Some worrisome signs
 I enjoyed the conference and I really hope this movement improves the careers of people working in research teams, particularly of those that are currently being left out due to the way the reward system works in these institutions.
 
