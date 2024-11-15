@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Músico en desarrollo">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>Santiago Correa López</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+
+    <!-- Styles from https://newcss.net/ -->
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.css">
+
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+    <base href="https://hectorcorrea.com" />
+
+    <!-- Lunr.js for searching, Mark.js for highlighting search results -->
+    <script src="/public/lunr.min.js"></script>
+    <script src="/public/mark.min.js"></script>
+
+    <style>
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      footer {
+        background: var(--nc-bg-2);
+        border-bottom: 1px solid var(--nc-bg-3);
+        padding: 2rem 1.5rem;
+
+        margin: -2rem calc(0px - (50vw - 50%)) 2rem;
+
+        padding-left: calc(50vw - 50%);
+        padding-right: calc(50vw - 50%);
+
+        margin-top: -0px;
+        margin-bottom: 0px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        color: gray;
+        font-size: x-small;
+      }
+
+      .header-link {
+        /* Main body text, see new.css */
+        color: var(--nc-tx-2);
+        text-decoration: none;
+      }
+
+      .nav-link-selected {
+        font-weight: bold;
+      }
+
+      .search-options {
+        float: right;
+      }
+
+      .highlight-icon-on > a {
+        background: var(--nc-ac-1);
+      }
+
+      .highlight-icon-off > a {
+        background: var(--nc-bg-2);
+      }
+
+      .invisible {
+        display: none;
+      }
+
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><a class="header-link" href="/">Hector Correa</a></h1>
+      <nav>
+        <a id="about-menu" href="/about">About</a>
+        | <a id="presentations-menu" href="/presentations">Presentations</a>
+        | <a id="blog-menu" href="/blog">Blog</a>
+        <span class="search-options">
+          <span>
+            <a href="/search" title="Search">
+              <!--Magnifying glass source: https://icons.getbootstrap.com/icons/search/ -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+              </svg></a>
+          </span>
+          <span id="highlight-menu" class="invisible">
+            <a href="#" title="Toggle highlight">
+              <!-- Highlighter source: https://icons.getbootstrap.com/icons/highlighter/ -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-highlighter" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.096.644a2 2 0 0 1 2.791.036l1.433 1.433a2 2 0 0 1 .035 2.791l-.413.435-8.07 8.995a.5.5 0 0 1-.372.166h-3a.5.5 0 0 1-.234-.058l-.412.412A.5.5 0 0 1 2.5 15h-2a.5.5 0 0 1-.354-.854l1.412-1.412A.5.5 0 0 1 1.5 12.5v-3a.5.5 0 0 1 .166-.372l8.995-8.07zm-.115 1.47L2.727 9.52l3.753 3.753 7.406-8.254zm3.585 2.17.064-.068a1 1 0 0 0-.017-1.396L13.18 1.387a1 1 0 0 0-1.396-.018l-.068.065zM5.293 13.5 2.5 10.707v1.586L3.707 13.5z"/>
+              </svg>
+            </a>
+          </span>
+        </span>
+      </nav>
+    </header>
+
+    <div id="page-content">
+      <h1>Santiago Correa López</h1>
+
+<p>Músico en desarrollo</p>
+
+
+    </div>
+
+    <div id="search-section" class="invisible">
+      <div id="search-params" class="">
+        <input id="search-terms" size="50" />
+        <button id="search-button">Go</button>
+      </div>
+      <div id="search-results">
+      </div>
+    </div>
+
+    <footer>
+      <a href="/tooling">Tooling</a> |
+      License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+    </footer>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Hande this redirect via JavaScript because GitHub pages does not let me
+      // handle this via an HTML redirect due to the ".aspx" extension
+      if (window.location.pathname === "/blog/The-Mythical-Man-Month.aspx") {
+        window.location = "https://hectorcorrea.com/blog/2007-06-28/the-mythical-man-month";
+      }
+
+      // Mark as selected the current menu option
+      var selectMenu = function() {
+        var activeOption = null;
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          activeOption = document.getElementById("blog-menu");
+        } else if(url == "/about") {
+          activeOption = document.getElementById("about-menu");
+        } else if(url == "/presentations") {
+          activeOption = document.getElementById("presentations-menu");
+        }
+
+        if (activeOption != null) {
+          activeOption.classList.add("nav-link-selected");
+        }
+      }
+
+      // Show the highlight menu if there is a hl query string parameter.
+      // Notice that we don't automatically highlight search terms because that's annoying on the display
+      // when there are too many hits.
+      var showHighlightMenu = function() {
+        const queryString = window.location.search
+        const urlParams = new URLSearchParams(queryString);
+        if (urlParams.has("hl")) {
+          var hlMenu = document.getElementById("highlight-menu");
+          hlMenu.classList.remove("invisible");
+        }
+      }
+
+      // Highlight search terms indicated in the URL via the
+      // hl query string parameter
+      var highlightSearchTerms = function() {
+        const queryString = window.location.search
+        const urlParams = new URLSearchParams(queryString);
+        if (urlParams.has("hl")) {
+          var context = document.querySelector("#page-content");
+          var instance = new Mark(context);
+          instance.mark(urlParams.get("hl"));
+          var hlMenu = document.getElementById("highlight-menu");
+          hlMenu.classList.remove("invisible");
+          hlMenu.classList.add("highlight-icon-on");
+          hlMenu.classList.remove("highlight-icon-off");
+        }
+      }
+
+      // Unhighlight the search terms
+      var unhighlightSearchTerms = function() {
+        var context = document.querySelector("#page-content");
+        var instance = new Mark(context);
+        instance.unmark();
+        var hlMenu = document.getElementById("highlight-menu");
+        hlMenu.classList.remove("highlight-icon-on");
+        hlMenu.classList.add("highlight-icon-off");
+      }
+
+      // Wire the button to toggle the highlight
+      document.getElementById("highlight-menu").addEventListener("click", (event) => {
+        var hlMenu = document.getElementById("highlight-menu");
+        if (hlMenu.classList.contains("highlight-icon-on")) {
+          unhighlightSearchTerms();
+        } else {
+          highlightSearchTerms();
+        }
+      });
+
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank"
+          }
+        }
+      }
+
+      selectMenu();
+      showHighlightMenu();
+      externalLinksNewTab();
+    </script>
+
+    <script>
+      if (window.location.pathname.startsWith("/search")) {
+        // Only load the search index when we are on the search page
+        // since it's kind of heavy, ~200KB.
+        // Source https://stackoverflow.com/a/52478867/446681
+        //
+        // IMPORTANT: The call to document.write() will insert the
+        // dynamic <script src=/searchIndex.js> block immediately
+        // after this <script> block and therefore the code to
+        // reference it MUST be on a separate <script> block.
+        console.log("Loaded search index");
+        document.write('<script src="/searchIndex.js"><\/script>');
+      }
+    </script>
+
+    <script>
+      // This <script> block has access to the searchDocuments
+      // variable defined in searchIndex.js (see above)
+      if (window.location.pathname.startsWith("/search")) {
+        // Define the Lunr index
+        var lunrIndex = lunr(function () {
+          this.ref('id')
+          this.field('name')
+          this.field('text')
+
+          searchDocuments.forEach(function (doc) {
+            if (doc.id == "/404") {
+              // don't index the content of the "404 not found" page
+            } else {
+              this.add(doc)
+            }
+          }, this)
+        });
+
+        // Function to execute the search
+        var runSearch = function() {
+          // Clear the previous results
+          const resultsEl = document.getElementById("search-results");
+          resultsEl.innerHTML = "";
+
+          // Run the search
+          const searchTerms = document.getElementById("search-terms").value;
+          const results = lunrIndex.search(searchTerms);
+
+          if (results.length == 0) {
+            var noResults = document.createElement("p");
+            noResults.textContent = "No results found";
+            resultsEl.appendChild(noResults);
+            return;
+          }
+
+          // Process the results
+          results.forEach(function(result) {
+            // This does not work because of word stemming (e.g. ruby => rubi)
+            // var matchTerms = Object.keys(result.matchData.metadata).join(" ");
+            var matchDoc = searchDocuments.find(x => x.id === result.ref)
+            var linkEl = document.createElement("a");
+            linkEl.href = matchDoc.id + "?hl=" + searchTerms;
+            linkEl.text = matchDoc["name"];
+
+            var resultEl = document.createElement("p");
+            resultEl.appendChild(linkEl);
+
+            resultsEl.appendChild(resultEl);
+          });
+        }
+
+        // Make the search section visible
+        document.getElementById("search-section").classList.remove("invisible");
+
+        // Wire the click even in the search button
+        document.getElementById("search-button").addEventListener("click", (event) => {
+          runSearch();
+        });
+
+        // Wire the enter key on the search textbox
+        // Source https://stackoverflow.com/a/46063448/446681
+        document.getElementById("search-terms").addEventListener("keyup", (event) => {
+          if (event.key === "Enter") {
+            runSearch();
+          }
+        });
+
+        // Give the focus to the search box
+        document.getElementById("search-terms").focus();
+      }
+    </script>
+  </body>
+</html>
