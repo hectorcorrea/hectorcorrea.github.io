@@ -254,6 +254,7 @@ mysql&gt; update blogs set contentMd = convert(convert(contentMd using binary) u
         } else {
           highlightSearchTerms();
         }
+        event.preventDefault();
       });
 
       // Open external links in a new tab

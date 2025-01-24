@@ -19,7 +19,7 @@
 	},{
 		"id": "/presentations",
 		"name": "Presentations and workshops",
-		"text": "presentations and workshops a selected list of that i ve given over the years. solr for newbies https://hectorcorrea.com/solr-for-newbies workshop presented at code4lib 2018 2019 2023. web development in nutshell https://hectorcorrea.com/webdev-nutshell to be wintersession 2024 princeton university. unboxing repository model https://hectorcorrea.com/downloads/2023-dlf-out-of-the-box.pdf presentation dlf forum 2023 st. louis mo with hannah hadley marcli https://github.com/hectorcorrea/marcli lightning talk 2021 on tool process marc files indexing searching chinese japanese korean text https://hectorcorrea.com/downloads/2020-indexing-cjk.pdf vufind 2020 how index cjk collaboration driven https://hectorcorrea.com/downloads/2019-collaboration-driven-development.pdf nercomp annual conference providence ri jeanette norris new frontend vivo https://hectorcorrea.com/downloads/2017-vivo-new-frontend.pdf 2017 york ny steven mccauley build your own software yes it https://hectorcorrea.com/blog/2017-03-15/build-your-own-software los angeles ca introduction linked data platform https://hectorcorrea.com/downloads/introduction ldp.pdf hydra connect 2015 minneapolis mn node.js https://hectorcorrea.com/downloads/intro-to-nodejs.pdf 2013 penn state college pa. intro nosql databases mongodb https://hectorcorrea.com/downloads/2013-introduction-to-nosql-mongo.pdf pittsburgh tech fest pa"
+		"text": "presentations and workshops a selected list of that i ve given over the years. solr for newbies https://github.com/hectorcorrea/solr-for-newbies workshop presented at code4lib 2018 2019 2023. web development in nutshell https://github.com/hectorcorrea/webdev-nutshell during wintersession 2025 princeton university. data commons: building an ecosystem to support evolving research needs https://doi.org/10.5281/zenodo.14419009 presentation northeast institutional repository day 2024 with kate lynch unboxing model https://hectorcorrea.com/downloads/2023-dlf-out-of-the-box.pdf dlf forum 2023 st. louis mo hannah hadley marcli https://github.com/hectorcorrea/marcli lightning talk 2021 on tool process marc files indexing searching chinese japanese korean text https://hectorcorrea.com/downloads/2020-indexing-cjk.pdf vufind 2020 how index cjk collaboration driven https://hectorcorrea.com/downloads/2019-collaboration-driven-development.pdf nercomp annual conference providence ri jeanette norris new frontend vivo https://hectorcorrea.com/downloads/2017-vivo-new-frontend.pdf 2017 york ny steven mccauley build your own software yes it https://hectorcorrea.com/blog/2017-03-15/build-your-own-software los angeles ca introduction linked platform https://hectorcorrea.com/downloads/introduction ldp.pdf hydra connect 2015 minneapolis mn node.js https://hectorcorrea.com/downloads/intro-to-nodejs.pdf 2013 penn state college pa. intro nosql databases mongodb https://hectorcorrea.com/downloads/2013-introduction-to-nosql-mongo.pdf pittsburgh tech fest pa"
 	},{
 		"id": "/search",
 		"name": "Search",
@@ -27,7 +27,7 @@
 	},{
 		"id": "/solr-for-newbies",
 		"name": "Solr for Newbies",
-		"text": "solr for newbies this page contains links that you ll need during the workshop. workshop materials slides https://docs.google.com/presentation/d/1mfnyascslap8ynhjqhkodsj5bausphlddt6a305dgno/edit slide id.p tutorial https://github.com/hectorcorrea/solr-for-newbies/blob/main/tutorial.md with all commands github repo https://github.com/hectorcorrea/solr-for-newbies everything sample data in pdf direct link each section i. introduction part-i-introduction ii. schema part-ii-schema iii. searching part-iii-searching iv. miscellaneous https://docs.google.com/presentation/d/1vofwgcdt2ixyysnk1cusjxx528zbpdehegtdgh4y9ug/edit id.g1d8617fff38 0 61 live installation following will be available duration of can use it to execute searches and see results play without having install on your machine. please don t share outside http://--.--.--.--/solr/ /bibdata/query - notice url uses http not https"
+		"text": "solr for newbies all the materials this workshop are available at https://github.com/hectorcorrea/solr-for-newbies"
 	},{
 		"id": "/tooling",
 		"name": "Tooling",
@@ -35,7 +35,7 @@
 	},{
 		"id": "/webdev-nutshell",
 		"name": "Web Development in a Nutshell",
-		"text": "web development in a nutshell this page contains links that you ll need during the workshop. required software https://github.com/hectorcorrea/webdev-nutshell required-software slides https://docs.google.com/presentation/d/1dfwsncud7ituzfkf7po1dz5klfq0t7qprb5vrciabam/edit slide id.g25432a504aa 0 tutorial https://github.com/hectorcorrea/webdev-nutshell/blob/main/tutorial.md with all commands github repo https://github.com/hectorcorrea/webdev-nutshell/ everything sample data pdf live demo site server on cloud we use to view work progress. todo: insert url - notice uses http not https"
+		"text": "web development in a nutshell all the materials for this workshop are available at https://github.com/hectorcorrea/webdev-nutshell"
 	},{
 		"id": "/blog/2024-11-04/us-research-software-engineering-24",
 		"name": "US-RSE-24",

@@ -385,6 +385,7 @@ curl 'http://localhost:8983/solr/your-core/select?debugQuery=on&q=*'
         } else {
           highlightSearchTerms();
         }
+        event.preventDefault();
       });
 
       // Open external links in a new tab
