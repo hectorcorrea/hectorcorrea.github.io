@@ -5,7 +5,7 @@ I have been a software developer for many years. Since 2014 my focus has been on
 
 <img style="float:right;" alt="" src="/public/hectorcorrea.jpg" />
 
-Currently I work at the Princeton University Library as part of the team that develops the applications to manage [research data](https://datacommons.princeton.edu/discovery/) ([code](https://github.com/pulibrary/pdc_discovery/)). I have also been involved in the [discovery application for the catalog](https://catalog.princeton.edu/) and its related services ([code](https://github.com/pulibrary/bibdata)).
+Currently I work at the Princeton University Library as part of the team that develops the applications to manage the curation ([code](https://github.com/pulibrary/pdc_describe)) and [discovery of research data](https://datacommons.princeton.edu/discovery/) ([code](https://github.com/pulibrary/pdc_discovery/)).
 
 From 2016 to 2020 I worked at the Brown University Library on several projects related to discovery ([code](https://github.com/Brown-University-Library/bul-search)), [research profiles](https://vivo.brown.edu/) ([code](https://github.com/Brown-University-Library/vivo-on-rails)), and [archives](https://www.riamco.org/) ([code](https://github.com/Brown-University-Library/riamco)). Most of these applications were Ruby on Rails applications using Solr, some of them through Blacklight others straight through.
 
@@ -15,7 +15,7 @@ Before academic libraries I was heavily involved on the Microsoft stack (C#, ASP
 
 My main areas of interest are web development in small and collaborative teams. I also enjoy learning new and interesting technologies and you'll find a wide variety of topics in my blog including algorithms and data structures, Go, Ruby on Rails, Node.js/JavaScript, Solr, C#/ASP.NET MVC, NoSQL databases, Linked Data, and software development in general.
 
-I hold a Bachelor of Science in Computer Science from Instituto Tecnológico de Colima (Mexico) and several certifications including Microsoft Certified Software Developer (MCSD), ScrumMaster, and MongoDB for Developers (M101P).
+I hold a Bachelor of Science in Computer Science from Instituto Tecnológico de Colima (Mexico) and several certifications including Microsoft Certified Software Developer (MCSD), ScrumMaster, Scrum Product Owner, and MongoDB for Developers (M101P).
 
 In the last few years I've given presentations at local events as well as regional and national conferences in a variety of topics including web development, Solr, Node.js, NoSQL/MongoDB, Linked Data, MARC, data repositories, and sustainable software development. Check out the slides and other related materials on the [presentations](/presentations) tab.
 

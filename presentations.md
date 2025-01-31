@@ -2,8 +2,8 @@
 A selected list of presentations and workshops that I've given over the years.
 
 ## Workshops
-* [Solr for newbies](https://github.com/hectorcorrea/solr-for-newbies) Workshop presented at Code4Lib 2018, 2019, and 2023.
 * [Web development in a nutshell](https://github.com/hectorcorrea/webdev-nutshell) Workshop presented during Wintersession 2025 at Princeton University.
+* [Solr for newbies](https://github.com/hectorcorrea/solr-for-newbies) Workshop presented at Code4Lib 2018, 2019, and 2023.
 
 ## Presentations
 * [Princeton Data Commons: Building an Ecosystem to Support Evolving Research Data Needs](https://doi.org/10.5281/zenodo.14419009) Presentation at the Northeast Institutional Repository Day in 2024 (with Kate Lynch)
