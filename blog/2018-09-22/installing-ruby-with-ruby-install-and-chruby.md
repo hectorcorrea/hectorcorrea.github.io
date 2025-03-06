@@ -82,8 +82,10 @@ Since Ruby 3.x I have experienced a new set of issues when installing Ruby. The 
 The first issue has to do with Open SSL. If `ruby-install` throws an error related to Open SSL the first thing that I will suggest is to use the `--with-openssl-dir` flag to tell it what Open SSL library to use. For example:
 
 ```
-$ ruby-install 3.1.3 -- --with-openssl-dir=$(brew --prefix openssl@1.1)
+$ ruby-install ruby 3.3 -- --with-openssl-dir=$(brew --prefix openssl@3)
 ```
+
+Notice that since December of 2024 OpenSSL 1 has been deprecated and you must use OpenSSL 3.
 
 The other issue that I've seen recently is "error: use of undeclared identifier 'RUBY_FUNCTION_NAME_STRING'". This [blog post by Franklin Yu](https://dev.to/franklinyu/error-of-rubyfunctionnamestring-when-compiling-ruby-32b8) gives a great explanation of the problem and notes that many people have reported that the culprit in this case is the version of the Xcode command line tools installed on your Mac. To address this you can [remove your Xcode command line tools and install them again](https://github.com/rbenv/ruby-build/discussions/1938#discussioncomment-2213912):
 
@@ -91,6 +93,9 @@ The other issue that I've seen recently is "error: use of undeclared identifier 
 $ sudo rm -rf /Library/Developer/CommandLineTools
 $ sudo xcode-select --install
 ```
+
+The `xcode-select --install` command will display "xcode-select: note: install requested for command line developer tools" as the output on the terminal but *it will also display a dialog asking you to confirm that you want to install the Xcode tools*, make sure you accept that prompt.
+
 
 ## chruby notes
 
