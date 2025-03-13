@@ -15,9 +15,9 @@ The conference had a mix of session styles including keynotes (45 minutes long),
 
 
 ## Pre-conference Workshops
-<img src="https://hectorcorrea.com/images/pdx_bikers.jpg" style="float:right;" alt="Bikers" /> Monday morning I attended the [Linked Data Workshop](http://goo.gl/QrUIYE) by Karen Estlund and Tom Johnson. This was a very timely topic for me given that I am new to the libraries and they covered some of the issues that Linked Data (LD) and the Resource Description Framework (RDF) are trying to solve and how they map to the library domain. 
+<img src="https://hectorcorrea.com/images/pdx_bikers.jpg" style="float:right;" alt="Bikers" /> Monday morning I attended the [Linked Data Workshop](http://goo.gl/QrUIYE) by Karen Estlund and Tamsin Woo. This was a very timely topic for me given that I am new to the libraries and they covered some of the issues that Linked Data (LD) and the Resource Description Framework (RDF) are trying to solve and how they map to the library domain. 
 
-Karen and Tom talked about the difference between Linked Data and RDF ("RDF is a mechanism to leverage Linked Data") and the importance of using URIs for predicates and objects to enable linked data to work across institutions. I appreciated the broad overview and real life examples that they provided on how libraries are using these tools. One of the key points of this session was that "if your data isn't reusable, shareable, and machine readable then you're not doing enough".
+Karen and Tamsin talked about the difference between Linked Data and RDF ("RDF is a mechanism to leverage Linked Data") and the importance of using URIs for predicates and objects to enable linked data to work across institutions. I appreciated the broad overview and real life examples that they provided on how libraries are using these tools. One of the key points of this session was that "if your data isn't reusable, shareable, and machine readable then you're not doing enough".
 
 I also liked the exercise in which we had to map a list of terms to linked data terms from [Linked Open Vocabularies](http://lov.okfn.org/dataset/lov/). I was lucky to be paired with two others (Sandy from UMKC and Richard from Berkeley) that knew how libraries work and provided me with some background on the needs of libraries and the technologies that they use outside of Linked Data and RDF.
 
@@ -61,7 +61,7 @@ Each day there was an hour or so reserved for lightning talks in which people vo
 
 Shameless plug: I gave a lightning talk titled [RDF for relational heads](https://gist.github.com/hectorcorrea/c49dc287581d2856a12e) in which I talked about how to understand RDF if you come from a relational database background and how the tools available in the Hydra stack hide some of its complexities.
 
-[Trey Terrel](http://www.slideshare.net/JosephSchmoseph1/become-better-developers-44564801) gave a great talk on how to improve as software developer. I particularly liked how he emphasized that the best way to improve is to work with at least another developer because there is only so much one can professionally grow in a solo environment.
+[Trey Pendragon](http://www.slideshare.net/JosephSchmoseph1/become-better-developers-44564801) gave a great talk on how to improve as software developer. I particularly liked how he emphasized that the best way to improve is to work with at least another developer because there is only so much one can professionally grow in a solo environment.
 
 
 ## Closing thoughts
