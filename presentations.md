@@ -6,7 +6,7 @@ A selected list of presentations and workshops that I've given over the years.
 * [Solr for newbies](https://github.com/hectorcorrea/solr-for-newbies) Workshop presented at Code4Lib 2018, 2019, and 2023.
 
 ## Presentations
-* [Beyond the Buzzwords: Agile collaboration and rejecting the perfectionist mindset](https://hectorcorrea.com/downloads/2025-beyond-the-buzzwords-agile-collaboration.pdf) Presentation at Open Repositories 2025 in Chicago, IL (with Kate Lynch and Hannah Hadley)
+* [Beyond the Buzzwords: Agile collaboration and rejecting the perfectionist mindset](https://doi.org/10.5281/zenodo.15758535) Presentation at Open Repositories 2025 in Chicago, IL (with Kate Lynch and Hannah Hadley)
 * [Building Services for the Long Haul with Princeton Data Commons](https://doi.org/10.17605/OSF.IO/ABNH4) Presentation at the RDAP Summit 2025 (with Kate Lynch)
 * [Unboxing the Repository Model](https://hectorcorrea.com/downloads/2023-dlf-out-of-the-box.pdf) Presentation at the DLF Forum 2023 in St. Louis, MO (with Hannah Hadley)
 * [marcli](https://github.com/hectorcorrea/marcli) Lightning talk at Code4Lib 2021 on a tool to process MARC files
