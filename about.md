@@ -3,7 +3,7 @@ I am a software developer in Hartford, CT. This site is where I host my [blog](/
 
 I have been a software developer for many years. Since 2014 my focus has been on Ruby on Rails applications for academic libraries with a strong focus on indexing and searching data through Apache Solr and on institutional and data repositories.
 
-<img style="float:right;" alt="" src="/public/hectorcorrea.jpg" />
+<img class="about-image" alt="" src="/public/hectorcorrea.jpg" />
 
 Currently I work at the Princeton University Library as part of the team that develops the applications to manage the curation ([code](https://github.com/pulibrary/pdc_describe)) and [discovery of research data](https://datacommons.princeton.edu/discovery/) ([code](https://github.com/pulibrary/pdc_discovery/)).
 

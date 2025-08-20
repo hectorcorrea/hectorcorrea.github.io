@@ -82,6 +82,18 @@
         margin-bottom: 0px;
         width: 16px;
       }
+
+      @media only screen and (max-width: 600px) {
+        .about-image {
+          float: none;
+        }
+      }
+
+      @media only screen and (min-width: 600px) {
+        .about-image {
+          float: right;
+        }
+      }
     </style>
   </head>
   <body>
@@ -117,7 +129,7 @@
 
 <p>I have been a software developer for many years. Since 2014 my focus has been on Ruby on Rails applications for academic libraries with a strong focus on indexing and searching data through Apache Solr and on institutional and data repositories.</p>
 
-<p><img style="float:right;" alt="" src="/public/hectorcorrea.jpg" /></p>
+<p><img class="about-image" alt="" src="/public/hectorcorrea.jpg" /></p>
 
 <p>Currently I work at the Princeton University Library as part of the team that develops the applications to manage the curation (<a href="https://github.com/pulibrary/pdc_describe">code</a>) and <a href="https://datacommons.princeton.edu/discovery/">discovery of research data</a> (<a href="https://github.com/pulibrary/pdc_discovery/">code</a>).</p>
 
