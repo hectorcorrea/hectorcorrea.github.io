@@ -7,6 +7,12 @@
           <generator>https://github.com/hectorcorrea/fixie</generator>
           <atom:link href="https://hectorcorrea.com" rel="self" type="application/rss+xml"></atom:link>
           <item>
+              <title>Go executables and machine architecture</title>
+              <description>One of my favorite features of the Go programming language is that it can produce executables that I can copy to another machine and run without having to worry about dependencies on the target machine. To make things even better I can build executables for other operating systems, like Linux or Windows, from my Mac. For example, to build the executable for one of my projects (`marcli`) I run the following command on My Mac and I get a Mac executable: But I can also run the following command (again, from my Mac) and get instead a Linux executable:</description>
+              <guid isPermaLink="true">/blog/2025-11-11/go-build-tool-machine-architecture</guid>
+              <pubDate>Tue, 11 Nov 2025 00:00:00 +0000</pubDate>
+          </item>
+          <item>
               <title>US-RSE-24</title>
               <description>*Posted on 2024-11-04* Last month (October/2024) I attended the [US Research Software Engineering 2024](https://us-rse.org/usrse24/) conference that took place in Albuquerque, NM. This post is a summary of what I learned during this event. Although I am not a Research Software Engineer (RSE) per-se, most of the projects I am involved at work are related to developing infrastructure to support research data. So, when last year I started hearing rumblings about  Research Software Engineering  conferences I got a bit curious and decided to attend the one in the US.</description>
               <guid isPermaLink="true">/blog/2024-11-04/us-research-software-engineering-24</guid>
