@@ -1,4 +1,5 @@
 # Go executables and machine architecture
+*Posted on 2025-11-11*
 
 One of my favorite features of the Go programming language is that it can produce executables that I can copy to another machine and run without having to worry about dependencies on the target machine. To make things even better I can build executables for other operating systems, like Linux or Windows, from my Mac.
 
@@ -47,7 +48,7 @@ The [architecture of the machine](https://en.wikipedia.org/wiki/Computer_archite
 
 For example, when I build an executable on my Mac with `go build -o marcli` internally the Go compiler is using two default values to determine the operating system (`GOOS`) and architecture (`GOARCH`) I want for the executable, *even if I don't specify one*.
 
-For example in my Mac if run `go env GOOS GOARCH` I get the following values:
+For example in my new Mac if run `go env GOOS GOARCH` I get the following values:
 
 ```
 darwin
@@ -61,37 +62,38 @@ darwin
 amd64
 ```
 
-Notice that my new Mac uses the [ARM64](https://en.wikipedia.org/wiki/AArch64) architecture whereas my old Mac uses the [AMD64](https://en.wikipedia.org/wiki/X86-64) architecture (for some weird historical reasons sometimes the AMD64 architecure is refered as "x84-64".)
+Notice that my new Mac uses the [ARM64](https://en.wikipedia.org/wiki/AArch64) architecture whereas my old Mac uses the [AMD64](https://en.wikipedia.org/wiki/X86-64) architecture.
 
-What this means is that if build an executable with just `go build -o marcli` I will get a different kind of executable depending on the Mac that I use. My newer Mac will by default produce a binary for the ARM64 architecture whereas my older Mac will default to the AMD64 architecture.
+**Note:** For some weird historical reasons the AMD64 architecure is sometimes referred as "x86-64" and because of this some tools might return "amd64" whereas others will return "x86-64", for the purposes of this post they are interchangeable.
 
-Luckly for us we can generate executables for different kind of architectures regardless of the architecture of our machine. For example I can run the following commands on my Mac:
+The fact that each of my Mac has different defaults values for the `GOARCH` value means is that if build an executable with just `go build -o marcli` I will get a different kind of executable depending on the Mac that I use: my newer Mac will produce a binary for the ARM64 architecture whereas my older Mac will default to the AMD64 architecture.
+
+Luckly for us we can generate executables for specific architectures regardless of the architecture of our machine. For example I can run the following commands on my Mac:
 
 ```
 GOOS=darwin GOARCH=amd64 go build -o marcli_amd64
 GOOS=darwin GOARCH=arm64 go build -o marcli_arm64
 ```
 
-and I will get two executables, both of them are for the Mac operating system (`GOOS=darwin`) but one of them is for Mac computers with the AMD64 architecture (`GOARCH=amd64`) whereas the other is for Mac computers with the ARM64 architecture (`GOARCH=arm64`).
+and I will get two executables, both of them are for the Mac operating system (`GOOS=darwin`) but one of them is for Mac computers with the AMD64 architecture (`GOARCH=amd64`) whereas the other is for Mac computers with the ARM64 architecture (`GOARCH=arm64`). And I can do this from any of my Mac computers regardless of their own architecture.
 
 I can inspect a given executable with the `file` command. For example file `marcli_amd64` will show "Mach-O 64-bit executable x86_64" whereas `file marcli_arm64` will show "Mach-O 64-bit executable arm64".
 
 
 ## What kind of architecure does my computer have?
 
-As I mentioned earlier the architecture of the machine is something that depends on chip inside of it and it's a pain to figure out.
+As I mentioned earlier the architecture of the machine is something that depends on chip inside. On a Mac you can find the architecture with the [uname](https://stackoverflow.com/questions/65259300/detect-apple-silicon-from-command-line) command.
 
-On a Mac you can find what *chip* your computer has by clicking on the Apple icon (&#xF8FF;) on the upper left corner and selecting "About this Mac". The information displayed contains something like "Chip: Apple M4" or "Intel Core m3".
-
-You can also find the chip information via the Terminal with a command like:
+On my new Mac I get "arm64":
 
 ```
-sysctl -a | grep brand
+$ uname -m
+arm64
 ```
 
-On my new Mac I get `machdep.cpu.brand_string: Apple M4` whereas on my old Mac I get `machdep.cpu.brand_string: Intel(R) Core(TM) m3-7Y32 CPU @ 1.10GHz`.
+whereas on an old Mac I get "x86_64" (remember that "x86-64" is the equivalent to "amd64" for our purposes).
 
-Once you know the chip a few searches on the web can help you figure out the *architecture* that corresponds for the chip in your machine. In my case Wikipedia says that the [Apple M4](https://en.wikipedia.org/wiki/Apple_silicon) machines use the AMR64 architecure and the [Intel](https://en.wikipedia.org/wiki/X86-64) machine use the AMD64 architecture. As I said earlier, kind of a pain to figure out.
+I can also find the *chip* my computer has by clicking on the Apple icon (&#xF8FF;) on the upper left corner and selecting "About this Mac". The information displayed contains something like "Chip: Apple M4" or "Chip: Intel Core m3". From the chip information is possible to figure out the actual architecture, it's kind of a pain, but a few searches on the web will get you there. Wikipedia says that the [Apple M4](https://en.wikipedia.org/wiki/Apple_silicon) machines use the AMR64 architecure and the [Intel](https://en.wikipedia.org/wiki/X86-64) machines use the AMD64 architecture.
 
 
 ## Building executable for other operating systems
@@ -128,7 +130,7 @@ The takeaway message is to always specify both the operating system (`GOOS`) and
 
 
 ## Universal binaries on the Mac OS
-It is a bit of a pain to have to build executables taking into consideration the architecture of the target machine and I think it is even worse for users to have to chose what kind of executable they want to download. I mean how many of us know whether we want the ARM64 or AMD64 executable of a given tool.
+It is a bit of a pain to have to build executables taking into consideration the architecture of the target machine and I think it is even worse for users to have to choose what kind of executable they want to download. I mean how many of us know whether we want the ARM64 or AMD64 executable of a given tool.
 
 On the Mac is possible to build *universal binaries* with the `lipo` tool that comes [built-in the Mac OS](https://dev.to/thewraven/universal-macos-binaries-with-go-1-16-3mm3).
 
@@ -145,7 +147,7 @@ and then combine them to create an executable that will work regardless of wheth
 lipo -create -output marcli_universal marcli_amd64 marcli_arm64
 ```
 
-If we inspect this executable with `file marcli_universal` we can see both architectures:
+If we inspect this executable with `file marcli_universal` we can see that it reports both architectures:
 
 ```
 marcli_universal: Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit executable x86_64] [arm64]
@@ -153,6 +155,6 @@ marcli_universal (for architecture x86_64):	Mach-O 64-bit executable x86_64
 marcli_universal (for architecture arm64):	Mach-O 64-bit executable arm64
 ```
 
-A disadvantage of this approach is that the universal executable will be twice a large as each of the individual executables. Depending on your sitation this might be a problem or not, but I think it removes such a burden from the end user that it is worth considering.
+A disadvantage of this approach is that the universal executable will be twice a large as each of the individual executables. Depending on your situation this might be a problem or not, but I think it removes such a burden from the end user that it is worth considering.
 
-Another disadvantage is that `lipo` is a tool for Mac OS, I am not sure if there are equivalents for other operating systems.
+Another thing to consider is that `lipo` is a tool for Mac OS, I am not sure if there are equivalents for other operating systems.
