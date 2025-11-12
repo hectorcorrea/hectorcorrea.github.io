@@ -8,7 +8,7 @@
           <atom:link href="https://hectorcorrea.com" rel="self" type="application/rss+xml"></atom:link>
           <item>
               <title>Go executables and machine architecture</title>
-              <description>*Posted on 2025-11-11* One of my favorite features of the Go programming language is that it can produce executables that I can copy to another machine and run without having to worry about dependencies on the target machine. To make things even better I can build executables for other operating systems, like Linux or Windows, from my Mac. For example, to build the executable for one of my projects (`marcli`) I run the following command on My Mac and I get a Mac executable:</description>
+              <description>*Posted on 2025-11-11* One of my favorite features of the Go programming language is that it can produce executables that I can copy to another machine and run without having to worry about dependencies on the target machine. To make things even better I can build executables for other operating systems, like Linux or Windows, from my Mac. For example, to build the executable for one of my projects (`marcli`) I run the following command on my Mac and I get a Mac executable:</description>
               <guid isPermaLink="true">/blog/2025-11-11/go-build-tool-machine-architecture</guid>
               <pubDate>Tue, 11 Nov 2025 00:00:00 +0000</pubDate>
           </item>

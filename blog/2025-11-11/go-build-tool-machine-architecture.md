@@ -3,7 +3,7 @@
 
 One of my favorite features of the Go programming language is that it can produce executables that I can copy to another machine and run without having to worry about dependencies on the target machine. To make things even better I can build executables for other operating systems, like Linux or Windows, from my Mac.
 
-For example, to build the executable for one of my projects (`marcli`) I run the following command on My Mac and I get a Mac executable:
+For example, to build the executable for one of my projects (`marcli`) I run the following command on my Mac and I get a Mac executable:
 
 ```
 go build -o marcli
