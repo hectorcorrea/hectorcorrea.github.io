@@ -6,7 +6,7 @@ A few days ago I updated my Bash initialization script to display the current Gi
 As it turns out there several ways to achieve this and after trying a few of them I settled on creating a very small Bash function to return the current branch if I am on on a Git project (empty otherwise) and stick this value to the `PS1` variable which is what Bash uses to determine what is included in the prompt.
 
 
-## The short-story
+## The short story
 Below is the code that I added to my `.bash_profile` to achieve this:
 
 ```
