@@ -7,6 +7,12 @@
           <generator>https://github.com/hectorcorrea/fixie</generator>
           <atom:link href="https://hectorcorrea.com" rel="self" type="application/rss+xml"></atom:link>
           <item>
+              <title>Displaying the Git branch on the Bash prompt</title>
+              <description>*Posted on 2026-01-05* A few days ago I updated my Bash initialization script to display the current Git branch on the prompt. As it turns out there several ways to achieve this and after trying a few of them I settled on creating a very small Bash function to return the current branch if I am on on a Git project (empty otherwise) and stick this value to the `PS1` variable which is what Bash uses to determine what is included in the prompt.</description>
+              <guid isPermaLink="true">/blog/2026-01-05/git-branch-on-bash-prompt</guid>
+              <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
+          </item>
+          <item>
               <title>Go executables and machine architecture</title>
               <description>*Posted on 2025-11-11* One of my favorite features of the Go programming language is that it can produce executables that I can copy to another machine and run without having to worry about dependencies on the target machine. To make things even better I can build executables for other operating systems, like Linux or Windows, from my Mac. For example, to build the executable for one of my projects (`marcli`) I run the following command on my Mac and I get a Mac executable:</description>
               <guid isPermaLink="true">/blog/2025-11-11/go-build-tool-machine-architecture</guid>
