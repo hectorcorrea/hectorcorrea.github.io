@@ -36,7 +36,7 @@ or just the path if I am on a directory that is not a Git repository:
 ~/Downloads $
 ```
 
-Since I put the changes in my `.bash_profile` I had to close and re-open my Terminal for the changes to take effect.
+Since I put the changes in my `.bash_profile` I had to close and re-open the Terminal for the changes to take effect, which is expected.
 
 
 ## Getting the branch name
@@ -60,13 +60,13 @@ Git itself includes a script that provides the same (and much more) functionalit
 
 The script is called `git-prompt.sh` and on my Mac I found it under `/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh`. I understand [it can be in several different locations](https://www.glukhov.org/post/2025/12/adding-git-repo-details-to-bash-prompt/) depending on how you installed Git or your operating system.
 
-The script is rather comprehensive (672 lines long in my Git 2.50.1 installation) since it has code that allows is to work with different operating systems, shells, and handles much more information than just the current branch.
+The script is rather comprehensive (672 lines long in my Git 2.50.1 installation) since it has code that allows it to work with different operating systems, shells, and handles much more information than just the current branch.
 
-If you use this script then just need to source it and update your `PS1` variable to use it:
+If you use this script then you just need to source it and update your `PS1` variable to use it:
 
 ```
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 ```
 
-I didn't quite like the way it behaved for me, it felt slugish, so I decided against it and used my tiny function instead. But the `git-prompt.sh` script has wealth of information and it's worth checking out if you are updating your prompt with the Git branch information, you can also [view it directly in GitHub](https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh).
+I didn't quite like the way it behaved for me, it felt slugish, so I decided against it and used my tiny function instead. But the `git-prompt.sh` script has a wealth of information and it's worth checking out if you are updating your prompt with the Git branch information, you can also [view it directly in GitHub](https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh).

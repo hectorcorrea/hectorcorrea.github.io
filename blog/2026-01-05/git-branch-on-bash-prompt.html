@@ -163,7 +163,7 @@ main ~/src/marcli $
 ~/Downloads $
 </pre>
 
-<p>Since I put the changes in my <code>.bash_profile</code> I had to close and re-open my Terminal for the changes to take effect.</p>
+<p>Since I put the changes in my <code>.bash_profile</code> I had to close and re-open the Terminal for the changes to take effect, which is expected.</p>
 
 
 <h2>Getting the branch name</h2>
@@ -187,16 +187,16 @@ fatal: not a git repository (or any of the parent directories): .git
 
 <p>The script is called <code>git-prompt.sh</code> and on my Mac I found it under <code>/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh</code>. I understand <a href="https://www.glukhov.org/post/2025/12/adding-git-repo-details-to-bash-prompt/">it can be in several different locations</a> depending on how you installed Git or your operating system.</p>
 
-<p>The script is rather comprehensive (672 lines long in my Git 2.50.1 installation) since it has code that allows is to work with different operating systems, shells, and handles much more information than just the current branch.</p>
+<p>The script is rather comprehensive (672 lines long in my Git 2.50.1 installation) since it has code that allows it to work with different operating systems, shells, and handles much more information than just the current branch.</p>
 
-<p>If you use this script then just need to source it and update your <code>PS1</code> variable to use it:</p>
+<p>If you use this script then you just need to source it and update your <code>PS1</code> variable to use it:</p>
 
 <pre>
 source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 </pre>
 
-<p>I didn't quite like the way it behaved for me, it felt slugish, so I decided against it and used my tiny function instead. But the <code>git-prompt.sh</code> script has wealth of information and it's worth checking out if you are updating your prompt with the Git branch information, you can also <a href="https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh">view it directly in GitHub</a>.</p>
+<p>I didn't quite like the way it behaved for me, it felt slugish, so I decided against it and used my tiny function instead. But the <code>git-prompt.sh</code> script has a wealth of information and it's worth checking out if you are updating your prompt with the Git branch information, you can also <a href="https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh">view it directly in GitHub</a>.</p>
 
     </div>
 
