@@ -151,17 +151,19 @@ function git-branch {
 PS1='$(git-branch)\w \$ '
 </pre>
 
-<p>Once I added this code to my <code>.bash_profile</code> <i>the next time</i> I opened the Terminal the Bash prompt now includes the current branch name of the project that I am on, for example:</p>
+<p>Once I added this code to my <code>.bash_profile</code> the Bash prompt now includes the current branch name of the project that I am on, for example:</p>
 
 <pre>
 main ~/src/marcli $
 </pre>
 
-<p>or just the normal path if I am on a directory that is not a Git repository:</p>
+<p>or just the path if I am on a directory that is not a Git repository:</p>
 
 <pre>
 ~/Downloads $
 </pre>
+
+<p>Since I put the changes in my <code>.bash_profile</code> I had to close and re-open my Terminal for the changes to take effect.</p>
 
 
 <h2>Getting the branch name</h2>
@@ -177,15 +179,15 @@ $ git branch --show-current
 fatal: not a git repository (or any of the parent directories): .git
 </pre>
 
-<p>In my example I ignore the error by redirecting it to <code>dev/null</code> with the <code>2&gt;/dev/null</code> syntax.</p>
+<p>In my example I ignore the error by redirecting it to <code>/dev/null</code> with the <code>2&gt;/dev/null</code> syntax. This is necessary so that the error is not displayed on the Terminal every time I switch to a non-git directory.</p>
 
 
 <h2>Using the official git-prompt code</h2>
-<p>Git itself provides a script that achieves the same (and much more) functionality as my tiny script and you can also use this to get the same behavior.</p>
+<p>Git itself includes a script that provides the same (and much more) functionality as my tiny script and you can also use this to get the same behavior.</p>
 
 <p>The script is called <code>git-prompt.sh</code> and on my Mac I found it under <code>/Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh</code>. I understand <a href="https://www.glukhov.org/post/2025/12/adding-git-repo-details-to-bash-prompt/">it can be in several different locations</a> depending on how you installed Git or your operating system.</p>
 
-<p>The script is rather comprehensive (673 lines long in my Git 2.50.1 installation) since it has code to work with many different operating systems, shells, and handles much more information than just the current branch.</p>
+<p>The script is rather comprehensive (672 lines long in my Git 2.50.1 installation) since it has code that allows is to work with different operating systems, shells, and handles much more information than just the current branch.</p>
 
 <p>If you use this script then just need to source it and update your <code>PS1</code> variable to use it:</p>
 
@@ -194,7 +196,7 @@ source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 </pre>
 
-<p>I didn't quite like the way it behaved for me, it felt slugish, so I decided against it and used my tiny function instead. But the <code>git-prompt.sh</code> script has wealth of information and it's worth checking out if you are updating your prompt with the Git branch information.</p>
+<p>I didn't quite like the way it behaved for me, it felt slugish, so I decided against it and used my tiny function instead. But the <code>git-prompt.sh</code> script has wealth of information and it's worth checking out if you are updating your prompt with the Git branch information, you can also <a href="https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh">view it directly in GitHub</a>.</p>
 
     </div>
 
