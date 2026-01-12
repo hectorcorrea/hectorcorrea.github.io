@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="*Posted on 2026-01-12* This post is a short description of what my career as a software developer has been, followed by a few observations and recommendations for those starting a career in software development. I wrote this piece basely solely on my experience as a software developer and my recollection of thirty years in the field, it is therefore a very selective story (that's how memories work) and it is also just one data point. I hope some of the things that I have experienced and learned can help others starting their journey in software development because one of the things that I have noticed is that although a lot has changed throughout my career a lot has also stayed the same.">
+    <meta name="author" content="hector@hectorcorrea.com">
+
+    <title>A career in software development</title>
+
+    <link rel="shortcut icon" href="/public/favicon.ico" />
+    <link rel="apple-touch-icon" href="/public/favicon.png"/>
+
+    <!-- Styles from https://newcss.net/ -->
+    <link rel="stylesheet" href="https://fonts.xz.style/serve/inter.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.css">
+
+    <link rel="me" href="https://mastodon.social/@hectorjcorrea" />
+    <base href="https://hectorcorrea.com" />
+
+    <!-- Lunr.js for searching, Mark.js for highlighting search results -->
+    <script src="/public/lunr.min.js"></script>
+    <script src="/public/mark.min.js"></script>
+
+    <style>
+      img {
+        padding: 5px;
+        box-shadow: 3px 3px 8px #222;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      footer {
+        background: var(--nc-bg-2);
+        border-bottom: 1px solid var(--nc-bg-3);
+        padding: 2rem 1.5rem;
+
+        margin: -2rem calc(0px - (50vw - 50%)) 2rem;
+
+        padding-left: calc(50vw - 50%);
+        padding-right: calc(50vw - 50%);
+
+        margin-top: -0px;
+        margin-bottom: 0px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        color: gray;
+        font-size: x-small;
+      }
+
+      .header-link {
+        /* Main body text, see new.css */
+        color: var(--nc-tx-2);
+        text-decoration: none;
+      }
+
+      .nav-link-selected {
+        font-weight: bold;
+      }
+
+      .search-options {
+        float: right;
+      }
+
+      .highlight-icon-on > a {
+        background: var(--nc-ac-1);
+      }
+
+      .highlight-icon-off > a {
+        background: var(--nc-bg-2);
+      }
+
+      .invisible {
+        display: none;
+      }
+
+      .socialLogo {
+        padding: 0px;
+        box-shadow: none;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        width: 16px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .about-image {
+          float: none;
+        }
+      }
+
+      @media only screen and (min-width: 600px) {
+        .about-image {
+          float: right;
+          margin-left: 25px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><a class="header-link" href="/">Hector Correa</a></h1>
+      <nav>
+        <a id="about-menu" href="/about">About</a>
+        | <a id="presentations-menu" href="/presentations">Presentations</a>
+        | <a id="blog-menu" href="/blog">Blog</a>
+        <span class="search-options">
+          <span>
+            <a href="/search" title="Search">
+              <!--Magnifying glass source: https://icons.getbootstrap.com/icons/search/ -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+              </svg></a>
+          </span>
+          <span id="highlight-menu" class="invisible">
+            <a href="#" title="Toggle highlight">
+              <!-- Highlighter source: https://icons.getbootstrap.com/icons/highlighter/ -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-highlighter" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.096.644a2 2 0 0 1 2.791.036l1.433 1.433a2 2 0 0 1 .035 2.791l-.413.435-8.07 8.995a.5.5 0 0 1-.372.166h-3a.5.5 0 0 1-.234-.058l-.412.412A.5.5 0 0 1 2.5 15h-2a.5.5 0 0 1-.354-.854l1.412-1.412A.5.5 0 0 1 1.5 12.5v-3a.5.5 0 0 1 .166-.372l8.995-8.07zm-.115 1.47L2.727 9.52l3.753 3.753 7.406-8.254zm3.585 2.17.064-.068a1 1 0 0 0-.017-1.396L13.18 1.387a1 1 0 0 0-1.396-.018l-.068.065zM5.293 13.5 2.5 10.707v1.586L3.707 13.5z"/>
+              </svg>
+            </a>
+          </span>
+        </span>
+      </nav>
+    </header>
+
+    <div id="page-content">
+      <h1>A career in software development</h1>
+<p><i>Posted on 2026-01-12</i></p>
+
+<p>This post is a short description of what my career as a software developer has been, followed by a few observations and recommendations for those starting a career in software development.</p>
+
+<p>I wrote this piece basely solely on my experience as a software developer and my recollection of thirty years in the field, it is therefore a very selective story (that's how memories work) and it is also just one data point. I hope some of the things that I have experienced and learned can help others starting their journey in software development because one of the things that I have noticed is that although a lot has changed throughout my career a lot has also stayed the same.</p>
+
+
+<h2>My career in four buckets</h2>
+<p>If I were to split my career into four buckets they would look more or less like this:</p>
+
+<ul>
+<li>College years and immediately after (1991-1998)
+<li>Client server applications (1998-2005)
+<li>Web applications (2005-2014)
+<li>Library-land (2014-present)
+</ul>
+
+
+<h3>College years and immediately after (1991-1998)</h3>
+<p>I went to college in 1991 and graduated with a Bachelor of Science in Computer Science from the Instituto Tecnológico de Colima (México) in 1996. I was lucky to work on programming gigs all throughout my college years and got a full time job as a software developer immediately after graduation.</p>
+
+<p>One of the things that I experienced back then was that the tools and technologies that I was learning in college were quite different from the tools and technologies that I was using in the jobs available to me. For example, at school I was learning about VAX Computers, COBOL, Db2, and Assembler but the jobs that I was getting were using databases like dBase, programming in Pascal, and the computers were running DOS or Windows. These two worlds couldn't be more different from each other.</p>
+
+<p>I think this disconnect between what's being taught at school versus what's being used in practice is also common these days. But as I would elaborate later on this post, in the long run that's not nearly as significant as it might seem.</p>
+
+
+<h3>Client-server applications (1998-2005)</h3>
+<p>In the late 90s and early 2000s I became a <i>consultant</i> and started working on <i>client-server</i> applications. These applications were very different in architecture to the ones that I had worked on before that ran on a single machine. My work was with the Microsoft stack and therefore those applications were written with Visual FoxPro, Visual Basic, or C# and used SQL Server as the database.</p>
+
+<p>The shift to client-server applications was a big shift from my first gigs and from what I have learned in school, but the fact that we learned about networks during college became really handy when working and designing these kind of applications. The size of the database in client-server applications was also much larger than databases in single-user applications and having foundational knowledge on algorithms, concurrency, and how relational databases work was helpful.</p>
+
+<p>Being a consultant had the advantage that I got to work on many different projects for different domains like insurance, banking, and  construction but it had the disadvantage that I was never long enough on a project to see how the decisions and implementations that I made worked out in the long run.</p>
+
+
+<h3>Web applications (2005-2014)</h3>
+<p>I was a late comer to <i>web development</i>, but around 2005 I started to get more and more involved with it and eventually it became pretty much all I did. I was still heavily involved in the Microsoft stack and therefore the web applications that I worked on were written in Visual Basic.NET and C# using ASP.NET and SQL Server.</p>
+
+<p>I also stopped working as a consultant and became involved in projects that were longer term. This allowed me to work on applications that were more complex, some of them because the kind of rules and logic that they had to implement (e.g. to process bankruptcy claims or tax preparation) and others because the amount of data they processed or the amount of concurrent traffic they had to sustain.</p>
+
+<p>Around this time I also got interested in software development processes (e.g. Agile and Scrum) and that led me to also <i>focus more and more on the people in the team</i> and the way we work together.</p>
+
+
+<h3>Library-land (2014-present)</h3>
+<p>Around 2011 I started to get curious about what software development outside the Microsoft stack looked like<sup>1</sup>. After a few years playing around with Ruby in my spare time, in 2014 I took a full time job as a Ruby developer. This job was at the Penn State University Library and I took it because they were working on Ruby and that's what I was interested in doing at that time. Little did I know that this job was going to change my career trajectory in a big way.</p>
+
+<p>After working at Penn State for a couple of years my next job was also at an academic library (Brown University) using Ruby. Although I was still interested in Ruby this was the first time that I picked my next job based on the institution and the kind of projects they were working on rather than because of their technology stack. Certainly my knowledge of Ruby helped me get the job, but my interests in libraries rather than the technology is what drove my decision.</p>
+
+<p>Several years later I changed jobs again to my current employer (Princeton University) and, like with Brown, my goal was to work in interesting and challenging projects in academic libraries more than to stay with a particular technology stack. My work at Princeton uses Ruby but the Ruby part is not nearly as important to me as it was when I first started working in libraries 10 years ago.</p>
+
+<p>After working for more than 10 years in academic libraries I feel like I have a good enough understanding of the library field that allows me to contribute at a different level and I am enjoying this stage of my career. I am still a software developer and write a lot of code as part of my job, but I am <i>more interested in librarianship</i>, data repositories, the stakeholders of cultural heritage institutions, and <i>the system as a whole</i> rather than just the software and technology components.</p>
+
+
+<h2>A few observations for newcomers</h2>
+<p>Although the career trajectory that I just described might look like a logical progression, the journey was anything but straightforward. There were many technologies, paradigms, and tools that I experimented with along the way that went nowhere. Some of the technologies that I used are not around anymore, products and tools have come and go, and programming paradigms have shifted<sup>2</sup>.</p>
+
+<p>But all those steps along the way have shaped the way I see software development today and have enriched my understanding of the field. Below are a few observations that I think are worth highlighting, particularly for those starting their journey in software development.</p>
+
+
+<h3>Learning</h3>
+<p>There is always something new to learn in this field. If you enjoy learning new things this is a very attractive field.</p>
+
+<p>As you learn new things, particularly new programing languages and programming paradigms try to learn them <i>as they are meant to be used</i>. For example, if you are a Java developer learning Ruby, try to learn and use Ruby as a Ruby developer would use it, don't try to use it as you would use Java. The same is true if you are a Ruby developer learning Java, learn how to use it with the mindset of a Java developer. This is important because using the new tool as it is meant to be used opens up to different ways of thinking of programming and allows you to leverage the benefits of the new tool (as opposed to continuously fight with the tool because you are using it in a way that it was not designed for). The same is true if you are trying to learn functional programming and you are coming from an object-oriented background, embrace each approach's core principles (which might be counterintuitive at the beginning) so you get to experience them well.</p>
+
+<p>I have found that writing blog posts and presenting at conferences are great ways to learn new things because presenting the work to others forces you to dig deep and make sure that you understand the technology well. Plus it gives you great exposure to other people with similar interests.</p>
+
+<p>As you begin your journey you might feel that you are already behind and it's too late to learn something. Don't let that discourage you. The initial learning takes a bit of time, but it gets easier to learn new things as you go (since you'll have a broader foundation) and you'll catch up rather quickly as time goes on.</p>
+
+
+<h3>Tools and theory</h3>
+<p>As I mentioned earlier, the tools that I learned while I was at school are mostly obsolete by now, but the theory and principles that I learned still apply. The knowledge about networks, databases, algorithms, operating systems, graph theory, and such are still at the core of the tools that I use today (30 years later) and behind the design decisions of the systems that I build and work with. What I learned during my college years was in the long term well worth it.</p>
+
+<p>In fact a lot of the tools and techniques that I used early on my career (which were already different from the ones I used in college) are also gone by now. But working with them allowed me to grow as a developer and to learn new ways of thinking about software. All of these steps, even the ones in the wrong direction, enriched my career.</p>
+
+<p>We, as developers, tend to focus a lot on our tools and it pays to know them well. Employers and our peers will value if we are knowledgeable about the latest version of Ruby, Java, or PostgreSQL. My advise to newcomers is to become very good at the tools that you use and keep up to date with them, but at the same time, stay humble and be willing to ditch them and shift gears when you feel the time has come. Don't bash other tools and paradigms just because you don't use them, as your career evolves you might find yourself needing and wanting to learn other tools and paradigms.</p>
+
+
+<h3>Programming and problem solving</h3>
+<p>A lot of us get into programming because we like problem solving and there is a lot of that in our day to day job as software developers. But be aware that software development at large is about <i>solving problems with others</i>, <i>with unclear and changing requirements</i>, and our solutions will <i>require maintenance</i> (i.e. we rarely solve a problem and are done with it.)</p>
+
+<p>The group of people that you will work with will vary throughout your career, in some projects you'll work with other developers, in others you might work with other IT related people (even if not developers per-se), and in others you might work with stakeholders that are no in IT related positions. Working well with others and being able to communicate with people that have different technical knowledge is a great asset and will allow you to see the problems from different angles. A lot of times the problem cannot be solved with just code, and knowing how to navigate through the domain will give you better insight on the problem and possible solutions.</p>
+
+<p><i>Remember that technology and software development are political</i>. It's common for people to think at algorithms are "pure and free of biases" but our tools and the solutions we build are used and deployed in ways that tend to amplify biases. You might think that a sorting algorithm has no biases (how could it have biases, right?), but as soon as you deploy a system that uses such algorithm to decide who receives something and who does not your program is not pure and free of biases as you might think<sup>3</sup>.</p>
+
+
+<h3>You’ll screw something big at some point</h3>
+<p>At one point in your career you will screw up something big: you might take down a server accidentally, delete the wrong file from system, delete the wrong records in a database, you name it. It will happen.</p>
+
+<p>First of all, please know that this kind of experience happens to all of us. Given enough time we will do something like this at one point or another. Most likely it will happen in the early years of your career since that's when you are most inexperienced, but it also happens to experienced developers.</p>
+
+<p>Secondly, do not let an incident like this discourage from the field. Remember that you are new and there is a lot going on on a given system. Good systems have checks to prevent single users from taking them down. And yet, we still manage to find places where the checks are not good enough or missing entirely.</p>
+
+<p>Hopefully you work on an environment where they understand the human nature of what we do and they will help you get over it. Regardless, learn from your mistake and keep on going.</p>
+
+
+<h3>Programming is fun and rewarding</h3>
+<p>Programming can be a fun and rewarding career. There is always a problem to solve and if you like problem solving it is a joy to work on them and get paid for it.</p>
+
+<p>Software development is also well paid, and although money is not everything, it is certainly rewarding to get paid well for what we do.</p>
+
+<p>But software development is not perfect, there is a lot of sexism and discrimination in our field<sup>4</sup> just like there is in society at large. I cannot speak about how it compares to other domains since I have always been a software developer, and being a guy in software development comes with certain privileges, but discrimination in our field exists and I hope we all can work together to make the field more inclusive to all.</p>
+
+<p>At the beginning your career options might be limited, but as you go you might have the opportunity to work in many different kind of fields and many different kind of projects. You might work on small application with a small team or in a large application with a large team, you might write applications that are purely for entertaining or applications that can save lives.</p>
+
+<p>No matter what your journey looks like at the beginning, keep learning, and enjoy the ride.</p>
+
+
+<h3>Do you need a degree in Computer Science?</h3>
+<p>No, I don't think to.</p>
+
+<p>I wrote this post based on the materials that I used a couple of years ago when I gave a presentation to a few Computer Science (CS) undergrads about my career story, and therefore my story starts during the years that I pursued my CS degree<sup>5</sup>.</p>
+
+<p>A degree in CS has certainly helped me, but I have worked with many talented developers that didn't study Computer Science to begin with. Some of them started programming right after high school and became really good at it. Others had an undergrad degree from an unrelated discipline (say music or business administration) and became really good software developers.</p>
+
+<p>If you don't have some of the foundations that a CS degree gives you, it's up to you to get them since you are going to need them at some point in you career. Unfortunately this kind material tends to be a bit academic and obscure and hard to get started with on your own, which I think that's where a degree helps since you have people helping you learn the ropes. But there are resources to learn them outside of a formal college degree.</p>
+
+
+<h2>Notes</h2>
+<p>[1] I wrote about <a href="https://hectorcorrea.com/blog/2011-01-24/ruby-development-on-the-mac-os-x">my first experiences with Ruby in 2011</a> and about my <a href="https://hectorcorrea.com/blog/2019-11-18/my-strange-journey-to-becoming-a-ruby-developer">journey as a Ruby developer in 2019</a>.</p>
+
+<p>[2] If you look around the <a href="https://hectorcorrea.com/blog">topics in my blog</a> you'll notice how my interests have shifted over time. There are posts about technologies that no longer exist or that I don't use anymore. Or this <a href="https://www.codemag.com/Article/0307061/Auto-Deploying-Windows-Forms-.NET-Applications-The-Revenge-of-the-Fat-Client">article that I wrote in 2003</a> on how to deploy applications over the wire, so quaint, err, I mean so obsolete.</p>
+
+<p>[3] If this is news to you I recommend the books <a href="https://en.wikipedia.org/wiki/Algorithms_of_Oppression">Algorithms of Oppression: How Search Engines Reinforce Racism</a> by Safiya Noble and <a href="https://en.wikipedia.org/wiki/Race_After_Technology">Race After Technology</a> by Ruha Benjamin on the subject. The piece <a href="https://digitalsts.net/wp-content/uploads/2019/11/26_digitalSTS_Knowing-Algorithms.pdf">Knowing Algorithms</a> by Nick Seaver in <i>digitalSTS: A Field Guide for Science & Technology Studies</i> is also a good place to start.</p>
+
+<p>[4] There is a reason Felienne Hermans wrote <a href="https://www.felienne.com/wp-content/uploads/2024/10/Feminism_in_Programming_Language_Design_CR_5-1.pdf">A Case for Feminism in Programming Language Design</a> and Charlton D. McIlwain wrote about the erasure of the contributions by African Americans to computing and the internet in <a href="https://en.wikipedia.org/wiki/Black_Software">Black Software</a>.</p>
+
+<p>[5] The slides for that presentation are available <a href="https://docs.google.com/presentation/d/1BQVCB4t1mfP4qvSYZSDREpllcu86VssCVV_QFYNuj-4/edit?usp=sharing">here</a>.</p>
+
+    </div>
+
+    <div id="search-section" class="invisible">
+      <div id="search-params" class="">
+        <input id="search-terms" size="50" />
+        <button id="search-button">Go</button>
+      </div>
+      <div id="search-results">
+      </div>
+    </div>
+
+    <footer>
+      <a href="/tooling">Tooling</a> |
+      License <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+    </footer>
+
+    <script type="text/javascript">
+      // Redirect legacy blog URLs
+      if (window.location.hash.startsWith("#/blog")) {
+        window.location = window.location.toString().replace("#/blog/","blog/");
+      }
+
+      // Hande this redirect via JavaScript because GitHub pages does not let me
+      // handle this via an HTML redirect due to the ".aspx" extension
+      if (window.location.pathname === "/blog/The-Mythical-Man-Month.aspx") {
+        window.location = "https://hectorcorrea.com/blog/2007-06-28/the-mythical-man-month";
+      }
+
+      // Mark as selected the current menu option
+      var selectMenu = function() {
+        var activeOption = null;
+        var url = window.location.pathname;
+        if (url.startsWith("/blog/")) {
+          activeOption = document.getElementById("blog-menu");
+        } else if(url == "/about") {
+          activeOption = document.getElementById("about-menu");
+        } else if(url == "/presentations") {
+          activeOption = document.getElementById("presentations-menu");
+        }
+
+        if (activeOption != null) {
+          activeOption.classList.add("nav-link-selected");
+        }
+      }
+
+      // Show the highlight menu if there is a hl query string parameter.
+      // Notice that we don't automatically highlight search terms because that's annoying on the display
+      // when there are too many hits.
+      var showHighlightMenu = function() {
+        const queryString = window.location.search
+        const urlParams = new URLSearchParams(queryString);
+        if (urlParams.has("hl")) {
+          var hlMenu = document.getElementById("highlight-menu");
+          hlMenu.classList.remove("invisible");
+        }
+      }
+
+      // Highlight search terms indicated in the URL via the
+      // hl query string parameter
+      var highlightSearchTerms = function() {
+        const queryString = window.location.search
+        const urlParams = new URLSearchParams(queryString);
+        if (urlParams.has("hl")) {
+          var context = document.querySelector("#page-content");
+          var instance = new Mark(context);
+          instance.mark(urlParams.get("hl"));
+          var hlMenu = document.getElementById("highlight-menu");
+          hlMenu.classList.remove("invisible");
+          hlMenu.classList.add("highlight-icon-on");
+          hlMenu.classList.remove("highlight-icon-off");
+        }
+      }
+
+      // Unhighlight the search terms
+      var unhighlightSearchTerms = function() {
+        var context = document.querySelector("#page-content");
+        var instance = new Mark(context);
+        instance.unmark();
+        var hlMenu = document.getElementById("highlight-menu");
+        hlMenu.classList.remove("highlight-icon-on");
+        hlMenu.classList.add("highlight-icon-off");
+      }
+
+      // Wire the button to toggle the highlight
+      document.getElementById("highlight-menu").addEventListener("click", (event) => {
+        var hlMenu = document.getElementById("highlight-menu");
+        if (hlMenu.classList.contains("highlight-icon-on")) {
+          unhighlightSearchTerms();
+        } else {
+          highlightSearchTerms();
+        }
+        event.preventDefault();
+      });
+
+      // Open external links in a new tab
+      var externalLinksNewTab = function() {
+        var i;
+        var links = document.getElementsByTagName("A");
+        for(i = 0; i < links.length; i++) {
+          var externalLink = !links[i].href.startsWith(window.location.origin);
+          if (externalLink) {
+            // Open on a new tab
+            links[i].target = "_blank"
+          }
+        }
+      }
+
+      selectMenu();
+      showHighlightMenu();
+      externalLinksNewTab();
+    </script>
+
+    <script>
+      if (window.location.pathname.startsWith("/search")) {
+        // Only load the search index when we are on the search page
+        // since it's kind of heavy, ~200KB.
+        // Source https://stackoverflow.com/a/52478867/446681
+        //
+        // IMPORTANT: The call to document.write() will insert the
+        // dynamic <script src=/searchIndex.js> block immediately
+        // after this <script> block and therefore the code to
+        // reference it MUST be on a separate <script> block.
+        console.log("Loaded search index");
+        document.write('<script src="/searchIndex.js"><\/script>');
+      }
+    </script>
+
+    <script>
+      // This <script> block has access to the searchDocuments
+      // variable defined in searchIndex.js (see above)
+      if (window.location.pathname.startsWith("/search")) {
+        // Define the Lunr index
+        var lunrIndex = lunr(function () {
+          this.ref('id')
+          this.field('name')
+          this.field('text')
+
+          searchDocuments.forEach(function (doc) {
+            if (doc.id == "/404") {
+              // don't index the content of the "404 not found" page
+            } else {
+              this.add(doc)
+            }
+          }, this)
+        });
+
+        // Function to execute the search
+        var runSearch = function() {
+          // Clear the previous results
+          const resultsEl = document.getElementById("search-results");
+          resultsEl.innerHTML = "";
+
+          // Run the search
+          const searchTerms = document.getElementById("search-terms").value;
+          const results = lunrIndex.search(searchTerms);
+
+          if (results.length == 0) {
+            var noResults = document.createElement("p");
+            noResults.textContent = "No results found";
+            resultsEl.appendChild(noResults);
+            return;
+          }
+
+          // Process the results
+          results.forEach(function(result) {
+            // This does not work because of word stemming (e.g. ruby => rubi)
+            // var matchTerms = Object.keys(result.matchData.metadata).join(" ");
+            var matchDoc = searchDocuments.find(x => x.id === result.ref)
+            var linkEl = document.createElement("a");
+            linkEl.href = matchDoc.id + "?hl=" + searchTerms;
+            linkEl.text = matchDoc["name"];
+
+            var resultEl = document.createElement("p");
+            resultEl.appendChild(linkEl);
+
+            resultsEl.appendChild(resultEl);
+          });
+        }
+
+        // Make the search section visible
+        document.getElementById("search-section").classList.remove("invisible");
+
+        // Wire the click even in the search button
+        document.getElementById("search-button").addEventListener("click", (event) => {
+          runSearch();
+        });
+
+        // Wire the enter key on the search textbox
+        // Source https://stackoverflow.com/a/46063448/446681
+        document.getElementById("search-terms").addEventListener("keyup", (event) => {
+          if (event.key === "Enter") {
+            runSearch();
+          }
+        });
+
+        // Give the focus to the search box
+        document.getElementById("search-terms").focus();
+      }
+    </script>
+  </body>
+</html>
