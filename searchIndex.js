@@ -31,7 +31,7 @@
 	},{
 		"id": "/tooling",
 		"name": "Tooling",
-		"text": "tooling the site is hosted in github pages as a statically generated website. repository https://github.com/hectorcorrea/hectorcorrea.github.io below are some of tools that i use to build it. fixie https://github.com/hectorcorrea/fixie generate html from markdown files. css for comes new.css https://newcss.net/ search implemented with lunr.js https://lunrjs.com/ and highlighting done via mark.js https://markjs.io/"
+		"text": "tooling the site is hosted in github pages as a statically generated website. repository https://github.com/hectorcorrea/hectorcorrea.github.io below are some of tools that i use to build it: fixie https://github.com/hectorcorrea/fixie generate html from markdown files. css for comes new.css https://newcss.net/ search implemented with lunr.js https://lunrjs.com/ and highlighting done via mark.js https://markjs.io/"
 	},{
 		"id": "/webdev-nutshell",
 		"name": "Web Development in a Nutshell",
