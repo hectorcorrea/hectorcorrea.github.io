@@ -87,6 +87,12 @@ $ ruby-install ruby 3.3 -- --with-openssl-dir=$(brew --prefix openssl@3)
 
 Notice that since December of 2024 OpenSSL 1 has been deprecated and you must use OpenSSL 3.
 
+If you want to see what version of OpenSSL your Ruby installation is using you can run the following command:
+
+```
+$ ruby -r openssl -e 'puts OpenSSL::OPENSSL_VERSION'
+```
+
 The other issue that I've seen recently is "error: use of undeclared identifier 'RUBY_FUNCTION_NAME_STRING'". This [blog post by Franklin Yu](https://dev.to/franklinyu/error-of-rubyfunctionnamestring-when-compiling-ruby-32b8) gives a great explanation of the problem and notes that many people have reported that the culprit in this case is the version of the Xcode command line tools installed on your Mac. To address this you can [remove your Xcode command line tools and install them again](https://github.com/rbenv/ruby-build/discussions/1938#discussioncomment-2213912):
 
 ```
@@ -115,7 +121,3 @@ chruby ()
 ```
 
 Another quirky thing with `chruby` and `ruby-install` is that after installing a new version of Ruby you must reload the `/usr/local/opt/chruby/share/chruby/chruby.sh` shell script for the new version to be available to chruby. In practice I typically just close my terminal window and open a new one to force this to happen since the chruby script is loaded by my Bash init script.
-
-
-
-
