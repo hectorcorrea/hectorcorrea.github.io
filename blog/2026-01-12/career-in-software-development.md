@@ -3,7 +3,7 @@
 
 This post is a short description of what my career as a software developer has been, followed by a few observations and recommendations for those starting a career in software development.
 
-I wrote this piece basely solely on my experience as a software developer and my recollection of thirty years in the field, it is therefore a very selective story (that's how memories work) and it is also just one data point. I hope some of the things that I have experienced and learned can help others starting their journey in software development because one of the things that I have noticed is that although a lot has changed throughout my career a lot has also stayed the same.
+I wrote this piece based solely on my experience as a software developer and my recollection of thirty years in the field, it is therefore a very selective story (that's how memories work) and it is also just one data point. I hope some of the things that I have experienced and learned can help others starting their journey in software development because one of the things that I have noticed is that although a lot has changed throughout my career a lot has also stayed the same.
 
 
 ## My career in four buckets
@@ -58,7 +58,9 @@ But all those steps along the way have shaped the way I see software development
 ### Learning
 There is always something new to learn in this field. If you enjoy learning new things this is a very attractive field.
 
-As you learn new things, particularly new programing languages and programming paradigms try to learn them *as they are meant to be used*. For example, if you are a Java developer learning Ruby, try to learn and use Ruby as a Ruby developer would use it, don't try to use it as you would use Java. The same is true if you are a Ruby developer learning Java, learn how to use it with the mindset of a Java developer. This is important because using the new tool as it is meant to be used opens up to different ways of thinking of programming and allows you to leverage the benefits of the new tool (as opposed to continuously fight with the tool because you are using it in a way that it was not designed for). The same is true if you are trying to learn functional programming and you are coming from an object-oriented background, embrace each approach's core principles (which might be counterintuitive at the beginning) so you get to experience them well.
+As you learn new things, particularly new programing languages and programming paradigms try to learn them *as they are meant to be used*. For example, if you are a Java developer learning Ruby, try to learn and use Ruby as a Ruby developer would use it, don't try to use it as you would use Java. The same is true if you are a Ruby developer learning Java, learn how to use it with the mindset of a Java developer. This is important because using the new tool as it is meant to be used opens up to different ways of thinking of programming and allows you to leverage the benefits of the new tool (as opposed to continuously fight with the tool because you are using it in a way that it was not designed for).
+
+The same is true if you are trying to learn functional programming and you are coming from an object-oriented background, embrace each approach's core principles (which might be counterintuitive at the beginning) so you get to experience them well.
 
 I have found that writing blog posts and presenting at conferences are great ways to learn new things because presenting the work to others forces you to dig deep and make sure that you understand the technology well. Plus it gives you great exposure to other people with similar interests.
 
@@ -78,7 +80,7 @@ A lot of us get into programming because we like problem solving and there is a 
 
 The group of people that you will work with will vary throughout your career, in some projects you'll work with other developers, in others you might work with other IT related people (even if not developers per-se), and in others you might work with stakeholders that are no in IT related positions. Working well with others and being able to communicate with people that have different technical knowledge is a great asset and will allow you to see the problems from different angles. A lot of times the problem cannot be solved with just code, and knowing how to navigate through the domain will give you better insight on the problem and possible solutions.
 
-*Remember that technology and software development are political*. It's common for people to think at algorithms are "pure and free of biases" but our tools and the solutions we build are used and deployed in ways that tend to amplify biases. You might think that a sorting algorithm has no biases (how could it have biases, right?), but as soon as you deploy a system that uses such algorithm to decide who receives something and who does not your program is not pure and free of biases as you might think<sup>3</sup>.
+*Remember that technology and software development are political*. It's common for people to think at algorithms are "pure and free of biases" but our tools and the solutions we build are used and deployed in ways that tend to amplify biases. You might think that a sorting algorithm has no biases (how could it have biases, right?), but as soon as you deploy a system that uses such algorithm to decide who receives something and who does not, your program is not pure and free of biases as you might thought<sup>3</sup>.
 
 
 ### You’ll screw something big at some point
@@ -88,7 +90,7 @@ First of all, please know that this kind of experience happens to all of us. Giv
 
 Secondly, do not let an incident like this discourage from the field. Remember that you are new and there is a lot going on on a given system. Good systems have checks to prevent single users from taking them down. And yet, we still manage to find places where the checks are not good enough or missing entirely.
 
-Hopefully you work on an environment where they understand the human nature of what we do and they will help you get over it. Regardless, learn from your mistake and keep on going.
+Hopefully you work on an team where they understand the human nature of what we do and they will help you get over it. Regardless, learn from your mistake and keep on going.
 
 
 ### Programming is fun and rewarding
