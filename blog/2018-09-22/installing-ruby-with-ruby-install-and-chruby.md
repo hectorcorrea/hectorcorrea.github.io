@@ -111,7 +111,7 @@ Something that surprised me when I started using `chruby` was that when you `bre
 $ type chruby
 -bash: type: chruby: not found
 
-$ source source /usr/local/opt/chruby/share/chruby/chruby.sh
+$ source /usr/local/opt/chruby/share/chruby/chruby.sh
 $ type chruby
 chruby is a function
 chruby ()
