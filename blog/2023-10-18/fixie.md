@@ -55,10 +55,10 @@ This local server will not automatically detect changes to the Markdown files an
 
 ## Getting started
 
-You can download the `fixie` executable from [https://github.com/hectorcorrea/fixie/releases](https://github.com/hectorcorrea/fixie/releases) or via the command line with cURL:
+You can download the `fixie` executable from [https://codeberg.org/hectorcorrea/fixie/releases](https://codeberg.org/hectorcorrea/fixie/releases) or via the command line with cURL:
 
 ```
-$ curl -LO https://github.com/hectorcorrea/fixie/releases/latest/download/fixie
+$ curl -LO https://codeberg.org/hectorcorrea/fixie/releases/latest/download/fixie
 $ chmod u+x fixie
 ```
 
@@ -113,6 +113,6 @@ Likewise, you might have noticed that when we ran `./fixie` it reported that "No
 
 ## Source code
 
-The source code is in Go, if you are interested in the code you can find it at [https://github.com/hectorcorrea/fixie](https://github.com/hectorcorrea/fixie).
+The source code is in Go, if you are interested in the code you can find it at [https://codeberg.org/hectorcorrea/fixie](https://codeberg.org/hectorcorrea/fixie).
 
 I am using `fixie` to produce the HTML for my personal site, [check out this blog entry](https://hectorcorrea.com/blog/2023-10-17/static-generated-site) for more information on why I did it and how I am using it to host my site at GitHub pages.
